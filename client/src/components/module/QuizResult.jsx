@@ -81,11 +81,11 @@ const QuizResult = ({
         </div>
 
         {/* Hero Image */}
-        <div className="mb-8 w-64 h-64 md:w-80 md:h-80 shrink-0">
+        <div className="mb-8 h-96 w-dvh shrink-0">
           <img
-            src="/achievements/quiz-celebration.png"
+            src="/images/completion/module-complete.png"
             alt="Celebration"
-            className="w-full h-full object-contain drop-shadow-xl"
+            className="w-full h-full object-contain "
           />
         </div>
 

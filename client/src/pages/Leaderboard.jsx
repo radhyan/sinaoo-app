@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { TrophyIcon, RankingIcon, ChartBarIcon } from "@phosphor-icons/react";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
-import RankCard, { RankCardSkeleton } from "@/components/leaderboard/RankCard";
-import ChampionsPodium, {
-  ChampionsPodiumSkeleton,
-} from "@/components/leaderboard/ChampionsPodium";
+import RankCard from "@/components/leaderboard/RankCard";
+import ChampionsPodium from "@/components/leaderboard/ChampionsPodium";
 import RankingList from "@/components/leaderboard/RankingList";
 import { useUser } from "@/context/UserContext";
-import { Skeleton } from "@/components/shared/ui/Skeleton";
+import LoadingBar from "@/components/shared/ui/LoadingBar";
 
 export default function Leaderboard() {
   const { user, loading: userLoading } = useUser();
@@ -42,33 +40,24 @@ export default function Leaderboard() {
 
   if (loading || userLoading) {
     return (
-      <div className="flex flex-col gap-8 h-full w-full max-w-7xl p-2 overflow-hidden">
-        {/* Header Skeleton */}
-        <div className="flex items-center gap-3 shrink-0">
-          <Skeleton className="w-12 h-12 rounded-lg" />
-          <Skeleton className="h-10 w-64 rounded-md" />
-        </div>
-
-        {/* content grid skeleton */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-x-12 gap-y-8 flex-1">
-          <div className="flex flex-col gap-8">
-            <div className="space-y-4">
-              <Skeleton className="h-8 w-40 rounded-md" />
-              <RankCardSkeleton variant="highlight" />
-            </div>
-            <div className="space-y-4 flex-1">
-              <Skeleton className="h-8 w-40 rounded-md" />
-              <ChampionsPodiumSkeleton />
-            </div>
+      <div className="flex flex-col items-center justify-center h-full w-full max-w-7xl p-8 animate-in fade-in duration-500">
+        <div className="w-full max-w-md flex flex-col items-center gap-6">
+          <GradientIcon
+            icon={RankingIcon}
+            variant="blue"
+            size={64}
+            weight="fill"
+            className="animate-bounce"
+          />
+          <div className="text-center space-y-2">
+            <h2 className="font-heading text-h2 text-Primary-900">
+              Memuat Leaderboard
+            </h2>
+            <p className="text-body-md text-Grayscale-500">
+              Menyiapkan ranking terbaik untukmu...
+            </p>
           </div>
-          <div className="space-y-4">
-            <Skeleton className="h-8 w-40 rounded-md" />
-            <div className="bg-w-lb rounded-xl border border-Primary-50 h-[600px] p-6 space-y-4">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <RankCardSkeleton key={i} />
-              ))}
-            </div>
-          </div>
+          <LoadingBar className="w-full shadow-blue-60" variant="blue" />
         </div>
       </div>
     );

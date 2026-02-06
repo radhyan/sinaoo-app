@@ -8,6 +8,8 @@ import ModuleList from "@/components/module/ModuleList";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
 
+import LoadingBar from "@/components/shared/ui/LoadingBar";
+
 function CourseList() {
   const { user } = useUser();
   const [courses, setCourses] = useState([]);
@@ -55,11 +57,27 @@ function CourseList() {
           <div className="h-full overflow-y-auto custom-scrollbar p-6">
             <div className="grid grid-cols-1 gap-4">
               {loading ? (
-                <>
-                  <CourseCardSkeleton />
-                  <CourseCardSkeleton />
-                  <CourseCardSkeleton />
-                </>
+                <div className="flex flex-col items-center justify-center py-20 gap-6 animate-in fade-in duration-500">
+                  <GradientIcon
+                    icon={BookBookmarkIcon}
+                    variant="blue"
+                    size={64}
+                    weight="fill"
+                    className="animate-bounce"
+                  />
+                  <div className="text-center space-y-2">
+                    <p className="text-h3 font-heading text-Primary-50">
+                      Memuat Kursus
+                    </p>
+                    <p className="text-body-md text-Primary-100/70">
+                      Menyiapkan materi terbaik untukmu...
+                    </p>
+                  </div>
+                  <LoadingBar
+                    className="w-full max-w-[240px] shadow-deep-blue-60"
+                    variant="blue"
+                  />
+                </div>
               ) : (
                 courses.map((course, index) => {
                   const completedCount =

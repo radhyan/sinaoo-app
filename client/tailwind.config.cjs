@@ -227,6 +227,15 @@ module.exports = {
         sm: "1rem",
         xsm: "calc(.5rem + 4px)",
       },
+      keyframes: {
+        "loading-bar": {
+          "0%": { transform: "translateX(-150%)" },
+          "100%": { transform: "translateX(150%)" },
+        },
+      },
+      animation: {
+        "loading-bar": "loading-bar 1.5s infinite ease-in-out",
+      },
     },
   },
 };

@@ -1,0 +1,15 @@
+List of 14 items
+0: [6961f021813c23bcb894aa55] barisan aritmatika - Steps: 0
+1: [6961f021813c23bcb894aa58] tabel - Steps: 0
+2: [6961f021813c23bcb894aa4d] Kesesuaian Pernyataan - Steps: 4
+3: [6961f021813c23bcb894aa53] Pola dan operasi bilangan - Steps: 0
+4: [6961f021813c23bcb894aa56] silogisme - Steps: 0
+5: [6961f021813c23bcb894aa57] logika ekuator - Steps: 0
+6: [6961f021813c23bcb894aa4e] Sebab akibat - Steps: 0
+7: [6961f021813c23bcb894aa50] simpulan logis - Steps: 0
+8: [6961f021813c23bcb894aa52] kualitas simpulan & opini atau fakta teks - Steps: 0
+9: [6961f021813c23bcb894aa4f] pediksi data/simpulan - Steps: 0
+10: [6961f021813c23bcb894aa51] penalaran analitik - Steps: 0
+11: [6961f021813c23bcb894aa54] Barisan bilangan - Steps: 0
+12: [6961f021813c23bcb894aa59] grafis - Steps: 0
+13: [69688cd0a647590bb096699d] Sebab Akibat - Steps: 4
