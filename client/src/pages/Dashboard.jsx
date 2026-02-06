@@ -1,0 +1,189 @@
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  ArrowRightIcon,
+  BookOpen,
+  BookOpenTextIcon,
+  Flag,
+  RankingIcon,
+  StarIcon,
+  CalendarCheckIcon,
+} from "@phosphor-icons/react";
+import PointProgressBar, {
+  PointProgressBarSkeleton,
+} from "@/components/dashboard/PointProgressBar";
+import UserProgress, {
+  UserProgressSkeleton,
+} from "@/components/dashboard/UserProgress";
+import DailyMissionWidget from "@/components/dashboard/DailyMissionWidget";
+import GradientIcon from "@/components/shared/ui/GradientIcon";
+import LastAccessedModule from "@/components/dashboard/LastAccessedModule";
+import { useUser } from "@/context/UserContext";
+import { getUserAvatar } from "@/lib/avatar";
+import { Skeleton } from "@/components/shared/ui/Skeleton";
+import { Button } from "@/components/shared/ui/Button";
+
+const LeaderboardItem = ({ rank, avatar, name, points }) => (
+  <div className="flex items-center gap-4 p-2 rounded-md hover:bg-Grayscale-50">
+    <span className="font-bold text-lg text-Grayscale-400 w-6 text-center">
+      {rank}
+    </span>
+    <img
+      src={avatar}
+      alt={`${name}'s avatar`}
+      className="w-10 h-10 rounded-full"
+    />
+    <p className="font-bold text-Grayscale-800 flex-1">{name}</p>
+    <p className="font-bold text-Secondary-500">
+      {points.toLocaleString("id-ID")} Points
+    </p>
+  </div>
+);
+
+// add a small fallback WidgetCard if you don't have an import
+const WidgetCard = ({ title, icon, children }) => (
+  <div className="bg-white rounded-xsm p-6 shadow-btn-default">
+    <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center gap-3">
+        {icon}
+        <h4 className="font-heading text-h4">{title}</h4>
+      </div>
+    </div>
+    {children}
+  </div>
+);
+
+function Dashboard() {
+  const { user, loading, earnedAchievement, setEarnedAchievement } = useUser();
+  const [totalAchievements, setTotalAchievements] = useState(6);
+
+  useEffect(() => {
+    // Only fetch achievements stats separately if needed, or assume fixed for now
+    // Ideally this should be part of a global data context or cache
+    const fetchAchievements = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/achievements");
+        if (res.ok) {
+          const data = await res.json();
+          setTotalAchievements(data.length);
+        }
+      } catch (e) {
+        console.error("Failed to fetch achievements count", e);
+      }
+    };
+    fetchAchievements();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-6 w-full h-full p-4 overflow-hidden">
+        <Skeleton className="w-full aspect-[21/4] rounded-lg" />
+        <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-4">
+          <PointProgressBarSkeleton />
+          <UserProgressSkeleton />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Skeleton className="h-10 w-10 rounded-full" />
+              <Skeleton className="h-8 w-40 rounded-md" />
+            </div>
+            <Skeleton className="h-64 w-full rounded-xl" />
+          </div>
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Skeleton className="h-10 w-10 rounded-full" />
+              <Skeleton className="h-8 w-40 rounded-md" />
+            </div>
+            <Skeleton className="h-64 w-full rounded-xl" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="flex flex-col w-full h-screen items-center justify-center gap-4">
+        <p className="text-lg font-bold text-red-500">
+          User data not found. Please log in again.
+        </p>
+        <Link to="/">
+          <Button>Go to Login</Button>
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-1 overflow-x-hidden">
+      {/* Top Banner */}
+      <div className="w-full aspect-[21/4] bg-[#FF0000] rounded-lg flex items-center justify-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
+        <h2 className="text-black font-heading text-h2 md:text-h3 px-6 text-center z-10 transition-all hover:scale-105 duration-300">
+          Selamat Pagi {user.name || user.username}, Tetap Semangat!
+        </h2>
+      </div>
+
+      {/* Profile & Stats Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-4 items-stretch">
+        <div className="animate-in fade-in slide-in-from-left-6 duration-700 delay-200 fill-mode-both">
+          <PointProgressBar
+            currentPoints={user.points}
+            name={user.name || user.username}
+            avatarId={user.avatarId}
+            avatarSrc={getUserAvatar(user)}
+          />
+        </div>
+        <div className="animate-in fade-in slide-in-from-right-6 duration-700 delay-300 fill-mode-both">
+          <UserProgress
+            completedCourses={user.completedCourses || 0}
+            totalCourses={user.totalCourses || 6}
+            completedModules={
+              user?.progress?.filter((p) => p.isCompleted).length || 0
+            }
+            completedAchievements={user.achievements?.length || 0}
+            totalAchievements={totalAchievements}
+            leaderboardRank={3}
+          />
+        </div>
+      </div>
+
+      {/* Bottom Grid Section: Missions & Last Accessed */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8 mt-4 items-stretch">
+        {/* Left: Daily Missions */}
+        <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-8 duration-700 delay-400 fill-mode-both">
+          <div className="flex items-center gap-3 mb-4">
+            <GradientIcon icon={CalendarCheckIcon} variant="orange" size={40} />
+            <h3 className="font-heading text-h3 text-Primary-900">
+              Misi Harian
+            </h3>
+          </div>
+          <div className="flex-1">
+            <DailyMissionWidget className="h-full" />
+          </div>
+        </div>
+
+        {/* Right: Last Accessed Module */}
+        <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-8 duration-700 delay-500 fill-mode-both">
+          <div className="flex items-center gap-3 mb-4">
+            <GradientIcon
+              icon={BookOpenTextIcon}
+              size={40}
+              weight="fill"
+              variant="green"
+            />
+            <h3 className="font-heading text-h3 text-Primary-900">
+              Modul Terakhir Diakses
+            </h3>
+          </div>
+
+          <div className="flex-1">
+            <LastAccessedModule username={user.username} className="h-full" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Dashboard;

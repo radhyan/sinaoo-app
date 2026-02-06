@@ -1,0 +1,175 @@
+Software Requirement Speci?cations
+SINAOO: Gami?ed Online Learning Platform for SNBT
+Prepared by Radhyanas Oetomo
+
+
+1. Introduction
+
+Purpose
+      This document speci?es software requirements for an online learning platform based on web application written in JavaScript utilizing the MERN technological stack. The purpose of this document is to further describe the requirements and guide the development of the product.
+      This product aims to introduce students to a highly gami?ed online learning platform and enhance their performance and engagement in a self-learning scenario determined by the quantitative and qualitative metrics, which are:
+a. Quantitatively based on test grade and completion rate.
+b. Qualitatively based on their experience after using the digital product through a survey.
+
+Intended Audience and Reading Suggestions
+      This product is targeted towards people who will partake in the national college admission test (SNBT). This product serves as a highly gami?ed online learning platform. The development and detail of this product refer to the product innovation undergraduate thesis proposal manuscript, link as follow;
+-  Undergraduate thesis proposal manuscript
+
+-	Google Form data collection (raw)
+
+-	Empathize data collection (synthesized) https://women-care-yex.craft.me/DCPzek3ae8Ekg3
+
+Project Scope
+      This product will be deployed as a web-application platform accessible through a browser, suiting both desktop and mobile devices, aiming to deliver the same experience beyond platforms. This product aims to cater to the needs of high school students and people who are going through a semi/gap year as a supplementary learning platform augmented with gami?cation elements, to create a gameful experience in a self-learning setting, enhancing learners' engagement, motivation, and performance. This product will only go through a single development and will not be further developed after the evaluation of the product.
+
+2. Overall Description
+
+Product Perspective
+       This product is an enhanced version of a generic online learning platform, augmented with gami?cation elements to leverage learners' engagement and motivation in studying. The information architecture of the product is depicted below as well as its hierarchy.
+
+Product Features
+      This product will be built around the "courses" feature where users can access courses to study from its various modules (chapter) which include learning material and quizzes to test their understanding. UML diagram is shown in the image below and the incorporate gami?cation elements listed as follow:
+PerformanceSocialPersonalProgress bar (progression)LeaderboardPuzzlePoints systemTitleCharacter CustomizationAchievementsFeedback
+
+
+
+User Classes and Characteristics
+
+User NameAuthoritiesStudent- Access courses; access modules; do quizzes
+- Customize character
+- Acquire achievements
+- Acquire points; acquire title; acquire placement in leaderboard
+- See leaderboard
+- See other's pro?le
+
+
+Operating Environment
+      This application will be available on both mobile and desktop platforms since it is a web application that can be accessed through any browser. Using a javascript environment React Native will ease the development for a multi-platform.
+
+Assumptions and Dependencies
+       Third-party service (Vercel) as a deployment service plays a big role. Accessing the platform must be available at all times and have stable performance ensuring the experience of the platform to study.
+
+3. System Features
+For the application to serve its purpose, some products must be developed. These are some minimum viable products (MVP).
+
+Course
+
+Description and Priority
+The course is the most important feature with high priority to be implemented in the application. This feature is the main feature for users to use the application by implementing its child; module, learning material, and quiz.
+
+Stimulus/Responses Sequences
+The User could choose a course and access its module to read learning material and practice the quiz testing their understanding of the module. Upon starting a new course, a new progress bar will be triggered to track completion Upon completion score will accumulate into points.
+
+Functional Requirements
+
+IDDescriptionC-FR-001A database is needed to store each course and its module as well as quizzes questions and answers with its explanation.C-FR-002A tracking system for the progress bar.
+C-FR-003Points system integration
+Module
+
+Description and Priority
+The module is the most important feature with high priority to be implemented in the application.
+
+Stimulus/Responses Sequences
+The User could choose a module to read learning material and do its quizzes. Upon opening a new module, a new progress bar will be triggered to track completion. Upon completion score will accumulate into points.
+
+Functional Requirements
+
+IDDescriptionM-FR-001Learning material and quiz correspond to the module titleM-FR-002A tracking system for the progress bar.M-FR-003Points system integration
+Quiz (Puzzle)
+
+Description and Priority
+The quiz is the most important feature with high priority to be implemented in the application.
+
+Stimulus/Responses Sequences
+Upon choosing a module, after every learning material, a quiz is given with different ways to interestingly ?nish the question (e.g match the answer, ?ll in the blank) while incorporating basic quiz format (short answer, multiple choices).
+
+
+Functional Requirements
+
+IDDescriptionQ-FR-001Quiz question must have the correct answer and give the feedback correspond to the answer givenQ-FR-002A tracking system for the progress bar shows how many questions are left.Q-FR-003Points system integration.
+Points
+
+Description and Priority
+This feature is the main gami?cation element feature for users as the main purpose of the product. Points will be accumulated from progression (?nishing course, quiz scores in modules, and achievements). Accumulated points determine the placement of the user in the leaderboard and title.
+
+Stimulus/Responses Sequences
+Upon completion of a module, score of quiz, and reaching milestones, user will acquire points that will be accumulated into placement in the leaderboard and title.
+
+Functional Requirements
+
+IDDescriptionPT-FR-001A logic of acquiring points and accumulating points into placement and titlesPT-FR-002Points progression for titles
+Leaderboard
+
+Description and Priority
+This feature is the most liked gami?cation element feature for users. The leaderboard will show the placement of users to motivate them in competing. Points will determine the placement of users..
+
+Stimulus/Responses Sequences
+Gaining points will accumulate the placement. Leaderboard can be seen in the homepage/dashboard. Statistic of placement can also be seen in the leaderboard (e.g down 2 place).
+
+
+
+Functional Requirements
+
+IDDescriptionL-FR-001Accumulate points into placementL-FR-002Placement changes alert
+Progress Bar
+
+Description and Priority
+This feature is one of the most popular gami?cation element feature for users. The progress bar shows the completion of courses, modules, and achievement milestones.
+
+Stimulus/Responses Sequences
+Everytime a new course and or module is accessed a progress bar will trigger showing how far the completion is (e.g a module have 2 reading material and 2 quiz, thus having 4 different section to complete).
+
+Functional Requirements
+
+IDDescription
+PR-FR-001Accumulate course, module, milestone for achievement completion into dynamic progress bar
+Feedback
+
+Description and Priority
+This feature is one of the most wanted features for users in increasing interactivity, communication with the system.
+
+Stimulus/Responses Sequences
+Upon the quiz action, every question will have feedback on how the user did (wrong; constructive. Correct; congratulations) followed by the explanation of the quiz.
+
+Functional Requirements
+
+IDDescriptionF-FR-001Feedback given is accurate to corresponding user's answer
+Title
+
+Description and Priority
+This feature is one of the gami?cation element feature for users. Title is shown in the user's pro?le for how many points they have acquired. Similar to level, title is unique and not numerical.
+
+Stimulus/Responses Sequences
+Every amount of point acquired will acquire a new title.
+
+Functional Requirements
+
+IDDescriptionT-FR-001Accumulate points into titleT-FR-002Title is shown publicly and every user can see others title
+Character Customization (omit?)
+
+Description and Priority
+The character customization is a gami?cation element feature with low to mid priority to be implemented in the application. This feature is an additional feature to add personal customization into the app.
+
+Stimulus/Responses Sequences
+The User customize their avatar that will be shown in the social tab (leaderboard) matching their respective personality
+
+Functional Requirements
+
+IDDescriptionCC-FR-001Character can be seen by other peopleCC-FR-002Any character changes can be saved
+Daily Mission
+
+Description and Priority
+The daily mission is a gami?cation element feature with low to mid priority to be implemented in the application. This feature is an additional feature to add objectives in the application.
+
+Stimulus/Responses Sequences
+All users will get 2 daily missions, one to ?nish a milestone and one to do daily quiz.
+
+Functional Requirements
+
+IDDescriptionD-FR-001Daily mission can only be completed onceD-FR-002Daily mission can redirect user to designated mission
+4. External Interface Requirements
+
+User Interfaces
+Figma Page:
+
+

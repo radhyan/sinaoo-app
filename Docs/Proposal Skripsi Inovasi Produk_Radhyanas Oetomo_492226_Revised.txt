@@ -1,0 +1,720 @@
+
+
+
+SINAOO: GAMIFIED DIGITAL EDUCATION PLATFORM IN ENHANCING
+STUDENTS' EXPERIENCE IN SELF-STUDYING SNBT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RADHYANAS OETOMO 22/492226/PA/21092
+
+
+
+
+
+
+
+UNDERGRADUATE DEGREE IN COMPUTER SCIENCE DEPARTMENT OF COMPUTER SCIENCE AND ELECTRONICS FACULTY OF MATHEMATICS AND NATURAL SCIENCES UNIVERSITAS GADJAH MADA
+YOGYAKARTA 2025
+
+
+SINAOO: GAMIFIED DIGITAL EDUCATION PLATFORM IN ENHANCING
+STUDENTS' EXPERIENCE IN SELF-STUDYING SNBT
+
+
+
+Submitted to fulfill one of the requirements for obtaining a Bachelor degree in Computer Science
+
+
+
+
+
+
+
+
+
+RADHYANAS OETOMO 22/492226/PA/21092
+
+
+
+
+
+UNDERGRADUATE DEGREE IN COMPUTER SCIENCE DEPARTMENT OF COMPUTER SCIENCE AND ELECTRONICS FACULTY OF MATHEMATICS AND NATURAL SCIENCES UNIVERSITAS GADJAH MADA
+YOGYAKARTA 2025
+
+i
+
+
+APPROVAL PAGE
+         UNDERGRADUATE PRODUCT INNOVATION THESIS SINAOO: GAMIFIED DIGITAL EDUCATION PLATFORM IN ENHANCING
+STUDENTS' EXPERIENCE IN SELF-STUDYING SNBT
+
+
+Proposed by
+
+RADHYANAS OETOMO 22/492226/PA/21092
+
+
+Has been approved to proceed for examination on the date of 23 October 2025 by
+
+
+
+
+
+
+
+Dr. Sigit Prityanta, S.si., M.Kom.
+Supervisor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Drs. Medi, M.Kom.
+Lead Examiner
+
+Prof, Dr. Suprapto, M.I.Kom.
+Examiner
+
+
+
+
+
+
+ii
+
+
+STATEMENT
+
+    Hereby, I declare that this proposal does not contain any work that has been previously submitted to obtain an academic degree at any university, and to the best of my knowledge, it also does not contain any work or opinions written or published by others, except those who are explicitly cited in the manuscript and listed in the references.
+
+
+Yogyakarta, 17 October 2025
+
+Radhyanas Oetomo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+iii
+
+
+
+APPROVAL PAGE	ii
+STATEMENT	iii
+LIST OF CONTENTS	iv
+LIST OF TABLE	v
+LIST OF FIGURES	vi
+ABSTRACT	vii
+INTISARI	viii
+CHAPTER 1	INTRODUCTION	1
+1.1 Background	1
+1.2 Problem Identification	3
+1.3 Product Purpose	3
+1.4 Product Specification	3
+1.5 Product Benefit	4
+CHAPTER 2	PRIOR RESEARCH	5
+2.1 Online Learning Challenges	5
+2.2 College Entry Examination Self-Study with Digital Platform	5
+2.3 Student Learning Engagement	6
+2.4 Gamifaction	6
+2.5 Waterfall	8
+2.6 Design Thinking	8
+CHAPTER 3	DEVELOPMENT PLAN AND METHODOLOGY	9
+3.1 Development Plan	9
+3.1.1 Functional and Non-Functional Requirements	9
+3.1.2 Gamification Elements	10
+3.1.3 Data	11
+3.2 Methodology	12
+3.2.1 Requirements Specification	13
+3.2.2 Implementation	14
+3.3 Data Collection and Analysis	14
+CHAPTER 4	TIMELINE	16
+REFERENCES	17
+
+
+
+
+
+iv
+
+
+
+Table 1 Task schedule and estimation	16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+v
+
+
+
+Figure 1 Gamification taxonomy (Toda et al., 2019)	7
+Figure 2 System architecture diagram	11
+Figure 3 Product's information architecture	12
+Figure 4 Integrated design thinking in waterfall project management	13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+vi
+
+
+
+
+SINAOO: GAMIFIED DIGITAL EDUCATION PLATFORM IN ENHANCING
+STUDENTS' EXPERIENCE IN SELF-STUDYING SNBT
+
+
+by
+
+
+Radhyanas Oetomo 22/492226/PA/21092
+
+
+
+    The high competition in the National Selection Based Tests (SNBT) for university admission in Indonesia has led to the rise of various digital education platforms. However, many students encounter these platforms lacking in novelty, engagement, and social aspects, leading to decreased motivation in self-study. This proposal outlines the development of a web-application educational platform that explicitly incorporates gamification elements to enhance students' learning experiences and engagement in preparing for the SNBT. The development will utilize the MERN (MongoDB, Express.js, React, Node.js) stack, with a project management approach that combines the Waterfall model with the Design Thinking process for user-centric requirements gathering. The platform will incorporate gamification elements from the performance (points, progression, and achievements), social (leaderboards), and personal (customization, objectives) categories. The product's effectiveness will be evaluated using a mixed-method approach, comparing students' test scores (quantitative) after using the platform against traditional study methods and gathering user experience feedback through surveys (qualitative). This project aims to introduce and create a more effective self-study tool for SNBT candidates.
+Key words: Gamification, Education, SNBT, Web Application, Design Thinking
+
+
+
+
+
+vii
+
+
+
+
+
+SINAOO: PLATFORM EDUKASI DIGITAL TERGAMIFIKASI UNTUK MENINGKATKAN PENGALAMAN BELAJAR MANDIRI MURID MEMPELAJARI MATERI SNBT
+
+Oleh
+
+
+Radhyanas Oetomo 22/492226/PA/21092
+
+
+     Tingginya persaingan dalam Seleksi Nasional Berbasis Tes (SNBT) untuk masuk ke perguruan tinggi di Indonesia telah mendorong munculnya berbagai platform edukasi digital. Namun, banyak siswa merasa layanan yang ada kurang memiliki originalitas, daya tarik, dan aspek sosial yang menyebabkan menurunnya motivasi dalam belajar mandiri. Proposal ini memaparkan pengembangan sebuah platform edukasi berbasis aplikasi web yang dilengkapi dengan elemen gamifikasi untuk meningkatkan pengalaman dan keterlibatan belajar siswa dalam mempersiapkan diri menghadapi SNBT. Pengembangan akan menggunakan tech stack MERN (MongoDB, Express.js, React, Node.js), dengan menggabungkan metode manajemen proyek Waterfall dan Design Thinking sebagai pendekatan kepada kebutuhan pengguna. Platform ini akan mengintegrasikan elemen gamifikasi dari kategori performance (skor, perkembangan), sosial (peringkat), dan pribadi (kustomisasi, tujuan). Efektivitas produk akan dievaluasi menggunakan pendekatan metode campuran, yaitu dengan membandingkan nilai tes pengguna (kuantitatif) setelah menggunakan platform dengan metode belajar secara tradisional, serta mengumpulkan tanggapan mengenai pengalaman pengguna melalui survei (kualitatif). Proyek ini bertujuan untuk menciptakan alat belajar mandiri yang lebih merangsang dan efektif bagi calon peserta SNBT.
+Key words: Gamifikasi, Edukasi, SNBT, Aplikasi Web, Design Thinking
+
+
+
+
+viii
+
+INTRODUCTION
+
+
+
+1.1 Background
+      Massive adoption of technology has abruptly transitioned students' lives. This transition was marked by the widespread use of digital platforms, virtual classrooms, and multimedia applications to sustain educational activities during periods of social distancing (Christopoulos and Sprangers, 2021; Krishnamurthy, 2020). In the post-pandemic state, technology has become integral to education practices, with institutions holding online and blended learning to enhance flexibility and accessibility (Ng and Lo, 2022). The increased usage of gadgets and digital tools as a learning medium by Indonesian students, particularly those in urban areas, indicates a developing digital culture and readiness for digital learning. (Sari et al., 2020).
+      Seleksi Nasional Berbasis Tes (SNBT) is a computer-based examination for public university admission in Indonesia. However, SNBT materials aren't integrated into the formal school's curriculum. Although institutions often provide supplementary materials to prepare their students for SNBT (Aripin et al., 2024). On the other side, rigorously emerging digital education platforms such as RuangGuru, Pahamify, and Zenius offer in-depth SNBT preparation, such as recorded materials, live teaching, and mock tests for students to study from (R. Rahmawati et al., 2021). Online access platforms, as such, allow synchronous and asynchronous learning, providing great flexibility (Zainuddin, 2024; Yu, 2022; Ng and Lo, 2022). Although RuangGuru offers a plethora of products with high interactivity, it still lacks the social aspect that allows learners a natural experience in their process (A. Rahmawati and Sujono, 2021). Despite its saturated market, Indonesian students who use online learning platforms said that these platforms are lacking in novelty, stimulation, and attractiveness (Permana, 2023).
+Gamification has been utilized to enhance students' intrinsic and extrinsic
+motivation in a non-serious game environment (Barata et al., 2015; Deterding et al.,
+
+
+1
+
+
+
+
+
+
+2011). Studies in gamification elements implementation have proven to stimulate student performance in the education field (Arisoy, 2022; Bai et al., 2020). In non- digital formats, gamification aspects such as reward systems have been commonly implemented to motivate and encourage students' participation. This approach leverages students' intrinsic motivation, such as achievement, competition, and social acknowledgment, in creating a dynamic and interactive learning environment (Rahayu et al., 2022; Rincon-Flores and Santos-Guevara, 2021). These elements can also be easily implemented in a digital environment, allowing a more modern approach to delivering an interactive and modern medium to enhance students' engagement.
+      Research has highlighted the "performance" gamification class as the most common and effective way to promote student motivation and engagement. Performance refers to the implementation of gamification elements in acknowledgment, level, points, and progression to be used as a feedback response (Toda et al., 2019), motivating a goal-oriented behavior in students to participate and excel in the classroom. Incorporating performance elements alongside other groups into quizzes and tests can make evaluation more enjoyable and less stressful, encouraging active participation (Rahayu et al., 2022; Rincon-Flores and Santos- Guevara, 2021; Toda et al., 2019). Online learning platforms that highly incorporate gamification have been spread globally, such as Kahoot!, Wayground (previously known as Quizizz), Duolingo, and Khan Academy. Where Wayground's interactive and gamification approach is able to positively shape students for online learning and enhance their engagement in learning (Fahada and Asrul, 2024).
+      The incorporation of performance elements can highly affect the platform to naturally influence the personal and social aspects, such as sensation, objective, competition, and social pressure (Toda et al., 2019). A web-based educational platform that will be called "Sinaoo" will be developed as a medium to integrate gamification elements to enhance students' engagement and interactive learning experience. Features that will be incorporated are a point system that affects the real-time leaderboard and an achievement system for completing certain milestones.
+
+
+
+
+
+
+1.2 Problem Identification
+      Existing digital education platforms as SNBT study supplement medium, such as RuangGuru, Pahamify, and Zenius, have not enriched their products with gamification explicitly. Hence, a lack of stimulation in these products failed to motivate and engage students in consistent self-study.
+1.3 Product Purpose
+      This product will introduce students to a highly gamified online learning platform and enhance their performance and engagement in a self-learning scenario determined by the quantitative and qualitative metrics, which are:
+a. Quantitatively based on test grade and completion rate.
+b. Qualitatively based on their experience after using the digital product through a survey.
+1.4 Product Specification
+      The product is web-app-based using the MongoDB, Express.js, React, Node.js (MERN) technical stack, with the following specifications for utilizing each framework:
+a. Front end will use the JavaScript programming language and incorporate React as a framework.
+a. Back end will use Node.js with Express.js as the framework.
+b. Database using MongoDB.
+         c. Deployment will be through Vercel, using its serverless architecture. The product will be specifically designed for Indonesian students who will participate in SNBT, supplementing them with materials. Gamification elements
+that are going to be implemented are as follows:
+a. Performance	category,	which	includes	acknowledgment, progression, and points.
+b. Social category, which includes competition and social pressure from the real-time leaderboard and point collection.
+c. The personal category, which includes character customization, puzzles, and objectives.
+
+
+
+
+
+
+1.5 Product Benefit
+      This product aims to stimulate students in asynchronous learning through a digital education platform. Furthermore, this product is capable of motivating and engaging its users through a captivating game-like experience, fostered by gamification elements implemented.
+
+
+   CHAPTER 2 PRIOR RESEARCH
+
+2.1 Online Learning Challenges
+      The Covid-19 pandemic forces students to pursue online learning on very short notice. This abrupt shift has raised challenges for students, affecting their academic performance as well as emotional and mental well-being (Mheidly et al., 2020). Online learning lacks the real-time, in-person interaction, which has led to decreased motivation and engagement, with students reporting difficulty focusing and feeling disengaged (Mohd Basar et al., 2021; Wahyudi et al., 2023). With sufficient supplementary resources for students to study from, it is proven to be able to raise their academic performance (Clark et al., 2021). Nonetheless, asynchronous formats, particularly recorded video lectures, can lead to long-term fatigue and inattention among students (Lin et al., 2021).
+2.2 College Entry Examination Self-Study with Digital Platform
+      SNBT is one of the most participated college entry examinations nationally. In 2022, 24.07% out of 800,000 participants were admitted (Widiyarto, 2023). The inadequate undergraduate study admission test preparation in the formal school curriculum causes a barrier in students' understanding, implying the low admission rate (Siahaan et al., 2023; Radite et al., 2022). However, several institutions do provide supplementary materials and mentoring to prepare their students for the national college entry examination (Aripin et al., 2024; Widiyarto, 2023).
+      The saturated market of digital education platforms in Indonesia offers students a large amount of college admission examination learning supplements to choose from. Although research showed that the presence of digital learning platforms can accommodate materials that aren't given in school, students struggle most with their self-regulation skills, such as goal-setting, time management, and reflection, that are crucial for success in online environments like SNBT preparation, which often require a high degree of motivation and independence compared to more traditional, structured settings (Anastasia and Abidin, 2024).
+
+
+
+5
+
+
+
+
+
+
+
+
+
+
+2.3 Student Learning Engagement
+      Wong and Liem (2022) define learning engagement as the psychological state of action that enables students to feel activated, attentive, and exert effort in learning activities. The presence of digital technology affects critical changes toward student engagement, as it has become a central feature within the student educational experience (Henderson et al., 2015). Student engagement is constructed multidimensionally, which encompasses behavioral, cognitive, and affective dimensions. Whereas behavioral engagement involves participation and effort, cognitive engagement refers to investment in learning and self-regulation, and affective engagement includes feelings of belonging and interest (Bond et al., 2020; Wong and Liem, 2022).
+      Engagement measurements remain a challenge due to their complexity. Chapman and ERIC Development Team (2003) summarized 5 methods used to evaluate student engagement: self-report, checklist and rating scale, work sample analyses, direct observation, and focused case studies. Further define the classification and its specific method to measure student engagement: quantitatively by grade or performance, qualitatively by survey or self-report, and mixed of both (Hu and Li, 2017).
+      Research depicts a mutual influence between student engagement and motivation in online learning environments. Engaged students often report higher motivation, and motivated students are more likely to engage deeply with online learning activities (Martin and Bolliger, 2018; Pan, 2023). Tara et al., (2022) surveyed that 55% of students' motivation directly implied their engagement in online learning scenarios.
+2.4 Gamifaction
+      Deterding et al., (2011) defined gamification as the implementation of game design elements in non-game contexts, parallel to complementing the playfulness aspect. Whereas, Huotari and Hamari (2017) referred gamification as the experience it intends to give rather than its process, by enhancing a service through
+
+
+
+
+
+
+gameful experiences augmentation, supporting users' overall value creation. Hence, gamification is an experience fostered through the implementation of game elements. Toda et al., (2019) classified gamification elements in the education environment into five different dimensions, which are performance, ecological, social, personal, and fictional as shown in Figure 1. Each element serves its purpose, and when incorporated together, creates a harmonious relationship in further enhancing user's experience.
+      Education has been one of the most common domains covered among others (Koivisto and Hamari, 2019). Points, badges, leaderboards, levels, and feedback are the most common elements that are implemented in gamified digital education domains (Khaldi et al., 2023). Furthermore, major studies reported that gamification in education has leveraged students' competitiveness, motivation, engagement, and learning outcomes (Santillán et al., 2023; Bouchrika et al., 2021; Sailer & Homner, 2020; Koivisto & Hamari, 2019). Hence, the implementation of performance and social class are going to be implemented to maximize the effectiveness of the online learning platform.
+
+
+Figure 1 Gamification taxonomy (Toda et al., 2019)
+
+
+
+
+
+
+2.5 Waterfall
+      Waterfall is a linear and strictly sequential project management approach where each phase must be completed before the next phase begins, providing clarity and control (Osemeike Gloria Eyieyien et al., 2024; Crespo-Santiago and Dávila- Cosme, 2022; Goker and Dursun, 2022). This methodology consists of distinct phases with clear documentation and output, which are requirements specification, system design, implementation, testing, deployment, and maintenance (Rahman, 2024; Bassil, 2012). Despite the popularity of agile methodologies, 28 projects still utilize waterfall for stable and critical documentation of project management (Saravanos and Curinga, 2023).
+2.6 Design Thinking
+      Design thinking is widely defined as a user-centric approach in tackling complex creative problems and prioritizing users' needs (Verganti et al., 2021; Razzouk and Shute, 2012). Design thinking is widely used in web development projects across various domains, including educational platforms, guiding the creation of user experience and interface quality, enhancing its usability, and increasing the satisfaction of the product (Nugroho et al., 2025; Wartika et al., 2023; Darmawan et al., 2022). Design thinking is split into five different stages, which are empathizing, defining, ideating, prototyping, and testing (Razzouk and Shute, 2012). Furthermore, empathizing, defining, and ideating are generally the steps in delivering the requirements of the product (Kenny et al., 2021). Through this series of steps, the product will align with the user's needs and expectations, avoiding ineffectiveness. Prototyping and testing transform ideas and requirements into tangible forms and validate them with real users before implementation (Katsumata Shah et al., 2023; Kim, 2019; Petrakis et al., 2021).
+
+
+                 CHAPTER 3 DEVELOPMENT PLAN AND METHODOLOGY
+
+
+3.1 Development Plan
+      A gameful online learning experience through web application platforms, enriched with game design elements to boost students' motivation and engagement, will be developed. This product will be named "Sinaoo," referencing the word "study" in Javanese. Gamification elements that will be implemented around the product span the performance, social, and personal taxonomy groups, creating a game-like experience in a learning environment. The product will be built around the "Course" feature, where users can access course materials called "module" and practice their understanding with quizzes. The development of this product will involve project management processes, incorporate product design principles, and utilize product development frameworks.
+3.1.1 Functional and Non-Functional Requirements
+      System architecture depicted in Figure 2 and information architecture in Figure 3 mapped the architecture to build the product. For this product to function, the functional requirements that need to be fulfilled are as follows:
+a. Front end will be constructed using React framework and Shadcn/ui as the interface library.
+b. Back end will be developed using Node.js for the logic and API gateway, whilst Express.js will be used to create a serverless framework.
+c. Database will store data using MongoDB Atlas.
+d. Vercel will be used to deploy the web application, making it accessible.
+e. Course feature, where users could access courses and its module to study from.
+f. Gamification elements, where points system as its foundational element, fostering other elements such as leaderboard, titles, and achievements.
+g. User interface will be designed using Figma, utilizing Shadcn/ui design system for its pre-built components.
+
+9
+
+
+
+
+
+
+h. Authentication, as a credential for users accessing their own accounts.
+      Furthermore, as a self-study platform for students, this product will operate continuously and be capable of supporting multiple users at the same time without performance issues, concluding its non-functional requirements as follows:
+a. Availability, where the system is always online.
+b. Performance, where the system is responsive and fast, giving users a stress-free experience.
+c. Consistency, where the system delivers the same experience across different platforms (desktop or mobile).
+3.1.2 Gamification Elements
+      This product will be enriched by gamification elements to enhance users' learning experience. Figure 3 has mapped the game elements, colored in darker gray will be implemented in the product. Elements that lie in the performance category are as follows:
+a. Points system is the foundational element that are acquired through completing courses, modules, and achievements, affecting user's title and placement in the leaderboard.
+b. Achievements itself is acquired through certain milestones, one of the examples is when the user has completed one module.
+c. Progression will be visualized through a progress bar, depicting the completion rate of each module.
+      Whereas elements that lie in the social and personal categories, respectively, will be as follows:
+a. Leaderboard, which shows the ranking of all users based on the amount of points they have collected.
+b. Puzzle, will be integrated in the quiz portion of the product, where answering questions will have a variety of way to complete.
+c. Character customization, where users could customize their avatar shown to other people as an identifier and to channel their personality.
+      However, elements such as social pressure, competition, sensation, and objectives are the senses that are fostered through the user's personal feelings.
+
+
+
+
+
+
+3.1.3 Data
+      Learning materials will be outsourced from the book "Kitab Sakti UTBK SNBT" created by LetStudy. Additionally, a minimum of 20 users are going to be recruited as testers in refining and testing the product. The user must fulfill the criteria as such:
+a. Will pursue the 2026 SNBT.
+b. Own a personal laptop or tablet.
+c. Committed to taking part in the development as a user from the beginning of the development until the evaluation of the product.
+d. Consented to give personal data and opinion to be synthesized.
+       User recruitment information will be broadcast through social media, where users are required to fill out the form for further preliminary selection of suitable candidates.
+
+
+
+
+Figure 2 System architecture diagram
+
+
+
+
+
+
+
+
+Figure 3 Product's information architecture
+
+3.2 Methodology
+      Creating a gameful experience in the digital education field using web applications as its platform will incorporate several methodologies of project management, product design, and web development frameworks. This product development will follow the Waterfall project management sequential and straightforward development approach. Furthermore, in creating a user-centric product, the traditional waterfall requirement process will be replaced with the design thinking framework, through empathizing, defining, and ideating the requirements. The web development will utilize the MERN framework technical stack to implement the designed prototype. Figure 4 depicts the workflow of this product development, implementing the waterfall sequence and incorporating the design thinking methodology in defining the product requirements.
+This study evaluates the product by using a mixed-method approach,
+
+
+
+
+
+
+incorporating quantitative and qualitative data in determining the product's effectiveness in supplementing students' self-study experience.
+
+Figure 4 Integrated design thinking in waterfall project management
+
+3.2.1 Requirements Specification
+      Waterfall methodology is initiated by specifying the product's requirements. To further provide clarity and a user-centric approach to the product requirements, design thinking phases (empathize, define, and ideate) are applied. Practice conducted in each stages are as follows:
+a. The Empathize stage conducts user interviews, surveys, and product benchmarking to understand users' need and what existing products are lacking, producing affinity map, user persona, and product comparison.
+b. The Define stage synthesized data, stating the problems and challenges user encountered.
+c. The Ideate stage generates approaches in tackling the defined problems through brainstorming, producing user flow and refined information architecture and specifying product's requirements.
+      Outputs of these stages are then used to design and test the prototype of the product to be developed.
+
+
+
+
+
+
+3.2.2 Implementation
+      Requirements that have been settled are further visualized through prototyping user interface designs. This phase is intended to give users a depiction of the product they will then use as a platform to study. The prototyped interface is then tested with the user to determine whether the product meets the user's concerns and tackles their problems. The usability testing phase will be conducted using a combination of the software "Maze" and "Google Form" to measure quantitatively the usability and preference factor with the tasks as follows:
+a. Prototype testing, where the user's task is to complete the designated goal of the feature. Completion metrics and heatmaps are automatically recorded with the help of Maze.
+b. A/B testing, where the user chooses between two options of a created prototype, determining which design or experience they prefer.
+c. Survey, where the user gives feedback on the tested prototype, determined by the experience they had with their expectation of the product itself.
+      Furthermore, the development will utilize the unified JavaScript technological stack, MERN, consisting of MongoDB as the database, Express.js as its back end framework, React.js constructing its front end, and Node.js bridging the front and back end. MERN offers a myriad of open-source components that are reusable and editable, easing the implementation process. The harmony MERN stack creates allows a uniform language, high scalability, and performance in handling a web application. White box testing of the software is done before deployment, ensuring the product's readiness to be used by the users.
+3.3 Data Collection and Analysis
+      This study will outsource users with the ideal criteria to conduct data collection in refining the product to be user-centric, as well as evaluating the effectiveness of the existing products in motivating and engaging its users in studying SNBT. A form will be used to gather users through broadcasting information on social media and learning communities in Telegram and WhatsApp. Additionally, recruitment of users that will partake in the whole product
+
+
+
+
+
+
+development and evaluation is chosen by the user who consented to follow the procedure from start to finish of this product.
+      Evaluation of this product itself utilizes a mixed method, referred to in the study conducted by Hu and Li (2017) in evaluating the effectiveness of the gamification implemented in the digital learning platform. Comparing the gamified product with a traditional approach, like books, in determining the difference between the approaches in self-study practice. Methods that are going to be used to measure the differences are as such:
+a. Qualitatively  through  self-survey,  questioning  about  the  user's
+experience, feelings, and differences in using the product.
+b. Quantitatively through comparing test results and module completion rate after one week of self-study by traditional medium using the book "LetStudy" and one week by using the gamified product "Sinaoo".
+      Results are then analyzed to determine whether the product meets stimulated users' qualitatively, where the majority agree upon positive changes in motivation, engagement, and experience, whilst test scores and completion rate will imply the effectiveness between the gamified product and the traditional method in enhancing students' performance.
+
+
+CHAPTER 4 TIMELINE
+      This study will span over 14 weeks. The development will be initiated by the design thinking processes, allocating 5 weeks with 6 different tasks. Furthermore, web development will take 5 weeks, split into 7 tasks that will be completed in parallelly between front end, back end, and database. Evaluation spans over 4 weeks, split into 5 tasks with 2 tests conducted to evaluate the effect of the product. Table 1 lists the tasks that will be performed throughout the phases.
+
+Table 1 Task schedule and estimation
+TaskStart DateEnd DateDaysDesign ThinkingEmpathize23/10/2527/10/254Define27/10/2530/10/253Ideate31/10/252/11/252Prototype3/11/2520/11/2517(UT) Usability Testing21/11/2523/11/252Final Adjustment23/11/2527/11/254Total35Web DevelopmentEnvironment Set Up28/11/2529/11/251Front end Development30/11/2520/12/2520Back end Development8/12/2520/12/2512Database Set Up13/12/2520/12/257Integration and Testing17/12/2523/12/256Final Adjustment23/12/2530/12/258Deployment31/12/252/1/262Total35Product EvaluationTraditional Self Study2/1/269/1/267Test Evaluation Post Traditional Self Study10/1/2612/1/262Product Self Study16/1/2623/1/267Test Evaluation Post Using Product24/1/2626/1/262Evaluation27/1/2630/1/263Total28
+
+
+
+
+
+
+
+16
+
+
+
+
+
+
+REFERENCES
+
+Anastasia, L., & Abidin, Z. (2024). Self-Regulated Learning in Students Who Pass the SNBT Using E-Learning as a Learning Media. International Journal of Science and Society, 6(2), 602-614. https://doi.org/10.54783/ijsoc.v6i2.1186
+Aripin, U., Rosmiati, T., & Gunawan, G. (2024). Pembinaan UTBK-SNBT Kategori Penalaran Kuantitatif dan Penalaran Matematika di SMA Kartika XIX-2 Bandung. ABJIS: Al-Bahjah Journal of Islamic Community Service, 1(1), 32-38. https://doi.org/10.61553/abjis.v1i1.37
+Arisoy, B. (2022). Digitalization in education. Kibrisli Egitim Bilimleri Dergisi, 17(5), 1799-1811.
+Bai, S., Hew, K. F., & Huang, B. (2020). Does gamification improve student learning outcome? Evidence from a meta-analysis and synthesis of qualitative data in educational contexts. Educational Research Review, 30, 100322. https://doi.org/10.1016/j.edurev.2020.100322
+Barata, G., Gama, S., Jorge, J., & Gonçalves, D. (2015). Gamification for smarter learning: Tales from the trenches. Smart Learning Environments, 2(1), 10. https://doi.org/10.1186/s40561-015-0017-8
+Bassil, Y. (2012). A Simulation Model for the Waterfall Software Development Life Cycle
+
+       (No. arXiv:1205.6904). arXiv. https://doi.org/10.48550/arXiv.1205.6904 Bond, M., Buntins, K., Bedenlier, S., Zawacki-Richter, O., & Kerres, M. (2020).
+Mapping research in student engagement and educational technology in higher education: A systematic evidence map. International Journal of Educational Technology in Higher Education, 17(1), 2. https://doi.org/10.1186/s41239-019- 0176-8
+Bouchrika, I., Harrati, N., Wanick, V., & Wills, G. (2021). Exploring the impact of
+
+
+
+
+
+
+gamification on student engagement and involvement with e-learning systems. Interactive Learning Environments, 29(8), 1244-1257. https://doi.org/10.1080/10494820.2019.1623267
+Chapman, E. & ERIC Development Team. (2003). Assessing student engagement rates. https://files.eric.ed.gov/fulltext/ED482269.pdf
+Christopoulos, A., & Sprangers, P. (2021). Integration of educational technology during the Covid-19 pandemic: An analysis of teacher and student receptions. Cogent Education, 8(1), 1964690. https://doi.org/10.1080/2331186X.2021.1964690
+Clark, A. E., Nong, H., Zhu, H., & Zhu, R. (2021). Compensating for academic loss: Online learning and student performance during the COVID-19 pandemic. China Economic Review, 68, 101629. https://doi.org/10.1016/j.chieco.2021.101629
+Crespo-Santiago, C. A., & Dávila-Cosme, S. D. L. C. (2022). Waterfall method: A necessary tool for implementing library projects. HETS Online Journal, 1(2), 81-
+92. https://doi.org/10.55420/2693.9193.v1.n2.91
+
+Deterding, S., Dixon, D., Khaled, R., & Nacke, L. (2011). From game design elements to gamefulness: Defining "gamification." Proceedings of the 15th International Academic MindTrek Conference: Envisioning Future Media Environments, 9-15. https://doi.org/10.1145/2181037.2181040
+Fahada, N., & Asrul, N. (2024). Students Perception of Gamified Learning in EFL Class: Online Quizizz for Engagement and Motivation. Journal Of Education And Teaching Learning (JETL), 6(2), 13-22. https://doi.org/10.51178/jetl.v6i2.1828
+Goker, N., & Dursun, M. (2022). Evaluation of Project Management Methodologies Success Factors Using Fuzzy Cognitive Map Method: Waterfall, Agile, And Lean Six Sigma Cases. International Journal of Intelligent Systems and Applications in Engineering, 10(1), 35-43.
+
+
+
+
+
+
+https://doi.org/10.18201/ijisae.2022.265
+
+Henderson, M., Selwyn, N., Finger, G., & Aston, R. (2015). Students' everyday engagement with digital technology in university: Exploring patterns of use and 'usefulness.' Journal of Higher Education Policy and Management, 37(3), 308-
+319. https://doi.org/10.1080/1360080X.2015.1034424
+
+Hu, M., & Li, H. (2017). Student Engagement in Online Learning: A Review. 39-43. https://doi.org/10.1109/ISET.2017.17
+Huotari, K., & Hamari, J. (2017). A definition for gamification: Anchoring gamification in the service marketing literature. Electronic Markets, 27(1), 21-31. https://doi.org/10.1007/s12525-015-0212-z
+Katsumata Shah, M., Jactat, B., Yasui, T., & Ismailov, M. (2023). Low-Fidelity Prototyping with Design Thinking in Higher Education Management in Japan: Impact on the Utility and Usability of a Student Exchange Program Brochure. Education Sciences, 13(1), 53. https://doi.org/10.3390/educsci13010053
+Kenny, U., Regan, Á., Hearne, D., & O'Meara, C. (2021). Empathising, defining and ideating with the farming community to develop a geotagged photo app for smart devices: A design thinking approach. Agricultural Systems, 194, 103248. https://doi.org/10.1016/j.agsy.2021.103248
+Khaldi, A., Bouzidi, R., & Nader, F. (2023). Gamification of e-learning in higher education: A systematic literature review. Smart Learning Environments, 10(1),
+10. https://doi.org/10.1186/s40561-023-00227-z
+
+Kim, D. Y. (2019). A Design Methodology Using Prototyping Based on the Digital- Physical Models in the Architectural Design Process. Sustainability, 11(16), 4416. https://doi.org/10.3390/su11164416
+Koivisto, J., & Hamari, J. (2019). The rise of motivational information systems: A review
+
+
+
+
+
+
+of gamification research. International Journal of Information Management, 45, 191-210. https://doi.org/10.1016/j.ijinfomgt.2018.10.013
+Krishnamurthy, S. (2020). The future of business education: A commentary in the shadow of the Covid-19 pandemic. Journal of Business Research, 117, 1-5. https://doi.org/10.1016/j.jbusres.2020.05.034
+Lin, C.-L., Jin, Y. Q., Zhao, Q., Yu, S.-W., & Su, Y.-S. (2021). Factors Influence Students' Switching Behavior to Online Learning under COVID-19 Pandemic: A Push-Pull-Mooring Model Perspective. The Asia-Pacific Education Researcher, 30(3), 229-245. https://doi.org/10.1007/s40299-021-00570-0
+Martin, F., & Bolliger, D. U. (2018). Engagement Matters: Student Perceptions on the Importance of Engagement Strategies in the Online Learning Environment.
+Online Learning, 22(1). https://doi.org/10.24059/olj.v22i1.1092
+
+Meiva Marthaulina Lestari Siahaan, Zulkaidah Nur Ahsan, Hermina Disnawati, & Lidwina Felisima Tae. (2023). Sharing Session Seleksi Penerimaan Mahasiswa Baru (SNPMB) 2023 Untuk Calon Mahasiswa Baru Di SMA Negeri 1 Kefamenanu NTT. Jurnal Nusantara Berbakti, 1(4), 13-24. https://doi.org/10.59024/jnb.v1i4.189
+Mheidly, N., Fares, M. Y., & Fares, J. (2020). Coping With Stress and Burnout Associated With Telecommunication and Online Learning. Frontiers in Public Health, 8, 574969. https://doi.org/10.3389/fpubh.2020.574969
+Mohd Basar, Z., Mansor, A. N., Jamaludin, K. A., & Alias, B. S. (2021). The Effectiveness and Challenges of Online Learning for Secondary School Students - A Case Study. Asian Journal of University Education, 17(3), 119. https://doi.org/10.24191/ajue.v17i3.14514
+Ng, L.-K., & Lo, C.-K. (2022). Flipped Classroom and Gamification Approach: Its
+
+
+
+
+
+
+Impact on Performance and Academic Commitment on Sustainable Learning in Education. Sustainability, 14(9), 5428. https://doi.org/10.3390/su14095428
+Osemeike Gloria Eyieyien, Courage Idemudia, Patience Okpeke Paul, & Tochukwu Ignatius Ijomah. (2024). Advancements in project management methodologies: Integrating agile and waterfall approaches for optimal outcomes. Engineering Science & Technology Journal, 5(7), 2216-2231. https://doi.org/10.51594/estj.v5i7.1312
+Pan, X. (2023). Online Learning Environments, Learners' Empowerment, and Learning Behavioral Engagement: The Mediating Role of Learning Motivation. Sage Open, 13(4), 21582440231205098. https://doi.org/10.1177/21582440231205098
+Permana, M. N. (2023). Perancangan User Interface dan User Experience pada Website Pembelajaran SNBT untuk Meningkatkan Pengalaman Belajar dan Kepuasan Pengguna [Undergraduate, Universitas Dinamika]. http://repository.dinamika.ac.id/id/eprint/6939
+Petrakis, K., Wodehouse, A., & Hird, A. (2021). Physical prototyping rationale in design student projects: An analysis based on the concept of purposeful prototyping.
+Design Science, 7, e7. https://doi.org/10.1017/dsj.2021.6
+
+Radite, R., Sulistyawati, E., & Firmansyah, A. N. (2022). EVALUASI PROGRAM BIMBINGAN BELAJAR MATEMATIKA DAN UTBK LEMBAGA BIMBINGAN BELAJAR NON-PROFIT DI PEKALONGAN. Jurnal Evaluasi
+Pendidikan, 13(2), 138-150. https://doi.org/10.21009/jep.v13i2.28679
+
+Rahayu, F. S., Nugroho, L. E., Ferdiana, R., & Setyohadi, D. B. (2022). Motivation and Engagement of Final-Year Students When Using E-learning: A Qualitative Study of Gamification in Pandemic Situation. Sustainability, 14(14), 8906. https://doi.org/10.3390/su14148906
+
+
+
+
+
+
+Rahman, A. (2024). IT PROJECT MANAGEMENT FRAMEWORKS: EVALUATING BEST PRACTICES AND METHODOLOGIES FOR SUCCESSFUL IT PROJECT MANAGEMENT. ACADEMIC JOURNAL ON SCIENCE, TECHNOLOGY, ENGINEERING & MATHEMATICS EDUCATION, 1(01), 57-
+76. https://doi.org/10.69593/ajaimldsmis.v1i01.128
+
+Rahmawati, A., & Sujono, F. K. (2021). Digital Communication through Online Learning in Indonesia: Challenges and Opportunities. Jurnal ASPIKOM, 6(1), 61. https://doi.org/10.24329/aspikom.v6i1.815
+Rahmawati, R., Sukidin, & Suharso, P. (2021). Factor analysis of ruangguru application use on high school students in Jember. IOP Conference Series: Earth and Environmental Science, 747(1), 012026. https://doi.org/10.1088/1755- 1315/747/1/012026
+Razzouk, R., & Shute, V. (2012). What Is Design Thinking and Why Is It Important?
+
+Review of Educational Research, 82(3), 330-348. https://doi.org/10.3102/0034654312457429
+Rincon-Flores, E. G., & Santos-Guevara, B. N. (2021). Gamification during Covid-19: Promoting active learning and motivation in higher education. Australasian Journal of Educational Technology, 37(5), 43-60. https://doi.org/10.14742/ajet.7157
+Sailer, M., & Homner, L. (2020). The Gamification of Learning: A Meta-analysis.
+
+Educational Psychology Review, 32(1), 77-112. https://doi.org/10.1007/s10648- 019-09498-w
+Santillán, J. K. A., Valderrama, D. A. C., Arce, C. G. M., & Barragán, G. A. V. (2023). Gamification in Education: Its Impact on Invisible Learning. Migration Letters, 20(S12), 218-225. https://doi.org/10.59670/ml.v20iS12.5875
+
+
+
+
+
+
+Saravanos, A., & Curinga, M. X. (2023). Simulating the Software Development Lifecycle: The Waterfall Model. https://doi.org/10.48550/ARXIV.2308.03940
+Sari, A. I., Suryani, N., Rochsantiningsih, D., & Suharno, S. (2020). Digital Learning, Smartphone Usage, and Digital Culture in Indonesia Education. Integration of Education, 24(1), 20-31. https://doi.org/10.15507/1991-
+9468.098.024.202001.020-031
+
+Tara, L., Hidayati, I., & Susanti, M. (2022). High School Students' Motivation and
+
+Engagement in Online Learning. Journal of Psychological Perspective, 4(2), 65-
+
+68. https://doi.org/10.47679/jopp.424062022
+
+Toda, A. M., Klock, A. C. T., Oliveira, W., Palomino, P. T., Rodrigues, L., Shi, L., Bittencourt, I., Gasparini, I., Isotani, S., & Cristea, A. I. (2019). Analysing gamification elements in educational environments using an existing Gamification taxonomy. Smart Learning Environments, 6(1), 16. https://doi.org/10.1186/s40561-019-0106-1
+Verganti, R., Dell'Era, C., & Swan, K. S. (2021). Design thinking: Critical analysis and future evolution. Journal of Product Innovation Management, 38(6), 603-622. https://doi.org/10.1111/jpim.12610
+Wahyudi, I., Supartinah, & Nadziroh. (2023). Challenges and Strategies: Online Learning for Elementary School Teacher Education Students. MIMBAR PGSD Undiksha, 11(3), 410-418. https://doi.org/10.23887/jjpgsd.v11i3.64466
+Widiyarto, S. (2023). SNBT Debriefing for Students of SMA Kanzul Mubarok Bekasi.
+
+Jurnal Pengabdian Masyarakat Bestari, 2(3), 217-224. https://doi.org/10.55927/jpmb.v2i3.2395
+Wong, Z. Y., & Liem, G. A. D. (2022). Student Engagement: Current State of the Construct, Conceptual Refinement, and Future Research Directions. Educational
+
+
+
+
+
+
+       Psychology Review, 34(1), 107-138. https://doi.org/10.1007/s10648-021-09628-3 Yu, Z. (2022). Sustaining Student Roles, Digital Literacy, Learning Achievements, and
+Motivation in Online Learning Environments during the COVID-19 Pandemic.
+
+       Sustainability, 14(8), 4388. https://doi.org/10.3390/su14084388 Zainuddin, Z. (2024). Integrating ease of use and affordable gamification-based
+instruction into a remote learning environment. Asia Pacific Education Review, 25(5), 1261-1272. https://doi.org/10.1007/s12564-023-09832-6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
