@@ -9,30 +9,38 @@ import { cn } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
 
 import LoadingBar from "@/components/shared/ui/LoadingBar";
+import { RefreshButton } from "@/components/shared/ui/RefreshButton";
+import { useCallback } from "react";
 
 function CourseList() {
   const { user } = useUser();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch("http://localhost:3000/api/courses");
-        if (res.ok) {
-          const data = await res.json();
-          setCourses(data);
-        }
-      } catch (err) {
-        console.error("Failed to fetch courses:", err);
-      } finally {
-        setLoading(false);
+  const fetchCourses = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch("http://localhost:3000/api/courses");
+      if (res.ok) {
+        const data = await res.json();
+        setCourses(data);
+      } else {
+        throw new Error("Gagal mengambil daftar kelas");
       }
-    };
-    fetchCourses();
+    } catch (err) {
+      console.error("Failed to fetch courses:", err);
+      setError("Gagal memuat kelas. Periksa koneksi internet Anda.");
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
 
   return (
     <div className="flex flex-col gap-6 w-full h-full overflow-hidden p-1">
@@ -60,16 +68,16 @@ function CourseList() {
                 <div className="flex flex-col items-center justify-center py-20 gap-6 animate-in fade-in duration-500">
                   <GradientIcon
                     icon={BookBookmarkIcon}
-                    variant="blue"
+                    variant="orange"
                     size={64}
                     weight="fill"
                     className="animate-bounce"
                   />
                   <div className="text-center space-y-2">
                     <p className="text-h3 font-heading text-Primary-50">
-                      Memuat Kursus
+                      Memuat Course
                     </p>
-                    <p className="text-body-md text-Primary-100/70">
+                    <p className="text-body-md text-Primary-100">
                       Menyiapkan materi terbaik untukmu...
                     </p>
                   </div>
@@ -77,6 +85,13 @@ function CourseList() {
                     className="w-full max-w-[240px] shadow-deep-blue-60"
                     variant="blue"
                   />
+                </div>
+              ) : error ? (
+                <div className="flex flex-col items-center justify-center py-20 gap-6">
+                  <p className="text-body-lg text-Grayscale-50 text-center px-10">
+                    {error}
+                  </p>
+                  <RefreshButton onRefresh={fetchCourses} loading={loading} />
                 </div>
               ) : (
                 courses.map((course, index) => {

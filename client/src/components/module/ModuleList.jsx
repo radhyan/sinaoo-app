@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ArrowLeftIcon, BookOpenTextIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/shared/ui/Button";
+import { RefreshButton } from "@/components/shared/ui/RefreshButton";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
 import ModuleCard, {
   ModuleCardSkeleton,
@@ -10,30 +11,35 @@ import { useUser } from "@/context/UserContext";
 export default function ModuleList({ course, onBack }) {
   const [modules, setModules] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { user } = useUser();
 
-  useEffect(() => {
+  const fetchModules = useCallback(async () => {
     if (!course) return;
 
-    const fetchModules = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(
-          `http://localhost:3000/api/courses/${course._id}/modules`,
-        );
-        if (res.ok) {
-          const data = await res.json();
-          setModules(data);
-        }
-      } catch (err) {
-        console.error("Failed to fetch modules:", err);
-      } finally {
-        setLoading(false);
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch(
+        `http://localhost:3000/api/courses/${course._id}/modules`,
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setModules(data);
+      } else {
+        throw new Error("Gagal mengambil daftar modul");
       }
-    };
-
-    fetchModules();
+    } catch (err) {
+      console.error("Failed to fetch modules:", err);
+      setError("Gagal memuat modul. Periksa koneksi internet Anda.");
+    } finally {
+      setLoading(false);
+    }
   }, [course]);
+
+  useEffect(() => {
+    fetchModules();
+  }, [fetchModules]);
 
   return (
     <div className="flex flex-col h-full w-full relative">
@@ -68,6 +74,13 @@ export default function ModuleList({ course, onBack }) {
               <ModuleCardSkeleton />
               <ModuleCardSkeleton />
             </>
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center py-12 gap-4">
+              <p className="text-body-md text-Error-400 font-medium text-center px-6">
+                {error}
+              </p>
+              <RefreshButton onRefresh={fetchModules} loading={loading} />
+            </div>
           ) : (
             modules.map((module, index) => {
               const userProgress = user?.progress?.find(
@@ -105,7 +118,9 @@ export default function ModuleList({ course, onBack }) {
                   <ModuleCard
                     title={module.name}
                     category={course.name}
-                    points={module.totalPoints}
+                    points={
+                      isCompleted ? userProgress.score : module.totalPoints
+                    }
                     currentStep={currentStep}
                     totalSteps={totalSteps}
                     href={href}
@@ -124,6 +139,11 @@ export default function ModuleList({ course, onBack }) {
                 </div>
               );
             })
+          )}
+          {!loading && !error && modules.length === 0 && (
+            <p className="text-center text-Grayscale-500 py-10">
+              Belum ada modul tersedia untuk kelas ini.
+            </p>
           )}
         </div>
       </div>

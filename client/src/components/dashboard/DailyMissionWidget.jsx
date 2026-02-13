@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 import { Link } from "react-router-dom";
 import {
   FlagIcon,
@@ -11,6 +12,7 @@ import {
   FlagBannerIcon,
 } from "@phosphor-icons/react";
 import { Button } from "@/components/shared/ui/Button";
+import { RefreshButton } from "@/components/shared/ui/RefreshButton";
 import { cn } from "@/lib/utils";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
 import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
@@ -41,105 +43,107 @@ const MissionItem = ({
   const isCompleted = current >= target;
 
   return (
-    <div className="flex flex-col gap-3 bg-lo-o px-8 py-6 rounded-xl border border-Secondary-50 shadow-blue-60 min-h-[160px]">
-      {/* FIRST ROW: Icon + Description + Points */}
-      <div className="flex items-start gap-4">
-        {/* Icon */}
-        <div className="shrink-0 w-20 h-20 bg-Secondary-50 rounded-lg flex items-center justify-center shadow-orange-60 border border-solid border-Secondary-100">
-          <GradientIcon
-            icon={type === "quiz" ? PuzzlePieceIcon : FlagBannerIcon}
-            variant={type === "quiz" ? "pink" : "darkBlue"}
-            size={36}
-          />
-        </div>
-
-        {/* Text Content */}
-        <div className="flex-1 min-w-0 flex flex-col mt-2 ">
-          <div className="flex items-start justify-between">
-            <h5 className="font-heading text-h5 text-Secondary-900 truncate pr-2">
-              {title}
-            </h5>
-            {isClaimed ? (
-              <Tag icon={CheckCircleIcon} variant="module" shadow="none">
-                Selesai
-              </Tag>
-            ) : (
-              <Tag icon={StarIcon} variant="default" shadow="orange">
-                {points}
-              </Tag>
-            )}
+    <InteractiveShadow>
+      <div className="flex flex-col gap-3 bg-lo-o px-8 py-6 rounded-xl border border-Secondary-50 min-h-[160px]">
+        {/* FIRST ROW: Icon + Description + Points */}
+        <div className="flex items-start gap-4">
+          {/* Icon */}
+          <div className="shrink-0 w-20 h-20 bg-Secondary-50 rounded-lg flex items-center justify-center shadow-orange-60 border border-solid border-Secondary-100">
+            <GradientIcon
+              icon={type === "quiz" ? PuzzlePieceIcon : FlagBannerIcon}
+              variant={type === "quiz" ? "pink" : "darkBlue"}
+              size={36}
+            />
           </div>
-          <p className="text-body-md text-Secondary-900 line-clamp-2 text-left">
-            {description}
-          </p>
-        </div>
-      </div>
 
-      {/* SECOND ROW: Segmented Progress Bar (Only if progress type) */}
-      {isProgressType && (
-        <div className="mt-1 mx-2 ">
-          <div className="flex justify-between text-body-md text-Secondary-900">
-            <span className="text-body-md mb-1">Progress</span>
-            <span className="text-body-md">
-              {current}/{target}
-            </span>
-          </div>
-          <SegmentedProgressBar
-            current={current}
-            total={target}
-            variant="secondary"
-            isComplete={isClaimed}
-          />
-        </div>
-      )}
-
-      {/* THIRD ROW: Action Button */}
-      <div className="flex justify-end mx-1 mt-1">
-        <div className="w-full">
-          {isClaimed ? (
-            <>
-              {type === "quiz" && (
-                <Link to="/quiz/daily?review=true" className="w-full block">
-                  <Button variant="tertiary" fullWidth shadow="none">
-                    Hasil Quiz
-                  </Button>
-                </Link>
-              )}
-            </>
-          ) : isCompleted ? (
-            <Button
-              size="default"
-              variant="default"
-              shadow="orange"
-              rounded="sm"
-              fullWidth
-              onClick={() => onClaim(id)}
-              disabled={loading}
-              className="h-[40px] w-full"
-            >
-              {loading ? (
-                <CircleNotchIcon className="animate-spin" size={16} />
+          {/* Text Content */}
+          <div className="flex-1 min-w-0 flex flex-col mt-2 ">
+            <div className="flex items-start justify-between">
+              <h5 className="font-heading text-h5 text-Secondary-900 truncate pr-2">
+                {title}
+              </h5>
+              {isClaimed ? (
+                <Tag icon={CheckCircleIcon} variant="module" shadow="none">
+                  Selesai
+                </Tag>
               ) : (
-                "Klaim"
+                <Tag icon={StarIcon} variant="default" shadow="orange">
+                  {points}
+                </Tag>
               )}
-            </Button>
-          ) : (
-            <Link to={link} className="w-full block">
+            </div>
+            <p className="text-body-md text-Secondary-900 line-clamp-2 text-left">
+              {description}
+            </p>
+          </div>
+        </div>
+
+        {/* SECOND ROW: Segmented Progress Bar (Only if progress type) */}
+        {isProgressType && (
+          <div className="mt-1 mx-2 ">
+            <div className="flex justify-between text-body-md text-Secondary-900">
+              <span className="text-body-md mb-1">Progress</span>
+              <span className="text-body-md">
+                {current}/{target}
+              </span>
+            </div>
+            <SegmentedProgressBar
+              current={current}
+              total={target}
+              variant="secondary"
+              isComplete={isClaimed}
+            />
+          </div>
+        )}
+
+        {/* THIRD ROW: Action Button */}
+        <div className="flex justify-end mx-1 mt-1">
+          <div className="w-full">
+            {isClaimed ? (
+              <>
+                {type === "quiz" && (
+                  <Link to="/quiz/daily?review=true" className="w-full block">
+                    <Button variant="tertiary" fullWidth shadow="none">
+                      Hasil Quiz
+                    </Button>
+                  </Link>
+                )}
+              </>
+            ) : isCompleted ? (
               <Button
                 size="default"
                 variant="default"
                 shadow="orange"
                 rounded="sm"
                 fullWidth
-                className="h-10 px-6"
+                onClick={() => onClaim(id)}
+                disabled={loading}
+                className="h-[40px] w-full"
               >
-                {type === "quiz" ? "Mulai Kuis" : "Lanjut Belajar"}
+                {loading ? (
+                  <CircleNotchIcon className="animate-spin" size={16} />
+                ) : (
+                  "Klaim"
+                )}
               </Button>
-            </Link>
-          )}
+            ) : (
+              <Link to={link} className="w-full block">
+                <Button
+                  size="default"
+                  variant="default"
+                  shadow="orange"
+                  rounded="sm"
+                  fullWidth
+                  className="h-10 px-6"
+                >
+                  {type === "quiz" ? "Mulai Kuis" : "Lanjut Belajar"}
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </InteractiveShadow>
   );
 };
 
@@ -184,9 +188,10 @@ export default function DailyMissionWidget({ className }) {
   const { user, refreshUser, setEarnedAchievement } = useUser();
   const username = user?.username || "Radhy";
 
-  const fetchMissions = async () => {
+  const fetchMissions = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const res = await fetch(
         `http://localhost:3000/api/users/${username}/daily-missions`,
       );
@@ -201,11 +206,11 @@ export default function DailyMissionWidget({ className }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [username]);
 
   useEffect(() => {
     fetchMissions();
-  }, [username]);
+  }, [fetchMissions]);
 
   const handleClaim = async (id) => {
     try {
@@ -249,12 +254,17 @@ export default function DailyMissionWidget({ className }) {
     <div className={cn("flex flex-col h-full", className)}>
       {loading && missions.length === 0 ? (
         <div className="flex flex-col gap-3">
-          {[1, 2, 3].map((i) => (
+          {[1, 2].map((i) => (
             <MissionItemSkeleton key={i} />
           ))}
         </div>
       ) : error ? (
-        <p className="text-center text-red-500 py-4 font-medium">{error}</p>
+        <div className="flex flex-col items-center justify-center py-8 gap-4">
+          <p className="text-center text-body-md text-Error-400 font-medium">
+            {error}
+          </p>
+          <RefreshButton onRefresh={fetchMissions} loading={loading} />
+        </div>
       ) : (
         <div className="flex flex-col gap-3">
           {missions.map((mission) => (

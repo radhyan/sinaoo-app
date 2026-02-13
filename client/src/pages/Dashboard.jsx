@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import profileHeaderImg from "@/assets/Profile Header/ProfileHeader.png";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRightIcon,
@@ -76,7 +77,7 @@ function Dashboard() {
 
   if (loading) {
     return (
-      <div className="flex flex-col gap-6 w-full h-full p-4 overflow-hidden">
+      <div className="flex flex-col gap-6 w-full h-full p-4 overflow-x-hidden overflow-hidden">
         <Skeleton className="w-full aspect-[21/4] rounded-lg" />
         <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-4">
           <PointProgressBarSkeleton />
@@ -116,14 +117,20 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-1 overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar py-1 px-4 overflow-x-hidden">
       {/* Top Banner */}
-      <div className="w-full aspect-[21/4] bg-[#FF0000] rounded-lg flex items-center justify-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
-        <h2 className="text-black font-heading text-h2 md:text-h3 px-6 text-center z-10 transition-all hover:scale-105 duration-300">
-          Selamat Pagi {user.name || user.username}, Tetap Semangat!
+      <div className="w-full aspect-[21/4] bg-b-lb rounded-lg flex items-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
+        <img
+          src={profileHeaderImg}
+          alt="Profile Header"
+          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-Primary-600/20 to-transparent pointer-events-none" />
+        <h2 className="text-white font-heading text-h2 md:text-h2 px-12 xl:px-24 z-10 max-w-[60%]  text-left">
+          Selamat Pagi {user.name || user.username},<br />
+          Tetap Semangat!
         </h2>
       </div>
-
       {/* Profile & Stats Row */}
       <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-4 items-stretch">
         <div className="animate-in fade-in slide-in-from-left-6 duration-700 delay-200 fill-mode-both">
@@ -147,7 +154,6 @@ function Dashboard() {
           />
         </div>
       </div>
-
       {/* Bottom Grid Section: Missions & Last Accessed */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8 mt-4 items-stretch">
         {/* Left: Daily Missions */}

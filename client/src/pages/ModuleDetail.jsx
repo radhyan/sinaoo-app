@@ -13,6 +13,7 @@ import ModuleNavigation from "@/components/module/ModuleNavigation";
 import { useUser } from "@/context/UserContext";
 import { useModuleProgress } from "@/hooks/useModuleProgress";
 import { useQuizState } from "@/hooks/useQuizState";
+import { RefreshButton } from "@/components/shared/ui/RefreshButton";
 
 export default function ModuleDetail() {
   const { moduleId } = useParams();
@@ -40,8 +41,10 @@ export default function ModuleDetail() {
     moduleData,
     setModuleData,
     loading,
+    error,
     updateProgress,
     isModuleCompleted,
+    fetchModule,
   } = useModuleProgress(moduleId, user, login);
 
   const {
@@ -94,6 +97,13 @@ export default function ModuleDetail() {
     if (modeParam === "reset") {
       navigate(location.pathname, { replace: true });
     }
+  };
+
+  const handleRefresh = () => {
+    const existingProgress = user.progress?.find(
+      (p) => p.moduleId === moduleId,
+    );
+    fetchModule(existingProgress);
   };
 
   useEffect(() => {
@@ -184,10 +194,20 @@ export default function ModuleDetail() {
       return;
     }
     const targetIndex = steps.findIndex((s) => s.id === id);
-    if (targetIndex !== -1)
+    const targetStep = steps[targetIndex];
+
+    if (targetIndex !== -1) {
       updateProgress({ completedStepCount: targetIndex, isFinished: false });
+    }
+
     setCurrentStepId(id);
-    setViewMode("content");
+
+    // If module is completed and we click a quiz, go straight to review mode
+    if (isModuleCompleted && targetStep?.type === "quiz") {
+      setViewMode("review");
+    } else {
+      setViewMode("content");
+    }
   };
 
   const handlePrev = () => {
@@ -277,7 +297,10 @@ export default function ModuleDetail() {
     }
 
     if (viewMode === "review") {
-      const quizStep = steps.find((s) => s.type === "quiz");
+      const quizStep =
+        currentStep?.type === "quiz"
+          ? currentStep
+          : steps.find((s) => s.type === "quiz");
       return (
         <QuizReview
           questions={quizStep?.questions || []}
@@ -322,11 +345,21 @@ export default function ModuleDetail() {
 
   if (loading && !moduleData)
     return <div className="p-10 flex justify-center">Loading module...</div>;
-  if (!moduleData)
+
+  if (error || !moduleData)
     return (
-      <div className="p-10 flex flex-col items-center gap-4">
-        <p className="text-red-500">Failed to load module.</p>
-        <Button onClick={() => navigate("/courses")}>Back</Button>
+      <div className="h-screen flex flex-col items-center justify-center gap-6 p-6">
+        <p className="text-center font-bold text-body-md text-Error-400 px-10">
+          {error || "Modul tidak ditemukan."}
+        </p>
+        <div className="flex gap-4">
+          <Button variant="outline" onClick={() => navigate("/courses")}>
+            Kembali ke Daftar Kelas
+          </Button>
+          {error && (
+            <RefreshButton onRefresh={handleRefresh} loading={loading} />
+          )}
+        </div>
       </div>
     );
 
@@ -363,6 +396,41 @@ export default function ModuleDetail() {
                 nextDisabled={!nextStep && !isLastStep}
                 isFirstStep={isFirstStep}
                 isLastStep={isLastStep}
+              />
+            )}
+
+            {viewMode === "review" && (
+              <ModuleNavigation
+                onPrev={() => {
+                  if (prevStep) {
+                    setCurrentStepId(prevStep.id);
+                    if (prevStep.type === "quiz") {
+                      setViewMode("review");
+                    } else {
+                      setViewMode("content");
+                    }
+                  } else {
+                    setViewMode("result");
+                  }
+                  scrollToTop();
+                }}
+                onNext={() => {
+                  if (nextStep) {
+                    setCurrentStepId(nextStep.id);
+                    if (nextStep.type === "quiz") {
+                      setViewMode("review");
+                    } else {
+                      setViewMode("content");
+                    }
+                  } else {
+                    setViewMode("result");
+                  }
+                  scrollToTop();
+                }}
+                prevDisabled={false} // Allow going to prev step or result
+                nextDisabled={false} // Allow going to next step or result
+                isFirstStep={false}
+                isLastStep={false} // Never truly last as it can go to result
               />
             )}
           </div>

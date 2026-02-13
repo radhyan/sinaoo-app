@@ -7,6 +7,7 @@ import {
 import { cn } from "@/lib/utils";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
+import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 
 export default function UserProgress({
   completedCourses = 0,
@@ -41,31 +42,30 @@ export default function UserProgress({
           icon: RankingIcon,
         },
       ].map((stat, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center cursor-default justify-center p-3 rounded-lg bg-db-b shadow-blue-60 border border-Primary-50"
-        >
-          <span className="text-body-md text-Grayscale-50 mb-1 text-center">
-            {stat.label}
-          </span>
-          <div className="flex align-center items-center gap-3">
-            <div className="shrink-0 flex items-center justify-center drop-shadow-deep-blue-60">
-              <GradientIcon icon={stat.icon} variant="lightBlue" size={32} />
-            </div>
-            <span className="text-h4 font-bold text-Primary-50">
-              {typeof stat.value === "string" && stat.value.includes("/") ? (
-                <>
-                  {stat.value.split("/")[0]}
-                  <span className="text-body-l text-Primary-50/60 font-medium">
-                    /{stat.value.split("/")[1]}
-                  </span>
-                </>
-              ) : (
-                stat.value
-              )}
+        <InteractiveShadow key={index}>
+          <div className="flex flex-col items-center cursor-default h-full justify-center p-3 rounded-lg bg-db-b border border-Primary-50">
+            <span className="text-body-md text-Grayscale-50 mb-1 text-center">
+              {stat.label}
             </span>
+            <div className="flex align-center items-center gap-3">
+              <div className="shrink-0 flex items-center justify-center drop-shadow-deep-blue-60">
+                <GradientIcon icon={stat.icon} variant="lightBlue" size={32} />
+              </div>
+              <span className="text-h4 font-bold text-Primary-50">
+                {typeof stat.value === "string" && stat.value.includes("/") ? (
+                  <>
+                    {stat.value.split("/")[0]}
+                    <span className="text-body-l text-Primary-50/60 font-medium">
+                      /{stat.value.split("/")[1]}
+                    </span>
+                  </>
+                ) : (
+                  stat.value
+                )}
+              </span>
+            </div>
           </div>
-        </div>
+        </InteractiveShadow>
       ))}
     </div>
   );

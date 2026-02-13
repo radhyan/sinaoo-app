@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { TrophyIcon, RankingIcon, ChartBarIcon } from "@phosphor-icons/react";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  TrophyIcon,
+  RankingIcon,
+  ChartBarIcon,
+  MedalIcon,
+  ListNumbersIcon,
+} from "@phosphor-icons/react";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
 import RankCard from "@/components/leaderboard/RankCard";
 import ChampionsPodium from "@/components/leaderboard/ChampionsPodium";
 import RankingList from "@/components/leaderboard/RankingList";
 import { useUser } from "@/context/UserContext";
 import LoadingBar from "@/components/shared/ui/LoadingBar";
+import { RefreshButton } from "@/components/shared/ui/RefreshButton";
 
 export default function Leaderboard() {
   const { user, loading: userLoading } = useUser();
@@ -15,32 +22,38 @@ export default function Leaderboard() {
     userProfile: null,
   });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchLeaderboard = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const url = user
+        ? `http://localhost:3000/api/leaderboard?username=${user.username}`
+        : "http://localhost:3000/api/leaderboard";
+
+      const res = await fetch(url);
+      if (res.ok) {
+        const result = await res.json();
+        setData(result);
+      } else {
+        throw new Error("Gagal mengambil data leaderboard");
+      }
+    } catch (err) {
+      console.error("Failed to fetch leaderboard:", err);
+      setError("Gagal memuat leaderboard. Periksa koneksi internet Anda.");
+    } finally {
+      setLoading(false);
+    }
+  }, [user]);
 
   useEffect(() => {
-    const fetchLeaderboard = async () => {
-      try {
-        setLoading(true);
-        const url = user
-          ? `http://localhost:3000/api/leaderboard?username=${user.username}`
-          : "http://localhost:3000/api/leaderboard";
-
-        const res = await fetch(url);
-        if (res.ok) {
-          const result = await res.json();
-          setData(result);
-        }
-      } catch (err) {
-        console.error("Failed to fetch leaderboard:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchLeaderboard();
-  }, [user]);
+  }, [fetchLeaderboard]);
 
   if (loading || userLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-full w-full max-w-7xl p-8 animate-in fade-in duration-500">
+      <div className="flex flex-col items-center justify-center h-full w-full p-8 animate-in fade-in duration-500">
         <div className="w-full max-w-md flex flex-col items-center gap-6">
           <GradientIcon
             icon={RankingIcon}
@@ -63,11 +76,25 @@ export default function Leaderboard() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full w-full p-8 gap-6 animate-in fade-in duration-500">
+        <div className="text-center space-y-2">
+          <h2 className="font-heading text-h2 text-Primary-900 uppercase">
+            Leaderboard
+          </h2>
+          <p className="text-body-md text-Error-400 font-medium">{error}</p>
+        </div>
+        <RefreshButton onRefresh={fetchLeaderboard} loading={loading} />
+      </div>
+    );
+  }
+
   const topThree = data.topUsers.slice(0, 3);
   const others = data.topUsers.slice(3);
 
   return (
-    <div className="flex flex-col gap-8 h-full w-full max-w-7xl p-2 overflow-y-auto custom-scrollbar overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-1 overflow-x-hidden">
       {/* Header */}
       <div className="flex items-center gap-3 shrink-0 animate-in fade-in slide-in-from-left-4 duration-500">
         <GradientIcon
@@ -85,9 +112,25 @@ export default function Leaderboard() {
         <div className="flex flex-col gap-8 min-h-0">
           {/* Section: Peringkatmu */}
           <section className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-6 duration-700 delay-100 fill-mode-both">
-            <h3 className="font-heading text-h3 text-Primary-900 text-left">
-              Peringkatmu
-            </h3>
+            <div className="flex gap-2 items-center">
+              <GradientIcon
+                icon={MedalIcon}
+                variant={
+                  data.userRank === 1
+                    ? "orange"
+                    : data.userRank === 2
+                      ? "green"
+                      : data.userRank === 3
+                        ? "pink"
+                        : "blue"
+                }
+                size={40}
+                weight="fill"
+              />
+              <h3 className="font-heading text-h3 text-Primary-900 text-left">
+                Peringkatmu
+              </h3>
+            </div>
             {data.userProfile ? (
               <RankCard
                 rank={data.userRank}
@@ -104,10 +147,11 @@ export default function Leaderboard() {
           {/* Section: Champions */}
           <section className="flex flex-col gap-4 flex-1 min-h-[400px] animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
             <div className="flex items-center gap-2">
-              <TrophyIcon
-                weight="fill"
+              <GradientIcon
+                icon={RankingIcon}
+                variant="blue"
                 size={40}
-                className="text-Secondary-500"
+                weight="fill"
               />
               <h3 className="font-heading text-h3 text-Primary-900">
                 Champions
@@ -122,7 +166,12 @@ export default function Leaderboard() {
         {/* Right Column: Ranking List */}
         <section className="flex flex-col gap-4 min-h-0 animate-in fade-in slide-in-from-right-8 duration-700 delay-300 fill-mode-both">
           <div className="flex items-center gap-2">
-            <RankingIcon weight="fill" size={40} className="text-Primary-500" />
+            <GradientIcon
+              icon={ListNumbersIcon}
+              variant="darkBlue"
+              size={40}
+              weight="bold"
+            />
             <h3 className="font-heading text-h3 text-Primary-900">Ranking</h3>
           </div>
           <div className="flex-1 min-h-0">

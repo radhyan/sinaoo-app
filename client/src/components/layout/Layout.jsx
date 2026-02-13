@@ -12,6 +12,7 @@ import MenuItem from "@/components/layout/MenuItem";
 import logo from "../../assets/SINAOO LOGO.svg";
 import { Button } from "@/components/shared/ui/Button";
 import { useUser } from "@/context/UserContext";
+import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 
 export default function Layout() {
   const location = useLocation();

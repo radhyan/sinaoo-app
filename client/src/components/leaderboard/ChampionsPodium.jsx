@@ -1,4 +1,5 @@
 import React from "react";
+import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 import { StarIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { getUserAvatar } from "@/lib/avatar";
@@ -69,39 +70,41 @@ export default function ChampionsPodium({ topThree = [] }) {
   const baseHeight = "calc(100% - 170px)";
 
   return (
-    <div className="bg-db-b rounded-xl pt-5 pb-0 px-8 flex flex-col h-full shadow-blue-60 border border-Primary-50 overflow-hidden">
-      <div className="flex items-end gap-2 md:gap-4 h-full overflow-hidden">
-        {/* Rank 3 - Left */}
-        <PodiumColumn
-          rank={3}
-          user={third}
-          height={`calc(${baseHeight} * 1/2)`}
-          color="bg-p-lp"
-          labelColor="text-white opacity-50"
-          delay={400}
-        />
+    <InteractiveShadow intensity={0.8} tilt={false}>
+      <div className="bg-db-b rounded-xl pt-5 pb-0 px-8 flex flex-col h-full border border-Primary-50 overflow-hidden">
+        <div className="flex items-end gap-2 md:gap-4 h-full overflow-hidden">
+          {/* Rank 2 - Left */}
+          <PodiumColumn
+            rank={2}
+            user={second}
+            height={`calc(${baseHeight} * 2/3)`}
+            color="bg-dg-g"
+            labelColor="text-white opacity-50"
+            delay={200}
+          />
 
-        {/* Rank 1 - Center */}
-        <PodiumColumn
-          rank={1}
-          user={first}
-          height={baseHeight}
-          color="bg-o-do"
-          labelColor="text-white opacity-50"
-          delay={0}
-        />
+          {/* Rank 1 - Center */}
+          <PodiumColumn
+            rank={1}
+            user={first}
+            height={baseHeight}
+            color="bg-o-do"
+            labelColor="text-white opacity-50"
+            delay={0}
+          />
 
-        {/* Rank 2 - Right */}
-        <PodiumColumn
-          rank={2}
-          user={second}
-          height={`calc(${baseHeight} * 2/3)`}
-          color="bg-dg-g"
-          labelColor="text-white opacity-50"
-          delay={200}
-        />
+          {/* Rank 3 - Right */}
+          <PodiumColumn
+            rank={3}
+            user={third}
+            height={`calc(${baseHeight} * 1/2)`}
+            color="bg-p-lp"
+            labelColor="text-white opacity-50"
+            delay={400}
+          />
+        </div>
       </div>
-    </div>
+    </InteractiveShadow>
   );
 }
 
@@ -109,13 +112,13 @@ export function ChampionsPodiumSkeleton() {
   return (
     <div className="bg-db-b rounded-xl pt-5 pb-0 px-8 flex flex-col h-full shadow-blue-60 border border-Primary-50 overflow-hidden min-h-[400px]">
       <div className="flex items-end gap-2 md:gap-4 h-full overflow-hidden">
-        {/* Rank 3 */}
+        {/* Rank 2 */}
         <div className="flex flex-col items-center flex-1 h-full justify-end pt-10">
           <Skeleton className="w-16 h-16 md:w-20 md:h-20 rounded-full mb-3" />
           <Skeleton className="h-4 w-20 rounded mb-1" />
           <Skeleton className="h-3 w-16 rounded mb-3" />
           <Skeleton className="h-7 w-16 rounded-full mb-4" />
-          <Skeleton className="w-full h-24 rounded-t-xl" />
+          <Skeleton className="w-full h-32 rounded-t-xl" />
         </div>
         {/* Rank 1 */}
         <div className="flex flex-col items-center flex-1 h-full justify-end pt-10">
@@ -125,13 +128,13 @@ export function ChampionsPodiumSkeleton() {
           <Skeleton className="h-8 w-20 rounded-full mb-4" />
           <Skeleton className="w-full h-48 rounded-t-xl" />
         </div>
-        {/* Rank 2 */}
+        {/* Rank 3 */}
         <div className="flex flex-col items-center flex-1 h-full justify-end pt-10">
           <Skeleton className="w-16 h-16 md:w-20 md:h-20 rounded-full mb-3" />
           <Skeleton className="h-4 w-20 rounded mb-1" />
           <Skeleton className="h-3 w-16 rounded mb-3" />
           <Skeleton className="h-7 w-16 rounded-full mb-4" />
-          <Skeleton className="w-full h-32 rounded-t-xl" />
+          <Skeleton className="w-full h-24 rounded-t-xl" />
         </div>
       </div>
     </div>

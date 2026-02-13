@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/shared/ui/Skeleton";
 import { cn } from "@/lib/utils";
 import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
 import Tag from "@/components/shared/ui/Tag";
+import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 
 export default function ModuleCard({
   title,
@@ -27,99 +28,100 @@ export default function ModuleCard({
   const navigate = useNavigate();
 
   return (
-    <div
-      className={cn(
-        "flex flex-col bg-lg-g px-8 py-6 rounded-xl border border-Tertiary-50 shadow-blue-60 min-h-[160px]",
-        className,
-      )}
-    >
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Header: Title */}
-        <div className="flex flex-col text-left mb-2">
-          <div className="flex items-center mb-2 justify-between gap-2">
-            <h5 className="font-heading text-h5 text-Secondary-900 truncate capitalize">
-              {title}
-            </h5>
-          </div>
+    <InteractiveShadow className={className}>
+      <div
+        className={cn(
+          "flex flex-col bg-lg-g px-8 py-6 rounded-xl border border-Tertiary-50 min-h-[160px]",
+        )}
+      >
+        <div className="flex-1 flex flex-col min-w-0">
+          {/* Header: Title */}
+          <div className="flex flex-col text-left mb-2">
+            <div className="flex items-center mb-2 justify-between gap-2">
+              <h5 className="font-heading text-h5 text-Secondary-900 truncate capitalize">
+                {title}
+              </h5>
+            </div>
 
-          {/* Tag-style Info */}
-          <div className="flex flex-wrap gap-2">
-            {/* Category Tag */}
-            <Tag
-              icon={BookBookmarkIcon}
-              variant={isCompleted ? "module" : "default"}
-              shadow={isCompleted ? "orange" : "green"}
-            >
-              {category}
-            </Tag>
-
-            {/* Points Tag */}
-            <Tag
-              icon={StarIcon}
-              variant={isCompleted ? "module" : "default"}
-              shadow={isCompleted ? "orange" : "green"}
-            >
-              {points}
-            </Tag>
-
-            {/* Completed Tag */}
-            {isCompleted && (
-              <Tag icon={CheckCircleIcon} variant="module" shadow="orange">
-                Selesai
+            {/* Tag-style Info */}
+            <div className="flex flex-wrap gap-2">
+              {/* Category Tag */}
+              <Tag
+                icon={BookBookmarkIcon}
+                variant={isCompleted ? "module" : "default"}
+                shadow={isCompleted ? "orange" : "green"}
+              >
+                {category}
               </Tag>
-            )}
+
+              {/* Points Tag */}
+              <Tag
+                icon={StarIcon}
+                variant={isCompleted ? "module" : "default"}
+                shadow={isCompleted ? "orange" : "green"}
+              >
+                {points}
+              </Tag>
+
+              {/* Completed Tag */}
+              {isCompleted && (
+                <Tag icon={CheckCircleIcon} variant="module" shadow="orange">
+                  Selesai
+                </Tag>
+              )}
+            </div>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="mb-2">
+            <div className="flex justify-between text-body-sm text-Tertiary-900 mb-1 font-medium">
+              <span className="text-body-md">Progress</span>
+              <span className="text-body-md">
+                {currentStep}/{totalSteps}
+              </span>
+            </div>
+            <SegmentedProgressBar
+              current={currentStep}
+              total={totalSteps}
+              variant="tertiary"
+              isComplete={isCompleted}
+            />
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mb-2">
-          <div className="flex justify-between text-body-sm text-Tertiary-900 mb-1 font-medium">
-            <span className="text-body-md">Progress</span>
-            <span className="text-body-md">
-              {currentStep}/{totalSteps}
-            </span>
-          </div>
-          <SegmentedProgressBar
-            current={currentStep}
-            total={totalSteps}
-            variant="tertiary"
-            isComplete={isCompleted}
-          />
-        </div>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex gap-3 mt-auto">
-        <Button
-          size="default"
-          fullWidth={!secondaryActionLabel}
-          className={secondaryActionLabel ? "flex-1" : "w-full"}
-          variant={isCompleted ? "secondary" : "default"}
-          shadow="orange"
-          onClick={(e) => {
-            e.stopPropagation();
-            console.log("Navigating to:", href);
-            navigate(href || "#");
-          }}
-        >
-          {actionLabel}
-        </Button>
-        {secondaryActionLabel && (
+        {/* Action Buttons */}
+        <div className="flex gap-3 mt-auto">
           <Button
             size="default"
-            variant="tertiary"
-            className="flex-1"
+            fullWidth={!secondaryActionLabel}
+            className={secondaryActionLabel ? "flex-1" : "w-full"}
+            variant={isCompleted ? "secondary" : "default"}
             shadow="orange"
             onClick={(e) => {
               e.stopPropagation();
-              navigate(secondaryHref || "#");
+              console.log("Navigating to:", href);
+              navigate(href || "#");
             }}
           >
-            {secondaryActionLabel}
+            {actionLabel}
           </Button>
-        )}
+          {secondaryActionLabel && (
+            <Button
+              size="default"
+              variant="tertiary"
+              className="flex-1"
+              shadow="orange"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(secondaryHref || "#");
+              }}
+            >
+              {secondaryActionLabel}
+            </Button>
+          )}
+        </div>
       </div>
-    </div>
+    </InteractiveShadow>
   );
 }
 

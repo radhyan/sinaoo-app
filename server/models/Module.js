@@ -23,7 +23,7 @@ const ModuleSchema = new mongoose.Schema({
       title: String,
       type: {
         type: String,
-        enum: ["reading", "video", "quiz"],
+        enum: ["reading", "video", "quiz", "flashcards"],
         required: true,
       },
       status: {
@@ -57,8 +57,27 @@ const ModuleSchema = new mongoose.Schema({
           imageUrl: String,
         },
       ],
+      // For Flashcards
+      cards: [
+        {
+          front: String,
+          back: String,
+          lastReviewed: Date,
+          nextReview: Date,
+          interval: { type: Number, default: 0 },
+          easeFactor: { type: Number, default: 2.5 },
+        },
+      ],
     },
   ],
+  sourceMaterial: {
+    type: String, // Original text/URL/Filename used for generation
+    default: "",
+  },
+  isAIGenerated: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Module", ModuleSchema);

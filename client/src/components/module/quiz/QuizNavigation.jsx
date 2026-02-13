@@ -19,6 +19,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/shared/ui/AlertDialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { CheckIcon } from "lucide-react";
 
 /**
@@ -119,24 +124,39 @@ const QuizNavigation = ({
         {/* Action Buttons Section */}
         <div className="flex flex-col gap-3 pt-4 border-t border-Grayscale-100">
           <div className="grid grid-cols-2 gap-2">
-            <Button
-              variant="outline"
-              onClick={onPrev}
-              disabled={isFirst}
-              className="justify-center"
-              leftIcon={<CaretLeftIcon />}
-            >
-              Sebelumnya
-            </Button>
-            <Button
-              variant="default"
-              onClick={onNext}
-              disabled={isLast}
-              className="justify-center"
-              rightIcon={<CaretRightIcon />}
-            >
-              Berikutnya
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  onClick={onPrev}
+                  disabled={isFirst}
+                  className="justify-center w-full"
+                  leftIcon={<CaretLeftIcon />}
+                >
+                  Sebelumnya
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Pertanyaan sebelumnya</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="default"
+                  onClick={onNext}
+                  disabled={isLast}
+                  className="justify-center w-full"
+                  rightIcon={<CaretRightIcon />}
+                >
+                  Berikutnya
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Pertanyaan berikutnya</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
 
           {/* Selesai Button with AlertDialog (Quiz Mode only) */}

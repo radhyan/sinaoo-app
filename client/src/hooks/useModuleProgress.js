@@ -1,8 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 
 export function useModuleProgress(moduleId, user, login) {
   const [moduleData, setModuleData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const isModuleCompleted = useMemo(() => {
     if (!user || !moduleData) return false;
@@ -10,51 +11,60 @@ export function useModuleProgress(moduleId, user, login) {
     return userProgress?.isCompleted || false;
   }, [user, moduleData, moduleId]);
 
-  const fetchModule = async (existingProgress) => {
-    try {
-      setLoading(true);
-      const res = await fetch(`http://localhost:3000/api/modules/${moduleId}`);
-      if (!res.ok) throw new Error("Failed to fetch module");
+  const fetchModule = useCallback(
+    async (existingProgress) => {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch(
+          `http://localhost:3000/api/modules/${moduleId}`,
+        );
+        if (!res.ok) throw new Error("Failed to fetch module");
 
-      const data = await res.json();
-      let transformedData = {
-        ...data,
-        title: data.name,
-        steps: data.steps.map((step, index) => ({
-          ...step,
-          id: step._id || step.id || `s${index + 1}`,
-        })),
-      };
+        const data = await res.json();
+        let transformedData = {
+          ...data,
+          title: data.name,
+          steps: data.steps.map((step, index) => ({
+            ...step,
+            id: step._id || step.id || `s${index + 1}`,
+          })),
+        };
 
-      if (existingProgress) {
-        const percentage = existingProgress.completionPercentage || 0;
-        const totalSteps = transformedData.steps.length;
-        const completedStepsCount = Math.round((percentage / 100) * totalSteps);
+        if (existingProgress) {
+          const percentage = existingProgress.completionPercentage || 0;
+          const totalSteps = transformedData.steps.length;
+          const completedStepsCount = Math.round(
+            (percentage / 100) * totalSteps,
+          );
 
-        transformedData.steps = transformedData.steps.map((step, index) => {
-          if (index < completedStepsCount) {
-            return { ...step, status: "completed" };
-          } else if (index === completedStepsCount) {
-            return { ...step, status: "active" };
-          } else {
-            return { ...step, status: "locked" };
+          transformedData.steps = transformedData.steps.map((step, index) => {
+            if (index < completedStepsCount) {
+              return { ...step, status: "completed" };
+            } else if (index === completedStepsCount) {
+              return { ...step, status: "active" };
+            } else {
+              return { ...step, status: "locked" };
+            }
+          });
+
+          if (completedStepsCount === 0 && transformedData.steps.length > 0) {
+            transformedData.steps[0].status = "active";
           }
-        });
-
-        if (completedStepsCount === 0 && transformedData.steps.length > 0) {
+        } else if (transformedData.steps.length > 0) {
           transformedData.steps[0].status = "active";
         }
-      } else if (transformedData.steps.length > 0) {
-        transformedData.steps[0].status = "active";
-      }
 
-      setModuleData(transformedData);
-    } catch (err) {
-      console.error("Error fetching module:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+        setModuleData(transformedData);
+      } catch (err) {
+        console.error("Error fetching module:", err);
+        setError("Gagal memuat modul. Periksa koneksi internet Anda.");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [moduleId],
+  );
 
   const updateProgress = async ({
     completedStepCount,
@@ -110,12 +120,13 @@ export function useModuleProgress(moduleId, user, login) {
         fetchModule(existingProgress);
       }
     }
-  }, [moduleId, user, moduleData]);
+  }, [moduleId, user, moduleData, fetchModule]);
 
   return {
     moduleData,
     setModuleData,
     loading,
+    error,
     updateProgress,
     isModuleCompleted,
     fetchModule,

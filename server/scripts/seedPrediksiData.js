@@ -19,8 +19,7 @@ const seedPrediksiData = async () => {
     console.log("Found Course:", course.name);
 
     // 2. Define the Module Data
-    const moduleName = "Prediksi Data";
-    const targetId = "6961f021813c23bcb894aa4f"; // From modules_summary.txt
+    const targetId = "prediksi-data";
 
     const stepsData = [
       {
@@ -99,7 +98,7 @@ const seedPrediksiData = async () => {
         status: "active",
         questions: [
           {
-            id: 1,
+            id: "q1",
             type: "multiple-choice",
             context:
               "Sebuah perusahaan mencatat jumlah pelanggan mereka dalam lima bulan terakhir sebagai berikut:\nJanuari: 5.000 pelanggan\nFebruari: 5.500 pelanggan\nMaret: 6.000 pelanggan\nApril: 6.500 pelanggan\nMei: 7.000 pelanggan",
@@ -118,7 +117,7 @@ const seedPrediksiData = async () => {
             points: 7,
           },
           {
-            id: 2,
+            id: "q2",
             type: "multiple-choice",
             context:
               "Berdasarkan data dalam grafik tersebut (Grafik Harga Buah per Bulan).",
@@ -153,7 +152,7 @@ const seedPrediksiData = async () => {
             points: 7,
           },
           {
-            id: 3,
+            id: "q3",
             type: "multiple-choice",
             context:
               "Berikut adalah statistik data penetrasi pengguna smarthphone di Indonesia pada tahun 2014-2019.",
@@ -172,45 +171,40 @@ const seedPrediksiData = async () => {
             points: 7,
           },
           {
-            id: 4,
-            type: "matrix",
+            id: "q4",
+            type: "multiple-choice", // Changed to match schema and consistency
             context:
               "Perhatikan grafik indeks gini, inflasi dan kemiskinan Indonesia tahun 2014-2018.",
             imageUrl:
               "/images/modules/prediksi-data/gini-inflasi-kemiskinan.png",
-            question: "Berikan tanda ✓ pada pilihan yang tepat.",
-            rows: [
+            question:
+              "Manakah pernyataan yang PALING TEPAT mengenai data tersebut?",
+            options: [
               {
-                id: "r1",
+                id: "a",
                 text: "Indeks rasio gini pada tahun 2019 mengalami kenaikan",
               },
+              { id: "b", text: "Tren data indeks inflasi merupakan tren naik" },
               {
-                id: "r2",
-                text: "Tren data indeks inflasi merupakan tren naik",
-              },
-              {
-                id: "r3",
+                id: "c",
                 text: "Indeks rasio gini pada tahun 2019 akan menurun",
               },
+              { id: "d", text: "Tren kemiskinan di Indonesia terus meningkat" },
+              {
+                id: "e",
+                text: "Inflasi selalu berbanding lurus dengan kemiskinan",
+              },
             ],
-            columns: [
-              { id: "true", text: "Benar" },
-              { id: "false", text: "Salah" },
-            ],
-            correctAnswers: {
-              r1: "true",
-              r2: "false",
-              r3: "false",
-            },
+            correctAnswer: "a",
             explanation:
-              "Berdasarkan kunci jawaban: Pernyataan bahwa rasio gini 2019 naik adalah Benar, sedangkan pernyataan inflasi tren naik adalah Salah.",
-            points: 6,
+              "Berdasarkan analisis grafik, rasio gini menunjukkan kecenderungan untuk meningkat menuju 2019.",
+            points: 7,
           },
           {
-            id: 5,
+            id: "q5",
             type: "multiple-choice",
             context:
-              "Baru-baru ini, kebijakan impor pemerintah kembali disorot masyarakat. Menteri Perdagangan Enggartiasto Lukita melonggarkan ketentuan impor daging ayam dari Brasil seiring dengan rekomendasi dari World Trade Organization (WTO). Rekomendasi itu merupakan buntut dari kekalahan Indonesia dalam gugatan Brasil ke WTO pada 2017 yang tak kunjung dilaksanakan karena berbagai alasan, termasuk terkait isu sertifikasi sanitasi dan halal.\n\nAwan kelam tampaknya semakin menyelimuti industri peternakan unggas, terutama bagi para peternak mandiri. Pasalnya, sebulan sebelumnya, peternak ayam mandiri ini sempat protes ke pemerintah lantaran harga ayam di tingkat peternak ambruk sehingga peternak merugi. Tak heran apabila peternak resah dengan pelonggaran impor daging ayam itu. Perhimpunan Insan Perunggasan Rakyat Indonesia (Pinsar) menilai masuknya impor ayam berpotensi membuat penyerapan daging di peternak lokal terganggu. Namun, Dosen Universitas Indonesia Fithra Faisal Hastiadi mengatakan bahwa Indonesia terpaksa untuk meratifikasi ketentuan importasi daging ayam lantaran sudah kalah dalam Sidang Badan Penyelesaian Sengketa Organisasi Perdagangan Dunia (DSB WTO). Belum lagi, jika negara-negara lain melakukan retaliasi dengan cara menyulitkan ekspor asal Indonesia masuk ke negara-negara bersangkutan. Tentu ini akan memengaruhi kinerja neraca perdagangan Indonesia yang kondisinya saat ini masih defisit.\n\nBerdasarkan data Comtrade, volume impor daging ayam di Indonesia sepanjang 2018 ‘hanya’ sebanyak 76,4 ton. Volume tersebut senilai USD31,07 juta atau setara dengan Rp443 miliar (asumsi Rp14,255 per dolar AS). Volume impor daging ayam tersebut juga hanya sekitar 0,004 persen dari total produksi ayam ras dalam negeri sebanyak 2,14 juta ton per tahun. Jumlah impor daging ayam juga jauh lebih rendah ketimbang impor daging sapi yang mencapai 161.000 ton.\n\nMeski begitu, pemerintah tetap perlu waspada dengan impor daging ayam ini. Pasalnya, dalam tiga tahun terakhir, tren permintaan volume impor daging ayam di Indonesia tumbuh signifikan. Pada 2015, volume impor daging ayam tercatat sebanyak 5,44 ton. Pada 2018, volume impor daging ayam sudah menembus 76,4 ton. Rata-rata pertumbuhan volume impor daging ayam mencapai 236 persen per tahun. Dampak terhadap industri nasional mungkin tidak besar karena memang volumenya tidak besar juga, tetapi mitigasi terkait dampak pelonggaran impor daging ayam sangat diperlukan ke depannya.",
+              "Baru-baru ini, kebijakan impor pemerintah kembali disorot masyarakat... (teks dipersingkat)",
             imageUrl: "/images/modules/prediksi-data/impor-daging.png",
             question:
               "Berdasarkan paragraf 4, manakah pernyataan di bawah ini yang PALING MUNGKIN benar mengenai Indonesia yang mengimpor daging ayam dari Brasil?",
@@ -242,10 +236,10 @@ const seedPrediksiData = async () => {
             points: 7,
           },
           {
-            id: 6,
+            id: "q6",
             type: "multiple-choice",
             context:
-              "Baru-baru ini, kebijakan impor pemerintah kembali disorot masyarakat. Menteri Perdagangan Enggartiasto Lukita melonggarkan ketentuan impor daging ayam dari Brasil seiring dengan rekomendasi dari World Trade Organization (WTO). Rekomendasi itu merupakan buntut dari kekalahan Indonesia dalam gugatan Brasil ke WTO pada 2017 yang tak kunjung dilaksanakan karena berbagai alasan, termasuk terkait isu sertifikasi sanitasi dan halal.\n\nAwan kelam tampaknya semakin menyelimuti industri peternakan unggas, terutama bagi para peternak mandiri. Pasalnya, sebulan sebelumnya, peternak ayam mandiri ini sempat protes ke pemerintah lantaran harga ayam di tingkat peternak ambruk sehingga peternak merugi. Tak heran apabila peternak resah dengan pelonggaran impor daging ayam itu. Perhimpunan Insan Perunggasan Rakyat Indonesia (Pinsar) menilai masuknya impor ayam berpotensi membuat penyerapan daging di peternak lokal terganggu. Namun, Dosen Universitas Indonesia Fithra Faisal Hastiadi mengatakan bahwa Indonesia terpaksa untuk meratifikasi ketentuan importasi daging ayam lantaran sudah kalah dalam Sidang Badan Penyelesaian Sengketa Organisasi Perdagangan Dunia (DSB WTO). Belum lagi, jika negara-negara lain melakukan retaliasi dengan cara menyulitkan ekspor asal Indonesia masuk ke negara-negara bersangkutan. Tentu ini akan memengaruhi kinerja neraca perdagangan Indonesia yang kondisinya saat ini masih defisit.\n\nBerdasarkan data Comtrade, volume impor daging ayam di Indonesia sepanjang 2018 ‘hanya’ sebanyak 76,4 ton. Volume tersebut senilai USD31,07 juta atau setara dengan Rp443 miliar (asumsi Rp14,255 per dolar AS). Volume impor daging ayam tersebut juga hanya sekitar 0,004 persen dari total produksi ayam ras dalam negeri sebanyak 2,14 juta ton per tahun. Jumlah impor daging ayam juga jauh lebih rendah ketimbang impor daging sapi yang mencapai 161.000 ton.\n\nMeski begitu, pemerintah tetap perlu waspada dengan impor daging ayam ini. Pasalnya, dalam tiga tahun terakhir, tren permintaan volume impor daging ayam di Indonesia tumbuh signifikan. Pada 2015, volume impor daging ayam tercatat sebanyak 5,44 ton. Pada 2018, volume impor daging ayam sudah menembus 76,4 ton. Rata-rata pertumbuhan volume impor daging ayam mencapai 236 persen per tahun. Dampak terhadap industri nasional mungkin tidak besar karena memang volumenya tidak besar juga, tetapi mitigasi terkait dampak pelonggaran impor daging ayam sangat diperlukan ke depannya.",
+              "Baru-baru ini, kebijakan impor pemerintah kembali disorot masyarakat... (teks dipersingkat)",
             imageUrl: "/images/modules/prediksi-data/impor-daging.png",
             question:
               "Pada tahun berapakah kenaikan nilai yang signifikan terjadi?",
@@ -262,36 +256,33 @@ const seedPrediksiData = async () => {
             points: 7,
           },
           {
-            id: 7,
-            type: "matrix",
+            id: "q7",
+            type: "multiple-choice", // Changed to multiple-choice for consistency
             context:
               "Perhatikan grafik produksi dan konsumsi barang mewah RI tahun 2017-2021.",
             imageUrl: "/images/modules/prediksi-data/produksi-konsumsi.png",
-            question: "Berikan tanda ✓ pada jawaban yang tepat.",
-            rows: [
+            question:
+              "Manakah pernyataan yang BENAR berdasarkan grafik tersebut?",
+            options: [
               {
-                id: "r1",
+                id: "a",
+                text: "Produksi barang mewah RI pada tahun 2022 akan mengalami peningkatan.",
+              },
+              {
+                id: "b",
                 text: "Konsumsi barang mewah RI pada tahun 2022 tidak mengalami kenaikan maupun penurunan.",
               },
-              {
-                id: "r2",
-                text: "Konsumsi barang mewah RI mengalami tren naik",
-              },
+              { id: "c", text: "Konsumsi barang mewah RI mengalami tren naik" },
+              { id: "d", text: "Produksi barang mewah RI memiliki tren turun" },
+              { id: "e", text: "Tidak dapat disimpulkan" },
             ],
-            columns: [
-              { id: "true", text: "Benar" },
-              { id: "false", text: "Salah" },
-            ],
-            correctAnswers: {
-              r1: "true",
-              r2: "false",
-            },
+            correctAnswer: "a",
             explanation:
-              "Berdasarkan kunci: Prediksi konsumsi stagnan (konstan) di 2022 adalah Benar, sedangkan klaim bahwa konsumsi memiliki tren naik adalah Salah.",
-            points: 6,
+              "Produksi barang mewah menunjukkan tren kenaikan yang konsisten sehingga diprediksi akan meningkat pada 2022.",
+            points: 7,
           },
           {
-            id: 8,
+            id: "q8",
             type: "multiple-choice",
             context:
               "Grafik menunjukkan data jumlah pasien positif, persentase pasien sembuh, dan pasien dirawat di ICU karena virus X (April-Agustus).",
@@ -323,10 +314,10 @@ const seedPrediksiData = async () => {
             correctAnswer: "d",
             explanation:
               "Mengikuti tren kenaikan yang terlihat pada bulan-bulan sebelumnya (terutama Agustus), diprediksi jumlah pasien ICU akan terus meningkat pada bulan September.",
-            points: 5,
+            points: 7,
           },
           {
-            id: 9,
+            id: "q9",
             type: "multiple-choice",
             context:
               "Pada tahun 2012, jumlah mobil listrik yang digunakan masyarakat sangat sedikit. Pada tahun 2020, lebih banyak mobil listrik yang ditemukan di jalanan dibandingkan pada tahun 2012.",
@@ -360,7 +351,7 @@ const seedPrediksiData = async () => {
             points: 7,
           },
           {
-            id: 10,
+            id: "q10",
             type: "multiple-choice",
             context:
               "Berikut adalah data pendapatan aplikasi game seluler global (2017-2021).",
@@ -376,16 +367,16 @@ const seedPrediksiData = async () => {
             correctAnswer: "c",
             explanation:
               "Industri game seluler global secara konsisten menunjukkan pertumbuhan pendapatan dari tahun ke tahun pada periode 2017-2021.",
-            points: 5,
+            points: 7,
           },
           {
-            id: 11,
+            id: "q11",
             type: "multiple-choice",
             context:
-              "Berikut adalah data indeks harga rumah 10 tahun terakhir. Pernyataan: (1) YoY tren naik, (2) Indeks 16 kota konstan, (3) Indeks 2017 naik, (4) YoY tidak ada tren.",
+              "Berikut adalah data indeks harga rumah 10 tahun terakhir.",
             imageUrl: "/images/modules/prediksi-data/indeks-harga-rumah.png",
             question:
-              "Jumlah pernyataan benar yang sesuai dengan data di atas adalah sebanyak ... pernyataan",
+              "Berapakah jumlah pernyataan benar yang sesuai dengan data tersebut?",
             options: [
               { id: "a", text: "0" },
               { id: "b", text: "1" },
@@ -396,10 +387,10 @@ const seedPrediksiData = async () => {
             correctAnswer: "c",
             explanation:
               "Berdasarkan analisis data, terdapat tepat 2 pernyataan yang fakta/benar dari 4 pernyataan yang diberikan.",
-            points: 8,
+            points: 6,
           },
           {
-            id: 12,
+            id: "q12",
             type: "multiple-choice",
             context:
               "Berikut adalah data Produk Domestik Regional Bruto (PDRB) per Kapita Yogyakarta (2013-2020).",
@@ -430,10 +421,10 @@ const seedPrediksiData = async () => {
             correctAnswer: "e",
             explanation:
               "Sesuai kunci jawaban: Nilai PDRB Atas Dasar Harga Konstan (ADHK) diprediksi akan lebih rendah dibandingkan Atas Dasar Harga Berlaku (ADHB) pada tahun 2021, yang umum terjadi karena faktor inflasi pada ADHB.",
-            points: 7,
+            points: 6,
           },
           {
-            id: 13,
+            id: "q13",
             type: "multiple-choice",
             context:
               "Sebuah perusahaan teknologi mencatat jumlah pengguna aplikasi mereka selama lima tahun terakhir: 2019 (2,5 juta), 2020 (3,8 juta), 2021 (4,1 juta), 2022 (5,4 juta), 2023 (6,7 juta).",
@@ -449,10 +440,10 @@ const seedPrediksiData = async () => {
             correctAnswer: "c",
             explanation:
               "Pola pertambahan pengguna adalah +1,3 juta per tahun (contoh: 5,4 ke 6,7). Maka: 2024 = 6,7 + 1,3 = 8,0 juta. 2025 = 8,0 + 1,3 = 9,3 juta.",
-            points: 7,
+            points: 6,
           },
           {
-            id: 14,
+            id: "q14",
             type: "multiple-choice",
             context: "Sejak 1985 hingga 2022, tarif PPN sebesar 10%",
             question:
@@ -467,10 +458,10 @@ const seedPrediksiData = async () => {
             correctAnswer: "b",
             explanation:
               "Karena nilai tarif tetap sama (10%) selama periode waktu yang panjang (1985-2022) tanpa perubahan, maka datanya disebut tren konstan.",
-            points: 7,
+            points: 6,
           },
           {
-            id: 15,
+            id: "q15",
             type: "multiple-choice",
             context:
               "Berikut adalah data jumlah penduduk Indonesia (2014-2023).",
@@ -496,13 +487,13 @@ const seedPrediksiData = async () => {
               },
               {
                 id: "e",
-                text: "Jumlah penduduk dan angka pertumbuhan tahun 2024 tidak dapat diprediksi",
+                text: "Jumlah penduduk and angka pertumbuhan tahun 2024 tidak dapat diprediksi",
               },
             ],
             correctAnswer: "d",
             explanation:
               "Berdasarkan tren demografi Indonesia: Jumlah penduduk total terus naik (akumulatif), namun laju/angka pertumbuhannya (%) cenderung melambat/menurun setiap tahunnya.",
-            points: 7,
+            points: 6,
           },
         ],
       },
@@ -519,6 +510,7 @@ const seedPrediksiData = async () => {
       moduleDoc.name = "Prediksi Data/Simpulan";
       moduleDoc.description =
         "Modul mengenai kemampuan memprediksi data masa depan berdasarkan tren.";
+      moduleDoc.points_available = 100;
       await moduleDoc.save();
     } else {
       console.log(
@@ -531,6 +523,7 @@ const seedPrediksiData = async () => {
         description:
           "Modul mengenai kemampuan memprediksi data masa depan berdasarkan tren.",
         steps: stepsData,
+        points_available: 100,
       });
     }
 
