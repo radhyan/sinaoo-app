@@ -63,7 +63,7 @@ const MissionItem = ({
                 {title}
               </h5>
               {isClaimed ? (
-                <Tag icon={CheckCircleIcon} variant="module" shadow="none">
+                <Tag icon={CheckCircleIcon} variant="default" shadow="orange">
                   Selesai
                 </Tag>
               ) : (

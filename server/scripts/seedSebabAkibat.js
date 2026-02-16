@@ -756,6 +756,7 @@ const seedSebabAkibat = async () => {
       courseId: course._id,
       name: "Sebab Akibat",
       description: "Modul mengenai Sebab Akibat",
+      subcategory: "Penalaran Induktif",
       steps: stepsData,
     });
     console.log("Module Created.");

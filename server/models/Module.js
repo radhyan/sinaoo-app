@@ -18,6 +18,10 @@ const ModuleSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  subcategory: {
+    type: String, // 'Penalaran Induktif', 'Penalaran Deduktif', etc.
+    default: "",
+  },
   steps: [
     {
       title: String,

@@ -510,6 +510,7 @@ const seedPrediksiData = async () => {
       moduleDoc.name = "Prediksi Data/Simpulan";
       moduleDoc.description =
         "Modul mengenai kemampuan memprediksi data masa depan berdasarkan tren.";
+      moduleDoc.subcategory = "Penalaran Induktif";
       moduleDoc.points_available = 100;
       await moduleDoc.save();
     } else {
@@ -522,6 +523,7 @@ const seedPrediksiData = async () => {
         name: "Prediksi Data/Simpulan",
         description:
           "Modul mengenai kemampuan memprediksi data masa depan berdasarkan tren.",
+        subcategory: "Penalaran Induktif",
         steps: stepsData,
         points_available: 100,
       });

@@ -4,6 +4,7 @@ import {
   StarIcon,
   BookBookmarkIcon,
   CheckCircleIcon,
+  BooksIcon,
 } from "@phosphor-icons/react";
 import { Button } from "@/components/shared/ui/Button";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
@@ -15,6 +16,7 @@ import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 export default function ModuleCard({
   title,
   category = "Modul",
+  subcategory = "subcategory",
   points,
   currentStep = 0,
   totalSteps = 3,
@@ -31,7 +33,10 @@ export default function ModuleCard({
     <InteractiveShadow className={className}>
       <div
         className={cn(
-          "flex flex-col bg-lg-g px-8 py-6 rounded-xl border border-Tertiary-50 min-h-[160px]",
+          "flex flex-col px-8 py-6 rounded-xl border min-h-[160px]",
+          isCompleted
+            ? "bg-lo-o border-Secondary-200"
+            : "bg-lg-g border-Tertiary-50",
         )}
       >
         <div className="flex-1 flex flex-col min-w-0">
@@ -48,16 +53,25 @@ export default function ModuleCard({
               {/* Category Tag */}
               <Tag
                 icon={BookBookmarkIcon}
-                variant={isCompleted ? "module" : "default"}
+                variant={isCompleted ? "default" : "module"}
                 shadow={isCompleted ? "orange" : "green"}
               >
                 {category}
               </Tag>
 
+              {/* Sub-Category Tag */}
+              <Tag
+                icon={BooksIcon}
+                variant={isCompleted ? "default" : "module"}
+                shadow={isCompleted ? "orange" : "green"}
+              >
+                {subcategory}
+              </Tag>
+
               {/* Points Tag */}
               <Tag
                 icon={StarIcon}
-                variant={isCompleted ? "module" : "default"}
+                variant={isCompleted ? "default" : "module"}
                 shadow={isCompleted ? "orange" : "green"}
               >
                 {points}
@@ -65,7 +79,7 @@ export default function ModuleCard({
 
               {/* Completed Tag */}
               {isCompleted && (
-                <Tag icon={CheckCircleIcon} variant="module" shadow="orange">
+                <Tag icon={CheckCircleIcon} variant="default" shadow="orange">
                   Selesai
                 </Tag>
               )}

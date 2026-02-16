@@ -79,7 +79,7 @@ const MultipleChoiceQuestion = ({
                 )
               )}
             </div>
-            <span className={`text-body-lg font-medium ${textClass}`}>
+            <span className={`text-body-l font-medium ${textClass}`}>
               {option.text}
             </span>
           </div>

@@ -656,7 +656,12 @@ const seedKesesuaian = async () => {
     console.log(`Updating all modules named: ${moduleName}`);
     const result = await Module.updateMany(
       { name: { $regex: new RegExp(moduleName, "i") } },
-      { $set: { steps: stepsData } },
+      {
+        $set: {
+          steps: stepsData,
+          subcategory: "Penalaran Induktif",
+        },
+      },
     );
 
     console.log(

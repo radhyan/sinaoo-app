@@ -20,104 +20,245 @@ const seedSimpulanLogis = async () => {
 
     const stepsData = [
       {
-        title: "Pernyataan dan Kalimat Majemuk",
+        title: "Dasar Logika & Pernyataan Majemuk",
         type: "reading",
         status: "active",
-        description: "Dasar-dasar Logika Matematika",
+        description: "Pengertian Pernyataan dan Jenis-jenis Pernyataan Majemuk",
         content: `
-          <div class="space-y-6 text-Grayscale-900">
-            <h2 class="text-h3 font-heading text-Primary-600">Pengertian Pernyataan</h2>
-            <p class="text-body-l">Pernyataan adalah kalimat yang bernilai <strong>benar saja</strong> atau <strong>salah saja</strong>, tidak bisa bernilai benar dan salah sekaligus.</p>
+          <div class="space-y-10 text-Grayscale-900">
+            <section>
+              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Pengertian Pernyataan</h2>
+              <p class="text-body-l font-sans leading-relaxed">
+                Pernyataan adalah kalimat yang bernilai <strong>benar saja</strong> atau <strong>salah saja</strong>, tidak bisa bernilai benar dan salah sekaligus.
+              </p>
+            </section>
 
-            <h2 class="text-h3 font-heading text-Primary-600 mt-8">Pernyataan Majemuk</h2>
-            <p class="text-body-l">Pernyataan majemuk adalah kalimat yang dibentuk oleh dua pernyataan atau lebih dan dihubungkan dengan kata hubung tertentu.</p>
+            <section>
+              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Pernyataan Majemuk</h3>
+              <p class="text-body-l font-sans leading-relaxed mb-6">
+                Pernyataan majemuk adalah kalimat yang dibentuk oleh dua pernyataan atau lebih dan dihubungkan dengan kata hubung tertentu.
+              </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              <div class="border-2 border-Primary-400 rounded-lg overflow-hidden">
-                <div class="bg-Primary-100 p-3 text-center font-heading text-h5 border-b-2 border-Primary-400">Konjungsi</div>
-                <div class="p-4 space-y-3">
-                  <ul class="list-disc list-inside text-body-md">
-                    <li>Dihubungkan dengan kata <strong>'dan'</strong></li>
-                    <li>Disimbolkan dengan <strong>^</strong></li>
-                    <li>Contoh: p ^ q dibaca 'p dan q'</li>
-                  </ul>
-                  <div class="bg-Grayscale-50 p-3 rounded text-body-sm italic">
-                    <strong>Contoh:</strong><br/>p: Kakak belajar<br/>q: Adik bermain<br/>p ^ q: Kakak belajar dan adik bermain
+              <div class="overflow-hidden rounded-lg border-2 border-Primary-400 mb-8">
+                <table class="w-full text-left border-collapse my-0">
+                  <thead class="bg-Primary-50">
+                    <tr>
+                      <th class="p-4 text-center text-Primary-900 font-bold border-b-1 border-Primary-400 text-h5">Jenis</th>
+                      <th class="p-4 text-center text-Primary-900 font-bold border-b-1 border-Primary-400 text-h5">Kata Hubung</th>
+                      <th class="p-4 text-center text-Primary-900 font-bold border-b-1 border-Primary-400 text-h5">Simbol</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bg-Grayscale-50">
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-body-l">Konjungsi</td>
+                      <td class="p-4 border-b border-Primary-100 text-center text-body-l">... dan ...</td>
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-h4 text-Primary-900">^</td>
+                    </tr>
+                    <tr class="bg-Grayscale-50">
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-body-l">Disjungsi</td>
+                      <td class="p-4 border-b border-Primary-100 text-center text-body-l">... atau ...</td>
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-h4 text-Primary-900">v</td>
+                    </tr>
+                    <tr class="bg-Grayscale-50">
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-body-l">Implikasi</td>
+                      <td class="p-4 border-b border-Primary-100 text-center text-body-l">Jika ..., maka ...</td>
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-h4 text-Primary-900">⇒</td>
+                    </tr>
+                    <tr class="bg-Grayscale-50">
+                      <td class="p-4 text-center font-bold text-body-l">Biimplikasi</td>
+                      <td class="p-4 text-center text-body-l">... jika dan hanya jika ...</td>
+                      <td class="p-4 text-center font-bold text-h4 text-Primary-900">⇔</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="space-y-6">
+              <h3 class="text-h3 font-heading text-Primary-600">Contoh Penerapan</h3>
+              
+              <!-- Formula Box Style for Examples -->
+              <div class="bg-white p-4 rounded-lg border-2 border-Primary-400 space-y-8">
+                <div>
+                  <h4 class="text-body-l font-bold text-Primary-600 mb-2">&gt; Konjungsi (p ^ q)</h4>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Primary-50 text-Primary-900 rounded-md font-bold">Kakak belajar</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Grayscale-100 text-Grayscale-900 rounded-md font-bold">dan</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Secondary-50 text-Secondary-900 rounded-md font-bold">Adik bermain</p>
+                    </div>
                   </div>
-                  <div class="bg-warning-100 p-2 rounded-full text-center font-bold border border-warning-400">
-                    dan ⮕ ^
+                </div>
+
+                <div>
+                  <h4 class="text-h5 font-bold text-Primary-600 mb-2">&gt; Implikasi (p ⇒ q)</h4>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Grayscale-100 text-Grayscale-900 rounded-md font-bold">Jika</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Primary-50 text-Primary-900 rounded-md font-bold">Kakak rajin belajar</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Grayscale-100 text-Grayscale-900 rounded-md font-bold">maka</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                      <p class="text-l py-1 px-4 bg-Secondary-50 text-Secondary-900 rounded-md font-bold">Lulus UTBK</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="border-2 border-Primary-400 rounded-lg overflow-hidden">
-                <div class="bg-Primary-100 p-3 text-center font-heading text-h5 border-b-2 border-Primary-400">Disjungsi</div>
-                <div class="p-4 space-y-3">
-                  <ul class="list-disc list-inside text-body-md">
-                    <li>Dihubungkan dengan kata <strong>'atau'</strong></li>
-                    <li>Disimbolkan dengan <strong>v</strong></li>
-                    <li>Contoh: p v q dibaca 'p atau q'</li>
-                  </ul>
-                  <div class="bg-Grayscale-50 p-3 rounded text-body-sm italic">
-                    <strong>Contoh:</strong><br/>p: Kakak belajar<br/>q: Adik bermain<br/>p v q: Kakak belajar atau adik bermain
-                  </div>
-                   <div class="bg-warning-100 p-2 rounded-full text-center font-bold border border-warning-400">
-                    atau ⮕ v
-                  </div>
-                </div>
-              </div>
-              <div class="border-2 border-Primary-400 rounded-lg overflow-hidden">
-                <div class="bg-Primary-100 p-3 text-center font-heading text-h5 border-b-2 border-Primary-400">Implikasi</div>
-                <div class="p-4 space-y-3">
-                  <ul class="list-disc list-inside text-body-md">
-                    <li>Dihubungkan dengan kata <strong>'Jika..., maka...'</strong></li>
-                    <li>Disimbolkan dengan <strong>⇒</strong></li>
-                    <li>Contoh: p ⇒ q dibaca 'jika p, maka q'</li>
-                  </ul>
-                  <div class="bg-Grayscale-50 p-3 rounded text-body-sm italic">
-                    <strong>Contoh:</strong><br/>p: Kakak belajar<br/>q: Adik bermain<br/>p ⇒ q: Jika kakak belajar, maka adik bermain
-                  </div>
-                </div>
-              </div>
-              <div class="border-2 border-Primary-400 rounded-lg overflow-hidden">
-                <div class="bg-Primary-100 p-3 text-center font-heading text-h5 border-b-2 border-Primary-400">Biimplikasi</div>
-                <div class="p-4 space-y-3">
-                  <ul class="list-disc list-inside text-body-md">
-                    <li>Dihubungkan dengan kata <strong>'... jika dan hanya jika ...'</strong></li>
-                    <li>Disimbolkan dengan <strong>⇔</strong></li>
-                    <li>Contoh: p ⇔ q dibaca 'p jika dan hanya jika q'</li>
-                  </ul>
-                  <div class="bg-Grayscale-50 p-3 rounded text-body-sm italic">
-                    <strong>Contoh:</strong><br/>p: Kakak belajar<br/>q: Adik bermain<br/>p ⇔ q: Kakak belajar jika dan hanya jika adik bermain
-                  </div>
-                </div>
-              </div>
-            </div>
+            </section>
           </div>
         `,
       },
       {
-        title: "Ingkaran dan Ekuivalensi",
+        title: "Jenis Implikasi & Ingkaran",
         type: "reading",
         status: "locked",
-        description: "Memahami hubungan antar pernyataan",
+        description: "Konvers, Invers, Kontraposisi, dan Ekuivalensi",
         content: `
-          <div class="space-y-6 text-Grayscale-900">
-            <h2 class="text-h3 font-heading text-Primary-600">Jenis Implikasi</h2>
-            <ul class="list-disc list-inside space-y-2 text-body-l">
-              <li><strong>Konvers</strong> dari p ⇒ q adalah <strong>q ⇒ p</strong></li>
-              <li><strong>Invers</strong> dari p ⇒ q adalah <strong>~p ⇒ ~q</strong></li>
-              <li><strong>Kontraposisi</strong> dari p ⇒ q adalah <strong>~q ⇒ ~p</strong></li>
-            </ul>
-            <h2 class="text-h3 font-heading text-Primary-600 mt-8">Ingkaran (Negasi)</h2>
-            <p class="text-body-l"><strong>Ingkaran atau negasi (~)</strong> adalah pernyataan baru yang merupakan lawan dari pernyataan semula.</p>
-            <div class="bg-red-50 p-4 border-l-4 border-red-500 rounded text-center font-bold text-Primary-600">
-              ~p = ingkaran dari p
-            </div>
-            <h2 class="text-h3 font-heading text-Primary-600 mt-8">Ekuivalensi (≡)</h2>
-            <p class="text-body-l">Ekuivalensi adalah dua pernyataan yang memiliki nilai kebenaran yang sama walaupun bentuknya diubah.</p>
-            <div class="bg-red-50 p-4 border-l-4 border-red-500 rounded text-center font-bold text-Primary-600">
-              p ⇒ q ≡ ~p v q ≡ ~q ⇒ ~p
-            </div>
+          <div class="space-y-10 text-Grayscale-900">
+            <section>
+              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Jenis Implikasi</h3>
+              <div class="bg-white rounded-lg border-2 border-Primary-400 overflow-hidden mb-6">
+                 <table class="w-full text-left border-collapse my-0">
+                  <thead class="bg-Primary-50">
+                    <tr>
+                      <th class="p-4 text-center text-Primary-900 font-bold border-b-2 border-Primary-400 text-h5">Nama</th>
+                      <th class="p-4 text-center text-Primary-900 font-bold border-b-2 border-Primary-400 text-h5">Bentuk</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="bg-white hover:bg-Grayscale-50 transition-colors">
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-body-l">Implikasi</td>
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-h4 text-Primary-600">p ⇒ q</td>
+                    </tr>
+                    <tr class="bg-white hover:bg-Grayscale-50 transition-colors">
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-body-l">Konvers</td>
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-h4 text-Primary-600">q ⇒ p</td>
+                    </tr>
+                    <tr class="bg-white hover:bg-Grayscale-50 transition-colors">
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-body-l">Invers</td>
+                      <td class="p-4 border-b border-Primary-100 text-center font-bold text-h4 text-Primary-600">~p ⇒ ~q</td>
+                    </tr>
+                    <tr class="bg-white hover:bg-Grayscale-50 transition-colors">
+                      <td class="p-4 text-center font-bold text-body-l">Kontraposisi</td>
+                      <td class="p-4 text-center font-bold text-h4 text-Primary-600">~q ⇒ ~p</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Ingkaran dan Ekuivalensi</h2>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-Secondary-50 p-6 rounded-md border-2 border-Secondary-400">
+                   <h5 class="text-h5 font-heading text-Secondary-900 mb-2 mt-0">Ingkaran / Negasi (~)</h5>
+                   <p class="text-body-lg text-Secondary-900 mb-4">Ingkaran adalah pernyataan lawan dari pernyataan semula.</p>
+                   <div class="flex items-center gap-4 bg-white px-6 py-4 w-fit rounded-lg border border-Secondary-400 items-center align-center ">
+                      <span class="text-h4 font-heading text-Secondary-600">~p</span>
+                      <span class="text-Grayscale-400">|</span>
+                      <span class="text-body-l font-medium italic">"Tidak benar bahwa p"</span>
+                   </div>
+                </div>
+
+                <div class="bg-Primary-50 p-6 rounded-md border-2 border-Primary-400">
+                   <h5 class="text-h5 font-heading text-Primary-900 mb-2 mt-0">Ekuivalensi (≡)</h5>
+                   <p class="text-body-lg text-Primary-900 mb-4">Dua pernyataan yang memiliki nilai kebenaran yang sama.</p>
+                   <div class="flex items-center gap-4 bg-white px-6 py-4 w-fit rounded-lg border border-Primary-400 items-center">
+                      <span class="text-h4 font-heading text-Primary-600">p ⇒ q ≡ ~p v q ≡ ~q ⇒ ~p</span>
+                   </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
+                <h3 class="text-h3 font-heading text-Primary-600 mb-6">Macam Ingkaran</h3>
+                
+                <div class="space-y-8 ">
+                  <!-- Formula Highlight Style for Negations -->
+                  <div class="bg-white p-6 rounded-md border-2 border-Primary-100 shadow-sm space-y-6">
+                    <div>
+                      <h5 class="text-h5 font-heading text-Primary-600 mb-4">&gt; Ingkaran Konjungsi: ~(p ^ q)</h5>
+                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
+                        <span class="text-h4 font-heading text-Primary-700">~(p ^ q) ≡ ~p v ~q</span>
+                      </div>
+                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p ^ q</span>
+                          <p class="text-body-l italic leading-relaxed">Adi suka sayur <strong>dan</strong> Ben suka buah</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
+                          <p class="text-body-l font-bold text-Primary-900">Adi <strong>tidak</strong> suka sayur <strong>atau</strong> Ben <strong>tidak</strong> suka buah</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="h-px bg-Grayscale-100 w-full"></div>
+
+                    <div>
+                      <h5 class="text-body-l font-bold text-Primary-600 mb-4">&gt; Ingkaran Disjungsi: ~(p v q)</h5>
+                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
+                        <span class="text-h4 font-bold text-Primary-700">~(p v q) ≡ ~p ^ ~q</span>
+                      </div>
+                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p v q</span>
+                          <p class="text-body-l italic leading-relaxed">Nenek menyulam <strong>atau</strong> kakek memancing</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
+                          <p class="text-body-l font-bold text-Primary-900">Nenek <strong>tidak</strong> menyulam <strong>dan</strong> kakek <strong>tidak</strong> memancing</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="h-px bg-Grayscale-100 w-full"></div>
+
+                    <div>
+                      <h5 class="text-h5 font-heading text-Primary-600 mb-4">&gt; Ingkaran Implikasi: ~(p ⇒ q)</h5>
+                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
+                        <span class="text-h4 font-heading text-Primary-700">~(p ⇒ q) ≡ p ^ ~q</span>
+                      </div>
+                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p ⇒ q</span>
+                          <p class="text-body-l italic leading-relaxed">Jika Tiar rajin olahraga, maka badannya bugar</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
+                          <p class="text-body-l font-bold text-Primary-900">Tiar rajin olahraga <strong>dan</strong> badannya <strong>tidak</strong> bugar</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="h-px bg-Grayscale-100 w-full"></div>
+
+                    <div>
+                      <h5 class="text-h5 font-heading text-Primary-600 mb-4">&gt; Ingkaran Biimplikasi: ~(p ⇔ q)</h5>
+                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
+                        <span class="text-h4 font-heading text-Primary-700">~(p ⇔ q) ≡ (p ^ ~q) v (~p ^ q)</span>
+                      </div>
+                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p ⇔ q</span>
+                          <p class="text-body-l italic leading-relaxed">Ibu pergi ke pasar <strong>jika dan hanya jika</strong> hari libur</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 items-center">
+                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
+                          <p class="text-body-l font-bold text-Primary-900">Ibu pergi ke pasar <strong>dan bukan</strong> hari libur <strong>atau</strong> Ibu <strong>tidak</strong> pergi ke pasar <strong>dan</strong> hari libur</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
           </div>
         `,
       },
@@ -125,33 +266,189 @@ const seedSimpulanLogis = async () => {
         title: "Penarikan Kesimpulan",
         type: "reading",
         status: "locked",
-        description: "Modus Ponens, Tollens, dan Silogisme",
+        description: "Ingkaran Implikasi & Penarikan Kesimpulan Dasar",
         content: `
-          <div class="space-y-6 text-Grayscale-900">
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                   <h3 class="text-h4 font-heading text-Primary-600 mb-4">1. Modus Ponens</h3>
-                   <div class="space-y-2 mb-4">
-                      <p>Premis 1: p ⇒ q</p>
-                      <p>Premis 2: p</p>
-                      <p class="border-t border-Grayscale-300 pt-1 font-bold">Kesimpulan: q</p>
-                   </div>
+          <div class="space-y-10 text-Grayscale-900">
+
+            <section>
+              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Penarikan Kesimpulan</h2>
+              <p class="text-body-l mb-8 font-sans leading-relaxed">Ada tiga metode utama dalam penarikan kesimpulan deduktif:</p>
+            </section>
+
+            <!-- Modus Ponens -->
+            <section class="space-y-6">
+              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Modus Ponens</h3>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Ponens Valid -->
+                <div class="bg-white p-4 rounded-md border-2 border-Primary-400">
+                  <div class="text-h4 font-heading text-Primary-600 text-left mb-4">P1: p ⇒ q<br/>P2: p<br/>∴ q</div>
+                  <div class="overflow-hidden rounded-sm border border-Primary-200">
+                    <table class="w-full text-left border-collapse my-0">
+                      <tbody>
+                        <tr>
+                          <td class="p-3 bg-Primary-50 font-bold border-b border-Primary-100 w-24 text-body-md">Premis 1</td>
+                          <td class="p-3 border-b border-Primary-100 text-body-md italic">Jika Rika lomba, Rina rajin berlatih</td>
+                        </tr>
+                        <tr>
+                          <td class="p-3 bg-Primary-50 font-bold border-b border-Primary-100 w-24 text-body-md">Premis 2</td>
+                          <td class="p-3 border-b border-Primary-100 text-body-md italic">Rika ikut lomba (p)</td>
+                        </tr>
+                        <tr class="bg-Primary-100">
+                          <td class="p-4 font-bold w-24 text-body-md text-Primary-900">Kesimpulan</td>
+                          <td class="p-4 text-body-md font-bold text-Primary-900">Rina rajin berlatih (q)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                <div>
-                   <h3 class="text-h4 font-heading text-Primary-600 mb-4">2. Modus Tollens</h3>
-                   <div class="space-y-2 mb-4">
-                      <p>Premis 1: p ⇒ q</p>
-                      <p>Premis 2: ~q</p>
-                      <p class="border-t border-Grayscale-300 pt-1 font-bold">Kesimpulan: ~p</p>
-                   </div>
+
+                <!-- Ponens Invalid -->
+                <div class="bg-white p-4 rounded-md border-2 border-Error-300">
+                  <div class="text-h4 font-heading text-Grayscale-900 text-left mb-4">P1: p ⇒ q<br/>P2: ~p<br/>∴ ???</div>
+                  <div class="overflow-hidden rounded-sm border border-Error-200">
+                    <table class="w-full text-left border-collapse my-0">
+                      <tbody>
+                        <tr>
+                          <td class="p-3 bg-Error-50/10 font-bold border-b border-Grayscale-100 text-body-md">Premis 1</td>
+                          <td class="p-3 border-b border-Grayscale-100 text-body-md italic">Jika Rika lomba, Rina rajin berlatih</td>
+                        </tr>
+                        <tr>
+                          <td class="p-3 bg-Error-50/10 font-bold border-b border-Grayscale-100 text-body-md">Premis 2</td>
+                          <td class="p-3 border-b border-Grayscale-100 text-body-md italic">Rika tidak lomba (~p)</td>
+                        </tr>
+                        <tr class="bg-Error-50">
+                          <td class="p-4 font-bold text-body-md text-Grayscale-50">Kesimpulan</td>
+                          <td class="p-4 text-body-md font-bold text-Grayscale-50 italic">Tidak dapat disimpulkan</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-             </div>
-             <h3 class="text-h4 font-heading text-Primary-600 mt-8 mb-4">3. Silogisme</h3>
-             <div class="space-y-2 mb-4 max-w-xs">
-                <p>Premis 1: p ⇒ q</p>
-                <p>Premis 2: q ⇒ r</p>
-                <p class="border-t border-Grayscale-300 pt-1 font-bold">Kesimpulan: p ⇒ r</p>
-             </div>
+              </div>
+            </section>
+
+            <!-- Modus Tollens -->
+            <section class="space-y-6">
+              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Modus Tollens</h3>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Tollens Valid -->
+                <div class="bg-white p-4 rounded-md border-2 border-Primary-400">
+                  <div class="text-h4 font-heading text-Primary-600 text-left mb-4">P1: p ⇒ q<br/>P2: ~q<br/>∴ ~p</div>
+                  <div class="overflow-hidden rounded-sm border border-Primary-200">
+                    <table class="w-full text-left border-collapse my-0">
+                      <tbody>
+                        <tr>
+                          <td class="p-3 bg-Primary-50 font-bold border-b border-Primary-100 w-24 text-body-md">Premis 1</td>
+                          <td class="p-3 border-b border-Primary-100 text-body-md italic">Jika rumah dikunci, maka ibu pergi</td>
+                        </tr>
+                        <tr>
+                          <td class="p-3 bg-Primary-50 font-bold border-b border-Primary-100 w-24 text-body-md">Premis 2</td>
+                          <td class="p-3 border-b border-Primary-100 text-body-md italic">Ibu tidak pergi (~q)</td>
+                        </tr>
+                        <tr class="bg-Primary-100">
+                          <td class="p-4 font-bold w-24 text-body-md text-Primary-900">Kesimpulan</td>
+                          <td class="p-4 text-body-md font-bold text-Primary-900">Rumah tidak dikunci (~p)</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Tollens Invalid -->
+                <div class="bg-white p-4 rounded-md border-2 border-Error-300">
+                  <div class="text-h4 font-heading text-Grayscale-900 text-left mb-4">P1: p ⇒ q<br/>P2: q<br/>∴ ???</div>
+                  <div class="overflow-hidden rounded-sm border border-Error-200">
+                    <table class="w-full text-left border-collapse my-0">
+                      <tbody>
+                        <tr>
+                          <td class="p-3 bg-Error-50/10 font-bold border-b border-Grayscale-100 text-body-md">Premis 1</td>
+                          <td class="p-3 border-b border-Grayscale-100 text-body-md italic">Jika rumah dikunci, maka ibu pergi</td>
+                        </tr>
+                        <tr>
+                          <td class="p-3 bg-Error-50/10 font-bold border-b border-Grayscale-100 text-body-md">Premis 2</td>
+                          <td class="p-3 border-b border-Grayscale-100 text-body-md italic">Ibu pergi (q)</td>
+                        </tr>
+                        <tr class="bg-Error-50">
+                          <td class="p-4 font-bold text-body-md text-Grayscale-50">Kesimpulan</td>
+                          <td class="p-4 text-body-md font-bold text-Grayscale-50 italic">Tidak dapat disimpulkan</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Silogisme -->
+            <section class="space-y-6">
+              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Silogisme</h3>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                 <div class="bg-white p-6 rounded-md border-2 border-Primary-400">
+                    <div class="text-h4 font-heading text-Primary-600 text-left mb-6">P1: p ⇒ q<br/>P2: q ⇒ r<br/>∴ p ⇒ r</div>
+                    <p class="text-body-md italic mb-4">Kesimpulan diambil dengan menghubungkan premis pertama dan terakhir (efek domino).</p>
+                    <div class="overflow-hidden rounded-sm border border-Primary-200">
+                      <table class="w-full text-left border-collapse my-0">
+                        <tbody>
+                          <tr>
+                            <td class="p-3 bg-Primary-50 font-bold border-b border-Primary-100 w-24 text-body-md">Premis 1</td>
+                            <td class="p-3 border-b border-Primary-100 text-body-md italic">Jika aku hemat, maka aku menabung</td>
+                          </tr>
+                          <tr>
+                            <td class="p-3 bg-Primary-50 font-bold border-b border-Primary-100 w-24 text-body-md">Premis 2</td>
+                            <td class="p-3 border-b border-Primary-100 text-body-md italic">Jika aku menabung, maka aku kaya</td>
+                          </tr>
+                          <tr class="bg-Primary-100">
+                            <td class="p-4 font-bold w-24 text-body-md text-Primary-900">Kesimpulan</td>
+                            <td class="p-4 text-body-md font-bold text-Primary-900">Jika aku hemat, maka aku kaya</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                 </div>
+
+                 <div class="relative bg-Secondary-50 p-6 rounded-md border-2 border-Secondary-200 flex flex-col justify-center overflow-hidden">
+                    <h4 class="font-heading text-h4 text-Secondary-900 mb-4">Tips Mempermudah</h4>
+                    <ul class="space-y-3 relative z-10">
+                      <li class="flex gap-3 text-body-md text-Secondary-800">
+                         <span class="text-xl">✅</span>
+                         <span><strong>Ponens:</strong> Premis 2 harus sama dengan <strong>Awal</strong> P1 (Sebab)</span>
+                      </li>
+                      <li class="flex gap-3 text-body-md text-Secondary-800">
+                         <span class="text-xl">✅</span>
+                         <span><strong>Tollens:</strong> Premis 2 harus <strong>Ingkaran Akhir</strong> P1 (Akibat)</span>
+                      </li>
+                      <li class="flex gap-3 text-body-md text-Secondary-800">
+                         <span class="text-xl">✅</span>
+                         <span><strong>Silogisme:</strong> Cari kata yang sama di P1 dan P2 untuk dicoret</span>
+                      </li>
+                    </ul>
+                    <img src="/images/characters/mascot-blue.png" alt="Mascot" class="absolute -bottom-0 -right-2 w-40 my-0 h-auto pointer-events-none" />
+                 </div>
+              </div>
+            </section>
+
+            <!-- Strategi -->
+            <section class="bg-Grayscale-50 p-8 rounded-md border-2 border-Grayscale-200">
+              <h3 class="text-h3 font-heading text-Grayscale-900 mb-6 font-bold mt-0">Strategi Mengerjakan</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-sm border border-Grayscale-200 shadow-sm">
+                   <p class="font-bold text-body-l text-Primary-600 mb-1 my-0">1. Identifikasi Hubungan</p>
+                   <p class="text-body-md text-Grayscale-900 my-0">Tentukan apakah soal menggunakan konjungsi, disjungsi, atau implikasi. Cari kata kunci (jika, maka, dan, atau).</p>
+                </div>
+                <div class="bg-white p-5 rounded-sm border border-Grayscale-200 shadow-sm">
+                   <p class="font-bold text-body-l text-Primary-600 mb-1 my-0">2. Gunakan Simbol Dasar</p>
+                   <p class="text-body-md text-Grayscale-900 my-0">Ubah kalimat menjadi simbol (p, q, r) jika soal terasa rumit untuk menghindari jebakan interpretasi bahasa.</p>
+                </div>
+                <div class="bg-white p-5 rounded-sm border border-Grayscale-200 shadow-sm">
+                   <p class="font-bold text-body-l text-Primary-600 mb-1 my-0">3. Waspadai Jebakan</p>
+                   <p class="text-body-md text-Grayscale-900 my-0">Jangan menyimpulkan sesuatu yang tidak ada di premis. Ingat: ~p dalam Ponens dan q dalam Tollens tidak menghasilkan kesimpulan!</p>
+                </div>
+                <div class="bg-white p-5 rounded-sm border border-Grayscale-200 shadow-sm">
+                   <p class="font-bold text-body-l text-Primary-600 mb-1 my-0">4. Prinsip Ekuivalensi</p>
+                   <p class="text-body-md text-Grayscale-900 my-0">Jika pilihan jawaban tidak ada yang cocok, coba ubah bentuk kesimpulan menggunakan rumus ekuivalensi (p ⇒ q ≡ ~p v q).</p>
+                </div>
+              </div>
+            </section>
           </div>
         `,
       },
@@ -177,8 +474,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q1",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nJika Haikal berlatih dance di sanggar, maka Mahen akan datang\nEkuivalensi dari pernyataan tersebut adalah…",
+            context:
+              "Perhatikan pernyataan berikut!\nJika Haikal berlatih dance di sanggar, maka Mahen akan datang.",
+            question: "Ekuivalensi dari pernyataan tersebut adalah…",
             options: [
               {
                 id: "a",
@@ -206,8 +504,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q2",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nJika aku belajar giat, maka aku akan diterima di PTN impian.\nIngkaran dari pernyataan tersebut adalah...",
+            context:
+              "Perhatikan pernyataan berikut!\nJika aku belajar giat, maka aku akan diterima di PTN impian.",
+            question: "Ingkaran dari pernyataan tersebut adalah...",
             options: [
               {
                 id: "a",
@@ -238,8 +537,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q3",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nDani tidak pergi ke hutan sendiri atau ia tersesat.\nJika ia tersesat, maka ia tidak bisa pulang.",
             question:
-              "Perhatikan pernyataan berikut!\nDani tidak pergi ke hutan sendiri atau ia tersesat.\nJika ia tersesat, maka ia tidak bisa pulang.\nKesimpulan yang paling tepat dari pernyataan tersebut adalah…",
+              "Kesimpulan yang paling tepat dari pernyataan tersebut adalah…",
             options: [
               {
                 id: "a",
@@ -264,8 +565,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q4",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nJika Dong Yeon tidak pergi ke sekolah, maka ia sakit.\nHari ini, Dong Yeon pergi ke sekolah.",
             question:
-              "Perhatikan pernyataan berikut!\nJika Dong Yeon tidak pergi ke sekolah, maka ia sakit.\nHari ini, Dong Yeon pergi ke sekolah.\nBerdasarkan informasi tersebut, kesimpulan yang paling tepat…",
+              "Berdasarkan informasi tersebut, kesimpulan yang paling tepat…",
             options: [
               { id: "a", text: "Dong Yeon sehat." },
               { id: "b", text: "Dong Yeon sakit." },
@@ -284,8 +587,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q5",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nRitsuki tidak tidur dengan cukup atau ia berolahraga.\nJika ia tidak tumbuh tinggi, maka ia tidak berolahraga.\nRitsuki tidak tumbuh tinggi atau orang-orang akan menyukainya.",
             question:
-              "Perhatikan pernyataan berikut!\nRitsuki tidak tidur dengan cukup atau ia berolahraga.\nJika ia tidak tumbuh tinggi, maka ia tidak berolahraga.\nRitsuki tidak tumbuh tinggi atau orang-orang akan menyukainya.\nNegasi dari kesimpulan yang paling tepat dari pernyataan tersebut adalah…",
+              "Negasi dari kesimpulan yang paling tepat dari pernyataan tersebut adalah…",
             options: [
               {
                 id: "a",
@@ -301,7 +606,7 @@ const seedSimpulanLogis = async () => {
               },
               {
                 id: "d",
-                text: "Ritsuki tidak tidur dengan cukup and ia berolahraga.",
+                text: "Ritsuki tidak tidur dengan cukup dan ia berolahraga.",
               },
               {
                 id: "e",
@@ -316,8 +621,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q6",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nJika aku mendapatkan beasiswa, maka aku tidak membayar UKT.\nJika aku tidak membayar UKT, maka aku meringankan beban ibu.\nJika aku meringankan beban ibu, maka adik bisa sekolah.\nAdik tidak bisa sekolah.",
             question:
-              "Perhatikan pernyataan berikut!\nJika aku mendapatkan beasiswa, maka aku tidak membayar UKT.\nJika aku tidak membayar UKT, maka aku meringankan beban ibu.\nJika aku meringankan beban ibu, maka adik bisa sekolah.\nAdik tidak bisa sekolah.\nKesimpulan yang paling tepat dari pernyataan tersebut adalah…",
+              "Kesimpulan yang paling tepat dari pernyataan tersebut adalah…",
             options: [
               { id: "a", text: "Aku mendapatkan beasiswa." },
               { id: "b", text: "Aku tidak meringankan beban ibu." },
@@ -333,8 +640,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q7",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nSemua penipu pandai bicara dan ramah.\nTuan D tidak ramah, tetapi pandai berbicara.\nKesimpulan yang paling tepat adalah…",
+            context:
+              "Perhatikan pernyataan berikut!\nSemua penipu pandai bicara dan ramah.\nTuan D tidak ramah, tetapi pandai berbicara.",
+            question: "Kesimpulan yang paling tepat adalah…",
             options: [
               { id: "a", text: "Tuan D seorang penipu yang pandai bicara." },
               {
@@ -359,8 +667,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q8",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nJehan tidak lolos seleksi atau ia menjadi relawan.\nJika Jehan menjadi relawan, maka ia mendapatkan teman baru.\nJika Jehan tidak senang, maka ia tidak mendapatkan teman baru.",
             question:
-              "Perhatikan pernyataan berikut!\nJehan tidak lolos seleksi atau ia menjadi relawan.\nJika Jehan menjadi relawan, maka ia mendapatkan teman baru.\nJika Jehan tidak senang, maka ia tidak mendapatkan teman baru.\nKesimpulan yang paling tepat dari pernyataan tersebut adalah…",
+              "Kesimpulan yang paling tepat dari pernyataan tersebut adalah…",
             options: [
               {
                 id: "a",
@@ -373,7 +683,7 @@ const seedSimpulanLogis = async () => {
               { id: "c", text: "Jehan tidak lolos seleksi atau ia senang." },
               {
                 id: "d",
-                text: "Jika Jehan tidak lolos seleksi, maka iatidak senang.",
+                text: "Jika Jehan tidak lolos seleksi, maka ia tidak senang.",
               },
               { id: "e", text: "Jika Jehan lolos seleksi, maka ia senang." },
             ],
@@ -385,8 +695,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q9",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nSemua calon mahasiswa menempuh tes bahasa Inggris.\nSebagian calon mahasiswa memiliki skor TOEFL diatas 450.\nSimpulan yang tepat adalah…",
+            context:
+              "Perhatikan pernyataan berikut!\nSemua calon mahasiswa menempuh tes bahasa Inggris.\nSebagian calon mahasiswa memiliki skor TOEFL diatas 450.",
+            question: "Simpulan yang tepat adalah…",
             options: [
               {
                 id: "a",
@@ -417,8 +728,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q10",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nTidak ada buah stroberi kecuali berwarna putih dan merah.\nYuko menerima stroberi bukan putih, bukan merah.",
             question:
-              "Perhatikan pernyataan berikut!\nTidak ada buah stroberi kecuali berwarna putih dan merah.\nYuko menerima stroberi bukan putih, bukan merah.\nSimpulan yang tepat tentang buah yang diterima oleh Yuko adalah….",
+              "Simpulan yang tepat tentang buah yang diterima oleh Yuko adalah…",
             options: [
               { id: "a", text: "Buah stroberi warna putih." },
               { id: "b", text: "Buah stroberi warna merah." },
@@ -434,8 +747,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q11",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nSemua cangkir berbentuk oval.\nSebagian cangkir berisi kopi.\nSimpulan yang tepat adalah...",
+            context:
+              "Perhatikan pernyataan berikut!\nSemua cangkir berbentuk oval.\nSebagian cangkir berisi kopi.",
+            question: "Simpulan yang tepat adalah...",
             options: [
               { id: "a", text: "Cangkir berisi susu bentuknya tidak oval." },
               {
@@ -452,7 +766,7 @@ const seedSimpulanLogis = async () => {
               },
               {
                 id: "e",
-                text: "Ada cangkir yang berisi susu and berbentuk oval.",
+                text: "Ada cangkir yang berisi susu dan berbentuk oval.",
               },
             ],
             correctAnswer: "d",
@@ -463,8 +777,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q12",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nSemua kerabat dekat menghadiri pesta keluarga.\nPutu menghadiri pesta keluarga, sedangkan Made tidak hadir.\nSimpulan yang tepat adalah...",
+            context:
+              "Perhatikan pernyataan berikut!\nSemua kerabat dekat menghadiri pesta keluarga.\nPutu menghadiri pesta keluarga, sedangkan Made tidak hadir.",
+            question: "Simpulan yang tepat adalah...",
             options: [
               { id: "a", text: "Putu bukan kerabat dekat keluarga." },
               { id: "b", text: "Made bukan kerabat dekat keluarga." },
@@ -480,8 +795,9 @@ const seedSimpulanLogis = async () => {
           {
             id: "q13",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nPada hari libur nasional, toko pakaian tutup kecuali untuk toko yang menjual kebutuhan pokok.\nHari Jumat adalah salah satu hari libur nasional.\nSimpulan yang tepat adalah…",
+            context:
+              "Perhatikan pernyataan berikut!\nPada hari libur nasional, toko pakaian tutup kecuali untuk toko yang menjual kebutuhan pokok.\nHari Jumat adalah salah satu hari libur nasional.",
+            question: "Simpulan yang tepat adalah…",
             options: [
               { id: "a", text: "Toko pakaian buka, meskipun pada hari Jumat." },
               {
@@ -509,8 +825,10 @@ const seedSimpulanLogis = async () => {
           {
             id: "q14",
             type: "multiple-choice",
+            context:
+              "Perhatikan pernyataan berikut!\nAli tidak menonton film atau Ali bisa bermain gitar.\nJika Ali bisa bermain gitar, maka Ali bisa bermain musik di acara keluarga.",
             question:
-              "Perhatikan pernyataan berikut!\nAli tidak menonton film atau Ali bisa bermain gitar.\nJika Ali bisa bermain gitar, maka Ali bisa bermain musik di acara keluarga.\nSimpulan yang tepat dari dua pernyataan tersebut adalah...",
+              "Simpulan yang tepat dari dua pernyataan tersebut adalah...",
             options: [
               {
                 id: "a",
@@ -541,12 +859,13 @@ const seedSimpulanLogis = async () => {
           {
             id: "q15",
             type: "multiple-choice",
-            question:
-              "Perhatikan pernyataan berikut!\nJika hari ini tidak hujan, maka Dimas latihan basket.\nJika Dimas main sepak bola maka ia tidak latihan basket.\nDimas main sepak bola.\nMaka kesimpulan yang tepat adalah....",
+            context:
+              "Perhatikan pernyataan berikut!\nJika hari ini tidak hujan, maka Dimas latihan basket.\nJika Dimas main sepak bola maka ia tidak latihan basket.\nDimas main sepak bola.",
+            question: "Maka kesimpulan yang tepat adalah....",
             options: [
               { id: "a", text: "Dimas malas latihan basket." },
               { id: "b", text: "Dimas tidak latihan basket." },
-              { id: "c", text: "Dimas latihan basket and main bola." },
+              { id: "c", text: "Dimas latihan basket dan main bola." },
               { id: "d", text: "Hari ini tidak hujan." },
               { id: "e", text: "Hari ini hujan." },
             ],
@@ -564,6 +883,7 @@ const seedSimpulanLogis = async () => {
       _id: moduleId,
       name: "Simpulan Logis",
       description: "Materi penalaran logis dan penarikan kesimpulan.",
+      subcategory: "Penalaran Deduktif",
       courseId: course._id,
       steps: stepsData,
       points_available: 100,

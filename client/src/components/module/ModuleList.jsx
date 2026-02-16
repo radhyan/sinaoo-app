@@ -118,6 +118,7 @@ export default function ModuleList({ course, onBack }) {
                   <ModuleCard
                     title={module.name}
                     category={course.name}
+                    subcategory={module.subcategory}
                     points={
                       isCompleted ? userProgress.score : module.totalPoints
                     }
@@ -129,11 +130,9 @@ export default function ModuleList({ course, onBack }) {
                     secondaryHref={secondaryHref}
                     isCompleted={isCompleted}
                     className={
-                      isCompleted
-                        ? "bg-Secondary-100 border-Secondary-200"
-                        : currentStep > 0
-                          ? "border-Primary-200"
-                          : ""
+                      !isCompleted && currentStep > 0
+                        ? "border-Primary-200"
+                        : ""
                     }
                   />
                 </div>

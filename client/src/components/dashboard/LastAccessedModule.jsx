@@ -79,7 +79,7 @@ export default function LastAccessedModule({ username, className }) {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       <div className="flex flex-col gap-3">
-        {modules.map((module) => {
+        {modules.slice(0, 2).map((module) => {
           // Sync logic with ModuleList.jsx
           const isCompleted = module.isCompleted || false;
           const currentStep = module.currentStep;
@@ -100,6 +100,7 @@ export default function LastAccessedModule({ username, className }) {
               key={module.moduleId}
               title={module.title}
               category={module.category}
+              subcategory={module.subcategory}
               points={module.points}
               currentStep={currentStep}
               totalSteps={totalSteps}
@@ -111,7 +112,7 @@ export default function LastAccessedModule({ username, className }) {
         })}
       </div>
 
-      {modules.length > 0 && (
+      {modules.length < 2 && (
         <div className="flex justify-center mt-2 animate-in fade-in slide-in-from-top-2 duration-500">
           <Link to="/courses">
             <Button

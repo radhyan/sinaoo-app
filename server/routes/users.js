@@ -284,6 +284,7 @@ router.get("/:username/last-accessed", async (req, res) => {
           moduleId: p.moduleId,
           title: moduleDoc?.name || "Unknown Module",
           category: courseDoc?.name || "General",
+          subcategory: moduleDoc?.subcategory || "",
           points: totalPoints,
           currentStep: currentStepValue,
           totalSteps: totalSteps,

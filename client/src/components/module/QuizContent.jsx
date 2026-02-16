@@ -103,7 +103,7 @@ const QuizContent = ({
             </div>
           </div>
 
-          <h2 className="font-heading text-h4 text-Grayscale-900 my-4">
+          <h2 className="font-heading text-h4 text-Grayscale-900 my-4 whitespace-pre-line">
             {question.question}
           </h2>
 
@@ -120,7 +120,7 @@ const QuizContent = ({
 
           {/* Context / Reading Material for Question */}
           {question.context && (
-            <div className="mb-4 text-body-lg text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 rounded-lg border border-Grayscale-100 italic">
+            <div className="mb-4 text-body-l text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 rounded-lg border border-Grayscale-100">
               {question.context}
             </div>
           )}
