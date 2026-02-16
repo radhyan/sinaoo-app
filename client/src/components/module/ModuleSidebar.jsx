@@ -48,6 +48,7 @@ export default function ModuleSidebar({
   isOpen = true,
   onToggle,
   onExit,
+  isModuleCompleted: isModuleCompletedProp,
 }) {
   const [isTitleOverflowing, setIsTitleOverflowing] = useState(false);
   const titleRef = useRef(null);
@@ -61,7 +62,8 @@ export default function ModuleSidebar({
   const currentStepForBar =
     activeStepIndex !== -1 ? activeStepIndex + 1 : completedSteps + 1;
   const progressPercent = Math.round((completedSteps / totalSteps) * 100);
-  const isModuleCompleted = completedSteps === totalSteps;
+  const isModuleCompleted =
+    completedSteps === totalSteps || isModuleCompletedProp;
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -180,8 +182,9 @@ export default function ModuleSidebar({
         <div className="flex flex-col gap-1 w-full flex-1">
           {module.steps.map((step) => {
             const isActive = step.id === currentStepId;
-            const isLocked = step.status === "locked";
-            const isCompleted = step.status === "completed";
+            const isLocked = step.status === "locked" && !isModuleCompleted;
+            const isCompleted =
+              step.status === "completed" || isModuleCompleted;
 
             // Determine icon color
             let iconColorClass =

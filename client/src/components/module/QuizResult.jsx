@@ -135,8 +135,9 @@ const QuizResult = ({
         <div className="flex gap-4">
           {onRestart && (
             <Button
-              variant="outline"
+              variant="default"
               size="default"
+              shadow="blue"
               onClick={onRestart}
               leftIcon={<ArrowClockwiseIcon />}
             >

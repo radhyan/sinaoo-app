@@ -213,6 +213,23 @@ export default function ModuleDetail() {
   const handlePrev = () => {
     if (prevStep) {
       setCurrentStepId(prevStep.id);
+      if (isModuleCompleted && prevStep.type === "quiz") {
+        setViewMode("review");
+      } else {
+        setViewMode("content");
+      }
+      scrollToTop();
+    } else if (currentStepId === "result") {
+      // If on result page, prev goes to last step
+      const lastStep = steps[steps.length - 1];
+      if (lastStep) {
+        setCurrentStepId(lastStep.id);
+        if (isModuleCompleted && lastStep.type === "quiz") {
+          setViewMode("review");
+        } else {
+          setViewMode("content");
+        }
+      }
       scrollToTop();
     }
   };
@@ -270,6 +287,11 @@ export default function ModuleDetail() {
     });
     if (nextStep) {
       setCurrentStepId(nextStep.id);
+      if (isModuleCompleted && nextStep.type === "quiz") {
+        setViewMode("review");
+      } else {
+        setViewMode("content");
+      }
       scrollToTop();
     }
   };

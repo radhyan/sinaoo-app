@@ -112,15 +112,20 @@ export function useModuleProgress(moduleId, user, login) {
 
   useEffect(() => {
     if (moduleId && user) {
-      // Only fetch if moduleData is not loaded or if we switched to a different module
-      if (!moduleData || moduleData._id !== moduleId) {
-        const existingProgress = user.progress?.find(
-          (p) => p.moduleId === moduleId,
-        );
+      const existingProgress = user.progress?.find(
+        (p) => p.moduleId === moduleId,
+      );
+      // Fetch if not loaded, or if data is for different module,
+      // or if we just completed it and want to sync step statuses
+      if (
+        !moduleData ||
+        moduleData._id !== moduleId ||
+        (isModuleCompleted && moduleData.steps[0].status === "active")
+      ) {
         fetchModule(existingProgress);
       }
     }
-  }, [moduleId, user, moduleData, fetchModule]);
+  }, [moduleId, user, moduleData?._id, isModuleCompleted, fetchModule]);
 
   return {
     moduleData,

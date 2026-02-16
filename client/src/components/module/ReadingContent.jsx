@@ -1,5 +1,7 @@
 import parse, { domToReact } from "html-react-parser";
 import { Button } from "@/components/shared/ui/Button";
+import GradientIcon from "@/components/shared/ui/GradientIcon";
+import { WarningCircle } from "@phosphor-icons/react";
 
 const ReadingContent = ({ step }) => {
   const options = {
@@ -15,6 +17,24 @@ const ReadingContent = ({ step }) => {
           <Button variant="default" className="my-2">
             {domToReact(node.children, options)}
           </Button>
+        );
+      }
+
+      // Replace <span class="gradient-icon-warning"></span> with <GradientIcon icon={WarningCircle} variant="orange" size={32} />
+      if (
+        node.type === "tag" &&
+        node.name === "span" &&
+        node.attribs &&
+        node.attribs.class &&
+        node.attribs.class.includes("gradient-icon-warning")
+      ) {
+        return (
+          <GradientIcon
+            icon={WarningCircle}
+            variant="orange"
+            size={32}
+            className="shrink-0" // Prevent icon from shrinking
+          />
         );
       }
     },

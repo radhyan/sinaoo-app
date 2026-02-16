@@ -179,85 +179,193 @@ const seedSimpulanLogis = async () => {
             </section>
 
             <section>
-                <h3 class="text-h3 font-heading text-Primary-600 mb-6">Macam Ingkaran</h3>
+              <h3 class="text-h3 font-heading text-Primary-600 mb-6">Macam Ingkaran</h3>
+              
+              <div class="space-y-12">
                 
-                <div class="space-y-8 ">
-                  <!-- Formula Highlight Style for Negations -->
-                  <div class="bg-white p-6 rounded-md border-2 border-Primary-100 shadow-sm space-y-6">
-                    <div>
-                      <h5 class="text-h5 font-heading text-Primary-600 mb-4">&gt; Ingkaran Konjungsi: ~(p ^ q)</h5>
-                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
-                        <span class="text-h4 font-heading text-Primary-700">~(p ^ q) ≡ ~p v ~q</span>
-                      </div>
-                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p ^ q</span>
-                          <p class="text-body-l italic leading-relaxed">Adi suka sayur <strong>dan</strong> Ben suka buah</p>
-                        </div>
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
-                          <p class="text-body-l font-bold text-Primary-900">Adi <strong>tidak</strong> suka sayur <strong>atau</strong> Ben <strong>tidak</strong> suka buah</p>
-                        </div>
-                      </div>
+                <!-- 1. Konjungsi -->
+                <div>
+                  <h5 class="text-h5 font-heading text-Grayscale-900 mb-4 underline decoration-2 underline-offset-4">Pada kalimat berkonjungsi</h5>
+                  
+                  <!-- Rumus -->
+                  <div class="bg-Primary-100 px-6 py-3 rounded-sm w-fit mb-6">
+                     <span class="text-h4 font-heading text-Primary-900">~(p ∧ q) ≡ ~p v ~q</span>
+                  </div>
+
+                  <!-- Examples -->
+                  <div class="space-y-4">
+                    <!-- Row 1 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          p ∧ q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Adi suka sayur dan Ben suka buah
+                       </div>
                     </div>
 
-                    <div class="h-px bg-Grayscale-100 w-full"></div>
-
-                    <div>
-                      <h5 class="text-body-l font-bold text-Primary-600 mb-4">&gt; Ingkaran Disjungsi: ~(p v q)</h5>
-                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
-                        <span class="text-h4 font-bold text-Primary-700">~(p v q) ≡ ~p ^ ~q</span>
-                      </div>
-                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p v q</span>
-                          <p class="text-body-l italic leading-relaxed">Nenek menyulam <strong>atau</strong> kakek memancing</p>
-                        </div>
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
-                          <p class="text-body-l font-bold text-Primary-900">Nenek <strong>tidak</strong> menyulam <strong>dan</strong> kakek <strong>tidak</strong> memancing</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="h-px bg-Grayscale-100 w-full"></div>
-
-                    <div>
-                      <h5 class="text-h5 font-heading text-Primary-600 mb-4">&gt; Ingkaran Implikasi: ~(p ⇒ q)</h5>
-                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
-                        <span class="text-h4 font-heading text-Primary-700">~(p ⇒ q) ≡ p ^ ~q</span>
-                      </div>
-                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p ⇒ q</span>
-                          <p class="text-body-l italic leading-relaxed">Jika Tiar rajin olahraga, maka badannya bugar</p>
-                        </div>
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
-                          <p class="text-body-l font-bold text-Primary-900">Tiar rajin olahraga <strong>dan</strong> badannya <strong>tidak</strong> bugar</p>
-                        </div>
-                      </div>
+                    <!-- Row 2 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          ~(p ∧ q)
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          <strong>Tidak benar</strong> bahwa Adi suka sayur dan Ben suka buah
+                       </div>
                     </div>
 
-                    <div class="h-px bg-Grayscale-100 w-full"></div>
-
-                    <div>
-                      <h5 class="text-h5 font-heading text-Primary-600 mb-4">&gt; Ingkaran Biimplikasi: ~(p ⇔ q)</h5>
-                      <div class="bg-Primary-50 p-4 rounded-md border border-Primary-200 flex w-fit mb-4">
-                        <span class="text-h4 font-heading text-Primary-700">~(p ⇔ q) ≡ (p ^ ~q) v (~p ^ q)</span>
-                      </div>
-                      <div class="space-y-2 grid lg:grid-cols-1 xl:grid-cols-2 gap-4 align-center">
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Grayscale-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center">p ⇔ q</span>
-                          <p class="text-body-l italic leading-relaxed">Ibu pergi ke pasar <strong>jika dan hanya jika</strong> hari libur</p>
-                        </div>
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                          <span class="bg-Primary-100 px-4 py-2 w-fit h-fit rounded-sm font-bold text-body-l text-center text-Primary-900">NEGASI</span>
-                          <p class="text-body-l font-bold text-Primary-900">Ibu pergi ke pasar <strong>dan bukan</strong> hari libur <strong>atau</strong> Ibu <strong>tidak</strong> pergi ke pasar <strong>dan</strong> hari libur</p>
-                        </div>
-                      </div>
+                    <!-- Row 3 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          ~p v ~q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Adi <strong>tidak</strong> suka sayur atau Ben <strong>tidak</strong> suka buah
+                       </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- 2. Disjungsi -->
+                <div>
+                  <h5 class="text-h5 font-heading text-Grayscale-900 mb-4 underline decoration-2 underline-offset-4">Pada kalimat berdisjungsi</h5>
+                  
+                   <!-- Rumus -->
+                  <div class="bg-Primary-100 px-6 py-3 rounded-sm w-fit mb-6">
+                     <span class="text-h4 font-heading text-Primary-900">~(p v q) ≡ ~p ∧ ~q</span>
+                  </div>
+
+                  <!-- Examples -->
+                  <div class="space-y-4">
+                    <!-- Row 1 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          p v q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Nenek menyulam atau kakek memancing
+                       </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          ~(p v q)
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          <strong>Tidak benar</strong> bahwa nenek menyulam atau kakek memancing
+                       </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          ~p ∧ ~q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Nenek <strong>tidak</strong> menyulam dan kakek <strong>tidak</strong> memancing
+                       </div>
+                    </div>
+                  </div>
+
+                  <!-- Note Pill -->
+                  <div class="mt-8 flex justify-center w-full">
+                    <div class="bg-Primary-50 border border-Primary-200 px-6 py-4 rounded-sm flex items-center gap-4">
+                        <span class="gradient-icon-warning shrink-0"></span>
+                        <p class="text-body-l text-Grayscale-900 m-0">
+                          <strong>Ingat:</strong> Ingkaran dari <span class="font-bold text-Primary-600">dan (∧)</span> adalah <span class="font-bold text-Primary-600">atau (∨)</span>, sedangkan ingkaran dari <span class="font-bold text-Primary-600">atau (∨)</span> adalah <span class="font-bold text-Primary-600">dan (∧)</span>.
+                        </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Implikasi -->
+                <div>
+                  <h5 class="text-h5 font-heading text-Grayscale-900 mb-4 underline decoration-2 underline-offset-4">Pada kalimat berimplikasi</h5>
+                  
+                   <!-- Rumus -->
+                  <div class="bg-Primary-100 px-6 py-3 rounded-sm w-fit mb-6">
+                     <span class="text-h4 font-heading text-Primary-900">~(p ⇒ q) ≡ p ∧ ~q</span>
+                  </div>
+
+                  <!-- Examples -->
+                  <div class="space-y-4">
+                    <!-- Row 1 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          p ⇒ q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Jika Tiar rajin olahraga, maka badannya bugar
+                       </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          ~(p ⇒ q)
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          <strong>Tidak benar bahwa</strong> jika Tiar rajin olahraga, maka badannya bugar
+                       </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[140px] text-center border border-Warning-200">
+                          p ∧ ~q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Tiar rajin olahraga dan badannya <strong>tidak</strong> bugar
+                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. Biimplikasi -->
+                <div>
+                  <h5 class="text-h5 font-heading text-Grayscale-900 mb-4 underline decoration-2 underline-offset-4">Pada kalimat berbiimplikasi</h5>
+                  
+                   <!-- Rumus -->
+                  <div class="bg-Primary-100 px-6 py-3 rounded-sm w-fit mb-6">
+                     <span class="text-h4 font-heading text-Primary-900">~(p ⇔ q) ≡ (p ^ ~q) v (~p ^ q)</span>
+                  </div>
+
+                  <!-- Examples -->
+                  <div class="space-y-4">
+                    <!-- Row 1 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[160px] text-center border border-Warning-200">
+                          p ⇔ q
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Ibu pergi ke pasar <strong>jika dan hanya jika</strong> hari libur
+                       </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[160px] text-center border border-Warning-200">
+                          (p ∧ ~q) v (~p ∧ q)
+                       </div>
+                       <div class="bg-Warning-100/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Ibu pergi ke pasar <strong>dan bukan</strong> hari libur <strong>atau</strong> Ibu <strong>tidak</strong> pergi ke pasar <strong>dan</strong> hari libur
+                       </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                       <div class="bg-Warning-50/20 text-Warning-900 font-bold text-h5 px-6 py-3 rounded-sm min-w-[160px] text-center border border-Warning-200">
+                          (~p v ~q) ∧ (p v q)
+                       </div>
+                       <div class="bg-Warning-50/20 text-Grayscale-900 text-body-l px-6 py-3 rounded-sm w-full border border-Warning-200">
+                          Ibu <strong>tidak</strong> pergi ke pasar <strong>atau bukan</strong> hari libur <strong>dan</strong> Ibu pergi ke pasar <strong>atau</strong> hari libur
+                       </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </section>
           </div>
         `,

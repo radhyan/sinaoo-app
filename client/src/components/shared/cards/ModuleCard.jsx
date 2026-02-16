@@ -109,7 +109,7 @@ export default function ModuleCard({
             size="default"
             fullWidth={!secondaryActionLabel}
             className={secondaryActionLabel ? "flex-1" : "w-full"}
-            variant={isCompleted ? "secondary" : "default"}
+            variant={isCompleted ? "default" : "default"}
             shadow="orange"
             onClick={(e) => {
               e.stopPropagation();

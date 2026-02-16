@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 350">
+  <!-- Background -->
+  <rect width="500" height="350" fill="white" />
+
+  <!-- Grid/Axis (Optional, kept clean) -->
+
+  <!-- Lines -->
+  <!-- Vertical: St - Sk - N - D -->
+  <line x1="150" y1="40" x2="150" y2="280" stroke="#334155" stroke-width="2" />
+  
+  <!-- Horizontal: B - N - A - E -->
+  <line x1="50" y1="200" x2="450" y2="200" stroke="#334155" stroke-width="2" />
+
+  <!-- Vertical: A - C -->
+  <line x1="390" y1="200" x2="390" y2="280" stroke="#334155" stroke-width="2" />
+
+  <!-- Horizontal: D - C -->
+  <line x1="150" y1="280" x2="390" y2="280" stroke="#334155" stroke-width="2" />
+
+  <!-- Diagonal: St - E (Answer path) -->
+  <line x1="150" y1="40" x2="450" y2="200" stroke="#EF4444" stroke-width="2" stroke-dasharray="5,5" />
+
+  <!-- Nodes -->
+  <!-- St (0, 8) -> (150, 40) -->
+  <circle cx="150" cy="40" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="150" y="45" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">St</text>
+
+  <!-- Sk (0, 5) -> (150, 100) -->
+  <circle cx="150" cy="100" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="150" y="105" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">Sk</text>
+
+  <!-- N (0, 0) -> (150, 200) -->
+  <circle cx="150" cy="200" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="150" y="205" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">N</text>
+
+  <!-- B (-5, 0) -> (50, 200) -->
+  <circle cx="50" cy="200" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="50" y="205" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">B</text>
+
+  <!-- A (12, 0) -> (390, 200) -->
+  <circle cx="390" cy="200" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="390" y="205" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">A</text>
+
+  <!-- E (15, 0) -> (450, 200) -->
+  <circle cx="450" cy="200" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="450" y="205" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">E</text>
+
+  <!-- C (12, -4) -> (390, 280) -->
+  <circle cx="390" cy="280" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="390" y="285" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">C</text>
+
+  <!-- D (0, -4) -> (150, 280) -->
+  <circle cx="150" cy="280" r="15" fill="#FCD34D" stroke="#F59E0B" stroke-width="2" />
+  <text x="150" y="285" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#78350F">D</text>
+
+  <!-- Distance Labels -->
+  <!-- St-Sk (3km) -->
+  <text x="160" y="70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">3 km</text>
+  <!-- Sk-N (5km) -->
+  <text x="160" y="150" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">5 km</text>
+  <!-- N-B (5km) -->
+  <text x="100" y="190" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">5 km</text>
+  <!-- N-A (12km) -->
+  <text x="270" y="190" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">12 km</text>
+  <!-- A-E (3km) -->
+  <text x="420" y="190" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">3 km</text>
+  <!-- A-C (4km) -->
+  <text x="400" y="240" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">4 km</text>
+  <!-- D-C (12km) -->
+  <text x="270" y="270" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">12 km</text>
+  
+  <!-- Question Mark -->
+  <text x="300" y="110" font-family="sans-serif" font-size="24" font-weight="bold" fill="#EF4444">?</text>
+
+</svg>
