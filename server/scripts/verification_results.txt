@@ -1,7 +1,6 @@
 
 Verifying Module Subcategories:
 --------------------------------
-ID: kesesuaian-pernyataan     | Subcategory: Penalaran Induktif
 ID: prediksi-data             | Subcategory: Penalaran Induktif
 ID: sebab-akibat              | Subcategory: Penalaran Induktif
 ID: simpulan-logis            | Subcategory: Penalaran Deduktif

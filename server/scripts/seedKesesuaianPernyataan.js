@@ -57,12 +57,7 @@ const seedKesesuaian = async () => {
         </table>
       </div>
 
-      <div class="flex flex-col gap-6 mb-8">
-        <div>
-           <span class="inline-block px-6 py-1 border-2 border-Primary-600 rounded-lg text-Primary-900 font-bold text-body-l">
-            Kesesuaian Pernyataan Berdasarkan Teks
-          </span>
-        </div>
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Kesesuaian Pernyataan Berdasarkan Teks</h3>
 
         <p class="text-body-l text-Grayscale-900 italic">
           Menentukan pernyataan yang sesuai dengan teks.
@@ -96,24 +91,14 @@ const seedKesesuaian = async () => {
         </ul>
       </div>
 
-      <div class="flex flex-col gap-6 mb-8">
-        <div>
-          <span class="inline-block px-6 py-1 border-2 border-Primary-600 rounded-lg text-Primary-900 font-bold text-body-l">
-            Kesesuaian Pernyataan Berdasarkan Tabel
-          </span>
-        </div>
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Kesesuaian Pernyataan Berdasarkan Tabel</h3>
         <p class="text-body-l text-Grayscale-900">
            Menentukan pernyataan yang sesuai dengan tabel. <br/>
            <strong>Tabel</strong>: Menampilkan data dalam baris dan kolom.
         </p>
       </div>
 
-      <div class="flex flex-col gap-6 mb-8">
-        <div>
-          <span class="inline-block px-6 py-1 border-2 border-Primary-600 rounded-lg text-Primary-900 font-bold text-body-l">
-            Kesesuaian Pernyataan Berdasarkan Grafik/Diagram
-          </span>
-        </div>
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Kesesuaian Pernyataan Berdasarkan Grafik/Diagram</h3>
         <p class="text-body-l text-Grayscale-900">
            Menentukan pernyataan yang sesuai dengan grafik atau diagram.
         </p>

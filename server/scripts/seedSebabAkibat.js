@@ -67,15 +67,10 @@ const seedSebabAkibat = async () => {
         </table>
       </div>
 
-      <div class="flex flex-col gap-6 mb-8">
-        <div>
-          <span class="inline-block px-6 py-1 border-2 border-Primary-600 rounded-lg text-Primary-900 font-bold text-body-l">
-            Rumus
-          </span>
-        </div>
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Rumus</h3>
 
         <div>
-          <h5 class="text-body-l font-bold text-Primary-600 mb-2">
+          <h5 class="text-body-l font-bold text-Primary-900 mb-2">
             &gt; Penyebab + Kata/Frasa + Akibat
           </h5>
           <div class="bg-white p-4 rounded-lg">
@@ -102,7 +97,7 @@ const seedSebabAkibat = async () => {
         </div>
 
         <div>
-          <h5 class="text-body-l font-bold text-Primary-600 mb-2">
+          <h5 class="text-body-l font-bold text-Primary-900 mb-2">
             &gt; Kata/Frasa + Penyebab, + Akibat
           </h5>
           <div class="bg-white p-4 rounded-lg">
@@ -129,12 +124,7 @@ const seedSebabAkibat = async () => {
         </div>
       </div>
 
-      <div class="flex flex-col gap-6 mb-8">
-        <div>
-          <span class="inline-block px-6 py-1 border-2 border-Primary-600 rounded-lg text-Primary-900 font-bold text-body-l">
-            Kata/Frasa yang Sering digunakan
-          </span>
-        </div>
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Kata/Frasa yang Sering digunakan</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
@@ -166,16 +156,11 @@ const seedSebabAkibat = async () => {
         </div>
       </div>
 
-      <div class="flex flex-col gap-6 mb-8">
-        <div>
-          <span class="inline-block px-6 py-1 border-2 border-Primary-600 rounded-lg text-Primary-900 font-bold text-body-l">
-            Kata Kunci
-          </span>
-        </div>
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Kata Kunci</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
           <div>
-            <h5 class="font-bold text-Primary-600 text-lg mb-4">
+            <h5 class="font-bold text-Primary-900 text-lg mb-4">
               Akibat - Sebab
             </h5>
             <ul class="space-y-3 text-Grayscale-700 font-medium">
@@ -189,7 +174,7 @@ const seedSebabAkibat = async () => {
             </ul>
           </div>  
           <div>
-            <h5 class="font-bold text-Primary-600 text-lg mb-4">
+            <h5 class="font-bold text-Primary-900 text-lg mb-4">
               Sebab - Akibat
             </h5>
             <ul class="space-y-3 text-Grayscale-700 font-medium">

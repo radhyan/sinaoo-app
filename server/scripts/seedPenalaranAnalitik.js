@@ -29,7 +29,7 @@ const seedPenalaranAnalitik = async () => {
             
             <!-- 1. Pengertian -->
             <section>
-              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Pengertian</h2>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Pengertian</h3>
               <p class="text-body-l font-sans leading-relaxed mb-6">
                 Penalaran Analitik merupakan bagian dari penalaran deduktif. Berikut perbedaannya dengan penalaran deduktif umum.
               </p>
@@ -72,7 +72,7 @@ const seedPenalaranAnalitik = async () => {
 
             <!-- 2. Strategi -->
             <section>
-              <h3 class="text-h3 font-heading text-Primary-600 mb-6">Strategi Mengerjakan</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Strategi Mengerjakan</h3>
               <div class="bg-Secondary-50 p-4 rounded-lg border-2 border-Secondary-200">
                 <ul class="space-y-2">
                   <li class="flex gap-4 items-center my-0">
@@ -93,11 +93,11 @@ const seedPenalaranAnalitik = async () => {
 
             <!-- 3. Contoh Soal -->
             <section>
-               <h3 class="text-h3 font-heading text-Primary-600 mb-6">Contoh Penerapan</h3>
+               <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Contoh Penerapan</h3>
                
                <!-- Contoh 1 -->
                <div class="mb-12">
-                  <h4 class="text-h4 font-heading text-Primary-800 mb-4 border-l-4 border-Primary-500 pl-4 py-1">Contoh Soal 1: Analisis Posisi/Jarak</h4>
+                  <h4 class="text-h4 font-heading text-Primary-800 mb-4">Contoh Soal 1: Analisis Posisi/Jarak</h4>
                   <div class="bg-white rounded-lg border-2 border-Grayscale-200 p-8 shadow-sm mb-6">
                   <div class="flex flex-col md:flex-row gap-8 items-start">
                     <div class="flex-1">
@@ -147,7 +147,7 @@ const seedPenalaranAnalitik = async () => {
 
                <!-- Contoh 2 -->
                <div>
-                  <h4 class="text-h4 font-heading text-Primary-800 mb-4 border-l-4 border-Primary-500 pl-4 py-1">Contoh Soal 2: Analisis Informasi</h4>
+                  <h4 class="text-h4 font-heading text-Primary-800 mb-4">Contoh Soal 2: Analisis Informasi</h4>
                   <div class="bg-white rounded-lg border-2 border-Grayscale-200 p-8 shadow-sm mb-6">
                     <p class="text-body-l leading-relaxed mb-4">Tiga kardus buku dibagikan kepada lima kelompok dengan ketentuan sebagai berikut:</p>
                     <ul class="list-disc pl-5 space-y-2 mb-6 text-body-l">

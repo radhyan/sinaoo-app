@@ -68,7 +68,11 @@ export default function ModuleSidebar({
   useEffect(() => {
     const checkOverflow = () => {
       if (titleRef.current && containerRef.current) {
-        const titleWidth = titleRef.current.scrollWidth;
+        // Measure first span for the true width of one title
+        const titleSpan = titleRef.current.querySelector("span");
+        if (!titleSpan) return;
+
+        const titleWidth = titleSpan.scrollWidth;
         const containerWidth = containerRef.current.clientWidth;
         const overflow = titleWidth > containerWidth;
 
@@ -78,8 +82,15 @@ export default function ModuleSidebar({
         });
 
         if (overflow) {
-          const dist = titleWidth - containerWidth;
+          const gap = 40; // Correspond to pl-10
+          const dist = titleWidth + gap;
           titleRef.current.style.setProperty("--scroll-dist", `-${dist}px`);
+          // Adjust duration based on distance for consistent speed (e.g. 50px per second)
+          const duration = Math.max(8, dist / 50);
+          titleRef.current.style.setProperty(
+            "--scroll-duration",
+            `${duration}s`,
+          );
         }
       }
     };
@@ -105,11 +116,11 @@ export default function ModuleSidebar({
     >
       <style>{`
         @keyframes running-text {
-          0%, 15% { transform: translateX(0); }
-          85%, 100% { transform: translateX(var(--scroll-dist)); }
+          from { transform: translateX(0); }
+          to { transform: translateX(var(--scroll-dist)); }
         }
         .animate-running-text {
-          animation: running-text 8s linear infinite alternate;
+          animation: running-text var(--scroll-duration, 8s) linear infinite;
         }
         .animate-running-text:hover {
           animation-play-state: paused;
@@ -134,18 +145,21 @@ export default function ModuleSidebar({
             >
               <div
                 className={cn(
-                  "whitespace-nowrap font-heading text-h5 text-Grayscale-900",
-                  isTitleOverflowing ? "animate-running-text" : "truncate",
+                  "font-heading text-h5 text-Grayscale-900 whitespace-nowrap",
+                  isTitleOverflowing ? "flex animate-running-text" : "truncate",
                 )}
                 ref={titleRef}
               >
-                {module.title}
+                <span>{module.title}</span>
+                {isTitleOverflowing && (
+                  <span className="pl-10">{module.title}</span>
+                )}
               </div>
               {/* Fade Overlay for Running Text */}
               {isTitleOverflowing && (
                 <>
-                  <div className="absolute left-0 top-0 bottom-0 w-4 pointer-events-none z-10" />
-                  <div className="absolute right-0 top-0 bottom-0 w-4 pointer-events-none z-10" />
+                  <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-w-lb to-transparent pointer-events-none z-10" />
+                  <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-w-lb to-transparent pointer-events-none z-10" />
                 </>
               )}
             </div>

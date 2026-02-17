@@ -4,6 +4,7 @@ import { Button } from "@/components/shared/ui/Button";
 import { FlagIcon } from "@phosphor-icons/react";
 import MultipleChoiceQuestion from "./quiz/MultipleChoiceQuestion";
 import MatrixQuestion from "./quiz/MatrixQuestion";
+import ShortAnswerQuestion from "./quiz/ShortAnswerQuestion";
 import {
   Tooltip,
   TooltipContent,
@@ -140,6 +141,14 @@ const QuizContent = ({
               question={question}
               answer={answers[question.id]}
               onSelect={handleMatrixSelect}
+            />
+          )}
+
+          {question.type === "short-answer" && (
+            <ShortAnswerQuestion
+              question={question}
+              answer={answers[question.id]}
+              onSelect={handleOptionSelect}
             />
           )}
         </div>

@@ -28,6 +28,7 @@ const seedPrediksiData = async () => {
         status: "active",
         description: "Materi Bacaan",
         content: `
+        <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Penalaran Induktif (Prediksi Data/Simpulan)</h3>
       <p class="mb-6 text-body-l text-Grayscale-900">
         Prediksi data adalah kemampuan kita untuk <strong>memperkirakan atau menebak suatu kejadian di masa depan berdasarkan data yang telah ada</strong>. Artinya <em>studymates</em> perlu mencoba melihat ke depan dengan menggunakan informasi dari masa lalu.
       </p>
@@ -49,7 +50,7 @@ const seedPrediksiData = async () => {
             <!-- Tren Naik -->
             <tr>
               <td class="text-body-md p-4 align-top text-Grayscale-900 border border-Primary-400" style="border-color: #3a74ea; width: 50%;">
-                <div class="font-bold text-Primary-600 mb-2 text-h5">Tren Naik</div>
+                <div class="font-bold text-Primary-900 mb-2 text-h5">Tren Naik</div>
                 <p>Data secara umum cenderung <strong>meningkat</strong> dari waktu ke waktu.</p>
                 <p class="text-Grayscale-600 italic mt-2">Jika data tren nya naik maka kita bisa memprediksi data statistik berikutnya akan naik.</p>
               </td>

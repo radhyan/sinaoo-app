@@ -107,18 +107,39 @@ export default function ModuleDetail() {
   };
 
   useEffect(() => {
+    if (moduleId) {
+      setCurrentStepId(null);
+      setViewMode(
+        modeParam === "result"
+          ? "result"
+          : modeParam === "review"
+            ? "review"
+            : "content",
+      );
+    }
+  }, [moduleId, modeParam]);
+
+  useEffect(() => {
     if (modeParam === "reset" && moduleData && user) {
       handleRestart();
     } else if (modeParam === "result") {
       setViewMode("result");
       setCurrentStepId("result");
     }
-  }, [modeParam, moduleData, user]);
+  }, [modeParam, moduleData?._id, user?._id]);
 
   useEffect(() => {
-    if (!currentStepId && steps.length > 0 && viewMode === "content") {
-      const activeStep = steps.find((s) => s.status === "active") || steps[0];
-      setCurrentStepId(activeStep.id);
+    // Only auto-initialize if we're in content mode and have steps
+    if (steps.length > 0 && viewMode === "content") {
+      // If currentStepId is null OR it's not present in the current module's steps (stale ID from prev module)
+      const isStaleOrNull =
+        !currentStepId || !steps.some((s) => s.id === currentStepId);
+
+      if (isStaleOrNull) {
+        const activeStep = steps.find((s) => s.status === "active") || steps[0];
+        console.log("[ModuleDetail] Initializing step:", activeStep.id);
+        setCurrentStepId(activeStep.id);
+      }
     }
   }, [steps, currentStepId, viewMode]);
 
@@ -129,6 +150,10 @@ export default function ModuleDetail() {
         // Find current progress index to avoid resetting anything
         const idx = steps.findIndex((s) => s.id === currentStepId);
         if (idx !== -1) {
+          console.log(
+            "[ModuleDetail] Pinging progress for step:",
+            currentStepId,
+          );
           updateProgress({
             completedStepCount: idx,
             isFinished: false,
@@ -137,7 +162,7 @@ export default function ModuleDetail() {
       };
       pingProgress();
     }
-  }, [moduleId, user?._id]); // Only ping when moduleId or user changes
+  }, [moduleId, user?._id, currentStepId]); // Now includes currentStepId as dependency
 
   // Manual save trigger
   const handleSave = async () => {

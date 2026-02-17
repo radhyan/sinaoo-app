@@ -4,6 +4,7 @@ import { Button } from "@/components/shared/ui/Button";
 import { ArrowLeftIcon, CheckCircleIcon } from "@phosphor-icons/react";
 import MultipleChoiceQuestion from "./quiz/MultipleChoiceQuestion";
 import MatrixQuestion from "./quiz/MatrixQuestion";
+import ShortAnswerQuestion from "./quiz/ShortAnswerQuestion";
 import QuizNavigation from "./quiz/QuizNavigation";
 
 const QuizReview = ({ questions = [], answers = {}, onBack }) => {
@@ -38,6 +39,11 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
     } else if (q.type === "matrix") {
       return q.rows.every(
         (row) => ans[row.id] === (q.correctAnswers || {})[row.id],
+      );
+    } else if (q.type === "short-answer") {
+      return (
+        ans.toString().trim().toLowerCase() ===
+        q.correctAnswer.toString().trim().toLowerCase()
       );
     }
     return false;
@@ -114,6 +120,16 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
               answer={answers[question.id]}
               showResult={true}
               correctAnswers={question.correctAnswers}
+              onSelect={() => {}}
+            />
+          )}
+
+          {question.type === "short-answer" && (
+            <ShortAnswerQuestion
+              question={question}
+              answer={answers[question.id]}
+              showResult={true}
+              correctAnswer={question.correctAnswer}
               onSelect={() => {}}
             />
           )}

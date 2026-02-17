@@ -27,14 +27,14 @@ const seedSimpulanLogis = async () => {
         content: `
           <div class="space-y-10 text-Grayscale-900">
             <section>
-              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Pengertian Pernyataan</h2>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Pengertian Pernyataan</h3>
               <p class="text-body-l font-sans leading-relaxed">
                 Pernyataan adalah kalimat yang bernilai <strong>benar saja</strong> atau <strong>salah saja</strong>, tidak bisa bernilai benar dan salah sekaligus.
               </p>
             </section>
 
             <section>
-              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Pernyataan Majemuk</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Pernyataan Majemuk</h3>
               <p class="text-body-l font-sans leading-relaxed mb-6">
                 Pernyataan majemuk adalah kalimat yang dibentuk oleh dua pernyataan atau lebih dan dihubungkan dengan kata hubung tertentu.
               </p>
@@ -75,7 +75,7 @@ const seedSimpulanLogis = async () => {
             </section>
 
             <section class="space-y-6">
-              <h3 class="text-h3 font-heading text-Primary-600">Contoh Penerapan</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Contoh Penerapan</h3>
               
               <!-- Formula Box Style for Examples -->
               <div class="bg-white p-4 rounded-lg border-2 border-Primary-400 space-y-8">
@@ -124,7 +124,7 @@ const seedSimpulanLogis = async () => {
         content: `
           <div class="space-y-10 text-Grayscale-900">
             <section>
-              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Jenis Implikasi</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Jenis Implikasi</h3>
               <div class="bg-white rounded-lg border-2 border-Primary-400 overflow-hidden mb-6">
                  <table class="w-full text-left border-collapse my-0">
                   <thead class="bg-Primary-50">
@@ -156,7 +156,7 @@ const seedSimpulanLogis = async () => {
             </section>
 
             <section>
-              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Ingkaran dan Ekuivalensi</h2>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Ingkaran dan Ekuivalensi</h3>
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="bg-Secondary-50 p-6 rounded-md border-2 border-Secondary-400">
                    <h5 class="text-h5 font-heading text-Secondary-900 mb-2 mt-0">Ingkaran / Negasi (~)</h5>
@@ -179,7 +179,7 @@ const seedSimpulanLogis = async () => {
             </section>
 
             <section>
-              <h3 class="text-h3 font-heading text-Primary-600 mb-6">Macam Ingkaran</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Macam Ingkaran</h3>
               
               <div class="space-y-12">
                 
@@ -379,13 +379,13 @@ const seedSimpulanLogis = async () => {
           <div class="space-y-10 text-Grayscale-900">
 
             <section>
-              <h2 class="text-h3 font-heading text-Primary-600 mb-4">Penarikan Kesimpulan</h2>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Penarikan Kesimpulan</h3>
               <p class="text-body-l mb-8 font-sans leading-relaxed">Ada tiga metode utama dalam penarikan kesimpulan deduktif:</p>
             </section>
 
             <!-- Modus Ponens -->
             <section class="space-y-6">
-              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Modus Ponens</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Modus Ponens</h3>
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Ponens Valid -->
                 <div class="bg-white p-4 rounded-md border-2 border-Primary-400">
@@ -437,7 +437,7 @@ const seedSimpulanLogis = async () => {
 
             <!-- Modus Tollens -->
             <section class="space-y-6">
-              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Modus Tollens</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Modus Tollens</h3>
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Tollens Valid -->
                 <div class="bg-white p-4 rounded-md border-2 border-Primary-400">
@@ -489,7 +489,7 @@ const seedSimpulanLogis = async () => {
 
             <!-- Silogisme -->
             <section class="space-y-6">
-              <h3 class="text-h3 font-heading text-Primary-600 mb-4">Silogisme</h3>
+              <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Silogisme</h3>
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                  <div class="bg-white p-6 rounded-md border-2 border-Primary-400">
                     <div class="text-h4 font-heading text-Primary-600 text-left mb-6">P1: p ⇒ q<br/>P2: q ⇒ r<br/>∴ p ⇒ r</div>
