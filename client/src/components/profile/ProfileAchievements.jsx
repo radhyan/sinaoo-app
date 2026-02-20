@@ -19,8 +19,9 @@ export default function ProfileAchievements({
     .map((achievement) => {
       const earned = userAchievements.find(
         (ua) =>
-          ua.achievementId === achievement._id ||
-          ua.achievementId._id === achievement._id,
+          ua?.achievementId &&
+          (ua.achievementId === achievement._id ||
+            ua.achievementId._id === achievement._id),
       );
       return {
         details: achievement,

@@ -117,16 +117,16 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar py-1 px-4 overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar py-1 px-0 md:px-4 overflow-x-hidden">
       {/* Top Banner */}
-      <div className="w-full aspect-[21/4] bg-b-lb rounded-lg flex items-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
+      <div className="w-full min-h-[140px] md:min-h-0 md:aspect-[21/4] bg-b-lb rounded-lg flex items-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
         <img
           src={profileHeaderImg}
           alt="Profile Header"
           className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-Primary-600/20 to-transparent pointer-events-none" />
-        <h2 className="text-white font-heading text-h2 md:text-h2 px-12 xl:px-24 z-10 max-w-[60%]  text-left">
+        <h2 className="text-white font-heading text-h2 md:text-h3 px-6 md:px-12 xl:px-24 z-10 max-w-[80%] md:max-w-[60%] text-left">
           Selamat Pagi {user.name || user.username},<br />
           Tetap Semangat!
         </h2>
@@ -171,14 +171,14 @@ function Dashboard() {
 
         {/* Right: Last Accessed Module */}
         <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-8 duration-700 delay-500 fill-mode-both">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center md:items-start gap-3 mb-4">
             <GradientIcon
               icon={BookOpenTextIcon}
               size={40}
               weight="fill"
               variant="green"
             />
-            <h3 className="font-heading text-h3 text-Primary-900">
+            <h3 className="font-heading text-left text-h3 text-Primary-900">
               Modul Terakhir Diakses
             </h3>
           </div>

@@ -109,7 +109,7 @@ export default function Leaderboard() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-x-12 gap-y-8 flex-1 min-h-0">
         {/* Left Column: Your Rank & Champions */}
-        <div className="flex flex-col gap-8 min-h-0">
+        <div className="flex flex-col gap-8 min-h-0 h-full">
           {/* Section: Peringkatmu */}
           <section className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-6 duration-700 delay-100 fill-mode-both">
             <div className="flex gap-2 items-center">
@@ -157,7 +157,7 @@ export default function Leaderboard() {
                 Champions
               </h3>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 h-full">
               <ChampionsPodium topThree={topThree} />
             </div>
           </section>

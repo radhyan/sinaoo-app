@@ -1,5 +1,4 @@
 import React from "react";
-import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 import { StarIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { getUserAvatar } from "@/lib/avatar";
@@ -70,41 +69,39 @@ export default function ChampionsPodium({ topThree = [] }) {
   const baseHeight = "calc(100% - 170px)";
 
   return (
-    <InteractiveShadow intensity={0.8} tilt={false}>
-      <div className="bg-db-b rounded-xl pt-5 pb-0 px-8 flex flex-col h-full border border-Primary-50 overflow-hidden">
-        <div className="flex items-end gap-2 md:gap-4 h-full overflow-hidden">
-          {/* Rank 2 - Left */}
-          <PodiumColumn
-            rank={2}
-            user={second}
-            height={`calc(${baseHeight} * 2/3)`}
-            color="bg-dg-g"
-            labelColor="text-white opacity-50"
-            delay={200}
-          />
+    <div className="bg-db-b rounded-xl pt-5 pb-0 px-8 flex flex-col h-full border border-Primary-50 overflow-hidden shadow-blue-60">
+      <div className="flex items-end gap-2 md:gap-4 h-full overflow-hidden">
+        {/* Rank 2 - Left */}
+        <PodiumColumn
+          rank={2}
+          user={second}
+          height={`calc(${baseHeight} * 2/3)`}
+          color="bg-dg-g"
+          labelColor="text-white opacity-50"
+          delay={200}
+        />
 
-          {/* Rank 1 - Center */}
-          <PodiumColumn
-            rank={1}
-            user={first}
-            height={baseHeight}
-            color="bg-o-do"
-            labelColor="text-white opacity-50"
-            delay={0}
-          />
+        {/* Rank 1 - Center */}
+        <PodiumColumn
+          rank={1}
+          user={first}
+          height={baseHeight}
+          color="bg-o-do"
+          labelColor="text-white opacity-50"
+          delay={0}
+        />
 
-          {/* Rank 3 - Right */}
-          <PodiumColumn
-            rank={3}
-            user={third}
-            height={`calc(${baseHeight} * 1/2)`}
-            color="bg-p-lp"
-            labelColor="text-white opacity-50"
-            delay={400}
-          />
-        </div>
+        {/* Rank 3 - Right */}
+        <PodiumColumn
+          rank={3}
+          user={third}
+          height={`calc(${baseHeight} * 1/2)`}
+          color="bg-p-lp"
+          labelColor="text-white opacity-50"
+          delay={400}
+        />
       </div>
-    </InteractiveShadow>
+    </div>
   );
 }
 

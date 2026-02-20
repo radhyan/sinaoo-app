@@ -294,12 +294,11 @@ const seedSilogisme = async () => {
               
               <div class="bg-white rounded-md border-2 border-Primary-50 overflow-hidden shadow-sm mb-12">
                 <div class="bg-Primary-50 p-4 text-Primary-900 border-b-2 border-Primary-100 flex items-center justify-between">
-                  <h5 class="text-h5 font-bold m-0 font-heading">Contoh 1: Silogisme Kompleks</h5>
-                  <span class="bg-Primary-500 text-white text-xs px-2 py-1 rounded font-bold uppercase tracking-wider">Level: Sulit</span>
+                  <h4 class="text-h4 font-bold m-0 font-heading">Contoh 1: Silogisme Kompleks</h4>
                 </div>
                 
                 <div class="p-8">
-                  <div class="mb-8 p-6 bg-Grayscale-50 rounded-xl border-l-8 border-Primary-500 shadow-inner">
+                  <div class="mb-8 p-6 bg-Grayscale-50 border-l-8 rounded-sm border-Primary-500 shadow-inner">
                     <p class="text-body-l leading-relaxed italic text-Grayscale-800 m-0">
                       "Semua ilmuwan yang terkenal memiliki karya tulis yang berpengaruh. Albert Einstein adalah ilmuwan yang terkenal. Karya tulis yang berpengaruh sering dijadikan acuan dalam penelitian ilmiah."
                     </p>
@@ -308,66 +307,65 @@ const seedSilogisme = async () => {
                   <div class="space-y-4 mb-8">
                      <p class="font-bold text-body-l text-Primary-800">Pertanyaan: Kesimpulan yang tepat adalah...</p>
                      <div class="grid grid-cols-1 gap-3">
-                       <div class="p-4 border rounded-xl border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">A. Albert Einstein memiliki karya tulis yang berpengaruh.</div>
-                       <div class="p-4 border-2 border-Success-200 bg-Success-50 rounded-xl text-body-l font-bold text-Success-900 flex justify-between items-center group shadow-sm transition-all scale-[1.02]">
+                       <div class="p-4 border rounded-md border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">A. Albert Einstein memiliki karya tulis yang berpengaruh.</div>
+                       <div class="p-4 border-1 border-Success-200 bg-Success-50/50 rounded-md text-body-l font-bold text-Success-400 flex justify-between items-center group shadow-sm transition-all scale-[1.02]">
                           <span>B. Karya tulis Albert Einstein sering dijadikan acuan dalam penelitian ilmiah.</span>
-                          <div class="bg-Success-500 text-white text-xs px-2 py-1 rounded font-black">JAWABAN TEPAT</div>
                        </div>
-                       <div class="p-4 border rounded-xl border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">C. Semua ilmuwan memiliki karya tulis yang berpengaruh.</div>
-                       <div class="p-4 border rounded-xl border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">D. Albert Einstein adalah ilmuwan yang memiliki karya tulis.</div>
-                       <div class="p-4 border rounded-xl border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">E. Karya tulis ilmuwan terkenal hanya dijadikan acuan oleh ilmuwan lain.</div>
+                       <div class="p-4 border rounded-md border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">C. Semua ilmuwan memiliki karya tulis yang berpengaruh.</div>
+                       <div class="p-4 border rounded-md border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">D. Albert Einstein adalah ilmuwan yang memiliki karya tulis.</div>
+                       <div class="p-4 border rounded-md border-Grayscale-100 text-body-l hover:bg-Grayscale-50 transition-colors">E. Karya tulis ilmuwan terkenal hanya dijadikan acuan oleh ilmuwan lain.</div>
                      </div>
                   </div>
 
                   <!-- Pembahasan High Fidelity -->
-                  <div class="bg-Primary-50/50 rounded-2xl p-8 border-2 border-Primary-100">
-                    <h5 class="text-h5 font-bold text-Primary-800 mb-6 font-heading flex gap-3 items-center">
+                  <div class="bg-Primary-50/50 rounded-lg p-8 border-2 border-Primary-100">
+                    <h4 class="text-h4 font-bold text-Primary-800 mb-6 font-heading flex gap-3 items-center">
                       <div class="flex items-center justify-center w-10 h-10 rounded-full bg-Primary-500 text-white shadow-md">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       </div>
                       Pembahasan Logika:
-                    </h5>
+                    </h4>
                     <div class="space-y-8 text-body-l">
                        <!-- Premis 1 -->
-                       <div class="flex flex-wrap gap-x-4 gap-y-3 bg-white p-4 rounded-xl shadow-sm border border-Primary-50">
-                          <span class="text-Primary-700 font-bold bg-Primary-100 px-3 py-1 rounded-lg">Premis 1 (p &rarr; q)</span>
+                       <div class="flex items-center flex-wrap gap-x-4 gap-y-3 bg-white p-4 rounded-md shadow-sm border border-Primary-50">
+                          <span class="text-Primary-700 font-bold justify-center">Premis 1 (p &rarr; q)</span>
                           <span class="pt-1">Semua</span>
                           <div class="flex flex-col items-center">
                             <span class="border-b-2 border-Primary-400 px-1 font-bold text-Primary-900">ilmuwan yang terkenal</span>
-                            <span class="text-Primary-500 font-mono font-bold text-sm tracking-widest mt-1">label: p</span>
+                            <span class="text-Primary-500 font-mono font-bold text-l tracking-widest mt-1">p</span>
                           </div>
                           <span class="pt-1">, memiliki</span>
                           <div class="flex flex-col items-center">
                             <span class="border-b-2 border-Primary-400 px-1 font-bold text-Primary-900">karya tulis yang berpengaruh</span>
-                            <span class="text-Primary-500 font-mono font-bold text-sm tracking-widest mt-1">label: q</span>
+                            <span class="text-Primary-500 font-mono font-bold text-l tracking-widest mt-1">q</span>
                           </div>
                        </div>
 
                        <!-- Premis 2 -->
-                        <div class="flex flex-wrap gap-x-4 gap-y-3 bg-white p-4 rounded-xl shadow-sm border border-Primary-50">
-                          <span class="text-Primary-700 font-bold bg-Primary-100 px-3 py-1 rounded-lg">Premis 2 (r)</span>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-3 bg-white p-4 rounded-md shadow-sm border border-Primary-50">
+                          <span class="text-Primary-700 items-center font-bold justify-center">Premis 2 (r)</span>
                           <div class="flex flex-col items-center">
                             <span class="border-b-2 border-Primary-400 px-1 font-bold text-Primary-900 underline decoration-dotted underline-offset-4">Albert Einstein adalah ilmuwan yang terkenal</span>
-                            <span class="text-Primary-500 font-mono font-bold text-sm tracking-widest mt-1">label: r</span>
+                            <span class="text-Primary-500 font-mono font-bold text-l tracking-widest mt-1">r</span>
                           </div>
                        </div>
 
                        <!-- Premis 3 -->
-                        <div class="flex flex-wrap gap-x-4 gap-y-3 bg-white p-4 rounded-xl shadow-sm border border-Primary-50">
-                          <span class="text-Primary-700 font-bold bg-Primary-100 px-3 py-1 rounded-lg">Premis 3 (q &rarr; s)</span>
+                        <div class="flex flex-wrap items-center gap-x-4 gap-y-3 bg-white p-4 rounded-md shadow-sm border border-Primary-50">
+                          <span class="text-Primary-700 items-center font-bold justify-center">Premis 3 (q &rarr; s)</span>
                           <div class="flex flex-col items-center">
                             <span class="border-b-2 border-Primary-400 px-1 font-bold text-Primary-900">Karya tulis yang berpengaruh</span>
-                            <span class="text-Primary-500 font-mono font-bold text-sm tracking-widest mt-1">label: q</span>
+                            <span class="text-Primary-500 font-mono font-bold text-l tracking-widest mt-1">q</span>
                           </div>
                           <span class="pt-1">sering</span>
                           <div class="flex flex-col items-center">
                             <span class="border-b-2 border-Primary-400 px-1 font-bold italic text-Primary-900">dijadikan acuan dalam penelitian ilmiah</span>
-                            <span class="text-Primary-500 font-mono font-bold text-sm tracking-widest mt-1">label: s</span>
+                            <span class="text-Primary-500 font-mono font-bold text-l tracking-widest mt-1">s</span>
                           </div>
                        </div>
 
-                       <div class="bg-Primary-900 p-8 rounded-2xl shadow-xl transform translate-y-2">
-                         <p class="mb-4 text-Primary-100 font-sans tracking-wide uppercase text-xs font-bold">Kesimpulan Rantai Logika (Syllogism Chain):</p>
+                       <div class="bg-Primary-900 p-8 rounded-md shadow-xl transform translate-y-2">
+                         <p class="mb-4 mt-0 text-Primary-50 text-h5 font-bold">Kesimpulan Rantai Logika (Syllogism Chain):</p>
                          <ul class="list-none p-0 m-0 space-y-4 text-white">
                            <li class="flex items-center gap-3">
                               <span class="flex-shrink-0 w-8 h-8 rounded-full bg-Primary-700 flex items-center justify-center font-bold text-sm">1</span>
@@ -382,7 +380,7 @@ const seedSilogisme = async () => {
                               <span class="font-medium text-lg">q &rarr; s (Acuan Penelitian)</span>
                            </li>
                          </ul>
-                         <p class="mt-8 pt-6 border-t border-Primary-700 text-h4 text-Success-400 font-black font-heading tracking-tight leading-tight">
+                         <p class="mt-8 mb-0 pt-6 border-t border-Primary-700 text-h4 text-Primary-50 font-black font-heading tracking-tight leading-tight">
                            &there4; Karya tulis Albert Einstein sering dijadikan acuan dalam penelitian ilmiah.
                          </p>
                        </div>
@@ -406,9 +404,15 @@ const seedSilogisme = async () => {
                 </div>
 
                 <div class="p-8">
-                  <p class="text-h5 text-Secondary-900 mb-10 leading-relaxed font-heading bg-Secondary-50/50 p-6 rounded-2xl border-l-8 border-Secondary-500 italic shadow-inner">
-                    "Kelompok drama terdiri dari <strong>Fira, Gita, Harun, Indra, dan Joko</strong>."
-                  </p>
+                  <div class="text-h5 text-Secondary-900 mb-10 leading-relaxed font-heading bg-Secondary-50/50 p-6 rounded-2xl border-l-8 border-Secondary-500 shadow-inner">
+                    <p class="italic mb-4">"Kelompok drama terdiri dari <strong>Fira, Gita, Harun, Indra, dan Joko</strong>."</p>
+                    <ul class="list-disc list-outside pl-5 space-y-1 text-body-l not-italic font-sans">
+                      <li class="mb-0">Harun masuk sebelum Joko.</li>
+                      <li>Fira masuk setelah Gita, tetapi sebelum Indra.</li>
+                      <li>Joko masuk terakhir.</li>
+                      <li>Gita masuk sebelum Harun.</li>
+                    </ul>
+                  </div>
                   
                   <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-10">
                     <div class="space-y-6">
@@ -435,6 +439,17 @@ const seedSilogisme = async () => {
                           <span class="font-black text-Secondary-500 text-2xl">04</span>
                           <span class="text-body-l text-Grayscale-700">Gita masuk sebelum Harun.</span>
                         </div>
+                      </div>
+                      </div>
+                      
+                      <div class="mt-8">
+                        <h5 class="text-h5 font-bold text-Secondary-800 font-heading mb-4 border-b-2 border-Secondary-200 pb-2 inline-block">
+                          Pertanyaan:
+                        </h5>
+                        <ol class="list-decimal list-outside pl-5 space-y-2 text-body-l text-Grayscale-800 font-medium">
+                          <li>Siapa yang masuk di urutan kedua?</li>
+                          <li>Siapa yang masuk pertama?</li>
+                        </ol>
                       </div>
                     </div>
 
@@ -465,10 +480,9 @@ const seedSilogisme = async () => {
                           <span>Gita &rarr; Fira &rarr; Indra (Data 02).</span>
                         </li>
                       </ol>
-                      
-                      <div class="mt-12 p-1 bg-gradient-to-r from-Secondary-500 to-Primary-500 rounded-xl">
+                    
                         <div class="bg-Secondary-900 rounded-lg p-5">
-                          <span class="text-Secondary-300 font-bold uppercase text-xs tracking-[0.2em] block mb-3">URUTAN FINAL:</span>
+                          <span class="text-Secondary-300 font-bold uppercase text-l block mb-3">URUTAN FINAL:</span>
                           <div class="text-h3 font-black flex justify-between tracking-tighter text-white">
                             <span class="text-Secondary-200">Gita</span>
                             <span class="opacity-50">&rarr;</span>
@@ -478,10 +492,9 @@ const seedSilogisme = async () => {
                             <span class="opacity-50">&rarr;</span>
                             <span class="text-Secondary-200">Harun</span>
                             <span class="opacity-50">&rarr;</span>
-                            <span class="text-Secondary-400">Joko</span>
+                            <span class="text-Secondary-500">Joko</span>
                           </div>
                         </div>
-                      </div>
                     </div>
                   </div>
 
@@ -522,7 +535,7 @@ const seedSilogisme = async () => {
           "Simak video penjelasan mengenai strategi cepat mengerjakan soal Silogisme.",
       },
       {
-        title: "Kuis: Silogisme & Penalaran Analitis",
+        title: "Quiz",
         type: "quiz",
         status: "locked",
         questions: [
