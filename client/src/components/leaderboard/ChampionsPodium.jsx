@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/shared/ui/Skeleton";
 const PodiumColumn = ({ rank, user, height, color, labelColor, delay = 0 }) => {
   return (
     <div
-      className="flex flex-col items-center group flex-1 h-full justify-end pt-10 animate-in fade-in slide-in-from-bottom-full duration-1000 fill-mode-both"
+      className="flex flex-col items-center group flex-1 basis-0 min-w-0 h-full justify-end pt-10 animate-in fade-in slide-in-from-bottom-full duration-1000 fill-mode-both"
       style={{ animationDelay: `${delay}ms` }}
     >
       {/* User Info Above Column */}
@@ -48,7 +48,7 @@ const PodiumColumn = ({ rank, user, height, color, labelColor, delay = 0 }) => {
       {/* The Column */}
       <div
         className={cn(
-          "w-full rounded-t-xl flex items-start justify-center pt-6 shadow-inner relative overflow-hidden",
+          "w-full rounded-t-lg flex items-start justify-center pt-6 shadow-inner relative overflow-hidden",
           color,
         )}
         style={{ height }}

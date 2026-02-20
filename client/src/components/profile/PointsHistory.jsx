@@ -40,38 +40,35 @@ export default function PointsHistory({ history = [] }) {
                 <div
                   key={index}
                   className={cn(
-                    "flex items-center justify-between px-8 py-4 border-b border-Primary-50",
+                    "flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 md:px-8 py-4 gap-3 border-b border-Primary-50",
                     "animate-in fade-in slide-in-from-left-4 duration-300 fill-mode-both",
                   )}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="flex items-center gap-4 flex-1">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                  <div className="flex items-center gap-3 md:gap-4 shrink-0">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-Success-50/50">
                       <PlusIcon
                         weight="bold"
-                        size={24}
-                        className="text-Success-300"
+                        size={20}
+                        className="text-Success-500"
                       />
                     </div>
-                    <div className="flex flex-col items-start">
-                      <div className="flex items-center gap-1 text-body-md font-bold text-Primary-900">
-                        {item.points}{" "}
-                        <GradientIcon
-                          icon={StarIcon}
-                          variant="orange"
-                          size={20}
-                          weight="fill"
-                          className="ml-1"
-                        />
-                      </div>
+                    <div className="flex items-center gap-1 text-body-md font-bold text-Primary-900 bg-Primary-50/50 px-2 py-0.5 rounded-md">
+                      {item.points}{" "}
+                      <GradientIcon
+                        icon={StarIcon}
+                        variant="orange"
+                        size={18}
+                        weight="fill"
+                      />
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between gap-4 flex-[2]">
-                    <span className="text-body-md text-Primary-900 truncate">
+                  <div className="flex items-center justify-between gap-4 flex-1 w-full sm:w-auto">
+                    <span className="text-body-sm md:text-body-md text-Primary-900 truncate font-medium">
                       {item.description}
                     </span>
-                    <span className="text-body-md text-Primary-900 tabular-nums">
+                    <span className="text-body-xs md:text-body-md text-Primary-700 tabular-nums shrink-0 opacity-80">
                       {new Date(item.date).toLocaleDateString("id-ID", {
                         day: "2-digit",
                         month: "2-digit",

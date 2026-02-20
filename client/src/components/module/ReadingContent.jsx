@@ -43,8 +43,8 @@ const ReadingContent = ({ step }) => {
   return (
     <div className="prose max-w-none text-left text-Grayscale-900 font-sans">
       {/* Title */}
-      <div className="text-center mb-8">
-        <h1 className="font-heading text-h3 text-Primary-600 mb-2">
+      <div className="text-center mb-6 md:mb-8">
+        <h1 className="font-heading text-h4 md:text-h3 text-Primary-600 mb-2">
           {step.title}
         </h1>
       </div>

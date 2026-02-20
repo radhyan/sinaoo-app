@@ -8,7 +8,6 @@ import GradientIcon from "@/components/shared/ui/GradientIcon";
 import { ArrowRight } from "lucide-react";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
 import { cn } from "@/lib/utils";
-import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 
 export default function PointProgressBar({
   currentPoints = 0,
@@ -26,29 +25,32 @@ export default function PointProgressBar({
   const finalAvatarSrc = avatarSrc || getAvatar(avatarId);
 
   return (
-    <InteractiveShadow>
+    <div className="shadow-blue-60 rounded-xl">
       <div className="w-full rounded-xl p-6 bg-db-b relative overflow-hidden border border-Primary-50">
         {/* HEADER */}
-        <div className="flex items-top justify-between mb-3">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-row items-start justify-between gap-4 mb-4 text-left">
+          <div className="flex items-center gap-3 lg:gap-4 overflow-hidden flex-1">
             <img
               src={finalAvatarSrc}
               alt={name}
-              className="h-16 w-16 rounded-full shadow-deep-blue-60 object-cover"
+              className="h-12 w-12 lg:h-16 lg:w-16 rounded-full shadow-deep-blue-60 object-cover shrink-0"
             />
 
-            <div className="text-left text-Primary-50">
-              <h3 className="text-body-xl font-bold">{name}</h3>
-              <p className="text-body-l">{title}</p>
+            <div className="text-left text-Primary-50 truncate">
+              <h3 className="text-h5 xl:text-h4 font-bold truncate">{name}</h3>
+              <p className="text-body-md lg:text-body-l opacity-90">{title}</p>
             </div>
           </div>
           <Button
             variant="ghost"
-            size="default"
+            size="sm"
             shadow="none"
             rightIcon={<ArrowRightIcon weight="bold" />}
+            className="shrink-0 text-Primary-50 hover:bg-white/10 p-2 lg:px-4 lg:h-10"
           >
-            <Link to="/profile">Profil</Link>
+            <Link to="/profile" className="hidden lg:inline">
+              Profil
+            </Link>
           </Button>
         </div>
 
@@ -92,7 +94,7 @@ export default function PointProgressBar({
           </div>
         </div>
       </div>
-    </InteractiveShadow>
+    </div>
   );
 }
 

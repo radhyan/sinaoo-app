@@ -53,15 +53,20 @@ function CourseList() {
           weight="fill"
           className="rounded-lg"
         />
-        <h2 className="font-heading text-h2 text-Primary-900 uppercase">
+        <h2 className="font-heading text-h4 md:text-h3 lg:text-h2 text-Primary-900 uppercase">
           Courses
         </h2>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 overflow-visible gap-6 relative min-h-0">
+      <div className="flex flex-col xl:flex-row flex-1 overflow-visible gap-6 relative min-h-0">
         {/* Course List Container - Blue Card */}
-        <div className="w-[552px] bg-db-b rounded-xl shadow-blue-60 flex flex-col overflow-hidden border border-Primary-50 shrink-0 h-full z-10 animate-in fade-in slide-in-from-left-8 duration-700 delay-100 fill-mode-both">
+        <div
+          className={cn(
+            "w-full xl:w-[552px] bg-db-b rounded-xl shadow-blue-60 flex flex-col overflow-hidden border border-Primary-50 xl:shrink-0 h-full z-10 animate-in fade-in slide-in-from-left-8 duration-700 delay-100 fill-mode-both",
+            selectedCourse ? "hidden xl:flex" : "flex",
+          )}
+        >
           <div className="h-full overflow-y-auto custom-scrollbar p-6">
             <div className="grid grid-cols-1 gap-4">
               {loading ? (
@@ -131,17 +136,16 @@ function CourseList() {
           </div>
         </div>
 
-        {/* Module List Container */}
         <div
           className={cn(
             "h-full transition-all duration-500 ease-in-out bg-w-lb rounded-xl shadow-blue-60 border border-Primary-50 overflow-hidden flex flex-col z-0",
             selectedCourse
               ? "flex-1 opacity-100 translate-x-0"
-              : "w-0 opacity-0 -translate-x-10 pointer-events-none border-0",
+              : "w-0 opacity-0 -translate-x-10 pointer-events-none border-0 hidden xl:flex",
           )}
         >
           {selectedCourse && (
-            <div className="h-full w-full p-6 pb-0 min-w-[400px] animate-in fade-in slide-in-from-right-8 duration-500">
+            <div className="h-full w-full p-3 md:p-6 pb-0 xl:min-w-[400px] animate-in fade-in slide-in-from-right-8 duration-500">
               <ModuleList
                 course={selectedCourse}
                 onBack={() => setSelectedCourse(null)}

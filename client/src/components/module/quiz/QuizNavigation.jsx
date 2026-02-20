@@ -6,8 +6,10 @@ import {
   XCircleIcon,
   CaretLeftIcon,
   CaretRightIcon,
+  XIcon,
 } from "@phosphor-icons/react";
 import { Button } from "@/components/shared/ui/Button";
+import GradientIcon from "@/components/shared/ui/GradientIcon";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -60,11 +62,13 @@ const QuizNavigation = ({
   return (
     <div className="flex flex-col gap-6">
       {/* Unified Navigation & Actions Container */}
-      <div className="p-4 bg-white rounded-lg border border-Grayscale-200">
-        <p className="text-lg font-bold text-Primary-700 mb-4">Navigasi Soal</p>
+      <div className="p-3 xl:p-4 bg-white rounded-lg border border-Grayscale-200">
+        <p className="text-body-md xl:text-lg font-bold text-Primary-700 mb-3 xl:mb-4">
+          Navigasi Soal
+        </p>
 
         {/* Navigation Grid */}
-        <div className="grid grid-cols-5 gap-2 mb-6">
+        <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 xl:grid-cols-5 gap-1.5 xl:gap-2 mb-4 xl:mb-6">
           {questions.map((q, index) => {
             const isCurrent = index === currentQuestionIndex;
             const isAnswered =
@@ -90,7 +94,7 @@ const QuizNavigation = ({
                 key={q.id}
                 onClick={() => onSelect(index)}
                 className={cn(
-                  "w-full aspect-square rounded-md text-md font-bold transition-all flex items-center justify-center relative",
+                  "w-full aspect-square rounded-md text-body-sm xl:text-md font-bold transition-all flex items-center justify-center relative",
                   isCurrent
                     ? "bg-Primary-600 text-white shadow-md ring-2 ring-Primary-200 z-10"
                     : mode === "review"
@@ -171,26 +175,37 @@ const QuizNavigation = ({
                   Selesaikan Kuis
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>
-                    Sudah yakin dengan jawabanmu?
+              <AlertDialogContent className="max-w-xl bg-white rounded-xl p-8 border-none shadow-blue-60">
+                <AlertDialogHeader className="">
+                  <AlertDialogTitle className="flex items-center gap-3 !text-h4 font-heading text-Primary-900 border-none">
+                    <GradientIcon
+                      icon={CheckCircleIcon}
+                      variant="green"
+                      size={28}
+                      weight="fill"
+                    />
+                    Selesaikan Kuis
                   </AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Kamu telah menjawab seluruh pertanyaan. Pastikan sekali lagi
-                    sebelum mengakhiri kuis ini!
+                  <AlertDialogDescription className="!text-body-md lg:!text-body-l text-left font-medium text-Grayscale-900 mt-2">
+                    Kamu telah menjawab seluruh pertanyaan. Apakah kamu yakin
+                    ingin menyelesaikan kuis ini dan melihat hasilnya?
                   </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="sm:justify-between">
-                  <AlertDialogAction
-                    onClick={onFinish}
-                    className="bg-Primary-600 text-white hover:bg-Primary-700 font-bold"
-                  >
-                    Ya, Selesaikan
-                  </AlertDialogAction>
-                  <AlertDialogCancel className="font-bold border-2">
-                    Batal
+
+                <AlertDialogFooter className="flex-row items-center justify-between sm:justify-between w-full mt-6 sm:space-x-0">
+                  <AlertDialogCancel asChild>
+                    <Button variant="default">Batal</Button>
                   </AlertDialogCancel>
+                  <AlertDialogAction asChild>
+                    <Button
+                      variant="tertiary"
+                      shadow="none"
+                      onClick={onFinish}
+                      rightIcon={<CheckIcon weight="bold" />}
+                    >
+                      Selesaikan
+                    </Button>
+                  </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>

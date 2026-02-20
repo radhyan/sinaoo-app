@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 import { Link } from "react-router-dom";
 import {
   FlagIcon,
@@ -43,7 +42,7 @@ const MissionItem = ({
   const isCompleted = current >= target;
 
   return (
-    <InteractiveShadow>
+    <div className="shadow-blue-60 rounded-xl">
       <div className="flex flex-col gap-3 bg-lo-o px-8 py-6 rounded-xl border border-Secondary-50 min-h-[160px]">
         {/* FIRST ROW: Icon + Description + Points */}
         <div className="flex items-start gap-4">
@@ -143,7 +142,7 @@ const MissionItem = ({
           </div>
         </div>
       </div>
-    </InteractiveShadow>
+    </div>
   );
 };
 

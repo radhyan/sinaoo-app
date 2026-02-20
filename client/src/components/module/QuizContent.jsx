@@ -61,9 +61,9 @@ const QuizContent = ({
   };
 
   return (
-    <div className="grid lg:grid-cols-4 gap-6">
+    <div className="grid xl:grid-cols-4 gap-6">
       {/* Left Column: Question Content */}
-      <div className="lg:col-span-3">
+      <div className="xl:col-span-3">
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -121,7 +121,7 @@ const QuizContent = ({
 
           {/* Context / Reading Material for Question */}
           {question.context && (
-            <div className="mb-4 text-body-l text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 rounded-lg border border-Grayscale-100">
+            <div className="mb-4 text-body-md md:text-body-l text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-3 md:p-4 rounded-lg border border-Grayscale-100">
               {question.context}
             </div>
           )}
@@ -155,7 +155,7 @@ const QuizContent = ({
       </div>
 
       {/* Right Column: Navigation & Actions */}
-      <div className="lg:col-span-1 space-y-6">
+      <div className="xl:col-span-1 space-y-6">
         <QuizNavigation
           questions={questions}
           currentQuestionIndex={currentQuestionIndex}

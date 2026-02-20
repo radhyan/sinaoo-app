@@ -6,7 +6,20 @@ import { cn } from "@/lib/utils";
 
 export default function RankingList({ scholars = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+
+  // Responsive items per page
+  const [itemsPerPage, setItemsPerPage] = useState(() =>
+    window.innerWidth < 1367 ? 5 : 8,
+  );
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setItemsPerPage(window.innerWidth < 1367 ? 5 : 8);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const totalPages = Math.ceil(scholars.length / itemsPerPage);
 
   const paginatedScholars = scholars.slice(
@@ -15,8 +28,8 @@ export default function RankingList({ scholars = [] }) {
   );
 
   return (
-    <div className="bg-w-lb rounded-xl shadow-blue-60 border border-Primary-50 flex flex-col h-full p-4">
-      <div className="flex-1 p-2">
+    <div className="bg-w-lb rounded-xl shadow-blue-60 border border-Primary-50 flex flex-col h-full p-2 md:p-4">
+      <div className="flex-1 p-1 md:p-2">
         {paginatedScholars.length > 0 ? (
           paginatedScholars.map((scholar, index) => (
             <div

@@ -58,9 +58,11 @@ export default function ModuleList({ course, onBack }) {
             size={36}
             weight="fill"
             variant="green"
-            className="drop-shadow-blue-60"
+            className="drop-shadow-blue-60 scale-75 lg:scale-100"
           />
-          <h2 className="font-heading text-h3 text-Primary-900">Modul</h2>
+          <h2 className="font-heading text-h4 lg:text-h3 text-Primary-900">
+            Modul
+          </h2>
         </div>
       </div>
 

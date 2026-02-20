@@ -11,7 +11,6 @@ import { Skeleton } from "@/components/shared/ui/Skeleton";
 import { cn } from "@/lib/utils";
 import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
 import Tag from "@/components/shared/ui/Tag";
-import InteractiveShadow from "@/components/shared/ui/InteractiveShadow";
 
 export default function ModuleCard({
   title,
@@ -30,7 +29,7 @@ export default function ModuleCard({
   const navigate = useNavigate();
 
   return (
-    <InteractiveShadow className={className}>
+    <div className={cn("shadow-blue-60 rounded-xl", className)}>
       <div
         className={cn(
           "flex flex-col px-8 py-6 rounded-xl border min-h-[160px]",
@@ -135,7 +134,7 @@ export default function ModuleCard({
           )}
         </div>
       </div>
-    </InteractiveShadow>
+    </div>
   );
 }
 

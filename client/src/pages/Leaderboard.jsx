@@ -53,20 +53,20 @@ export default function Leaderboard() {
 
   if (loading || userLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-full w-full p-8 animate-in fade-in duration-500">
-        <div className="w-full max-w-md flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center justify-center min-h-[400px] h-full w-full p-4 md:p-8 animate-in fade-in duration-500">
+        <div className="w-full max-w-md flex flex-col items-center gap-4 md:gap-6">
           <GradientIcon
             icon={RankingIcon}
             variant="blue"
-            size={64}
+            size={48}
             weight="fill"
             className="animate-bounce"
           />
           <div className="text-center space-y-2">
-            <h2 className="font-heading text-h2 text-Primary-900">
+            <h2 className="font-heading text-h3 md:text-h2 text-Primary-900">
               Memuat Leaderboard
             </h2>
-            <p className="text-body-md text-Grayscale-500">
+            <p className="text-body-sm md:text-body-md text-Grayscale-500">
               Menyiapkan ranking terbaik untukmu...
             </p>
           </div>
@@ -100,16 +100,18 @@ export default function Leaderboard() {
         <GradientIcon
           icon={RankingIcon}
           variant="blue"
-          size={48}
+          size={40}
           weight="fill"
         />
-        <h2 className="font-heading text-h2 text-Primary-900">Leaderboard</h2>
+        <h2 className="font-heading text-h3 lg:text-h2 text-Primary-900 uppercase">
+          Leaderboard
+        </h2>
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-x-12 gap-y-8 flex-1 min-h-0">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-x-8 lg:gap-x-12 gap-y-10 flex-1 min-h-0 pb-10">
         {/* Left Column: Your Rank & Champions */}
-        <div className="flex flex-col gap-8 min-h-0 h-full">
+        <div className="flex flex-col gap-10 min-h-0 w-full">
           {/* Section: Peringkatmu */}
           <section className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-6 duration-700 delay-100 fill-mode-both">
             <div className="flex gap-2 items-center">
@@ -124,10 +126,10 @@ export default function Leaderboard() {
                         ? "pink"
                         : "blue"
                 }
-                size={40}
+                size={32}
                 weight="fill"
               />
-              <h3 className="font-heading text-h3 text-Primary-900 text-left">
+              <h3 className="font-heading text-h4 lg:text-h3 text-Primary-900 text-left">
                 Peringkatmu
               </h3>
             </div>
@@ -145,19 +147,19 @@ export default function Leaderboard() {
           </section>
 
           {/* Section: Champions */}
-          <section className="flex flex-col gap-4 flex-1 min-h-[400px] animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
+          <section className="flex flex-col gap-4 flex-1 min-h-[350px] md:min-h-[400px] animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
             <div className="flex items-center gap-2">
               <GradientIcon
                 icon={RankingIcon}
                 variant="blue"
-                size={40}
+                size={32}
                 weight="fill"
               />
-              <h3 className="font-heading text-h3 text-Primary-900">
+              <h3 className="font-heading text-h4 lg:text-h3 text-Primary-900">
                 Champions
               </h3>
             </div>
-            <div className="flex-1 h-full">
+            <div className="flex-1 min-h-0">
               <ChampionsPodium topThree={topThree} />
             </div>
           </section>
@@ -169,12 +171,14 @@ export default function Leaderboard() {
             <GradientIcon
               icon={ListNumbersIcon}
               variant="darkBlue"
-              size={40}
+              size={32}
               weight="bold"
             />
-            <h3 className="font-heading text-h3 text-Primary-900">Ranking</h3>
+            <h3 className="font-heading text-h4 lg:text-h3 text-Primary-900">
+              Ranking
+            </h3>
           </div>
-          <div className="flex-1 min-h-0">
+          <div className="flex-1 min-h-[400px] md:min-h-0">
             <RankingList scholars={others} />
           </div>
         </section>

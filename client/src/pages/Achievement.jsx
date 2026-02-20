@@ -122,6 +122,10 @@ export default function Achievement() {
   };
 
   const unlockedCount = achievementsList.filter(isUnlocked).length;
+  const progressPercent =
+    achievementsList.length > 0
+      ? Math.round((unlockedCount / achievementsList.length) * 100)
+      : 0;
 
   if (loading || userLoading) {
     return (
@@ -166,97 +170,105 @@ export default function Achievement() {
         </h2>
       </div>
 
-      {/* User Summary Card (Blue Gradient) */}
-      <div className="w-full rounded-xl p-6 bg-db-b shadow-blue-60 relative overflow-hidden border border-Primary-50 transition-all animate-in fade-in slide-in-from-top-6 duration-700 delay-100 fill-mode-both">
-        {/* HEADER */}
-        <div className="flex items-top justify-between mb-3">
-          <div className="flex items-center gap-4">
-            <img
-              src={getUserAvatar(user)}
-              alt={user.name || user.username}
-              className="h-16 w-16 rounded-full shadow-deep-blue-60 object-cover"
-              onError={(e) => {
-                e.target.src = "https://i.pravatar.cc/150?u=radhy";
-              }}
-            />
+      <div className="grid grid-cols-1 xl:grid-cols-[400px_1fr] gap-6 items-stretch mb-6">
+        {/* User Summary Card (Blue Gradient) */}
+        <div className="w-full rounded-xl p-8 bg-db-b shadow-blue-60 relative overflow-hidden border border-Primary-50 transition-all animate-in fade-in slide-in-from-left-6 duration-700 delay-100 fill-mode-both h-full flex flex-col justify-center">
+          {/* HEADER */}
+          <div className="flex items-start justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <img
+                src={getUserAvatar(user)}
+                alt={user.name || user.username}
+                className="h-20 w-20 rounded-full shadow-deep-blue-60 object-cover border-2 border-Primary-50/20"
+                onError={(e) => {
+                  e.target.src = "https://i.pravatar.cc/150?u=radhy";
+                }}
+              />
 
-            <div className="text-left text-Primary-50">
-              <p className="text-body-xl font-bold">
-                {user.name || user.username}
-              </p>
-              <p className="text-body-l">{levelInfo.title}</p>
+              <div className="text-left text-Primary-50">
+                <p className="text-h4 font-bold">
+                  {user.name || user.username}
+                </p>
+                <p className="text-body-l opacity-80">{levelInfo.title}</p>
+              </div>
+            </div>
+
+            <Button
+              variant="ghost"
+              size="default"
+              shadow="none"
+              rightIcon={<ArrowRightIcon weight="bold" />}
+              className="text-Primary-50 hover:bg-white/10"
+            >
+              <Link to="/profile">Profil</Link>
+            </Button>
+          </div>
+
+          {/* Label */}
+          <div className="flex flex-col gap-1 items-start mb-4 px-2">
+            <p className="text-Primary-50 text-body-md font-body font-normal tracking-wider opacity-80 uppercase">
+              Achievements didapatkan
+            </p>
+          </div>
+
+          {/* PROGRESS BAR */}
+          <div className="flex flex-col gap-3 px-2">
+            <div className="flex items-center justify-between">
+              <span className="font-body-md font-bold text-Primary-50 whitespace-nowrap">
+                {progressPercent}% Selesai
+              </span>
+              <span className="font-body-md font-bold text-Primary-50 whitespace-nowrap">
+                {unlockedCount}/{achievementsList.length}
+              </span>
+            </div>
+            <div className="h-2 w-full relative">
+              <SegmentedProgressBar
+                current={unlockedCount}
+                total={achievementsList.length}
+                variant="header"
+                className="h-full"
+              />
             </div>
           </div>
-
-          <Button
-            variant="ghost"
-            size="default"
-            shadow="none"
-            rightIcon={<ArrowRightIcon weight="bold" />}
-          >
-            <Link to="/profile">Profil</Link>
-          </Button>
         </div>
 
-        {/* Label */}
-        <div className="flex flex-col gap-1 items-start mb-2 px-2">
-          <p className="text-Primary-50 text-body-md font-body font-normal tracking-wider">
-            Achievements didapatkan
-          </p>
+        {/* Achievements Grid Area */}
+        <div className="p-6 bg-w-lb rounded-xl border border-Primary-100 shadow-blue-60 animate-in fade-in slide-in-from-right-6 duration-700 delay-200 fill-mode-both h-full flex flex-col">
+          {error ? (
+            <div className="flex-1 flex flex-col items-center justify-center py-12 gap-4">
+              <p className="text-body-md text-Error-400 font-medium text-center px-6">
+                {error}
+              </p>
+              <RefreshButton onRefresh={fetchAchievements} loading={loading} />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-6">
+              {loading ? (
+                <>
+                  <AchievementCardSkeleton />
+                  <AchievementCardSkeleton />
+                  <AchievementCardSkeleton />
+                  <AchievementCardSkeleton />
+                </>
+              ) : (
+                achievementsList.map((ach, index) => (
+                  <div
+                    key={ach._id}
+                    className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
+                    style={{ animationDelay: `${300 + index * 50}ms` }}
+                  >
+                    <AchievementCard
+                      achievement={ach}
+                      isUnlocked={isUnlocked(ach, index)}
+                      currentProgress={ach.current}
+                      targetProgress={ach.target}
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          )}
         </div>
-
-        {/* PROGRESS BAR */}
-        <div className="h-4 flex items-center gap-4 mx-2 mb-1 ">
-          <div className="h-2 flex-1 relative">
-            <SegmentedProgressBar
-              current={unlockedCount}
-              total={achievementsList.length}
-              variant="header"
-              className="h-full"
-            />
-          </div>
-          <span className="font-body-md font-bold text-Primary-50 whitespace-nowrap">
-            {unlockedCount}/{achievementsList.length}
-          </span>
-        </div>
-      </div>
-
-      {/* Achievements Grid Area */}
-      <div className="p-6 bg-w-lb rounded-xl border border-Primary-100 shadow-blue-60 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200 fill-mode-both">
-        {error ? (
-          <div className="flex flex-col items-center justify-center py-12 gap-4">
-            <p className="text-body-md text-Error-400 font-medium text-center px-6">
-              {error}
-            </p>
-            <RefreshButton onRefresh={fetchAchievements} loading={loading} />
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 ">
-            {loading ? (
-              <>
-                <AchievementCardSkeleton />
-                <AchievementCardSkeleton />
-                <AchievementCardSkeleton />
-                <AchievementCardSkeleton />
-              </>
-            ) : (
-              achievementsList.map((ach, index) => (
-                <div
-                  key={ach._id}
-                  className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
-                  style={{ animationDelay: `${300 + index * 50}ms` }}
-                >
-                  <AchievementCard
-                    achievement={ach}
-                    isUnlocked={isUnlocked(ach, index)}
-                    currentProgress={ach.current}
-                    targetProgress={ach.target}
-                  />
-                </div>
-              ))
-            )}
-          </div>
-        )}
       </div>
     </div>
   );

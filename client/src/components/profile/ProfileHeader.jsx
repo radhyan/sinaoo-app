@@ -32,15 +32,15 @@ export default function ProfileHeader({ user }) {
   return (
     <div className="bg-db-b rounded-xl p-6 shadow-blue-60 border border-Primary-50 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="flex flex-col relative z-10">
-        <div className="flex items-start justify-between mb-3">
-          <div className="flex items-center gap-4">
+      <div className="flex flex-col relative z-10 w-full overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-5">
+          <div className="flex items-center gap-3 lg:gap-4 overflow-hidden w-full">
             {/* Avatar - Clickable */}
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
                   onClick={() => setIsAvatarDialogOpen(true)}
-                  className="group relative w-16 h-16 rounded-full overflow-hidden shadow-deep-blue-60 transition-transform hover:scale-105 active:scale-95"
+                  className="group relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden shadow-deep-blue-60 transition-transform hover:scale-105 active:scale-95 shrink-0"
                 >
                   <img
                     src={getUserAvatar(user)}
@@ -51,7 +51,7 @@ export default function ProfileHeader({ user }) {
                     <UserGearIcon
                       weight="fill"
                       className="text-white drop-shadow-md"
-                      size={24}
+                      size={20}
                     />
                   </div>
                 </button>
@@ -61,9 +61,9 @@ export default function ProfileHeader({ user }) {
               </TooltipContent>
             </Tooltip>
 
-            <div className="flex flex-col items-start gap-1">
-              <div className="flex items-center gap-2 group">
-                <h3 className="text-body-xl font-bold text-Primary-50 mr-1">
+            <div className="flex flex-col items-start gap-1 truncate w-full">
+              <div className="flex items-center gap-1 group w-full truncate">
+                <h3 className="text-body-lg md:text-body-xl font-bold text-Primary-50 truncate">
                   {user?.username || "Guest User"}
                 </h3>
                 <Tooltip>
@@ -71,9 +71,10 @@ export default function ProfileHeader({ user }) {
                     <Button
                       variant="ghost"
                       onClick={() => setIsUsernameDialogOpen(true)}
-                      size="icon"
+                      size="sm"
                       shadow="none"
                       leftIcon={<PencilIcon weight="fill" />}
+                      className="text-Primary-50/70 hover:text-Primary-50 shrink-0"
                     />
                   </TooltipTrigger>
                   <TooltipContent side="right">
@@ -81,7 +82,7 @@ export default function ProfileHeader({ user }) {
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <p className="text-body-l text-Primary-50 font-medium">
+              <p className="text-body-sm md:text-body-l text-Primary-50/90 font-medium truncate">
                 {levelInfo.title}
               </p>
             </div>
@@ -89,14 +90,14 @@ export default function ProfileHeader({ user }) {
         </div>
 
         {/* PROGRESS SECTION */}
-        <div className="flex flex-col gap-1 px-2">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 flex-1">
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+            <div className="flex items-center gap-2 flex-1 w-full">
               <GradientIcon
                 icon={StarIcon}
                 variant="orange"
-                size={28}
-                className="drop-shadow-deep-blue-60"
+                size={24}
+                className="drop-shadow-deep-blue-60 shrink-0"
               />
               <div className="h-2 w-full rounded-full bg-Primary-900/60 shadow-deep-blue-60 relative overflow-hidden">
                 <div
@@ -106,7 +107,7 @@ export default function ProfileHeader({ user }) {
               </div>
             </div>
 
-            <div className="flex items-baseline gap-1 shrink-0 ml-auto">
+            <div className="flex items-baseline gap-1 shrink-0 ml-auto md:ml-0">
               <span className="font-bold text-body-md text-Primary-50 leading-none">
                 {user?.points || 0} / {nextTarget}
               </span>
@@ -116,18 +117,16 @@ export default function ProfileHeader({ user }) {
             </div>
           </div>
 
-          <div className="text-body-md text-Primary-50 px-1 md:px-0">
+          <div className="text-body-sm md:text-body-md text-Primary-50">
             {isMax ? (
-              <span>
+              <span className="opacity-90">
                 Points kamu sudah max di{" "}
                 <span className="font-bold">{user?.points || 0}</span>!
               </span>
             ) : (
-              <div className="flex items-center gap-1 opacity-80">
-                <span className="font-bold whitespace-nowrap">
-                  {remaining} points{" "}
-                </span>
-                <span className="font-normal whitespace-nowrap">
+              <div className="flex flex-wrap items-center gap-1 opacity-80">
+                <span className="font-bold">{remaining} points </span>
+                <span className="font-normal">
                   lagi untuk ke title selanjutnya
                 </span>
               </div>

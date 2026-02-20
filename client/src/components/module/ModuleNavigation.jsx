@@ -17,17 +17,17 @@ const ModuleNavigation = ({
   isLastStep,
 }) => {
   return (
-    <div className="flex items-center justify-between mt-6 pt-6 border-t border-Grayscale-100 animate-in fade-in slide-in-from-bottom-2 duration-500">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-6 border-t border-Grayscale-100 animate-in fade-in slide-in-from-bottom-2 duration-500">
       {!isFirstStep ? (
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               variant="outline"
-              size="default"
+              size="sm"
               leftIcon={<CaretLeftIcon />}
               onClick={onPrev}
               disabled={prevDisabled}
-              className="animate-in fade-in slide-in-from-left-2 duration-300"
+              className="w-full sm:w-auto animate-in fade-in slide-in-from-left-2 duration-300"
             >
               Sebelumnya
             </Button>
@@ -37,18 +37,18 @@ const ModuleNavigation = ({
           </TooltipContent>
         </Tooltip>
       ) : (
-        <div />
+        <div className="hidden sm:block" />
       )}
       {!isLastStep ? (
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
               variant="default"
-              size="default"
+              size="sm"
               rightIcon={<CaretRightIcon weight="bold" />}
               onClick={onNext}
               disabled={nextDisabled}
-              className="animate-in fade-in slide-in-from-right-2 duration-300"
+              className="w-full sm:w-auto animate-in fade-in slide-in-from-right-2 duration-300"
             >
               Selanjutnya
             </Button>
@@ -58,7 +58,7 @@ const ModuleNavigation = ({
           </TooltipContent>
         </Tooltip>
       ) : (
-        <div />
+        <div className="hidden sm:block" />
       )}
     </div>
   );

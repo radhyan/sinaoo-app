@@ -66,10 +66,10 @@ const QuizResult = ({
       <div className="flex-1 flex flex-col items-center justify-center w-full px-4 pb-8">
         {/* Header */}
         <div className="text-center mb-6 z-10">
-          <h2 className="text-h2 font-heading text-Primary-900 mb-2">
+          <h2 className="text-h3 md:text-h2 font-heading text-Primary-900 mb-2">
             {title}
           </h2>
-          <p className="text-h3 font-heading text-Primary-700">
+          <p className="text-body-l md:text-h3 font-heading text-Primary-700 max-w-[90%] mx-auto">
             {percentage <= 45
               ? "Tetap semangat! Coba lagi untuk hasil yang lebih baik."
               : percentage <= 75
@@ -81,11 +81,11 @@ const QuizResult = ({
         </div>
 
         {/* Hero Image */}
-        <div className="mb-8 h-96 w-dvh shrink-0">
+        <div className="mb-6 md:mb-8 h-48 md:h-96 w-full shrink-0">
           <img
             src="/images/completion/module-complete.png"
             alt="Celebration"
-            className="w-full h-full object-contain "
+            className="w-full h-full object-contain"
           />
         </div>
 
@@ -119,20 +119,20 @@ const QuizResult = ({
       </div>
 
       {/* Footer Actions */}
-      {/* Footer Actions */}
-      <div className="flex items-center justify-between mt-6 pt-6 border-t border-Grayscale-100">
-        {onReview && (
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-6 border-t border-Grayscale-100">
+        {onReview ? (
           <Button
             variant="outline"
             onClick={onReview}
             leftIcon={<ClipboardTextIcon />}
+            className="w-full sm:w-auto"
           >
             Lihat Pembahasan
           </Button>
+        ) : (
+          <div className="hidden sm:block" />
         )}
-        {!onReview && <div />}{" "}
-        {/* Spacer to keep flex layout balanced if button hidden */}
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           {onRestart && (
             <Button
               variant="default"
@@ -140,6 +140,7 @@ const QuizResult = ({
               shadow="blue"
               onClick={onRestart}
               leftIcon={<ArrowClockwiseIcon />}
+              className="w-full sm:w-auto"
             >
               {restartLabel}
             </Button>
@@ -150,6 +151,7 @@ const QuizResult = ({
             size="default"
             onClick={onFinish}
             rightIcon={<CheckIcon weight="bold" />}
+            className="w-full sm:w-auto"
           >
             Selesai
           </Button>

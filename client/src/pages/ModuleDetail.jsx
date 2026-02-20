@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { ArrowBendRightUpIcon } from "@phosphor-icons/react";
+import {
+  ArrowClockwiseIcon,
+  CheckIcon,
+  List,
+  ArrowBendRightUpIcon,
+} from "@phosphor-icons/react";
 import { Button } from "@/components/shared/ui/Button";
 import ModuleSidebar from "@/components/module/ModuleSidebar";
 import VideoContent from "@/components/module/VideoContent";
@@ -12,18 +17,33 @@ import ModuleNavigation from "@/components/module/ModuleNavigation";
 
 import { useUser } from "@/context/UserContext";
 import { useModuleProgress } from "@/hooks/useModuleProgress";
+import { cn } from "@/lib/utils";
 import { useQuizState } from "@/hooks/useQuizState";
 import { RefreshButton } from "@/components/shared/ui/RefreshButton";
+import { SidebarOpenIcon } from "lucide-react";
 
 export default function ModuleDetail() {
   const { moduleId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const { user, login } = useUser();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(
+    () => window.innerWidth > 1024,
+  );
   const [currentStepId, setCurrentStepId] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const scrollRef = useRef(null);
+
+  // Handle window resize to auto-close sidebar on small screens
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1024 && isSidebarOpen) {
+        setIsSidebarOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isSidebarOpen]);
 
   // Determine view mode from URL
   const queryParams = new URLSearchParams(location.search);
@@ -411,14 +431,35 @@ export default function ModuleDetail() {
     );
 
   return (
-    <div className="flex h-screen gap-6 p-6 bg-Grayscale-50 overflow-hidden">
+    <div className="flex h-screen gap-0 md:gap-6 p-0 md:p-6 bg-Grayscale-50 overflow-hidden relative">
+      {/* MOBILE SIDEBAR OVERLAY/BACKDROP */}
+      {isSidebarOpen && window.innerWidth <= 1024 && (
+        <div
+          className="fixed inset-0 bg-black/50 z-[40] transition-opacity duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       <div
-        className={`transition-all duration-300 ease-in-out ${isSidebarOpen ? "w-[300px]" : "w-[88px]"} flex-shrink-0`}
+        className={cn(
+          "transition-all duration-300 ease-in-out z-[50]",
+          // Desktop behavior
+          "lg:relative lg:flex-shrink-0",
+          isSidebarOpen ? "lg:w-[300px]" : "lg:w-[88px]",
+          // Mobile behavior: absolute overlay
+          "absolute inset-y-0 left-0 w-[280px]",
+          isSidebarOpen
+            ? "translate-x-0"
+            : "-translate-x-full lg:translate-x-0",
+        )}
       >
         <ModuleSidebar
           module={moduleData}
           currentStepId={currentStepId}
-          onStepClick={handleSidebarStepClick}
+          onStepClick={(id) => {
+            handleSidebarStepClick(id);
+            if (window.innerWidth <= 1024) setIsSidebarOpen(false);
+          }}
           isOpen={isSidebarOpen}
           onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
           isModuleCompleted={isModuleCompleted}
@@ -426,13 +467,46 @@ export default function ModuleDetail() {
         />
       </div>
 
-      <div className="flex-1 flex flex-col min-w-0 h-full relative">
+      <div
+        className={cn(
+          "flex-1 flex flex-col min-w-0 transition-all duration-300",
+          isSidebarOpen ? "lg:ml-0" : "lg:ml-0",
+        )}
+      >
+        {/* Mobile Sidebar Overlay */}
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-[40] lg:hidden animate-in fade-in duration-300"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
+        {/* Content Top Bar (Mobile/Tablet) */}
+        <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-Grayscale-100 sticky top-0 z-30">
+          <Button
+            variant="ghost"
+            size="icon"
+            shadow="none"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <SidebarOpenIcon
+              size={24}
+              weight="bold"
+              className="text-Primary-600"
+            />
+          </Button>
+          <h1 className="text-body-lg font-bold text-Primary-900 truncate px-4">
+            {moduleData.title}
+          </h1>
+          <div className="w-10" /> {/* Spacer */}
+        </div>
+
         <div
           ref={scrollRef}
           onScroll={(e) => setShowScrollTop(e.target.scrollTop > 300)}
           className="flex-1 overflow-y-auto custom-scrollbar bg-transparent relative"
         >
-          <div className="bg-white rounded-xl shadow-sm border border-Grayscale-100 p-8 min-h-full flex flex-col justify-between">
+          <div className="bg-white md:rounded-xl shadow-sm border-x md:border border-Grayscale-100 p-4 md:p-8 min-h-full flex flex-col justify-between">
             <div className="flex-1">{renderContent()}</div>
 
             {viewMode === "content" && currentStep && (
