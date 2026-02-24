@@ -155,7 +155,7 @@ export default function Achievement() {
   if (!user) return <div>Please log in</div>;
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar overflow-x-hidden pb-24 lg:pb-6">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar overflow-x-hidden p-2 lg:px-6">
       {/* Title Header */}
       <div className="flex items-center gap-3 mb-1 px-1 animate-in fade-in slide-in-from-left-4 duration-500">
         <GradientIcon
@@ -165,7 +165,7 @@ export default function Achievement() {
           weight="fill"
           className="md:size-10 lg:size-12 rounded-lg shrink-0"
         />
-        <h2 className="font-heading text-h3 md:text-h2 text-Primary-900 uppercase">
+        <h2 className="font-heading text-h4 md:text-h2 text-Primary-900 uppercase">
           Achievements
         </h2>
       </div>

@@ -130,7 +130,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-2 pr-0 lg:pr-0 md:p-4 lg:p-6 overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar px-2 pr-0 lg:pr-0 md:p-4 lg:p-6 overflow-x-hidden">
       {/* Top Banner */}
       <div className="w-full min-h-[100px] md:min-h-[160px] lg:aspect-[21/4] rounded-none md:rounded-xl flex items-start md:items-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
         <img
@@ -138,8 +138,8 @@ function Dashboard() {
           alt="Profile Header"
           className="hidden md:block absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
-        <h2 className="md:text-Primary-50 text-Primary-800 font-heading text-body-xl md:text-h3 xl:text-h1 px-2 md:px-20 lg:px-24 z-10 max-w-[80%] md:max-w-[70%] lg:max-w-[70%] text-left flex flex-col leading-tight">
-          <span className="md:text-Primary-50/80 text-Primary-600 font-medium mb-1 drop-shadow-sm">
+        <h2 className="md:text-Primary-50 text-Primary-800 font-heading text-body-xl md:text-h3 xl:text-h1 px-2 md:pr-20 md:pl-20 lg:pr-24 z-10 max-w-[80%] md:max-w-[70%] lg:max-w-[70%] text-left flex flex-col leading-tight">
+          <span className="md:text-Primary-50/90 text-Primary-600 font-medium mb-1 drop-shadow-sm">
             Halo, {user.username}!
           </span>
           <span className="">{greetingMessage}</span>

@@ -55,7 +55,7 @@ function Profile() {
   }
 
   return (
-    <div className="h-full overflow-y-auto custom-scrollbar bg-Grayscale-50 p-1">
+    <div className="h-full overflow-y-auto custom-scrollbar bg-Grayscale-50 p-2 lg:px-6">
       <div className="flex flex-col gap-8 pb-12">
         {/* Page Header */}
         <div className="flex items-center gap-3 animate-in fade-in slide-in-from-left-4 duration-500">

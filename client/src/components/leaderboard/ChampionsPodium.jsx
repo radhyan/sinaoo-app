@@ -15,7 +15,7 @@ const PodiumColumn = ({ rank, user, height, color, labelColor, delay = 0 }) => {
         {/* Avatar with Ring */}
         <div
           className={cn(
-            "aspect-square w-12 h-fill md:w-16 lg:w-20 rounded-full overflow-hidden mb-2 md:mb-3 shadow-lg shrink-0 border-2 border-white/10",
+            "aspect-square w-10 md:w-16 xl:w-24 rounded-full overflow-hidden mb-2 md:mb-3 shadow-lg shrink-0 border-2 border-white/10",
             rank === 1 ? "scale-110 border-white/20" : "",
           )}
         >
@@ -26,10 +26,10 @@ const PodiumColumn = ({ rank, user, height, color, labelColor, delay = 0 }) => {
           />
         </div>
 
-        <p className="font-bold text-body-sm md:text-body-l text-white truncate w-full px-1 text-center">
+        <p className="font-bold text-body-sm md:text-body-md lg:text-body-l text-white truncate w-full px-1 text-center">
           {user?.name || user?.username || "---"}
         </p>
-        <p className="text-[10px] md:text-body-md text-Primary-50 truncate w-full px-1 mb-1 text-center opacity-80">
+        <p className="text-[10px] md:text-body-md lg:text-body-l text-Primary-50 truncate w-full px-1 mb-1 text-center opacity-80">
           {user?.title?.title || "---"}
         </p>
 
@@ -47,7 +47,7 @@ const PodiumColumn = ({ rank, user, height, color, labelColor, delay = 0 }) => {
 
       <div
         className={cn(
-          "w-full rounded-t-lg flex items-start justify-center pt-4 md:pt-6 shadow-inner relative overflow-hidden",
+          "w-full rounded-t-lg xl:rounded-t-xl flex items-start justify-center pt-4 md:pt-6 shadow-inner relative overflow-hidden",
           color,
         )}
         style={{ height }}
@@ -70,16 +70,14 @@ const PodiumColumn = ({ rank, user, height, color, labelColor, delay = 0 }) => {
 
 export default function ChampionsPodium({ topThree = [] }) {
   const [first, second, third] = [topThree[0], topThree[1], topThree[2]];
-  const baseHeight = "calc(100% - 150px)";
-
   return (
-    <div className="bg-db-b rounded-xl pt-4 md:pt-5 pb-0 px-3 md:px-8 flex flex-col h-full border border-Primary-50 overflow-hidden shadow-blue-60">
+    <div className="bg-db-b rounded-lg xl:rounded-xl pt-4 md:pt-5 pb-0 px-3 md:px-8 flex flex-col h-full border border-Primary-50 overflow-hidden shadow-blue-60">
       <div className="flex items-end gap-2 md:gap-4 h-full overflow-hidden">
         {/* Rank 2 - Left */}
         <PodiumColumn
           rank={2}
           user={second}
-          height={`calc(${baseHeight} * 2/3)`}
+          height="calc((100% - 140px) * 0.65)"
           color="bg-dg-g"
           labelColor="text-white opacity-50"
           delay={200}
@@ -89,7 +87,7 @@ export default function ChampionsPodium({ topThree = [] }) {
         <PodiumColumn
           rank={1}
           user={first}
-          height={baseHeight}
+          height="calc(100% - 140px)"
           color="bg-o-do"
           labelColor="text-white opacity-50"
           delay={0}
@@ -99,7 +97,7 @@ export default function ChampionsPodium({ topThree = [] }) {
         <PodiumColumn
           rank={3}
           user={third}
-          height={`calc(${baseHeight} * 1/2)`}
+          height="calc((100% - 140px) * 0.45)"
           color="bg-p-lp"
           labelColor="text-white opacity-50"
           delay={400}

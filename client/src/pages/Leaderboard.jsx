@@ -94,7 +94,7 @@ export default function Leaderboard() {
   const others = data.topUsers.slice(3);
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-1 overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-2 lg:px-6 overflow-x-hidden">
       {/* Header */}
       <div className="flex items-center gap-3 shrink-0 animate-in fade-in slide-in-from-left-4 duration-500">
         <GradientIcon
@@ -102,7 +102,7 @@ export default function Leaderboard() {
           variant="blue"
           size={32}
           weight="fill"
-          className="md:size-10 lg:size-12 shrink-0"
+          className="md:h-10 lg:h-12 xl:h-16 shrink-0"
         />
         <h2 className="font-heading text-h3 lg:text-h2 text-Primary-900 uppercase">
           Leaderboard
@@ -110,7 +110,7 @@ export default function Leaderboard() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="flex-1 lg:grid grid-cols-2 gap-8 lg:gap-12 md:gap-12 flex-1 pb-20 lg:pb-10">
+      <div className="flex-1 lg:grid grid-cols-2 gap-8 md:gap-12 ">
         {/* Left Column: Your Rank & Champions */}
         <div className="flex flex-col gap-8 w-full">
           {/* Section: Peringkatmu */}
@@ -129,6 +129,7 @@ export default function Leaderboard() {
                 }
                 size={28}
                 weight="fill"
+                className="md:h-8 lg:h-10 xl:h-12 shrink-0"
               />
               <h3 className="font-heading text-h5 md:text-h3 text-Primary-900 text-left">
                 Peringkatmu
@@ -148,20 +149,20 @@ export default function Leaderboard() {
           </section>
 
           {/* Section: Champions */}
-          <section className="flex flex-col gap-3 md:gap-4 flex-none lg:flex-1 min-h-[380px] md:min-h-[400px] animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
+          <section className="flex flex-col pb-8 md:pb-0 gap-3 md:gap-4 flex-none lg:flex-1 animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
             <div className="flex items-center gap-2">
               <GradientIcon
                 icon={RankingIcon}
                 variant="blue"
                 size={28}
                 weight="fill"
-                className="md:size-8"
+                className="md:h-8 lg:h-10 xl:h-12 shrink-0"
               />
               <h3 className="font-heading text-h5 md:text-h3 text-Primary-900">
                 Champions
               </h3>
             </div>
-            <div className="h-full min-h-0">
+            <div className="h-[360px] md:h-[400px] lg:h-full lg:flex-1 lg:min-h-[360px]">
               <ChampionsPodium topThree={topThree} />
             </div>
           </section>
@@ -175,7 +176,7 @@ export default function Leaderboard() {
               variant="darkBlue"
               size={28}
               weight="bold"
-              className="md:size-8"
+              className="md:h-8 lg:h-10 xl:h-12 shrink-0"
             />
             <h3 className="font-heading text-h5 md:text-h3 text-Primary-900">
               Ranking

@@ -40,8 +40,8 @@ export default function RankCard({
             className={cn(
               "w-full h-full object-cover",
               isHighlight
-                ? "w-10 h-10 md:w-16 md:h-16 scale-110"
-                : "w-8 h-8 md:w-12 md:h-12",
+                ? "w-12 h-12 xl:w-16 xl:h-16 scale-110"
+                : "w-10 h-10 xl:w-12 xl:h-12",
             )}
           />
         </div>

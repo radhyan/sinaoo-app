@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StarIcon,
   CaretLeftIcon,
@@ -11,7 +11,22 @@ import GradientIcon from "@/components/shared/ui/GradientIcon";
 
 export default function PointsHistory({ history = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 7;
+  const [itemsPerPage, setItemsPerPage] = useState(7);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setItemsPerPage(5);
+      } else {
+        setItemsPerPage(7);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const totalPages = Math.ceil(history.length / itemsPerPage);
 
   const paginatedHistory = [...history]

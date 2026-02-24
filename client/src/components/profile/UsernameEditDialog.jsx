@@ -55,19 +55,19 @@ export default function UsernameEditDialog({
 
   return (
     <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
-      <AlertDialogContent className="max-w-xl bg-white rounded-xl p-8 border-none">
+      <AlertDialogContent className="max-w-xl w-[90vw] md:w-full bg-white rounded-lg xl:rounded-xl p-6 md:p-8 border-none">
         <Button
           onClick={() => onOpenChange(false)}
           variant="ghost"
           size="icon"
           shadow="none"
-          className="absolute top-8 right-8 p-1 text-Grayscale-600 hover:text-Error-300 hover:bg-Error-50/30 transition-colors"
+          className="absolute top-4 right-4 md:top-8 md:right-8 p-1 text-Grayscale-600 hover:text-Error-300 hover:bg-Error-50/30 transition-colors"
         >
           <XIcon weight="bold" size={20} />
         </Button>
 
         <AlertDialogHeader className="mb-1">
-          <AlertDialogTitle className="flex items-center gap-3 !text-h3 font-heading text-Primary-900 border-none">
+          <AlertDialogTitle className="flex items-center gap-2 md:gap-3 text-h4 md:!text-h3 font-heading text-Primary-900 border-none">
             <GradientIcon
               icon={UserIcon}
               variant="blue"
@@ -76,7 +76,7 @@ export default function UsernameEditDialog({
             />
             Ubah Username
           </AlertDialogTitle>
-          <AlertDialogDescription className="!text-body-l font-medium">
+          <AlertDialogDescription className="text-body-md md:!text-body-l font-medium">
             Masukkan username baru yang ingin kamu gunakan.
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -97,16 +97,20 @@ export default function UsernameEditDialog({
             {error && <p className="text-Error-400 text-body-sm">{error}</p>}
           </div>
 
-          <AlertDialogFooter className="flex items-center justify-between sm:justify-between w-full mt-6 pt-2">
-            <AlertDialogCancel asChild variant="ghost">
+          <AlertDialogFooter className="flex flex-col-reverse sm:flex-row items-center sm:justify-between w-full mt-6 pt-2 gap-3">
+            <AlertDialogCancel
+              asChild
+              variant="ghost"
+              className="w-full sm:w-auto"
+            >
               <Button
                 variant="exitAlert"
-                className="text-Error-100 hover:text-Error-200 font-bold h-auto shadow-none hover:shadow-none hover:bg-Error-50/20 border-none"
+                className="text-Error-100 hover:text-Error-200 w-full sm:w-auto font-bold h-auto shadow-none hover:shadow-none hover:bg-Error-50/20 border-none"
               >
                 Cancel
               </Button>
             </AlertDialogCancel>
-            <AlertDialogAction asChild>
+            <AlertDialogAction asChild className="w-full sm:w-auto mt-0">
               <Button
                 type="submit"
                 onClick={handleSave}
@@ -115,6 +119,7 @@ export default function UsernameEditDialog({
                 size="xl"
                 rounded="xl"
                 shadow="glowBlue"
+                className="w-full sm:w-auto"
               >
                 Simpan Perubahan
               </Button>

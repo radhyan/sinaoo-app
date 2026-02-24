@@ -49,6 +49,13 @@ export default function ModuleCard({
 
             {/* Tag-style Info */}
             <div className="flex flex-wrap gap-2">
+              {/* Completed Tag */}
+              {isCompleted && (
+                <Tag icon={CheckCircleIcon} variant="default" shadow="orange">
+                  Selesai
+                </Tag>
+              )}
+
               {/* Category Tag */}
               <Tag
                 icon={BookBookmarkIcon}
@@ -75,13 +82,6 @@ export default function ModuleCard({
               >
                 {points}
               </Tag>
-
-              {/* Completed Tag */}
-              {isCompleted && (
-                <Tag icon={CheckCircleIcon} variant="default" shadow="orange">
-                  Selesai
-                </Tag>
-              )}
             </div>
           </div>
 

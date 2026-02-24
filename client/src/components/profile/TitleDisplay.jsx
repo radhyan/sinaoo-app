@@ -71,19 +71,19 @@ export default function TitleDisplay({ user }) {
               Informasi
             </Button>
           </AlertDialogTrigger>
-          <AlertDialogContent className="max-w-4xl bg-white rounded-xl p-10 border-none data-[state=open]:slide-in-from-bottom-full data-[state=open]:slide-in-from-left-1/2">
+          <AlertDialogContent className="max-w-4xl w-[90vw] md:w-full bg-white rounded-lg xl:rounded-xl p-6 md:p-10 border-none data-[state=open]:slide-in-from-bottom-full data-[state=open]:slide-in-from-left-1/2">
             <Button
               onClick={() => setIsDialogOpen(false)}
               variant="ghost"
               size="icon"
               shadow="none"
-              className="absolute top-8 right-8 p-1 text-Grayscale-600 hover:text-Error-300 hover:bg-Error-50/30 transition-colors"
+              className="absolute top-4 right-4 md:top-8 md:right-8 p-1 text-Grayscale-600 hover:text-Error-300 hover:bg-Error-50/30 transition-colors"
             >
               <XIcon weight="bold" size={20} />
             </Button>
 
             <AlertDialogHeader className="mb-4">
-              <AlertDialogTitle className="flex items-center gap-3 !text-h3 font-heading text-Primary-900 border-none">
+              <AlertDialogTitle className="flex items-center gap-2 md:gap-3 text-h4 md:!text-h3 font-heading text-Primary-900 border-none">
                 <GradientIcon
                   icon={CrownSimpleIcon}
                   variant="blue"
@@ -92,7 +92,7 @@ export default function TitleDisplay({ user }) {
                 />
                 Title
               </AlertDialogTitle>
-              <AlertDialogDescription className="!text-body-l font-medium">
+              <AlertDialogDescription className="text-body-md md:!text-body-l font-medium text-left sm:text-center md:text-left">
                 Daftar gelar yang bisa kamu raih berdasarkan total point yang
                 kamu kumpulkan.
               </AlertDialogDescription>
@@ -104,17 +104,21 @@ export default function TitleDisplay({ user }) {
               </span>
             </div>
 
-            <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x">
+            <div className="flex gap-4 md:gap-6 overflow-x-auto pb-4 custom-scrollbar snap-x px-1">
               {titles.map((t) => {
                 const isCurrent = t.title === title;
+                const isUnlocked = points >= t.min;
+
                 return (
                   <div
                     key={t._id}
                     className={cn(
-                      "flex-shrink-0 w-56 p-4 rounded-3xl border-2 transition-all duration-300 snap-center",
+                      "flex-shrink-0 w-48 md:w-56 p-4 rounded-2xl md:rounded-3xl border-2 transition-all duration-300 snap-center",
                       isCurrent
                         ? "bg-Primary-50 border-Primary-300 shadow-blue-glow"
-                        : "bg-Grayscale-100 border-Grayscale-200 grayscale opacity-80",
+                        : isUnlocked
+                          ? "bg-white border-Grayscale-200 shadow-sm hover:border-Primary-200"
+                          : "bg-Grayscale-100 border-Grayscale-200 grayscale opacity-50",
                     )}
                   >
                     <div className="w-full aspect-square relative mb-4">
@@ -128,16 +132,24 @@ export default function TitleDisplay({ user }) {
                       <h4
                         className={cn(
                           "font-heading text-h5 text-center leading-tight",
-                          isCurrent ? "text-Primary-900" : "text-Grayscale-600",
+                          isCurrent
+                            ? "text-Primary-900"
+                            : isUnlocked
+                              ? "text-Primary-800"
+                              : "text-Grayscale-600",
                         )}
                       >
                         {t.title}
                       </h4>
-                      <div className="flex items-center gap-1 py-1 px-3 bg-white/50 rounded-full">
+                      <div className="flex items-center gap-1 py-1 px-3 bg-Grayscale-50/50 rounded-full border border-Grayscale-100">
                         <StarIcon
                           weight="fill"
                           size={18}
-                          className="text-Secondary-400"
+                          className={
+                            isUnlocked
+                              ? "text-Secondary-400"
+                              : "text-Grayscale-400"
+                          }
                         />
                         <span className="text-body-md font-bold text-Primary-800">
                           {t.min}
@@ -150,8 +162,13 @@ export default function TitleDisplay({ user }) {
             </div>
 
             <AlertDialogFooter className="flex items-center justify-end w-full mt-2">
-              <AlertDialogAction asChild>
-                <Button size="xl" rounded="xl" shadow="glowBlue">
+              <AlertDialogAction asChild className="w-full sm:w-auto">
+                <Button
+                  size="xl"
+                  rounded="xl"
+                  shadow="glowBlue"
+                  className="w-full sm:w-auto"
+                >
                   Tutup
                 </Button>
               </AlertDialogAction>

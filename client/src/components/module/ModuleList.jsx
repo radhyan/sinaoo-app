@@ -7,12 +7,19 @@ import ModuleCard, {
   ModuleCardSkeleton,
 } from "@/components/shared/cards/ModuleCard";
 import { useUser } from "@/context/UserContext";
+import { useSubcategoryFilter } from "@/hooks/useSubcategoryFilter";
 
 export default function ModuleList({ course, onBack }) {
   const [modules, setModules] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useUser();
+  const {
+    selectedSubcategory,
+    setSelectedSubcategory,
+    subcategories,
+    filteredItems: filteredModules,
+  } = useSubcategoryFilter(modules, course);
 
   const fetchModules = useCallback(async () => {
     if (!course) return;
@@ -66,9 +73,28 @@ export default function ModuleList({ course, onBack }) {
         </div>
       </div>
 
+      {/* Subcategory Filter Chips */}
+      {!loading && !error && subcategories.length > 0 && (
+        <div className="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-4 -mt-2 mb-2 px-1 shrink-0">
+          {subcategories.map((sub, index) => (
+            <button
+              key={sub}
+              onClick={() => setSelectedSubcategory(sub)}
+              className={`whitespace-nowrap px-4 py-2 rounded-full text-body-sm md:text-body-md lg:text-body-l font-medium transition-all duration-200 border ${
+                selectedSubcategory === sub
+                  ? "bg-Primary-100/50 text-Primary-500 border-Primary-500 shadow-blue-60"
+                  : "bg-surface text-Grayscale-800 border-Grayscale-300 hover:bg-Grayscale-50"
+              }`}
+            >
+              {sub}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Module Grid */}
       <div className="flex-1 overflow-y-auto custom-scrollbar px-1 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-6">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 pb-6">
           {loading ? (
             <>
               <ModuleCardSkeleton />
@@ -84,7 +110,7 @@ export default function ModuleList({ course, onBack }) {
               <RefreshButton onRefresh={fetchModules} loading={loading} />
             </div>
           ) : (
-            modules.map((module, index) => {
+            filteredModules.map((module, index) => {
               const userProgress = user?.progress?.find(
                 (p) => p.moduleId === module._id,
               );
@@ -141,6 +167,14 @@ export default function ModuleList({ course, onBack }) {
               );
             })
           )}
+          {!loading &&
+            !error &&
+            filteredModules.length === 0 &&
+            modules.length > 0 && (
+              <p className="text-center text-Grayscale-500 py-10 col-span-full">
+                Tidak ada modul untuk subkategori ini.
+              </p>
+            )}
           {!loading && !error && modules.length === 0 && (
             <p className="text-center text-Grayscale-500 py-10 col-span-full">
               Belum ada modul tersedia untuk kelas ini.

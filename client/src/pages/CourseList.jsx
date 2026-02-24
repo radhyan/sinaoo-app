@@ -43,7 +43,7 @@ function CourseList() {
   }, [fetchCourses]);
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-hidden p-1">
+    <div className="flex flex-col gap-6 w-full h-full overflow-hidden p-2 lg:px-6">
       {/* Page Header */}
       <div className="flex items-center gap-3 shrink-0 animate-in fade-in slide-in-from-left-4 duration-500">
         <GradientIcon
