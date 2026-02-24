@@ -155,58 +155,60 @@ export default function Achievement() {
   if (!user) return <div>Please log in</div>;
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-1 overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar overflow-x-hidden pb-24 lg:pb-6">
       {/* Title Header */}
-      <div className="flex items-center gap-3 mb-1 animate-in fade-in slide-in-from-left-4 duration-500">
+      <div className="flex items-center gap-3 mb-1 px-1 animate-in fade-in slide-in-from-left-4 duration-500">
         <GradientIcon
           icon={TrophyIcon}
           variant="blue"
-          size={48}
+          size={32}
           weight="fill"
-          className="rounded-lg"
+          className="md:size-10 lg:size-12 rounded-lg shrink-0"
         />
-        <h2 className="font-heading text-h2 text-Primary-900 uppercase">
+        <h2 className="font-heading text-h3 md:text-h2 text-Primary-900 uppercase">
           Achievements
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-[400px_1fr] gap-6 items-stretch mb-6">
+      <div className="grid grid-cols-1 gap-6 items-stretch mb-6">
         {/* User Summary Card (Blue Gradient) */}
         <div className="w-full rounded-xl p-8 bg-db-b shadow-blue-60 relative overflow-hidden border border-Primary-50 transition-all animate-in fade-in slide-in-from-left-6 duration-700 delay-100 fill-mode-both h-full flex flex-col justify-center">
           {/* HEADER */}
-          <div className="flex items-start justify-between mb-6">
+          <div className="flex flex-row items-start justify-between gap-4 mb-6">
             <div className="flex items-center gap-4">
               <img
                 src={getUserAvatar(user)}
                 alt={user.name || user.username}
-                className="h-20 w-20 rounded-full shadow-deep-blue-60 object-cover border-2 border-Primary-50/20"
+                className="h-16 w-16 md:h-20 md:w-20 rounded-full shadow-deep-blue-60 object-cover border-2 border-Primary-50/20"
                 onError={(e) => {
                   e.target.src = "https://i.pravatar.cc/150?u=radhy";
                 }}
               />
 
               <div className="text-left text-Primary-50">
-                <p className="text-h4 font-bold">
+                <p className="text-body-xl md:text-h4 font-bold truncate max-w-[150px] md:max-w-none">
                   {user.name || user.username}
                 </p>
-                <p className="text-body-l opacity-80">{levelInfo.title}</p>
+                <p className="text-body-md md:text-body-l opacity-80">
+                  {levelInfo.title}
+                </p>
               </div>
             </div>
 
             <Button
               variant="ghost"
-              size="default"
+              size="sm"
               shadow="none"
               rightIcon={<ArrowRightIcon weight="bold" />}
-              className="text-Primary-50 hover:bg-white/10"
+              className="text-Primary-50 hover:bg-white/10 lg:h-11 lg:px-6 lg:text-body-md"
             >
               <Link to="/profile">Profil</Link>
             </Button>
           </div>
 
           {/* Label */}
-          <div className="flex flex-col gap-1 items-start mb-4 px-2">
-            <p className="text-Primary-50 text-body-md font-body font-normal tracking-wider opacity-80 uppercase">
+          <div className="flex flex-col gap-1 items-center md:items-start mb-4 px-2">
+            <p className="text-Primary-50 text-body-md font-body tracking-wider">
               Achievements didapatkan
             </p>
           </div>

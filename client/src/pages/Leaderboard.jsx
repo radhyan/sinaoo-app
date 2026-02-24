@@ -100,8 +100,9 @@ export default function Leaderboard() {
         <GradientIcon
           icon={RankingIcon}
           variant="blue"
-          size={40}
+          size={32}
           weight="fill"
+          className="md:size-10 lg:size-12 shrink-0"
         />
         <h2 className="font-heading text-h3 lg:text-h2 text-Primary-900 uppercase">
           Leaderboard
@@ -109,11 +110,11 @@ export default function Leaderboard() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-x-8 lg:gap-x-12 gap-y-10 flex-1 min-h-0 pb-10">
+      <div className="flex-1 lg:grid grid-cols-2 gap-8 lg:gap-12 md:gap-12 flex-1 pb-20 lg:pb-10">
         {/* Left Column: Your Rank & Champions */}
-        <div className="flex flex-col gap-10 min-h-0 w-full">
+        <div className="flex flex-col gap-8 w-full">
           {/* Section: Peringkatmu */}
-          <section className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-6 duration-700 delay-100 fill-mode-both">
+          <section className="flex flex-col gap-3 md:gap-4 animate-in fade-in slide-in-from-top-6 duration-700 delay-100 fill-mode-both">
             <div className="flex gap-2 items-center">
               <GradientIcon
                 icon={MedalIcon}
@@ -126,10 +127,10 @@ export default function Leaderboard() {
                         ? "pink"
                         : "blue"
                 }
-                size={32}
+                size={28}
                 weight="fill"
               />
-              <h3 className="font-heading text-h4 lg:text-h3 text-Primary-900 text-left">
+              <h3 className="font-heading text-h5 md:text-h3 text-Primary-900 text-left">
                 Peringkatmu
               </h3>
             </div>
@@ -140,45 +141,47 @@ export default function Leaderboard() {
                 variant="highlight"
               />
             ) : (
-              <div className="p-6 bg-Grayscale-50 rounded-xl border border-dashed border-Grayscale-200 text-Grayscale-400">
+              <div className="p-4 md:p-6 bg-Grayscale-50 rounded-xl border border-dashed border-Grayscale-200 text-Grayscale-400 text-body-sm md:text-body-md">
                 Log in to see your rank
               </div>
             )}
           </section>
 
           {/* Section: Champions */}
-          <section className="flex flex-col gap-4 flex-1 min-h-[350px] md:min-h-[400px] animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
+          <section className="flex flex-col gap-3 md:gap-4 flex-none lg:flex-1 min-h-[380px] md:min-h-[400px] animate-in fade-in slide-in-from-left-8 duration-700 delay-200 fill-mode-both">
             <div className="flex items-center gap-2">
               <GradientIcon
                 icon={RankingIcon}
                 variant="blue"
-                size={32}
+                size={28}
                 weight="fill"
+                className="md:size-8"
               />
-              <h3 className="font-heading text-h4 lg:text-h3 text-Primary-900">
+              <h3 className="font-heading text-h5 md:text-h3 text-Primary-900">
                 Champions
               </h3>
             </div>
-            <div className="flex-1 min-h-0">
+            <div className="h-full min-h-0">
               <ChampionsPodium topThree={topThree} />
             </div>
           </section>
         </div>
 
         {/* Right Column: Ranking List */}
-        <section className="flex flex-col gap-4 min-h-0 animate-in fade-in slide-in-from-right-8 duration-700 delay-300 fill-mode-both">
+        <section className="flex flex-col gap-3 md:gap-4 animate-in fade-in slide-in-from-right-8 duration-700 delay-300 fill-mode-both">
           <div className="flex items-center gap-2">
             <GradientIcon
               icon={ListNumbersIcon}
               variant="darkBlue"
-              size={32}
+              size={28}
               weight="bold"
+              className="md:size-8"
             />
-            <h3 className="font-heading text-h4 lg:text-h3 text-Primary-900">
+            <h3 className="font-heading text-h5 md:text-h3 text-Primary-900">
               Ranking
             </h3>
           </div>
-          <div className="flex-1 min-h-[400px] md:min-h-0">
+          <div className="flex-1 min-h-[450px] ">
             <RankingList scholars={others} />
           </div>
         </section>

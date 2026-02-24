@@ -14,27 +14,27 @@ const AchievementCard = ({
   return (
     <div
       className={cn(
-        "flex items-center gap-6 p-4 pr-8 rounded-xl border transition-all duration-300 h-full min-h-[180px]",
+        "flex flex-col md:flex-row items-center gap-4 md:gap-6 p-6 md:p-6 md:pr-8 rounded-lg border transition-all duration-300 h-full min-h-[180px]",
         isUnlocked
           ? "bg-lo-o border-Secondary-200 shadow-orange-60"
           : "bg-Grayscale-100 border-Grayscale-200 shadow-sm",
       )}
     >
       {/* Left: Badge Illustration Placeholder */}
-      <div className="shrink-0 w-40 h-40 flex items-center justify-center">
+      <div className="shrink-0 w-28 h-28 md:w-40 md:h-40 flex items-center justify-center">
         <img
           src={achievement.imageUrl}
           alt={achievement.name}
           className={cn(
-            "w-full h-full object-contain mb-2 drop-shadow-md",
+            "w-full h-full object-contain drop-shadow-md",
             !isUnlocked && "grayscale brightness-90 opacity-50",
           )}
         />
       </div>
 
       {/* Right: Content */}
-      <div className="flex-1 flex justify-center items-start flex-col min-w-0">
-        <div className="flex justify-between items-start w-full gap-2">
+      <div className="flex-1 flex justify-center items-start flex-col min-w-0 w-full">
+        <div className="flex justify-between items-center md:items-start w-full gap-2">
           <h5
             className={cn(
               "font-heading text-h5 leading-tight truncate flex-1 text-left",
@@ -57,7 +57,7 @@ const AchievementCard = ({
 
         <p
           className={cn(
-            "text-body-md mb-2 line-clamp-2 text-left",
+            "text-body-sm md:text-body-md mb-3 text-left w-full mt-1",
             isUnlocked ? "text-Secondary-900" : "text-Grayscale-500",
           )}
         >

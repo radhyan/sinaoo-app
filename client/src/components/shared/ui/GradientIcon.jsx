@@ -68,6 +68,7 @@ export default function GradientIcon({
         size={size}
         weight={weight}
         color={`url(#${grad.id})`} // This connects the icon to the gradient
+        className="w-full h-full"
         style={{ fill: `url(#${grad.id})` }} // Extra backup for some browsers
       />
     </span>

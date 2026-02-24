@@ -9,7 +9,7 @@ export default function RankingList({ scholars = [] }) {
 
   // Responsive items per page
   const [itemsPerPage, setItemsPerPage] = useState(() =>
-    window.innerWidth < 1367 ? 5 : 8,
+    window.innerWidth < 1367 ? 5 : 7,
   );
 
   React.useEffect(() => {
@@ -28,7 +28,7 @@ export default function RankingList({ scholars = [] }) {
   );
 
   return (
-    <div className="bg-w-lb rounded-xl shadow-blue-60 border border-Primary-50 flex flex-col h-full p-2 md:p-4">
+    <div className="bg-w-lb rounded-lg md:rounded-xl shadow-blue-60 border border-Primary-50 flex flex-col h-full p-2 md:p-4">
       <div className="flex-1 p-1 md:p-2">
         {paginatedScholars.length > 0 ? (
           paginatedScholars.map((scholar, index) => (
@@ -68,7 +68,7 @@ export default function RankingList({ scholars = [] }) {
               key={page}
               onClick={() => setCurrentPage(page)}
               className={cn(
-                "w-8 h-8 rounded-xsm text-body-sm font-bold transition-all",
+                "w-8 h-8 rounded-xsm text-body-md font-bold transition-all",
                 currentPage === page
                   ? "bg-b-lb text-white shadow-blue-60"
                   : "text-Primary-900 hover:bg-Primary-50 hover:text-Primary-900",

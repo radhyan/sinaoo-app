@@ -49,9 +49,9 @@ function CourseList() {
         <GradientIcon
           icon={BookBookmarkIcon}
           variant="blue"
-          size={48}
+          size={32}
           weight="fill"
-          className="rounded-lg"
+          className="md:size-10 lg:size-12 rounded-lg shrink-0"
         />
         <h2 className="font-heading text-h4 md:text-h3 lg:text-h2 text-Primary-900 uppercase">
           Courses

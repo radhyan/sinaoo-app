@@ -130,14 +130,6 @@ export default function ModuleSidebar({
       {isOpen ? (
         <div className="w-full px-5 flex flex-col gap-4 animate-in fade-in slide-in-from-left-4 duration-300">
           <div className="flex items-center justify-between gap-2 w-full h-10">
-            <Button
-              variant="ghostDark"
-              size="icon"
-              onClick={onToggle}
-              shadow="none"
-            >
-              <SidebarCloseIcon size={20} />
-            </Button>
             {/* Title detection container */}
             <div
               className="flex-1 min-w-0 overflow-hidden relative h-full flex items-center"
@@ -163,6 +155,14 @@ export default function ModuleSidebar({
                 </>
               )}
             </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onToggle}
+              className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
+            >
+              <SidebarCloseIcon size={28} weight="bold" />
+            </Button>
           </div>
 
           <div>
@@ -182,12 +182,12 @@ export default function ModuleSidebar({
       ) : (
         <div className="w-full flex justify-center px-2">
           <Button
-            variant="ghostDark"
+            variant="ghost"
             size="icon"
-            shadow="none"
             onClick={onToggle}
+            className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
           >
-            <SidebarOpenIcon size={20} />
+            <SidebarOpenIcon size={28} weight="bold" />
           </Button>
         </div>
       )}
