@@ -68,7 +68,7 @@ export default function ModuleList({ course, onBack }) {
 
       {/* Module Grid */}
       <div className="flex-1 overflow-y-auto custom-scrollbar px-1 ">
-        <div className="grid grid-cols-1 gap-4 pb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-6">
           {loading ? (
             <>
               <ModuleCardSkeleton />
@@ -77,7 +77,7 @@ export default function ModuleList({ course, onBack }) {
               <ModuleCardSkeleton />
             </>
           ) : error ? (
-            <div className="flex flex-col items-center justify-center py-12 gap-4">
+            <div className="flex flex-col items-center justify-center py-12 gap-4 col-span-full">
               <p className="text-body-md text-Error-400 font-medium text-center px-6">
                 {error}
               </p>
@@ -142,7 +142,7 @@ export default function ModuleList({ course, onBack }) {
             })
           )}
           {!loading && !error && modules.length === 0 && (
-            <p className="text-center text-Grayscale-500 py-10">
+            <p className="text-center text-Grayscale-500 py-10 col-span-full">
               Belum ada modul tersedia untuk kelas ini.
             </p>
           )}

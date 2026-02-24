@@ -18,7 +18,9 @@ export default function UserProgress({
   className,
 }) {
   return (
-    <div className={cn("grid grid-cols-2 gap-3 w-full", className)}>
+    <div
+      className={cn("grid grid-cols-2 gap-3 min-w-[170px] w-full", className)}
+    >
       {[
         {
           label: "Course selesai",

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import profileHeaderImg from "@/assets/Profile Header/ProfileHeader.png";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -54,9 +54,22 @@ const WidgetCard = ({ title, icon, children }) => (
   </div>
 );
 
+const ENCOURAGING_MESSAGES = [
+  "Siap untuk belajar hari ini?",
+  "Tetap semangat belajar ya!",
+  "Ayo raih prestasimu hari ini!",
+  "Satu langkah lebih dekat ke tujuanmu.",
+  "Jangan menyerah, terus berjuang!",
+];
+
 function Dashboard() {
   const { user, loading, earnedAchievement, setEarnedAchievement } = useUser();
   const [totalAchievements, setTotalAchievements] = useState(6);
+
+  const greetingMessage = useMemo(() => {
+    const randomIndex = Math.floor(Math.random() * ENCOURAGING_MESSAGES.length);
+    return ENCOURAGING_MESSAGES[randomIndex];
+  }, []);
 
   useEffect(() => {
     // Only fetch achievements stats separately if needed, or assume fixed for now
@@ -117,24 +130,23 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-2 md:p-4 lg:p-6 overflow-x-hidden">
+    <div className="flex flex-col gap-6 w-full h-full overflow-y-auto custom-scrollbar p-2 pr-0 lg:pr-0 md:p-4 lg:p-6 overflow-x-hidden">
       {/* Top Banner */}
-      <div className="w-full min-h-[160px] lg:aspect-[21/4] bg-b-lb rounded-xl flex items-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both shadow-sm">
+      <div className="w-full min-h-[100px] md:min-h-[160px] lg:aspect-[21/4] rounded-none md:rounded-xl flex items-start md:items-center relative overflow-hidden animate-in fade-in slide-in-from-top-6 duration-700 fill-mode-both">
         <img
           src={profileHeaderImg}
           alt="Profile Header"
           className="hidden md:block absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-Primary-600/20 to-transparent pointer-events-none" />
-        <h2 className="text-white font-heading text-h4 md:text-h3 lg:text-h1 px-6 md:px-20 xl:px-24 z-10 max-w-[80%] md:max-w-[70%] lg:max-w-[70%] text-left flex flex-col leading-tight">
-          <span className="text-white/80 font-medium mb-1 drop-shadow-sm">
+        <h2 className="md:text-Primary-50 text-Primary-800 font-heading text-body-xl md:text-h3 xl:text-h1 px-2 md:px-20 lg:px-24 z-10 max-w-[80%] md:max-w-[70%] lg:max-w-[70%] text-left flex flex-col leading-tight">
+          <span className="md:text-Primary-50/80 text-Primary-600 font-medium mb-1 drop-shadow-sm">
             Halo, {user.username}!
           </span>
-          <span>Siap untuk belajar hari ini?</span>
+          <span className="">{greetingMessage}</span>
         </h2>
       </div>
       {/* Points and Profile Progress Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.4fr] gap-4 lg:gap-6 animate-in fade-in slide-in-from-top-12 duration-700 fill-mode-both">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-4 lg:gap-6 animate-in fade-in slide-in-from-top-12 duration-700 fill-mode-both">
         <div className="animate-in fade-in slide-in-from-left-6 duration-700 delay-200 fill-mode-both">
           <PointProgressBar
             currentPoints={user.points}
@@ -161,8 +173,13 @@ function Dashboard() {
         {/* Left: Daily Missions */}
         <div className="flex flex-col h-full animate-in fade-in slide-in-from-left-8 duration-700 delay-400 fill-mode-both">
           <div className="flex items-center gap-3 mb-4">
-            <GradientIcon icon={CalendarCheckIcon} variant="orange" size={40} />
-            <h3 className="font-heading text-h3 text-Primary-900">
+            <GradientIcon
+              icon={CalendarCheckIcon}
+              variant="orange"
+              size={40}
+              className="h-8 w-8 md:h-10 md:w-10"
+            />
+            <h3 className="font-heading text-h4 md:text-h3 text-Primary-900">
               Misi Harian
             </h3>
           </div>
@@ -173,15 +190,16 @@ function Dashboard() {
 
         {/* Right: Last Accessed Module */}
         <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-8 duration-700 delay-500 fill-mode-both">
-          <div className="flex items-start lg:items-center gap-3 mb-4">
+          <div className="flex items-start xl:items-center gap-3 mb-4">
             <GradientIcon
               icon={BookOpenTextIcon}
               size={40}
               weight="fill"
               variant="green"
+              className="h-8 w-8 md:h-10 md:w-10"
             />
-            <h3 className="font-heading text-left text-h3 text-Primary-900">
-              Modul Terakhir Diakses
+            <h3 className="font-heading text-left text-h4 md:text-h3 text-Primary-900">
+              Lanjuti Modul
             </h3>
           </div>
 

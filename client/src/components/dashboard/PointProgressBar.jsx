@@ -74,20 +74,23 @@ export default function PointProgressBar({
         </div>
 
         {/* FOOTER (Same as before) */}
-        <div className="flex px-3 pt-2 items-center justify-between text-body-md text-Primary-50 ">
+        <div className="flex px-3 pt-2 items-start text-left text-body-md text-Primary-50 ">
           <div>
             {isMax ? (
-              <span className="text-body-md">
+              <span className="text-body-md xl:text-body-l">
                 Points kamu sudah max di{" "}
-                <span className="font-bold text-body-md">{currentPoints}</span>!
+                <span className="font-bold text-body-md xl:text-body-l">
+                  {currentPoints}
+                </span>
+                !
               </span>
             ) : (
               <>
-                <span className="font-bold font-body-md">
+                <span className="font-bold font-body-md xl:text-body-l">
                   {remaining} points{" "}
                 </span>
-                <span className="font-normal font-body-md">
-                  lagi untuk ke title selanjutnya
+                <span className="font-normal font-body-md xl:text-body-l">
+                  untuk ke title selanjutnya
                 </span>
               </>
             )}

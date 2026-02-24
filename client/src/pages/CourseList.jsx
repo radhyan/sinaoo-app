@@ -68,9 +68,9 @@ function CourseList() {
           )}
         >
           <div className="h-full overflow-y-auto custom-scrollbar p-6">
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4">
               {loading ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-6 animate-in fade-in duration-500">
+                <div className="flex flex-col items-center justify-center py-20 gap-6 animate-in fade-in duration-500 col-span-full">
                   <GradientIcon
                     icon={BookBookmarkIcon}
                     variant="orange"
@@ -92,7 +92,7 @@ function CourseList() {
                   />
                 </div>
               ) : error ? (
-                <div className="flex flex-col items-center justify-center py-20 gap-6">
+                <div className="flex flex-col items-center justify-center py-20 gap-6 col-span-full">
                   <p className="text-body-lg text-Grayscale-50 text-center px-10">
                     {error}
                   </p>
