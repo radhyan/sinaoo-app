@@ -15,6 +15,11 @@ import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
 import { Button } from "@/components/shared/ui/Button";
 import ModuleExitButton from "./ModuleExitButton";
 import { SidebarCloseIcon, SidebarOpenIcon } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const StepIcon = ({ type, status, className }) => {
   const commonProps = {
@@ -155,14 +160,21 @@ export default function ModuleSidebar({
                 </>
               )}
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onToggle}
-              className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
-            >
-              <SidebarCloseIcon size={28} weight="bold" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onToggle}
+                  className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
+                >
+                  <SidebarCloseIcon size={28} weight="bold" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Tutup Sidebar</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
 
           <div>
@@ -181,14 +193,21 @@ export default function ModuleSidebar({
         </div>
       ) : (
         <div className="w-full flex justify-center px-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onToggle}
-            className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
-          >
-            <SidebarOpenIcon size={28} weight="bold" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={onToggle}
+                className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
+              >
+                <SidebarOpenIcon size={28} weight="bold" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>Buka Sidebar</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       )}
 

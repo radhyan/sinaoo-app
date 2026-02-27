@@ -47,28 +47,28 @@ export default function PointsHistory({ history = [] }) {
           Points History
         </h3>
       </div>
-      <div className="bg-w-lb rounded-xl shadow-blue-60 border border-Primary-50 flex flex-col">
-        <div className="flex-1 overflow-hidden rounded-xl">
+      <div className="bg-w-lb rounded-lg lg:rounded-xl shadow-blue-60 border border-Primary-50 flex flex-col">
+        <div className="flex-1 overflow-hidden rounded-lg lg:rounded-xl">
           {paginatedHistory.length > 0 ? (
             <div className="flex flex-col">
               {paginatedHistory.map((item, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 md:px-8 py-4 gap-3 border-b border-Primary-50",
+                    "flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 md:px-8 py-4 border-b border-Primary-50",
                     "animate-in fade-in slide-in-from-left-4 duration-300 fill-mode-both",
                   )}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <div className="flex items-center gap-3 md:gap-4 shrink-0">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-Success-50/50">
+                  <div className="flex items-center gap-1 md:gap-4 shrink-0">
+                    <div className="w-8 h-8 flex items-center justify-center">
                       <PlusIcon
                         weight="bold"
                         size={20}
-                        className="text-Success-500"
+                        className="text-Success-400"
                       />
                     </div>
-                    <div className="flex items-center gap-1 text-body-md font-bold text-Primary-900 bg-Primary-50/50 px-2 py-0.5 rounded-md">
+                    <div className="flex items-center gap-1 text-body-md font-bold text-Primary-900 px-2 py-0.5">
                       {item.points}{" "}
                       <GradientIcon
                         icon={StarIcon}

@@ -13,6 +13,7 @@ const Tag = ({
   const variants = {
     default: "bg-Secondary-600 text-Secondary-50 border-Secondary-200",
     module: "bg-Tertiary-600 text-Tertiary-50 border-Tertiary-300",
+    blue: "bg-blue-600 text-blue-50 border-blue-300",
     locked: "bg-Grayscale-500 text-Grayscale-50 border-Grayscale-300",
   };
 
@@ -33,8 +34,8 @@ const Tag = ({
     shadow && shadows[shadow]
       ? shadows[shadow]
       : variant === "default"
-      ? "shadow-green-60"
-      : "";
+        ? "shadow-green-60"
+        : "";
 
   return (
     <div
@@ -42,7 +43,7 @@ const Tag = ({
         "flex items-center gap-1 px-2 py-1 rounded-md border-[0.5px] w-fit",
         variants[variant],
         resolvedShadow,
-        className
+        className,
       )}
       {...props}
     >

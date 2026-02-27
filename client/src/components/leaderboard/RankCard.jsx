@@ -33,7 +33,7 @@ export default function RankCard({
         </h4>
 
         {/* Avatar */}
-        <div className="shrink-0 rounded-full overflow-hidden shadow-deep-blue-60">
+        <div className="ml-2 shrink-0 rounded-full overflow-hidden shadow-deep-blue-60">
           <img
             src={getUserAvatar(userProfile)}
             alt={userProfile?.name || userProfile?.username}

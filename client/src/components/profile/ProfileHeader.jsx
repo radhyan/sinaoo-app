@@ -30,7 +30,7 @@ export default function ProfileHeader({ user }) {
   const { percentage, nextTarget, isMax, remaining } = levelInfo;
 
   return (
-    <div className="bg-db-b rounded-xl p-6 shadow-blue-60 border border-Primary-50 relative overflow-hidden">
+    <div className="bg-db-b rounded-lg lg:rounded-xl p-4 lg:p-6 shadow-blue-60 border border-Primary-50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="flex flex-col relative z-10 w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-5">
@@ -91,7 +91,7 @@ export default function ProfileHeader({ user }) {
 
         {/* PROGRESS SECTION */}
         <div className="flex flex-col gap-3">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+          <div className="flex flex-row items-center gap-2">
             <div className="flex items-center gap-2 flex-1 w-full">
               <GradientIcon
                 icon={StarIcon}
@@ -126,9 +126,7 @@ export default function ProfileHeader({ user }) {
             ) : (
               <div className="flex flex-wrap items-center gap-1 opacity-80">
                 <span className="font-bold">{remaining} points </span>
-                <span className="font-normal">
-                  lagi untuk ke title selanjutnya
-                </span>
+                <span className="font-normal">untuk ke title selanjutnya</span>
               </div>
             )}
           </div>

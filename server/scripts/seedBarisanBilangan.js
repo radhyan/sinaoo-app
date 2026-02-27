@@ -198,7 +198,7 @@ const seedBarisanBilangan = async () => {
             correctAnswer: "a",
             explanation:
               "a=3, r=2. (1) Benar. (2) Benar. (3) Benar. (4) Salah.",
-            points: 7,
+            points: 6,
           },
           {
             id: "q3",
@@ -264,7 +264,7 @@ const seedBarisanBilangan = async () => {
             ],
             correctAnswers: { r1: "true", r2: "true", r3: "false" },
             explanation: "U4=162. r=2 => U3=24. Geometri.",
-            points: 8,
+            points: 7,
           },
           {
             id: "q7",
@@ -320,7 +320,7 @@ const seedBarisanBilangan = async () => {
             question: "U4 + U5 + U6?",
             correctAnswer: "3159",
             explanation: "243 + 729 + 2187 = 3159.",
-            points: 8,
+            points: 7,
           },
           {
             id: "q11",
@@ -413,6 +413,7 @@ const seedBarisanBilangan = async () => {
       steps: stepsData,
       isAIGenerated: false,
       sourceMaterial: "",
+      points_available: 100,
     };
 
     await moduleCollection.deleteOne({ _id: targetId });

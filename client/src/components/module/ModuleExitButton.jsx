@@ -18,8 +18,8 @@ import {
 export default function ModuleExitButton({ isOpen, onExit }) {
   const navigate = useNavigate();
 
-  const handleExit = async () => {
-    if (onExit) await onExit();
+  const handleExit = () => {
+    if (onExit) onExit(); // Fire-and-forget, don't block navigation
     navigate("/courses");
   };
 

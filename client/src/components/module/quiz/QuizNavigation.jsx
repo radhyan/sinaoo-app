@@ -136,9 +136,7 @@ const QuizNavigation = ({
                   disabled={isFirst}
                   className="justify-center w-full"
                   leftIcon={<CaretLeftIcon />}
-                >
-                  Sebelumnya
-                </Button>
+                ></Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Pertanyaan sebelumnya</p>
@@ -153,9 +151,7 @@ const QuizNavigation = ({
                   disabled={isLast}
                   className="justify-center w-full"
                   rightIcon={<CaretRightIcon />}
-                >
-                  Berikutnya
-                </Button>
+                ></Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Pertanyaan berikutnya</p>

@@ -1,5 +1,10 @@
 import React from "react";
-import { CheckCircle, XCircle } from "@phosphor-icons/react";
+import {
+  CheckCircle,
+  CheckCircleIcon,
+  XCircle,
+  XCircleIcon,
+} from "@phosphor-icons/react";
 
 const MultipleChoiceQuestion = ({
   question,
@@ -15,9 +20,9 @@ const MultipleChoiceQuestion = ({
         const isCorrect = showResult && option.id === correctAnswer;
         const isWrongSelection = showResult && isSelected && !isCorrect;
 
-        let borderClass = "border-Grayscale-200";
+        let borderClass = "border-Grayscale-100";
         let bgClass = "";
-        let textClass = "text-Grayscale-700";
+        let textClass = "text-Grayscale-900";
 
         if (showResult) {
           if (isCorrect) {
@@ -38,7 +43,7 @@ const MultipleChoiceQuestion = ({
             textClass = "text-Primary-900";
           } else {
             borderClass =
-              "border-Grayscale-200 hover:border-Primary-200 hover:bg-Grayscale-50";
+              "border-Grayscale-200 hover:border-Primary-200 hover:bg-Primary-50/50";
           }
         }
 
@@ -46,7 +51,7 @@ const MultipleChoiceQuestion = ({
           <div
             key={option.id}
             onClick={() => !showResult && onSelect(option.id)}
-            className={`p-5 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 group ${
+            className={`p-5 rounded-md md:rounded-lg border-2 transition-all duration-200 flex items-center gap-4 group ${
               showResult ? "cursor-default" : "cursor-pointer"
             } ${borderClass} ${bgClass}`}
           >
@@ -65,13 +70,17 @@ const MultipleChoiceQuestion = ({
             >
               {showResult ? (
                 isCorrect ? (
-                  <CheckCircle
+                  <CheckCircleIcon
                     size={16}
                     weight="fill"
                     className="text-Success-300"
                   />
                 ) : isWrongSelection ? (
-                  <XCircle size={16} weight="fill" className="text-Error-300" />
+                  <XCircleIcon
+                    size={16}
+                    weight="fill"
+                    className="text-Error-300"
+                  />
                 ) : null
               ) : (
                 isSelected && (

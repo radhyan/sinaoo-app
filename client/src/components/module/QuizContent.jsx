@@ -104,25 +104,25 @@ const QuizContent = ({
             </div>
           </div>
 
-          <h2 className="font-heading text-h4 text-Grayscale-900 my-4 whitespace-pre-line">
+          {/* Context / Reading Material for Question */}
+          {question.context && (
+            <div className="mb-4 text-body-md md:text-body-l text-justify text-Grayscale-900 whitespace-pre-line bg-Grayscale-50 p-4 md:p-6 rounded-lg border border-Grayscale-100">
+              {question.context}
+            </div>
+          )}
+
+          <h2 className="font-bold text-h5 md:text-h4 text-justify text-Grayscale-900 my-4 whitespace-pre-line">
             {question.question}
           </h2>
 
           {/* Question Image */}
           {question.imageUrl && (
-            <div className="mb-6 rounded-lg overflow-hidden border border-Grayscale-200 bg-white">
+            <div className="mb-6 rounded-md md:rounded-lg overflow-hidden border border-Grayscale-200 bg-white">
               <img
                 src={question.imageUrl}
                 alt="Question diagram"
                 className="max-w-full h-auto mx-auto"
               />
-            </div>
-          )}
-
-          {/* Context / Reading Material for Question */}
-          {question.context && (
-            <div className="mb-4 text-body-md md:text-body-l text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-3 md:p-4 rounded-lg border border-Grayscale-100">
-              {question.context}
             </div>
           )}
         </div>

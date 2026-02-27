@@ -17,7 +17,7 @@ export default function MenuItem({ to, icon: Icon, label, isCollapsed }) {
         className={`absolute left-0 top-1/2 -translate-y-1/2 h-10 w-1.5 rounded-r-xsm transition-all duration-[1000ms] ease-in-out transform ${
           isActive
             ? "bg-db-b translate-x-0"
-            : "bg-Grayscale-800 -translate-x-full group-hover:translate-x-0"
+            : "bg-Primary-500 -translate-x-full group-hover:translate-x-0"
         } ${isCollapsed ? "opacity-0" : "opacity-100"}`}
       ></span>
 
@@ -27,12 +27,12 @@ export default function MenuItem({ to, icon: Icon, label, isCollapsed }) {
         } ${
           isActive
             ? "bg-db-b drop-shadow-blue-60"
-            : "bg-transparent group-hover:drop-shadow-none group-hover:shadow-none group-hover:bg-Primary-50/50"
+            : "bg-transparent group-hover:drop-shadow-none group-hover:shadow-none"
         }`}
       >
         <Icon
           size={24}
-          weight={isActive ? "fill" : "bold"}
+          weight={isActive ? "fill" : "fill"}
           className={`transition-colors duration-[1000ms] ease-in-out ${
             isActive
               ? "text-white"

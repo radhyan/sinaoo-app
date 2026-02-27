@@ -25,6 +25,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarCloseIcon, SidebarOpenIcon } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function Layout() {
   const location = useLocation();
@@ -42,7 +47,8 @@ export default function Layout() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-Primary-600 border-none shadow-blue-60"
+              shadow="blue"
+              className="text-Primary-600 border-none active:scale-90 transition-transform duration-200"
             >
               <ListIcon size={28} weight="bold" />
             </Button>
@@ -82,18 +88,25 @@ export default function Layout() {
                 : "w-auto opacity-100"
             }`}
           />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
-          >
-            {isSidebarCollapsed ? (
-              <SidebarOpenIcon size={28} weight="bold" />
-            ) : (
-              <SidebarCloseIcon size={28} weight="bold" />
-            )}
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                className="text-Primary-600 hover:bg-Primary-50 shrink-0 rounded-xsm hover:shadow-none shadow-none border-none"
+              >
+                {isSidebarCollapsed ? (
+                  <SidebarOpenIcon size={28} weight="bold" />
+                ) : (
+                  <SidebarCloseIcon size={28} weight="bold" />
+                )}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>{isSidebarCollapsed ? "Buka Sidebar" : "Tutup Sidebar"}</p>
+            </TooltipContent>
+          </Tooltip>
         </header>
 
         <nav

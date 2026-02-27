@@ -93,8 +93,8 @@ export default function ModuleList({ course, onBack }) {
       )}
 
       {/* Module Grid */}
-      <div className="flex-1 overflow-y-auto custom-scrollbar px-1 ">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 pb-6">
+      <div className="flex-1 overflow-y-auto custom-scrollbar rounded-lg md:rounded-xl ">
+        <div className="grid grid-cols-1 min-[1370px]:grid-cols-2 gap-4 pb-6">
           {loading ? (
             <>
               <ModuleCardSkeleton />

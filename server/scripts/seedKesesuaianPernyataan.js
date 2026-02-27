@@ -638,21 +638,44 @@ const seedKesesuaian = async () => {
       },
     ];
 
-    console.log(`Updating all modules named: ${moduleName}`);
-    const result = await Module.updateMany(
-      { name: { $regex: new RegExp(moduleName, "i") } },
-      {
-        $set: {
-          steps: stepsData,
-          subcategory: "Penalaran Induktif",
-        },
-      },
-    );
+    // Find parent course
+    const courseName = "Penalaran Umum";
+    const course = await Course.findOne({ name: courseName });
+    if (!course) {
+      console.error(`Course '${courseName}' not found.`);
+      process.exit(1);
+    }
+    console.log("Found Course:", course.name);
 
-    console.log(
-      `Matched ${result.matchedCount} modules and updated ${result.modifiedCount} modules.`,
-    );
-    console.log("Module Seeded successfully.");
+    const targetId = "kesesuaian-pernyataan";
+
+    let moduleDoc = await Module.findById(targetId);
+
+    if (moduleDoc) {
+      console.log(`Updating existing module: ${moduleDoc.name}`);
+      moduleDoc.courseId = course._id;
+      moduleDoc.steps = stepsData;
+      moduleDoc.name = moduleName;
+      moduleDoc.description =
+        "Materi mengenai kesesuaian pernyataan berdasarkan teks, tabel, grafik, dan diagram.";
+      moduleDoc.subcategory = "Penalaran Induktif";
+      moduleDoc.points_available = 100;
+      await moduleDoc.save();
+    } else {
+      console.log(`Creating new module with ID: ${targetId}`);
+      moduleDoc = await Module.create({
+        _id: targetId,
+        courseId: course._id,
+        name: moduleName,
+        description:
+          "Materi mengenai kesesuaian pernyataan berdasarkan teks, tabel, grafik, dan diagram.",
+        subcategory: "Penalaran Induktif",
+        steps: stepsData,
+        points_available: 100,
+      });
+    }
+
+    console.log("Module Seeded Successfully:", moduleDoc.name);
     process.exit(0);
   } catch (error) {
     console.error("CRITICAL SEED ERROR:");

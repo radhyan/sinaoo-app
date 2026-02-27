@@ -57,7 +57,7 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
         <div className="flex items-center gap-4 mb-6 border-b border-Grayscale-100 pb-4">
           <Button
             variant="ghostDark"
-            shadow="none "
+            shadow="none"
             size="icon"
             onClick={onBack}
             leftIcon={<ArrowLeftIcon />}
@@ -80,6 +80,13 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
             </div>
           </div>
 
+          {/* Context */}
+          {question.context && (
+            <div className="mb-4 text-body-md md:text-body-l text-justify text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 md:p-6 rounded-lg border border-Grayscale-100 italic">
+              {question.context}
+            </div>
+          )}
+
           <h2 className="font-heading text-h4 text-Grayscale-900 my-4">
             {question.question}
           </h2>
@@ -92,13 +99,6 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
                 alt="Question diagram"
                 className="max-w-full h-auto mx-auto"
               />
-            </div>
-          )}
-
-          {/* Context */}
-          {question.context && (
-            <div className="mb-4 text-body-lg text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 rounded-lg border border-Grayscale-100 italic">
-              {question.context}
             </div>
           )}
         </div>

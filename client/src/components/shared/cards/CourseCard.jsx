@@ -80,7 +80,7 @@ export default function CourseCard({
         </div>
 
         {/* Progress Bar */}
-        <div className="mt-2">
+        <div className="mt-auto">
           <div className="flex items-center gap-3">
             <div className="flex-1">
               <SegmentedProgressBar
@@ -104,6 +104,7 @@ export default function CourseCard({
             e.stopPropagation();
             onClick && onClick(course);
           }}
+          className="mt-auto"
         >
           {isSelected ? "Tutup Modul" : "Buka Modul"}
         </Button>

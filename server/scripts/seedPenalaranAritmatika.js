@@ -404,7 +404,7 @@ const seedPenalaranAritmatika = async () => {
             },
             explanation:
               "Barisan adalah kuadrat bilangan asli (n^2). Suku ke-7 adalah 7^2 = 49. Selisih antar bilangan (3, 5, 7, 9, 11) bertambah secara konstan (beda 2).",
-            points: 7,
+            points: 6,
           },
           {
             id: "q9",
@@ -469,7 +469,7 @@ const seedPenalaranAritmatika = async () => {
             correctAnswer: "21",
             explanation:
               "Deret tersebut merupakan pola bilangan Fibonacci, di mana suku selanjutnya adalah jumlah dari dua suku sebelumnya (8 + 13 = 21).",
-            points: 8,
+            points: 7,
           },
           {
             id: "q13",

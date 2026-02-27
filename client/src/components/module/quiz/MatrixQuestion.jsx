@@ -9,17 +9,17 @@ const MatrixQuestion = ({
   correctAnswers = {},
 }) => {
   return (
-    <div className="overflow-hidden rounded-xl border border-Grayscale-200">
+    <div className="overflow-hidden rounded-md md:rounded-lg border border-Grayscale-200">
       <table className="w-full">
-        <thead className="bg-Grayscale-50 border-b border-Grayscale-200">
+        <thead className="bg-Grayscale-100 border-b border-Grayscale-200">
           <tr>
-            <th className="p-4 text-left text-sm font-bold text-Grayscale-700">
+            <th className="p-4 text-center text-md md:text-l font-bold text-Grayscale-900">
               Pernyataan
             </th>
             {question.columns.map((col) => (
               <th
                 key={col.id}
-                className="p-4 text-center text-sm font-bold text-Grayscale-700 w-24"
+                className="p-4 text-center text-md md:text-l font-bold text-Grayscale-700 w-24"
               >
                 {col.text}
               </th>

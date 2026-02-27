@@ -1,0 +1,74 @@
+﻿node : (node:37460) 
+Warning: Failed to 
+load the ES module: C:\
+Users\radhy\Documents\S
+kripsi\sinaoo-app\serve
+r\scripts\seedKesimpula
+n.js. Make sure to set 
+"type": "module" in 
+the nearest 
+package.json file or 
+use the .mjs extension.
+At line:1 char:1
++ node scripts/seedKesi
+mpulan.js 2>&1 | 
+Out-File -Encoding 
+utf8 out.txt
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ((node:37460)    
+ Wa....mjs extensio    
+n.:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+(Use `node 
+--trace-warnings ...` 
+to show where the 
+warning was created)
+C:\Users\radhy\Document
+s\Skripsi\sinaoo-app\se
+rver\scripts\seedKesimp
+ulan.js:1
+import mongoose from 
+"mongoose";
+^^^^^^
+
+SyntaxError: Cannot 
+use import statement 
+outside a module
+    at wrapSafe (node:i
+nternal/modules/cjs/loa
+der:1692:18)
+    at Module._compile 
+(node:internal/modules/
+cjs/loader:1735:20)
+    at Object..js (node
+:internal/modules/cjs/l
+oader:1893:10)
+    at Module.load (nod
+e:internal/modules/cjs/
+loader:1481:32)
+    at Module._load (no
+de:internal/modules/cjs
+/loader:1300:12)
+    at TracingChannel.t
+raceSync (node:diagnost
+ics_channel:328:14)
+    at wrapModuleLoad (
+node:internal/modules/c
+js/loader:245:24)
+    at Module.executeUs
+erEntryPoint [as 
+runMain] (node:internal
+/modules/run_main:154:5
+)
+    at node:internal/ma
+in/run_main_module:33:4
+7
+
+Node.js v24.11.1

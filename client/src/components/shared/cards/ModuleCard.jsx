@@ -29,10 +29,10 @@ export default function ModuleCard({
   const navigate = useNavigate();
 
   return (
-    <div className={cn("shadow-blue-60 rounded-xl", className)}>
+    <div className={cn("shadow-blue-60 rounded-xl h-full", className)}>
       <div
         className={cn(
-          "flex flex-col px-8 py-6 rounded-xl border min-h-[160px]",
+          "flex flex-col px-8 py-6 rounded-lg md:rounded-xl border min-h-[160px] h-full",
           isCompleted
             ? "bg-lo-o border-Secondary-200"
             : "bg-lg-g border-Tertiary-50",
@@ -59,7 +59,7 @@ export default function ModuleCard({
               {/* Category Tag */}
               <Tag
                 icon={BookBookmarkIcon}
-                variant={isCompleted ? "default" : "module"}
+                variant={isCompleted ? "module" : "module"}
                 shadow={isCompleted ? "orange" : "green"}
               >
                 {category}
@@ -68,7 +68,7 @@ export default function ModuleCard({
               {/* Sub-Category Tag */}
               <Tag
                 icon={BooksIcon}
-                variant={isCompleted ? "default" : "module"}
+                variant={isCompleted ? "blue" : "blue"}
                 shadow={isCompleted ? "orange" : "green"}
               >
                 {subcategory}
@@ -77,7 +77,7 @@ export default function ModuleCard({
               {/* Points Tag */}
               <Tag
                 icon={StarIcon}
-                variant={isCompleted ? "default" : "module"}
+                variant={isCompleted ? "default" : "default"}
                 shadow={isCompleted ? "orange" : "green"}
               >
                 {points}
@@ -86,7 +86,7 @@ export default function ModuleCard({
           </div>
 
           {/* Progress Bar */}
-          <div className="mb-2">
+          <div className="mb-2 mt-auto">
             <div className="flex justify-between text-body-sm text-Tertiary-900 mb-1 font-medium">
               <span className="text-body-md">Progress</span>
               <span className="text-body-md">

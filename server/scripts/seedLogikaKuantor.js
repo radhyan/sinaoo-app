@@ -565,6 +565,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "b",
         explanation:
           "Silogisme Kategorik: Himpunan 'Peserta UTBK' ada di dalam aturan 'Tidak boleh memotret'. Sebagian siswa SMAN 15 masuk dalam himpunan 'Peserta UTBK'. Maka, sebagian siswa tersebut otomatis terkena aturan 'Tidak boleh memotret'.",
+        points: 6,
       },
       {
         id: "q2",
@@ -581,6 +582,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "b",
         explanation:
           "Modus Tollens: Jika P maka Q (~P -> Q). Faktanya ~Q (gejala buruk tidak terjadi). Kesimpulannya adalah negasi dari ~P, yaitu P (Komputer Layak).",
+        points: 6,
       },
       {
         id: "q3",
@@ -597,6 +599,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "e",
         explanation:
           "Kedua premis tidak memiliki 'term penengah' (middle term) yang menghubungkan keduanya. Kuda dan Harimau dibahas dalam kategori yang berbeda (kaki vs jenis makanan). Tidak ada hubungan logis.",
+        points: 6,
       },
       {
         id: "q4",
@@ -613,6 +616,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "d",
         explanation:
           "Irisan Himpunan: Karena 'Semua hijau = Bergizi', maka objek apapun yang hijau (termasuk sayur hijau tersebut) pasti bergizi. Maka benar bahwa 'Ada sesuatu yang hijau (yaitu sayur tadi) yang bergizi'.",
+        points: 6,
       },
       {
         id: "q5",
@@ -628,6 +632,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "e",
         explanation:
           "Silogisme Hipotetis (Chain Rule): P -> Q, Q -> R. Kesimpulan: P -> R (Jika haus, maka memakai gelas).",
+        points: 6,
       },
       {
         id: "q6",
@@ -644,6 +649,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "e",
         explanation:
           "Karena Salak adalah anggota himpunan 'Gunung', dan semua 'Gunung' memiliki sifat 'dihuni binatang liar', maka Salak otomatis memiliki sifat tersebut.",
+        points: 7,
       },
       {
         id: "q7",
@@ -669,6 +675,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "a",
         explanation:
           "Premis: Rajin Berlatih -> Dapat Berprestasi. Fakta: Duta Rajin Berlatih. Kesimpulan: Duta dapat berprestasi. (Catatan: Kita tidak bisa menyimpulkan Duta 'Berminat' karena itu adalah affirming the consequent/menegaskan akibat).",
+        points: 7,
       },
       {
         id: "q8",
@@ -697,6 +704,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "c",
         explanation:
           "Karena 'Semua' lulus Inggris, maka mahasiswa yang 'tidak lulus Spanyol' itu pun pasti lulus Inggris. Jadi, ada mahasiswa yang lulus Inggris (syarat umum) tapi gagal Spanyol (syarat khusus).",
+        points: 7,
       },
       {
         id: "q9",
@@ -713,6 +721,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "a",
         explanation:
           "Silogisme Disjungtif: A atau B. Tidak B. Maka A. (Pesangon ATAU Tutup. Tidak Tutup. Maka Pesangon).",
+        points: 7,
       },
       {
         id: "q10",
@@ -732,6 +741,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "d",
         explanation:
           "Hukum De Morgan: Negasi dari (P DAN Q) adalah (Tidak P ATAU Tidak Q). Negasi 'Tidak Hujan' = Hujan. Negasi 'Tidak bawa payung' = Bawa payung. Penghubung 'DAN' berubah jadi 'ATAU'.",
+        points: 7,
       },
       {
         id: "q11",
@@ -748,6 +758,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "c",
         explanation:
           "Himpunan orang cerdas berisi: Semua Guru MTK + Beberapa Guru Bahasa. Artinya, ada orang di dalam himpunan 'Cerdas' yang merupakan Guru Bahasa (Bukan Guru MTK).",
+        points: 7,
       },
       {
         id: "q12",
@@ -779,6 +790,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "a",
         explanation:
           "Syarat bonus adalah Sertifikat. Pengalaman > 5 tahun BUKAN syarat bonus (hanya deskripsi tambahan di premis 2). Maka, karyawan IT dengan pengalaman > 5 tahun TAPI tanpa sertifikat, tidak akan dapat bonus.",
+        points: 7,
       },
       {
         id: "q13",
@@ -801,6 +813,7 @@ const seedLogikaKuantor = async () => {
         correctAnswer: "e",
         explanation:
           "Modus Tollens pada sebagian himpunan: Jika Kedinginan -> Menggigil. Fakta: Tidak Menggigil. Kesimpulan: Tidak Kedinginan. Karena ini berlaku pada 'Sebagian pendaki', maka 'Sebagian pendaki tidak kedinginan'.",
+        points: 7,
       },
       {
         id: "q14",
@@ -935,7 +948,7 @@ const seedLogikaKuantor = async () => {
       steps: stepsData,
       isAIGenerated: false,
       sourceMaterial: "",
-      points_available: 150, // Updated points
+      points_available: 100, // Fixed points
     };
 
     console.log("Upserting module data...");
