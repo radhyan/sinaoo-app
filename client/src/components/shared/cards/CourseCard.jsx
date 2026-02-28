@@ -1,4 +1,4 @@
-import { BookOpenTextIcon, StarIcon } from "@phosphor-icons/react";
+import { BookOpenTextIcon, StarIcon, TrophyIcon } from "@phosphor-icons/react";
 import Tag from "@/components/shared/ui/Tag";
 import { Button } from "@/components/shared/ui/Button";
 import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
@@ -27,6 +27,7 @@ export default function CourseCard({
   className,
   isSelected,
   completedModules = 0,
+  achievedPoints = 0,
 }) {
   // Use mapped image or fallback
   const imagePath =
@@ -71,11 +72,18 @@ export default function CourseCard({
             variant="module"
           />
 
-          {/* Points Tag */}
+          {/* Available Points Tag */}
           <Tag
-            icon={StarIcon}
+            icon={TrophyIcon}
             label={`${course.totalPoints} points`}
             variant="module"
+          />
+
+          {/* Achieved Points Tag */}
+          <Tag
+            icon={StarIcon}
+            label={`${achievedPoints}/${course.totalPoints} earned`}
+            variant="default"
           />
         </div>
 

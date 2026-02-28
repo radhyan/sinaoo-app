@@ -162,14 +162,14 @@ const seedKesesuaian = async () => {
             ],
             correctAnswer: "b",
             explanation:
-              "Pernyataan ini memberikan bukti empiris (fakta lapangan). Jika mebel jati 'selalu habis terjual' meskipun harganya mahal, ini adalah bukti terkuat bahwa permintaan pasar tetap tinggi.",
+              'Pernyataan "Mebel berbahan kayu jati selalu habis terjual" memberikan bukti empiris/fakta di lapangan. Jika mebel selalu habis terjual meskipun harganya mahal, hal ini secara langsung membuktikan dan memperkuat argumen bahwa permintaan masyarakat terhadap kayu jati tidak mengalami penurunan.',
             points: 6,
           },
           {
             id: 2,
             type: "multiple-choice",
             context:
-              "Jati yang tumbuh di Indonesia, terutama di Pulau Jawa telah diakui kualitasnya di dunia karena kayunya besar, batangnya melurus, dan polanya unik. ... Selain itu, kayu jati merupakan jenis kayu pertukangan yang sangat mudah diolah. Meskipun keras, kayu jati mudah dipotong dan dikerjakan.",
+              "Jati yang tumbuh di Indonesia, terutama di Pulau Jawa telah diakui kualitasnya di dunia karena kayunya besar, batangnya melurus, dan polanya unik. Saat ini, harga kayu jati makin mahal karena jumlah hutan di Pulau Jawa yang makin berkurang pengalihan fungsi hutan jati menjadi lahan pertanian merupakan penyebab jumlah hutan jati di Pulau Jawa yang semakin berkurang. Namun, mahalnya harga kayu jati tidak menurunkan permintaan kayu jati karena kayu jati lebih kuat, awet, dan indah dibandingkan kayu lainnya. Selain itu, kayu jati merupakan jenis kayu pertukangan yang sangat mudah diolah. Meskipun keras, kayu jati mudah dipotong dan dikerjakan.",
             question:
               'Manakah informasi berikut yang memperlemah pernyataan "Kayu jati merupakan jenis kayu pertukangan yang sangat mudah diolah"?',
             options: [
@@ -179,7 +179,7 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "b",
-                text: "Penjualan kayu jati telah menjadi mebel lebih menguntungkan dibandingkan kayu jati mentah",
+                text: "Penjualan kayu jati telah menjadi mebel lebih menguntungkan dibandingkan kayu jati mentah.",
               },
               {
                 id: "c",
@@ -189,11 +189,14 @@ const seedKesesuaian = async () => {
                 id: "d",
                 text: "Makin tua umurnya, kayu jati makin mudah untuk dipotong.",
               },
-              { id: "e", text: "Hasil olahan kayu jati terutama berupa mebel" },
+              {
+                id: "e",
+                text: "Hasil olahan kayu jati terutama berupa mebel.",
+              },
             ],
             correctAnswer: "a",
             explanation:
-              "Pernyataan ini menyerang langsung klaim 'mudah diolah'. Jika tingkat kegagalan pengolahan tinggi dan menyebabkan kerugian, ini membantah secara logis bahwa kayu tersebut mudah dikerjakan.",
+              'Pernyataan ini menyerang dan membantah langsung klaim "mudah diolah". Jika kayu jati benar-benar mudah diolah, tingkat kegagalannya seharusnya rendah. Tingkat kegagalan yang tinggi hingga menyebabkan kerugian membuktikan bahwa kayu tersebut sebenarnya sulit untuk diolah.',
             points: 6,
           },
           {
@@ -227,14 +230,14 @@ const seedKesesuaian = async () => {
             ],
             correctAnswer: "a",
             explanation:
-              "Pemerintah berasumsi Hotel -> Wisatawan Datang. Pilihan ini menunjukkan bahwa preferensi wisatawan justru sebaliknya (suka tempat tanpa hotel), sehingga strategi pemerintah menjadi tidak relevan.",
+              'Pemerintah berasumsi bahwa "Ada Hotel = Wisatawan Datang". Opsi A mematahkan logika sebab-akibat tersebut dengan menunjukkan bahwa target pasar (wisatawan) justru memiliki preferensi sebaliknya (menyukai daerah tanpa hotel). Hal ini membuat strategi pemerintah menjadi tidak efektif.',
             points: 6,
           },
           {
             id: 4,
             type: "multiple-choice",
             context:
-              'Ahli A menyatakan, "Seseorang yang ingin berhenti merokok hendaknya menghentikan konsumsi nikotin selama 2 bulan berturut-turut"\n\nAhli B menyatakan, "Penggunaan permen karet yang mengandung nikotin mempermudah seseorang berhenti merokok."\n\nHasil penelitian menunjukkan bahwa sebagian besar orang yang gagal menghentikan kebiasaan merokok telah mencoba beberapa cara untuk menghentikan kebiasaan tersebut.',
+              'Ahli A menyatakan, "Seseorang yang ingin berhenti merokok hendaknya menghentikan konsumsi nikotin selama 2 bulan berturut-turut".\nAhli B menyatakan, "Penggunaan permen karet yang mengandung nikotin mempermudah seseorang berhenti merokok."\nHasil penelitian menunjukkan bahwa sebagian besar orang yang gagal menghentikan kebiasaan merokok telah mencoba beberapa cara untuk menghentikan kebiasaan tersebut.',
             question:
               "Manakah pernyataan berikut yang PALING TEPAT mengenai hasil penelitian tersebut?",
             options: [
@@ -249,7 +252,7 @@ const seedKesesuaian = async () => {
             ],
             correctAnswer: "e",
             explanation:
-              "Hasil penelitian menyebutkan penyebab kegagalan adalah 'mencoba beberapa cara' secara umum. Ini tidak membuktikan atau membantah efektivitas metode spesifik yang disarankan oleh Ahli A maupun Ahli B.",
+              'Hasil penelitian hanya menyebutkan bahwa kegagalan disebabkan karena orang "mencoba beberapa cara" (ketidakkonsistenan metode). Penelitian ini tidak menyebutkan secara spesifik apakah metode Ahli A atau metode Ahli B yang digunakan. Oleh karena itu, hasilnya tidak relevan untuk menilai kebenaran argumen kedua ahli tersebut.',
             points: 7,
           },
           {
@@ -266,7 +269,7 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "r2",
-                text: "Harga kompor listrik semakin murah karena produsen menyadari kebutuhan",
+                text: "Harga kompor listrik semakin murah karena produsen menyadari kebutuhan.",
               },
               {
                 id: "r3",
@@ -290,11 +293,11 @@ const seedKesesuaian = async () => {
               r2: "not_weakens",
               r3: "weakens",
               r4: "weakens",
-              r5: "not_weakens",
+              r5: "weakens",
             },
             explanation:
-              "Pernyataan r3 melemahkan klaim 'ramah lingkungan' karena sumber energinya masih fosil. Pernyataan r4 melemahkan klaim 'hemat biaya' karena biaya listrik lebih mahal dari gas. Sedangkan r1 dan r2 mendukung tren penggunaan tanpa membantah manfaatnya, dan r5 adalah konsekuensi teknis yang tidak langsung membatalkan manfaat ekonomi jangka panjang.",
-            points: 7,
+              "Pernyataan (1) dan (2) mendukung tren adopsi kompor listrik sehingga 'Tidak Memperlemah'. Pernyataan (3) menyerang klaim 'ramah lingkungan'. Pernyataan (4) dan (5) menunjukkan adanya pengeluaran tambahan atau biaya yang lebih mahal, sehingga secara langsung menyerang klaim 'menghemat biaya rumah tangga' (Memperlemah).",
+            points: 5,
           },
           {
             id: 6,
@@ -322,7 +325,7 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "r5",
-                text: "Teknik hidroponik harus menggunakan media tanah supaya hasilmya bagus.",
+                text: "Teknik hidroponik harus menggunakan media tanah supaya hasilnya bagus.",
               },
             ],
             columns: [
@@ -330,15 +333,15 @@ const seedKesesuaian = async () => {
               { id: "not_weakens", text: "Tidak Memperlemah" },
             ],
             correctAnswers: {
-              r1: "not_weakens",
+              r1: "weakens",
               r2: "not_weakens",
               r3: "not_weakens",
               r4: "weakens",
               r5: "weakens",
             },
             explanation:
-              "Pernyataan r4 melemahkan pendapat pedagang karena memberikan alasan lain (orang beli masakan jadi) sebagai penyebab turunnya penjualan sayur mentah. r5 melemahkan karena bertentangan dengan prinsip hidroponik (tanpa tanah) yang menjadi dasar asumsi pedagang. r1-r3 tidak secara langsung membantah kaitan antara hidroponik sayur dan penurunan penjualan menurut data di kunci jawaban.",
-            points: 7,
+              "Jika warga menanam 'tanaman hias' (R1), maka bukan itu penyebab sayur pedagang tak laku (Memperlemah). Jika warga pilih beli matang (R4), maka itu penyebab utamanya, bukan karena hidroponik (Memperlemah). Jika hidroponik butuh tanah (R5), itu membantah definisi awal teks (Memperlemah). Sebaliknya, jika hidroponik warga bisa dimakan (R2) atau warga suka makan sayur (R3), hal itu membenarkan/tidak membantah alasan pedagang (Tidak Memperlemah).",
+            points: 5,
           },
           {
             id: 7,
@@ -346,7 +349,7 @@ const seedKesesuaian = async () => {
             context:
               "Bekerja adalah kegiatan yang dilakukan seseorang untuk mencari nafkah dan simbol pembuktian diri. Menurut ahli, rutin berpindah-pindah kerja atau menjadi kutu loncat berdampak positif pada karier seseorang.",
             question:
-              "Manakah pernyataan-pernyataan berikut yang MEMPERKUAT dan TIDAK MEMPERKUAT pendapat ahli tersebut?",
+              "Manakah pernyataan-pernyataan berikut yang MEMPERKUAT dan TIDAK MEMPERKUAT pendapat pakar/ahli tersebut?",
             rows: [
               {
                 id: "r1",
@@ -381,20 +384,20 @@ const seedKesesuaian = async () => {
               r5: "not_strengthens",
             },
             explanation:
-              "r1 (jaringan luas) dan r4 (daya tarik bagi perekrut) secara langsung mendukung klaim bahwa berpindah kerja berdampak positif bagi karier. r2 (citra buruk) justru melemahkan, r3 (kesehatan mental) adalah penyebab bukan dampak, dan r5 (gender) tidak relevan dengan dampak positif terhadap karier.",
-            points: 7,
+              "Ahli menyatakan pindah kerja itu POSITIF. Pernyataan (1) tentang 'memperluas jaringan' dan (4) tentang 'daya tarik perekrut' adalah dampak positif, sehingga Memperkuat. Sementara (2) citra buruk, (3) masalah mental, dan (5) sekadar fakta gender tidak mendukung klaim positif tersebut (Tidak Memperkuat).",
+            points: 5,
           },
           {
             id: 8,
             type: "matrix",
             context:
-              "Lahir and tumbuh di era digital sangat memengaruhi keterkaitan generasi Z dengan smartphone. Ahli psikologi perilaku mengatakan bahwa generasi Z cenderung mengidap kecanduan terhadap penggunaan smartphone.",
+              "Lahir dan tumbuh di era digital sangat memengaruhi keterkaitan generasi Z dengan smartphone. Ahli psikologi perilaku mengatakan bahwa generasi Z cenderung mengidap kecanduan terhadap penggunaan smartphone.",
             question:
-              "Manakah pernyataan-pernyataan berikut yang MEMPERKUAT and TIDAK MEMPERKUAT pendapat ahli tersebut?",
+              "Manakah pernyataan-pernyataan berikut yang MEMPERKUAT dan TIDAK MEMPERKUAT pendapat ahli psikologi tersebut?",
             rows: [
               {
                 id: "r1",
-                text: "Banyak orang tua dari generasi Z yang mengeluhkan anaknya yang menggunakan smartphone secara berlebihan",
+                text: "Banyak orang tua dari generasi Z yang mengeluhkan anaknya yang menggunakan smartphone secara berlebihan.",
               },
               {
                 id: "r2",
@@ -410,7 +413,7 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "r5",
-                text: "Generasi Z terlampau sering mengabaikan tanggung jawab ketika sedang memegang smartphone",
+                text: "Generasi Z terlampau sering mengabaikan tanggung jawab ketika sedang memegang smartphone.",
               },
             ],
             columns: [
@@ -425,16 +428,15 @@ const seedKesesuaian = async () => {
               r5: "strengthens",
             },
             explanation:
-              "r1 (penggunaan berlebihan), r3 (penggunaan non-esensial), dan r5 (pengabaian tanggung jawab) adalah indikator perilaku kecanduan yang mendukung pendapat ahli. Sebaliknya, r2 (secukupnya) dan r4 (tahu batasan) adalah bukti kontrol diri yang menentang klaim kecanduan.",
-            points: 7,
+              "Klaim ahli: Gen Z KECANDUAN smartphone. Perilaku 'menggunakan berlebihan' (R1), 'selalu ingin pakai walau tidak penting' (R3), dan 'mengabaikan tanggung jawab' (R5) adalah ciri-ciri kecanduan (Memperkuat). Sedangkan 'pakai secukupnya' (R2) dan 'tahu batasan' (R4) membuktikan adanya kontrol diri yang mematahkan diagnosis kecanduan (Tidak Memperkuat).",
+            points: 5,
           },
           {
             id: 9,
             type: "multiple-choice",
-            context:
-              "Manakah pernyataan yang SESUAI with grafik di atas? (Grafik kepemilikan rumah)",
+            context: "Perhatikan grafik kepemilikan rumah di berbagai wilayah.",
             imageUrl: "/images/modules/kesesuaian/grafik_kepemilikan_rumah.png",
-            question: "Manakah pernyataan yang SESUAI with grafik di atas?",
+            question: "Manakah pernyataan yang SESUAI dengan grafik di atas?",
             options: [
               {
                 id: "a",
@@ -446,7 +448,7 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "c",
-                text: "Kalsel merupakan provinsi with kepemilikan rumah terendah.",
+                text: "Kalsel merupakan provinsi dengan kepemilikan rumah terendah.",
               },
               {
                 id: "d",
@@ -459,43 +461,49 @@ const seedKesesuaian = async () => {
             ],
             correctAnswer: "d",
             explanation:
-              "Jawaban ini didasarkan pada pembacaan data statistik spesifik pada grafik untuk wilayah Sulawesi Utara (79,12%).",
+              "Berdasarkan pembacaan data statistik dari grafik (merujuk pada kunci jawaban), persentase warga yang memiliki rumah di Sulawesi Utara sesuai secara presisi di angka 79,12%.",
             points: 7,
           },
           {
             id: 10,
             type: "multiple-choice",
             context:
-              "Berdasarkan grafik di atas, provinsi manakah yang kurang dari 25% masyarakatnya tidak memiliki rumah? (Grafik kepemilikan rumah)",
+              "Perhatikan grafik tentang persentase masyarakat yang tidak memiliki rumah di berbagai provinsi.",
             imageUrl: "/images/modules/kesesuaian/grafik_kepemilikan_rumah.png",
             question:
-              "Provinsi manakah yang kurang dari 25% masyarakatnya tidak memiliki rumah?",
+              "Berdasarkan grafik di atas, provinsi manakah yang kurang dari 25% masyarakatnya tidak memiliki rumah?",
             options: [
               {
                 id: "a",
-                text: "DKI Jakarta, Kepulauan Riau, and Sumatera Utara",
+                text: "DKI Jakarta, Kepulauan Riau, dan Sumatera Utara",
               },
               {
                 id: "b",
-                text: "Sumatera Utara, Sumatera Barat, and Kalimantan Timur",
+                text: "Sumatera Utara, Sumatera Barat, dan Kalimantan Timur",
               },
               {
                 id: "c",
-                text: "Sumatera Utara, Kalimantan Timur, and Kalimantan Tengah",
+                text: "Sumatera Utara, Kalimantan Timur, dan Kalimantan Tengah",
               },
-              { id: "d", text: "Sumatera Utara, Kalimantan Tengah, and Riau" },
-              { id: "e", text: "Riau, Sulawesi Utara, and Kalimantan Selatan" },
+              {
+                id: "d",
+                text: "Sumatera Utara, Kalimantan Tengah, dan Riau",
+              },
+              {
+                id: "e",
+                text: "Riau, Sulawesi Utara, dan Kalimantan Selatan",
+              },
             ],
             correctAnswer: "e",
             explanation:
-              "Berdasarkan visualisasi data, ketiga provinsi ini (Riau, Sulut, Kalsel) memiliki tingkat ketidakpunyaan rumah yang paling rendah (batang grafik di bawah angka 25%).",
+              "Berdasarkan visualisasi batang pada grafik, tiga provinsi tersebut (Riau, Sulawesi Utara, dan Kalimantan Selatan) memiliki angka persentase ketidakpunyaan rumah yang paling rendah, yaitu berada di bawah garis 25%.",
             points: 8,
           },
           {
             id: 11,
             type: "multiple-choice",
             context:
-              "Berikut adalah data jumlah kementerian/lembaga with jumlah lowongan pekerjaan terbanyak pada CPNS 2019: Kemenag (5.815), Kejaksaan, Kemenkumham, dll.",
+              "Pemerintah pusat membuka 37.425 lowongan yang tersebar di 68 instansi pada rekrutmen CPNS 2019. Kementerian Agama membuka lowongan terbanyak (5.815 lowongan). Terdapat data kementerian/lembaga dengan jumlah lowongan terbanyak.",
             imageUrl: "/images/modules/kesesuaian/cpns_2019.png",
             question:
               "Berdasarkan gambar di atas, kementerian/lembaga manakah yang memiliki jumlah lowongan terbanyak keenam?",
@@ -503,19 +511,19 @@ const seedKesesuaian = async () => {
               { id: "a", text: "Kementerian Kesehatan" },
               { id: "b", text: "Kementerian Perhubungan" },
               { id: "c", text: "Sekretariat Mahkamah Agung" },
-              { id: "d", text: "Kementerian Hukum and HAM" },
-              { id: "e", text: "Kementerian Pendidikan and Kebudayaan" },
+              { id: "d", text: "Kementerian Hukum dan HAM" },
+              { id: "e", text: "Kementerian Pendidikan dan Kebudayaan" },
             ],
             correctAnswer: "c",
             explanation:
-              "Berdasarkan urutan data: 1. Kemenag, 2. Kejaksaan, 3. Kemenkumham, 4. Kemenkes, 5. Kemendikbud, 6. Sekretariat Mahkamah Agung.",
+              "Setelah mengurutkan data pada tabel/gambar dari yang terbesar hingga terkecil, Sekretariat Mahkamah Agung berada di posisi/ranking keenam.",
             points: 8,
           },
           {
             id: 12,
             type: "multiple-choice",
             context:
-              "Berikut ini adalah data pengunjung dua fasilitas umum, yaitu perpustakaan and museum, pada bulan Januari 2022 dari hari Senin sampai with Jumat.",
+              "Berikut ini adalah data pengunjung dua fasilitas umum, yaitu perpustakaan dan museum, pada bulan Januari 2022 dari hari Senin sampai dengan Jumat.",
             imageUrl: "/images/modules/kesesuaian/pengunjung_fasilitas.png",
             question:
               "Berdasarkan data di atas, jumlah pengunjung terendah kedua terjadi pada hari ....",
@@ -528,21 +536,21 @@ const seedKesesuaian = async () => {
             ],
             correctAnswer: "a",
             explanation:
-              "Melalui interpretasi grafik garis, titik terendah absolut diidentifikasi terlebih dahulu, kemudian titik terendah berikutnya (urutan kedua dari bawah) jatuh pada hari Senin.",
+              "Berdasarkan grafik garis harian, setelah menemukan titik paling bawah (terendah pertama), titik data paling rendah berikutnya (terendah kedua) jatuh pada hari Senin.",
             points: 8,
           },
           {
             id: 13,
             type: "multiple-choice",
             context:
-              "Grafik menunjukkan data jumlah pasien positif, persentase pasien sembuh, and pasien dirawat di ICU karena virus X di sebuah rumah sakit sejak bulan April sampai with bulan Agustus.",
+              "Grafik berikut menunjukkan data jumlah pasien positif, persentase pasien sembuh, dan pasien dirawat di ICU karena virus X di sebuah rumah sakit sejak bulan April sampai dengan bulan Agustus.",
             imageUrl: "/images/modules/kesesuaian/pasien_virus_x.png",
             question:
               "Berdasarkan data dalam grafik tersebut, manakah pernyataan PALING TEPAT untuk menggambarkan kondisi pasien Virus X di rumah sakit tersebut pada bulan Agustus?",
             options: [
               {
                 id: "a",
-                text: "Jumlah pasien virus X pada bulan september meningkat dibandingkan with bulan Agustus",
+                text: "Jumlah pasien virus X pada bulan september meningkat dibandingkan dengan bulan Agustus",
               },
               {
                 id: "b",
@@ -563,14 +571,14 @@ const seedKesesuaian = async () => {
             ],
             correctAnswer: "c",
             explanation:
-              "Melihat tren pada grafik, data pasien ICU pada bulan Agustus menunjukkan peningkatan posisi (lebih tinggi) dibandingkan bulan Juli (bulan sebelumnya).",
+              "Melihat tren garis/batang pada kategori pasien ICU di bulan Agustus dibandingkan dengan bulan Juli, terlihat bahwa grafiknya mengalami kenaikan.",
             points: 8,
           },
           {
             id: 14,
             type: "multiple-choice",
             context:
-              "Kadar gula yang tinggi dalam darah meningkatkan risiko penyakit kardioviskular. Upaya untuk mencegah meningkatnya kadar gula dalam darah dapat dicegah with diet karbohidrat. Risiko terjadinya penyakit kardiovaskular dapat berkurang jika jumlah karbohidrat yang dikonsumsi dapat dikendalikan.",
+              "Kadar gula yang tinggi dalam darah meningkatkan risiko penyakit kardiovaskular. Upaya untuk mencegah meningkatnya kadar gula dalam darah dapat dicegah dengan diet karbohidrat. Risiko terjadinya penyakit kardiovaskular dapat berkurang jika jumlah karbohidrat yang dikonsumsi dapat dikendalikan.",
             question:
               "Berdasarkan informasi tersebut, manakah pernyataan yang BENAR?",
             options: [
@@ -592,12 +600,12 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "e",
-                text: "Konsumsi karbohidrat yang berlebihan tidak berhubungan with peningkatan kadar gula dalam darah.",
+                text: "Konsumsi karbohidrat yang berlebihan tidak berhubungan dengan peningkatan kadar gula dalam darah.",
               },
             ],
             correctAnswer: "c",
             explanation:
-              "Simpulan logis: Teks menyatakan diet karbohidrat mencegah kenaikan gula darah. Maka, tindakan mengurangi karbohidrat (bagian dari diet) akan membantu mengendalikan kadar gula.",
+              "Pernyataan ini merupakan kesimpulan deduktif langsung dari teks. Teks menyebutkan bahwa diet (pengurangan) karbohidrat dapat mencegah naiknya gula darah. Ini ekuivalen dengan menyatakan bahwa mengurangi karbohidrat membantu mengendalikan gula darah.",
             points: 8,
           },
           {
@@ -626,12 +634,12 @@ const seedKesesuaian = async () => {
               },
               {
                 id: "e",
-                text: "Mahasiswa X tetap bisa belajar with optimal meskipun bekerja tambahan.",
+                text: "Mahasiswa X tetap bisa belajar dengan optimal meskipun bekerja tambahan.",
               },
             ],
             correctAnswer: "e",
             explanation:
-              "Pernyataan ini kontradiktif (salah) berdasarkan teks. Teks secara eksplisit menyebutkan 'perkuliahannya tetap terganggu', yang berarti proses belajarnya tidak optimal.",
+              'Pernyataan ini SALAH dan bertentangan dengan fakta eksplisit dalam teks. Teks secara jelas menyatakan bahwa "perkuliahannya tetap terganggu karena waktu belajarnya berkurang", yang berarti mahasiswa X TIDAK belajar dengan optimal.',
             points: 8,
           },
         ],

@@ -47,7 +47,7 @@ export default function UserProgress({
           key={index}
           className="flex flex-col items-center cursor-default h-full justify-center p-3 rounded-lg bg-db-b border border-Primary-50 shadow-blue-60"
         >
-          <span className="text-body-md text-Grayscale-50 mb-1 text-center">
+          <span className="text-body-md lg:text-body-l text-Grayscale-50 mb-1 text-center">
             {stat.label}
           </span>
           <div className="flex align-center items-center gap-3">

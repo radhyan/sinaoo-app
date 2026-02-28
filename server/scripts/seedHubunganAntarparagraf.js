@@ -34,12 +34,12 @@ const seedHubunganAntarparagraf = async () => {
             <!-- Definisi -->
             <section>
               <h3 class="text-h3 font-heading text-Primary-900 mb-4 border-l-4 border-Primary-500 pl-4 py-1">Apa itu Hubungan Antarparagraf?</h3>
-              <p class="text-body-lg leading-relaxed text-justify">
+              <p class="text-body-l leading-relaxed text-justify">
                 Hubungan antarparagraf adalah hubungan antara satu paragraf dengan paragraf lainnya yang dihubungkan oleh <strong>konjungsi antarparagraf</strong>.
               </p>
-              <div class="mt-4 p-4 bg-Primary-50 rounded-lg border border-Primary-100">
-                <p class="font-bold text-Primary-800 mb-2">Fungsi Konjungsi Antar Paragraf:</p>
-                <ul class="list-disc list-outside pl-5 space-y-2 text-body-lg text-Grayscale-700">
+              <div class="mt-4 p-6 bg-Primary-50 rounded-lg border border-Primary-100">
+                <h4 class="text-h5 font-bold text-Primary-800 mb-1 mt-0">Fungsi Konjungsi Antar Paragraf:</h4>
+                <ul class="list-disc list-outside pl-5 space-y-2 text-body-l text-Grayscale-700">
                   <li>Mengawali paragraf yang memiliki hubungan dengan paragraf sebelumnya</li>
                   <li>Menunjukkan bahwa paragraf tersebut terhubung dengan paragraf sebelumnya</li>
                   <li>Memudahkan pembaca untuk memahami hubungan antara paragraf</li>
@@ -52,16 +52,16 @@ const seedHubunganAntarparagraf = async () => {
               <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Jenis-Jenis Konjungsi Antar Paragraf</h3>
 
               <!-- 1. Tambahan -->
-              <div class="bg-white rounded-xl shadow-sm border border-Primary-200 overflow-hidden mb-6">
+              <div class="bg-white rounded-lg shadow-sm border border-Primary-200 overflow-hidden mb-6">
                 <div class="bg-Primary-600 px-6 py-3">
                   <h4 class="text-white font-bold text-h4 my-1">1. Menyatakan Tambahan</h4>
                 </div>
                 <div class="p-6">
-                  <p class="text-body-lg text-Grayscale-700 mb-4 text-justify">
+                  <p class="text-body-l text-Grayscale-700 mt-0 mb-4 text-justify">
                     Jenis kata hubung antar paragraf ini digunakan ketika paragraf berikutnya isinya memberi tambahan penjelasan atau suatu tambahan lain.
                   </p>
                   <div class="bg-Primary-50 p-4 rounded-lg">
-                    <p class="font-bold text-Primary-800 mb-2">Contoh:</p>
+                    <p class="font-bold text-Primary-800 mt-0 mb-2">Contoh:</p>
                     <div class="flex flex-wrap gap-2">
                       <span class="bg-white px-3 py-1 rounded-full border border-Primary-200 text-body-md font-medium">begitu pula</span>
                       <span class="bg-white px-3 py-1 rounded-full border border-Primary-200 text-body-md font-medium">demikian juga</span>
@@ -73,16 +73,16 @@ const seedHubunganAntarparagraf = async () => {
               </div>
 
               <!-- 2. Perbandingan -->
-              <div class="bg-white rounded-xl shadow-sm border border-Secondary-200 overflow-hidden mb-6">
+              <div class="bg-white rounded-lg shadow-sm border border-Secondary-200 overflow-hidden mb-6">  
                 <div class="bg-Secondary-600 px-6 py-3">
                   <h4 class="text-white font-bold text-h4 my-1">2. Menyatakan Perbandingan</h4>
                 </div>
                 <div class="p-6">
-                  <p class="text-body-lg text-Grayscale-700 mb-4 text-justify">
+                  <p class="text-body-l text-Grayscale-700 mt-0 mb-4 text-justify">
                     Konjungsi antar paragraf yang ditambahkan dengan maksud menjelaskan suatu kondisi kontradiktif dengan isi paragraf pertama.
                   </p>
                   <div class="bg-Secondary-50 p-4 rounded-lg">
-                    <p class="font-bold text-Secondary-800 mb-2">Contoh:</p>
+                    <p class="font-bold text-Secondary-800 mt-0 mb-2">Contoh:</p>
                     <div class="flex flex-wrap gap-2">
                       <span class="bg-white px-3 py-1 rounded-full border border-Secondary-200 text-body-md font-medium">sebagaimana</span>
                       <span class="bg-white px-3 py-1 rounded-full border border-Secondary-200 text-body-md font-medium">sama halnya</span>
@@ -92,16 +92,16 @@ const seedHubunganAntarparagraf = async () => {
               </div>
 
               <!-- 3. Pertentangan -->
-              <div class="bg-white rounded-xl shadow-sm border border-Tertiary-200 overflow-hidden mb-6">
+              <div class="bg-white rounded-lg shadow-sm border border-Tertiary-200 overflow-hidden mb-6">
                 <div class="bg-Tertiary-600 px-6 py-3">
                   <h4 class="text-white font-bold text-h4 my-1">3. Menyatakan Pertentangan</h4>
                 </div>
                 <div class="p-6">
-                  <p class="text-body-lg text-Grayscale-700 mb-4 text-justify">
+                  <p class="text-body-l text-Grayscale-700 mt-0 mb-4 text-justify">
                     Konjungsi antar paragraf yang ditambahkan dengan maksud menyatakan suatu pertentangan. Jika paragraf pertama bertentangan dengan paragraf kedua, maka bisa menambahkan kata hubung jenis ini.
                   </p>
                   <div class="bg-Tertiary-50 p-4 rounded-lg">
-                    <p class="font-bold text-Tertiary-800 mb-2">Contoh:</p>
+                    <p class="font-bold text-Tertiary-800 mt-0 mb-2">Contoh:</p>
                     <div class="flex flex-wrap gap-2">
                       <span class="bg-white px-3 py-1 rounded-full border border-Tertiary-200 text-body-md font-medium">bagaimanapun juga</span>
                       <span class="bg-white px-3 py-1 rounded-full border border-Tertiary-200 text-body-md font-medium">sebaliknya</span>
@@ -112,16 +112,16 @@ const seedHubunganAntarparagraf = async () => {
               </div>
 
               <!-- 4. Akibat -->
-              <div class="bg-white rounded-xl shadow-sm border border-Primary-200 overflow-hidden mb-6">
+              <div class="bg-white rounded-lg shadow-sm border border-Primary-200 overflow-hidden mb-6">
                 <div class="bg-Primary-600 px-6 py-3">
                   <h4 class="text-white font-bold text-h4 my-1">4. Menyatakan Akibat</h4>
                 </div>
                 <div class="p-6">
-                  <p class="text-body-lg text-Grayscale-700 mb-4 text-justify">
+                  <p class="text-body-l text-Grayscale-700 mt-0 mb-4 text-justify">
                     Konjungsi antar paragraf yang ditambahkan dengan maksud untuk menyatakan atau menjelaskan akibat atau dampak dari penjelasan di paragraf sebelumnya.
                   </p>
                   <div class="bg-Primary-50 p-4 rounded-lg">
-                    <p class="font-bold text-Primary-800 mb-2">Contoh:</p>
+                    <p class="font-bold text-Primary-800 mt-0 mb-2">Contoh:</p>
                     <div class="flex flex-wrap gap-2">
                       <span class="bg-white px-3 py-1 rounded-full border border-Primary-200 text-body-md font-medium">jadi</span>
                       <span class="bg-white px-3 py-1 rounded-full border border-Primary-200 text-body-md font-medium">oleh karena itu</span>
@@ -133,16 +133,16 @@ const seedHubunganAntarparagraf = async () => {
               </div>
 
               <!-- 5. Tujuan -->
-              <div class="bg-white rounded-xl shadow-sm border border-Secondary-200 overflow-hidden mb-6">
+              <div class="bg-white rounded-lg shadow-sm border border-Secondary-200 overflow-hidden mb-6">
                 <div class="bg-Secondary-600 px-6 py-3">
                   <h4 class="text-white font-bold text-h4 my-1">5. Menyatakan Tujuan</h4>
                 </div>
                 <div class="p-6">
-                  <p class="text-body-lg text-Grayscale-700 mb-4 text-justify">
+                  <p class="text-body-l text-Grayscale-700 mt-0 mb-4 text-justify">
                     Konjungsi antar paragraf yang ditambahkan dengan maksud untuk menjelaskan tujuan dari paragraf sebelumnya.
                   </p>
                   <div class="bg-Secondary-50 p-4 rounded-lg">
-                    <p class="font-bold text-Secondary-800 mb-2">Contoh:</p>
+                    <p class="font-bold text-Secondary-800 mt-0 mb-2">Contoh:</p>
                     <div class="flex flex-wrap gap-2">
                       <span class="bg-white px-3 py-1 rounded-full border border-Secondary-200 text-body-md font-medium">untuk maksud itu</span>
                       <span class="bg-white px-3 py-1 rounded-full border border-Secondary-200 text-body-md font-medium">untuk mencapai hal itu</span>
@@ -153,16 +153,16 @@ const seedHubunganAntarparagraf = async () => {
               </div>
 
               <!-- 6. Waktu -->
-              <div class="bg-white rounded-xl shadow-sm border border-Tertiary-200 overflow-hidden mb-6">
+              <div class="bg-white rounded-lg shadow-sm border border-Tertiary-200 overflow-hidden mb-6">
                 <div class="bg-Tertiary-600 px-6 py-3">
                   <h4 class="text-white font-bold text-h4 my-1">6. Menyatakan Waktu</h4>
                 </div>
                 <div class="p-6">
-                  <p class="text-body-lg text-Grayscale-700 mb-4 text-justify">
+                  <p class="text-body-l text-Grayscale-700 mt-0 mb-4 text-justify">
                     Konjungsi antar paragraf yang ditambahkan dengan maksud untuk menjelaskan bahwa paragraf kedua memiliki kesamaan maupun perbedaan waktu kejadian dengan penjelasan di paragraf pertama.
                   </p>
                   <div class="bg-Tertiary-50 p-4 rounded-lg">
-                    <p class="font-bold text-Tertiary-800 mb-2">Contoh:</p>
+                    <p class="font-bold text-Tertiary-800 mt-0 mb-2">Contoh:</p>
                     <div class="flex flex-wrap gap-2">
                       <span class="bg-white px-3 py-1 rounded-full border border-Tertiary-200 text-body-md font-medium">kemudian</span>
                       <span class="bg-white px-3 py-1 rounded-full border border-Tertiary-200 text-body-md font-medium">lalu</span>
@@ -178,23 +178,23 @@ const seedHubunganAntarparagraf = async () => {
               <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">Tips & Trik Mengerjakan Soal Hubungan Antarparagraf</h3>
 
               <div class="space-y-4">
-                <div class="bg-white rounded-xl shadow-sm border border-Grayscale-200 p-6">
-                  <h4 class="text-h4 font-bold text-Primary-800 mb-2">1. Tenang dan Fokus</h4>
-                  <p class="text-body-lg text-Grayscale-700 text-justify">
+                <div class="bg-white rounded-lg shadow-sm border border-Grayscale-200 p-6">
+                  <h4 class="text-h4 mt-0 font-bold text-Primary-800 mb-2">1. Tenang dan Fokus</h4>
+                  <p class="text-body-l text-Grayscale-700 text-justify">
                     Tenang dan fokus merupakan kunci utama dalam menyelesaikan soal.
                   </p>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-sm border border-Grayscale-200 p-6">
-                  <h4 class="text-h4 font-bold text-Primary-800 mb-2">2. Membaca Soal Pertanyaan di Awal</h4>
-                  <p class="text-body-lg text-Grayscale-700 text-justify">
+                <div class="bg-white rounded-lg shadow-sm border border-Grayscale-200 p-6">
+                  <h4 class="text-h4 mt-0 font-bold text-Primary-800 mb-2">2. Membaca Soal Pertanyaan di Awal</h4>
+                  <p class="text-body-l text-Grayscale-700 text-justify">
                     Tips ini bertujuan agar waktu yang digunakan dapat lebih efisien. Karena teks literasi dalam soal sudah pasti panjang.
                   </p>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-sm border border-Grayscale-200 p-6">
-                  <h4 class="text-h4 font-bold text-Primary-800 mb-2">3. Mencari Konjungsi</h4>
-                  <p class="text-body-lg text-Grayscale-700 text-justify">
+                <div class="bg-white rounded-lg shadow-sm border border-Grayscale-200 p-6">
+                  <h4 class="text-h4 mt-0 font-bold text-Primary-800 mb-2">3. Mencari Konjungsi</h4>
+                  <p class="text-body-l text-Grayscale-700 text-justify">
                     Setelah fokus dan membaca soal dengan seksama, pembaca dapat langsung mencari konjungsi yang tepat untuk mengetahui korelasi antarparagraf.
                   </p>
                 </div>
@@ -224,12 +224,33 @@ const seedHubunganAntarparagraf = async () => {
         questions: [
           {
             id: "q1",
-            type: "short-answer",
+            type: "multiple-choice",
             context:
               "Presiden RI Joko Widodo meninjau langsung Grab Vaccine Center untuk gelombang kedua vaksinasi yang berlokasi di Jogja Expo Center, Bantul, Daerah Istimewa Yogyakarta (DIY). Diketahui, pusat vaksinasi ini dihadirkan melalui kolaborasi Grab dan Good Doctor bersama Kementerian Kesehatan Republik Indonesia dan Dinas Kesehatan Provinsi Daerah Istimewa Yogyakarta (DIY).\n\nDalam kesempatan ini, Presiden Jokowi menyampaikan apresiasinya kepada masyarakat dan seluruh pihak yang telah membantu menyukseskan program vaksinasi COVID-19, seperti Grab. Sebab, Jokowi menilai vaksinasi merupakan bentuk upaya pencegahan dari virus corona yang tidak mungkin hilang secara total.",
-            question:
-              "Hubungan antarparagraf dari teks di atas adalah paragraf kedua _____ paragraf pertama",
-            correctAnswer: "menjelaskan",
+            question: "Hubungan antarparagraf dari teks di atas adalah",
+            options: [
+              {
+                id: "a",
+                text: "Paragraf kedua <b>menentang</b> paragraf pertama",
+              },
+              {
+                id: "b",
+                text: "Paragraf kedua <b>menjelaskan</b> paragraf pertama",
+              },
+              {
+                id: "c",
+                text: "Paragraf kedua <b>menyimpulkan</b> paragraf pertama",
+              },
+              {
+                id: "d",
+                text: "Paragraf kedua <b>membandingkan</b> paragraf pertama",
+              },
+              {
+                id: "e",
+                text: "Paragraf kedua <b>akibat</b> paragraf pertama",
+              },
+            ],
+            correctAnswer: "b",
             explanation:
               "Paragraf kedua memberikan penjelasan lebih lanjut tentang apa yang terjadi saat kunjungan Presiden ke Grab Vaccine Center yang disebutkan di paragraf pertama. Kata 'Dalam kesempatan ini' menunjukkan kelanjutan penjelasan.",
             points: 6,

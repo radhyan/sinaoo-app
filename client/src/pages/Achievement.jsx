@@ -165,7 +165,7 @@ export default function Achievement() {
           weight="fill"
           className="md:size-10 lg:size-12 rounded-lg shrink-0"
         />
-        <h2 className="font-heading text-h4 md:text-h2 text-Primary-900 uppercase">
+        <h2 className="font-heading text-h4 md:text-h3 lg:text- text-Primary-900 uppercase">
           Achievements
         </h2>
       </div>

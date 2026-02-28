@@ -106,6 +106,11 @@ function CourseList() {
                         p.courseId === course._id && p.isCompleted === true,
                     ).length || 0;
 
+                  const achievedPoints =
+                    user?.progress
+                      ?.filter((p) => p.courseId === course._id)
+                      .reduce((sum, p) => sum + (p.score || 0), 0) || 0;
+
                   return (
                     <div
                       key={course._id}
@@ -115,6 +120,7 @@ function CourseList() {
                       <CourseCard
                         course={course}
                         completedModules={completedCount}
+                        achievedPoints={achievedPoints}
                         isSelected={selectedCourse?._id === course._id}
                         onClick={(c) =>
                           setSelectedCourse(

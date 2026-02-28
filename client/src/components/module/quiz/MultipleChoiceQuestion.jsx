@@ -88,9 +88,10 @@ const MultipleChoiceQuestion = ({
                 )
               )}
             </div>
-            <span className={`text-body-l font-medium ${textClass}`}>
-              {option.text}
-            </span>
+            <span
+              className={`text-body-l font-medium ${textClass}`}
+              dangerouslySetInnerHTML={{ __html: option.text }}
+            />
           </div>
         );
       })}
