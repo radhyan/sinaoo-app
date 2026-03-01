@@ -82,14 +82,16 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
 
           {/* Context */}
           {question.context && (
-            <div className="mb-4 text-body-md md:text-body-l text-justify text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 md:p-6 rounded-lg border border-Grayscale-100 italic">
-              {question.context}
-            </div>
+            <div
+              className="mb-4 text-body-md md:text-body-l text-justify text-Grayscale-700 whitespace-pre-line bg-Grayscale-50 p-4 md:p-6 rounded-lg border border-Grayscale-100 italic"
+              dangerouslySetInnerHTML={{ __html: question.context }}
+            />
           )}
 
-          <h2 className="font-heading text-h4 text-Grayscale-900 my-4">
-            {question.question}
-          </h2>
+          <h2
+            className="font-heading text-h4 text-Grayscale-900 my-4"
+            dangerouslySetInnerHTML={{ __html: question.question }}
+          />
 
           {/* Question Image */}
           {question.imageUrl && (
@@ -141,9 +143,13 @@ const QuizReview = ({ questions = [], answers = {}, onBack }) => {
             <CheckCircleIcon size={24} weight="fill" />
             Pembahasan:
           </h4>
-          <p className="text-Primary-900 text-body-md leading-relaxed whitespace-pre-line">
-            {question.explanation || "Tidak ada pembahasan untuk soal ini."}
-          </p>
+          <p
+            className="text-Primary-900 text-body-md leading-relaxed whitespace-pre-line"
+            dangerouslySetInnerHTML={{
+              __html:
+                question.explanation || "Tidak ada pembahasan untuk soal ini.",
+            }}
+          />
         </div>
       </div>
 

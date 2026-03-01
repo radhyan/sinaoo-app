@@ -314,7 +314,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             context:
               "Kohesi leksikal memiliki beberapa jenis yang menunjukkan hubungan makna antarkata.",
             question:
-              "Kalimat berikut ini yang merupakan contoh dari kohesi leksikal hiponimi adalah",
+              "Kalimat berikut ini yang merupakan contoh dari <b>kohesi leksikal hiponimi</b> adalah",
             options: [
               {
                 id: "a",
@@ -322,19 +322,19 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
               },
               {
                 id: "b",
-                text: "Dia memelihara hewan peliharaan, seperti kucing dan anjing",
+                text: "Dia memelihara <b>hewan peliharaan</b>, seperti kucing dan anjing",
               },
               {
                 id: "c",
-                text: "Saya suka berlari setiap pagi. Berlari membuat tubuh saya lebih sehat",
+                text: "Saya suka <b>berlari</b> setiap pagi. <b>Berlari</b> membuat tubuh saya lebih sehat",
               },
               {
                 id: "d",
-                text: "Rina dan Adi kehausan. Mereka belum minum",
+                text: "Rina dan Adi kehausan. <b>Mereka</b> belum minum",
               },
               {
                 id: "e",
-                text: "Dia sudah belajar dengan giat, namun nilai ujiannya tetap rendah",
+                text: "Dia sudah belajar dengan giat, <b>namun</b> nilai ujiannya tetap rendah",
               },
             ],
             correctAnswer: "b",
@@ -348,23 +348,23 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             context:
               "Kohesi gramatikal memiliki beberapa jenis, salah satunya substitusi.",
             question:
-              "Kalimat berikut ini yang merupakan contoh dari kohesi gramatikal substitusi adalah",
+              "Kalimat berikut ini yang merupakan contoh dari <b>kohesi gramatikal substitusi</b> adalah",
             options: [
               {
                 id: "a",
-                text: "Dia sudah belajar dengan giat, namun nilai ujiannya tetap rendah",
+                text: "Dia sudah belajar dengan giat, <b>namun</b> nilai ujiannya tetap rendah",
               },
               {
                 id: "b",
-                text: "Rina dan Adi kehausan. Mereka belum minum",
+                text: "Rina dan Adi kehausan. <b>Mereka</b> belum minum",
               },
               {
                 id: "c",
-                text: "Mereka sedang makan. Kami pun",
+                text: "Mereka sedang makan. Kami <b>pun</b>",
               },
               {
                 id: "d",
-                text: "Saya suka berlari setiap pagi. Berlari membuat tubuh saya lebih sehat",
+                text: "Saya suka <b>berlari</b> setiap pagi. <b>Berlari</b> membuat tubuh saya lebih sehat",
               },
               {
                 id: "e",
@@ -381,11 +381,11 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             type: "multiple-choice",
             context: "Koherensi antarhubungan kausal memiliki beberapa jenis.",
             question:
-              "Kalimat berikut ini yang merupakan contoh dari koherensi antarhubungan konsekuensi adalah",
+              "Kalimat berikut ini yang merupakan contoh dari <b>koherensi antarhubungan konsekuensi</b> adalah",
             options: [
               {
                 id: "a",
-                text: "Saya membawa payung karena cuaca terlihat mendung",
+                text: "Saya membawa payung <b>karena</b> cuaca terlihat mendung",
               },
               {
                 id: "b",
@@ -393,15 +393,15 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
               },
               {
                 id: "c",
-                text: "Dia merasa sakit, sebab dia terlalu banyak begadang semalam",
+                text: "Dia merasa sakit, <b>sebab</b> dia terlalu banyak begadang semalam",
               },
               {
                 id: "d",
-                text: "Hujan deras sepanjang malam, akibatnya jalanan tergenang banjir",
+                text: "Hujan deras sepanjang malam, <b>akibatnya</b> jalanan tergenang banjir",
               },
               {
                 id: "e",
-                text: "Jika kamu belajar dengan tekun, kamu akan lulus ujian",
+                text: "<b>Jika</b> kamu belajar dengan tekun, kamu akan lulus ujian",
               },
             ],
             correctAnswer: "d",
@@ -414,19 +414,19 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             type: "multiple-choice",
             context: "Koherensi antarhubungan kausal memiliki beberapa jenis.",
             question:
-              "Kalimat berikut ini yang merupakan contoh dari koherensi antarhubungan syarat adalah",
+              "Kalimat berikut ini yang merupakan contoh dari <b>koherensi antarhubungan syarat</b> adalah",
             options: [
               {
                 id: "a",
-                text: "Jika kamu belajar dengan tekun, kamu akan lulus ujian",
+                text: "<b>Jika</b> kamu belajar dengan tekun, kamu akan lulus ujian",
               },
               {
                 id: "b",
-                text: "Hujan deras sepanjang malam, akibatnya jalanan tergenang banjir",
+                text: "Hujan deras sepanjang malam, <b>akibatnya</b> jalanan tergenang banjir",
               },
               {
                 id: "c",
-                text: "Dia merasa sakit, sebab dia terlalu banyak begadang semalam",
+                text: "Dia merasa sakit, <b>sebab</b> dia terlalu banyak begadang semalam",
               },
               {
                 id: "d",
@@ -434,7 +434,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
               },
               {
                 id: "e",
-                text: "Saya membawa payung karena cuaca terlihat mendung",
+                text: "Saya membawa payung <b>karena</b> cuaca terlihat mendung",
               },
             ],
             correctAnswer: "a",
@@ -447,27 +447,27 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             type: "multiple-choice",
             context: "Koherensi antarhubungan kausal memiliki beberapa jenis.",
             question:
-              "Kalimat berikut ini yang merupakan contoh dari koherensi antarhubungan cara adalah",
+              "Kalimat berikut ini yang merupakan contoh dari <b>koherensi antarhubungan cara</b> adalah",
             options: [
               {
                 id: "a",
-                text: "Saya membawa payung karena cuaca terlihat mendung",
+                text: "Saya membawa payung <b>karena</b> cuaca terlihat mendung",
               },
               {
                 id: "b",
-                text: "Untuk membuat kue ini, kamu harus mencampurkan bahan-bahan dengan hati-hati",
+                text: "<b>Untuk membuat</b> kue ini, kamu harus mencampurkan bahan-bahan dengan hati-hati",
               },
               {
                 id: "c",
-                text: "Dia merasa sakit, sebab dia terlalu banyak begadang semalam",
+                text: "Dia merasa sakit, <b>sebab</b> dia terlalu banyak begadang semalam",
               },
               {
                 id: "d",
-                text: "Hujan deras sepanjang malam, akibatnya jalanan tergenang banjir",
+                text: "Hujan deras sepanjang malam, <b>akibatnya</b> jalanan tergenang banjir",
               },
               {
                 id: "e",
-                text: "Jika kamu belajar dengan tekun, kamu akan lulus ujian",
+                text: "<b>Jika</b> kamu belajar dengan tekun, kamu akan lulus ujian",
               },
             ],
             correctAnswer: "b",
@@ -481,7 +481,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             context:
               "Sekolah kami memiliki fasilitas yang lengkap, seperti perpustakaan yang luas, lapangan olahraga, dan ruang kelas yang nyaman. Selain itu, kami juga memiliki kantin yang menyediakan makanan sehat. Banyak siswa yang suka berkunjung ke kantin saat istirahat. Walaupun sekolah kami sudah memiliki fasilitas yang baik, kami merasa perlu adanya lebih banyak kegiatan ekstrakurikuler. Kegiatan ekstrakurikuler di sekolah kami sangat bervariasi dan menarik.",
             question:
-              "Kalimat mana yang menyebabkan paragraf tersebut tidak padu?",
+              "Kalimat mana yang menyebabkan paragraf tersebut <b>tidak padu</b>?",
             options: [
               {
                 id: "a",
@@ -519,7 +519,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
               { id: "a", text: "Koherensi hubungan cara" },
               { id: "b", text: "Koherensi hubungan syarat" },
               { id: "c", text: "Koherensi hubungan tujuan" },
-              { id: "d", text: "Koherensi hubungan alasan" },
+              { id: "d", text: "<b>Koherensi hubungan alasan</b>" },
               { id: "e", text: "Koherensi hubungan konsekuensi" },
             ],
             correctAnswer: "d",
@@ -535,7 +535,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             question: "Lengkapilah kalimat di atas dengan koherensi yang tepat",
             options: [
               { id: "a", text: "dan" },
-              { id: "b", text: "selain itu" },
+              { id: "b", text: "<b>selain itu</b>" },
               { id: "c", text: "tetapi" },
               { id: "d", text: "karena" },
               { id: "e", text: "oleh karena itu" },
@@ -551,7 +551,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             context:
               "Di kota kami, banyak tempat wisata yang menarik. Ada pantai yang indah dengan pasir putih yang bersih. Selain itu, ada juga taman hiburan yang menyenangkan untuk dikunjungi bersama keluarga. Di kota ini juga banyak restoran yang menyediakan berbagai jenis makanan. Namun, kota kami juga menghadapi masalah kemacetan yang semakin parah setiap harinya.",
             question:
-              "Kalimat mana yang menyebabkan paragraf tersebut tidak padu?",
+              "Kalimat mana yang menyebabkan paragraf tersebut <b>tidak padu</b>?",
             options: [
               {
                 id: "a",
@@ -588,7 +588,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             options: [
               { id: "a", text: "Kohesi gramatikal konjungsi" },
               { id: "b", text: "Koherensi hubungan kontras" },
-              { id: "c", text: "Kohesi leksikal antonimi" },
+              { id: "c", text: "<b>Kohesi leksikal antonimi</b>" },
               { id: "d", text: "Kohesi leksikal sinonimi" },
               { id: "e", text: "Kohesi gramatikal substitusi" },
             ],
@@ -608,7 +608,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
               { id: "b", text: "Kohesi leksikal meronimi" },
               { id: "c", text: "Kohesi leksikal antonimi" },
               { id: "d", text: "Kohesi leksikal sinonimi" },
-              { id: "e", text: "Kohesi leksikal repetisi" },
+              { id: "e", text: "<b>Kohesi leksikal repetisi</b>" },
             ],
             correctAnswer: "e",
             explanation:
@@ -623,7 +623,7 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             question: "Kalimat tersebut mengandung unsur?",
             options: [
               { id: "a", text: "Kohesi gramatikal substitusi" },
-              { id: "b", text: "Kohesi gramatikal konjungsi" },
+              { id: "b", text: "<b>Kohesi gramatikal konjungsi</b>" },
               { id: "c", text: "Kohesi gramatikal elipsis" },
               { id: "d", text: "Kohesi leksikal hiponimi" },
               { id: "e", text: "Kohesi leksikal repetisi" },
@@ -667,11 +667,11 @@ const seedAnalisisBacaanKepaduanParagraf = async () => {
             type: "multiple-choice",
             context:
               "Kohesi memiliki dua jenis, yaitu kohesi gramatikal dan kohesi leksikal.",
-            question: "Manakah yang termasuk dalam kohesi leksikal?",
+            question: "Manakah yang termasuk dalam <b>kohesi leksikal</b>?",
             options: [
               { id: "a", text: "Referensi" },
               { id: "b", text: "Konjungsi" },
-              { id: "c", text: "Hiponimi" },
+              { id: "c", text: "<b>Hiponimi</b>" },
               { id: "d", text: "Kontras" },
               { id: "e", text: "Elipsis" },
             ],

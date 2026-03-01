@@ -106,14 +106,16 @@ const QuizContent = ({
 
           {/* Context / Reading Material for Question */}
           {question.context && (
-            <div className="mb-4 text-body-md md:text-body-l text-justify text-Grayscale-900 whitespace-pre-line bg-Grayscale-50 p-4 md:p-6 rounded-lg border border-Grayscale-100">
-              {question.context}
-            </div>
+            <div
+              className="mb-4 text-body-md md:text-body-l text-justify text-Grayscale-900 whitespace-pre-line bg-Grayscale-50 p-4 md:p-6 rounded-lg border border-Grayscale-100"
+              dangerouslySetInnerHTML={{ __html: question.context }}
+            />
           )}
 
-          <h2 className="font-bold text-h5 md:text-h4 text-justify text-Grayscale-900 my-4 whitespace-pre-line">
-            {question.question}
-          </h2>
+          <h2
+            className="font-bold text-h5 md:text-h4 text-justify text-Grayscale-900 my-4 whitespace-pre-line"
+            dangerouslySetInnerHTML={{ __html: question.question }}
+          />
 
           {/* Question Image */}
           {question.imageUrl && (
