@@ -58,7 +58,7 @@ export default function ModuleExitButton({ isOpen, onExit }) {
             </Button>
           </AlertDialogAction>
           <AlertDialogCancel asChild>
-            <Button variant="ghost">Tidak</Button>
+            <Button variant="default">Tidak</Button>
           </AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
