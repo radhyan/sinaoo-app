@@ -364,7 +364,7 @@ const seedImbuhanPerBerBe = async () => {
             },
             explanation:
               "r1 salah (seharusnya memperagakan/memeragakan, r2 salah (seharusnya mengkritik, gugus konsonan kr- tidak luluh), r4 salah (seharusnya mengkaji jika maksudnya menganalisis mendalam, mengaji untuk baca Al-Qur'an).",
-            points: 5,
+            points: 8,
           },
           {
             id: 3,
@@ -523,7 +523,7 @@ const seedImbuhanPerBerBe = async () => {
             correctAnswer: "d",
             explanation:
               "Kata 'dikoordinir' tidak baku. Imbuhan pungut '-ir' dari bahasa Belanda sudah diserap ke dalam bahasa Indonesia menjadi '-asi', sehingga kata kerjanya yang baku adalah 'dikoordinasikan'.",
-            points: 7,
+            points: 8,
           },
           {
             id: 10,
@@ -604,7 +604,7 @@ const seedImbuhanPerBerBe = async () => {
             correctAnswer: "b",
             explanation:
               "Kata dasar 'cium' diawali oleh huruf 'C'. Seperti aturan sebelumnya, huruf C tidak mengikuti kaidah KTSP, sehingga 'C' tidak luluh jika diberi awalan me-N. Bentuk baku yang benar adalah 'mencium'.",
-            points: 7,
+            points: 6,
           },
           {
             id: 14,
@@ -652,7 +652,7 @@ const seedImbuhanPerBerBe = async () => {
             },
             explanation:
               "Imbuhan yang tepat untuk melengkapi kalimat rumpang tersebut secara gramatikal dan kontekstual berturut-turut adalah: 'kesalahan' (kata benda), 'pertumbuhan' (kata benda abstrak yang berproses), dan 'memberi' (kata kerja aktif transitif).",
-            points: 5,
+            points: 7,
           },
         ],
       },
