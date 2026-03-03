@@ -5,6 +5,11 @@ import { Label } from "@/components/shared/ui/Label";
 import { Link, useNavigate } from "react-router-dom";
 import { PasswordInput } from "@/components/shared/ui/PasswordInput";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
+import {
+  validateUsername,
+  validateEmail,
+  validatePassword,
+} from "@/lib/validation";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -23,14 +28,34 @@ export default function Register() {
     setLoading(true);
     setError(null);
 
+    if (!validateUsername(formData.username)) {
+      setError("Username harus 3-20 karakter (huruf, angka, underscore).");
+      setLoading(false);
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      setError("Format email tidak valid.");
+      setLoading(false);
+      return;
+    }
+
+    if (!validatePassword(formData.password)) {
+      setError(
+        "Password harus minimal 8 karakter, mengandung huruf besar, kecil, angka, dan simbol.",
+      );
+      setLoading(false);
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+      setError("Konfirmasi password tidak sesuai.");
       setLoading(false);
       return;
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/users", {
+      const res = await fetch("http://localhost:3000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // Excluding confirmPassword from payload

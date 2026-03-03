@@ -11,6 +11,7 @@ import Achievement from "./pages/Achievement";
 import Profile from "./pages/Profile";
 import ModuleDetail from "./pages/ModuleDetail";
 import DailyQuiz from "./pages/DailyQuiz";
+import ForgotPassword from "./pages/ForgotPassword";
 import Layout from "@/components/layout/Layout";
 
 import { UserProvider } from "@/context/UserContext";
@@ -29,6 +30,7 @@ function App() {
             {/* PUBLIC ROUTE (No Sidebar) */}
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
 
             {/* PROTECTED ROUTES (With Sidebar) */}
             <Route element={<Layout />}>

@@ -40,6 +40,7 @@ const MissionItem = ({
       ? Math.min(100, Math.round((current / target) * 100))
       : 0;
   const isCompleted = current >= target;
+  const isDone = isClaimed || (type === "quiz" && isCompleted);
 
   return (
     <div className="shadow-blue-60 rounded-xl">
@@ -61,7 +62,7 @@ const MissionItem = ({
               <h5 className="font-heading text-h5 text-Secondary-900 truncate pr-2">
                 {title}
               </h5>
-              {isClaimed ? (
+              {isDone ? (
                 <Tag icon={CheckCircleIcon} variant="default" shadow="orange">
                   Selesai
                 </Tag>
@@ -98,12 +99,12 @@ const MissionItem = ({
         {/* THIRD ROW: Action Button */}
         <div className="flex justify-end mx-1 mt-1">
           <div className="w-full">
-            {isClaimed ? (
+            {isDone ? (
               <>
                 {type === "quiz" && (
-                  <Link to="/quiz/daily?review=true" className="w-full block">
+                  <Link to="/quiz/daily" className="w-full block">
                     <Button variant="tertiary" fullWidth shadow="none">
-                      Hasil Quiz
+                      Kuis Selesai
                     </Button>
                   </Link>
                 )}

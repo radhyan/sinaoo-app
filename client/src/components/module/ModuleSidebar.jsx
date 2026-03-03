@@ -53,6 +53,7 @@ export default function ModuleSidebar({
   isOpen = true,
   onToggle,
   onExit,
+  courseId,
   isModuleCompleted: isModuleCompletedProp,
 }) {
   const [isTitleOverflowing, setIsTitleOverflowing] = useState(false);
@@ -355,7 +356,7 @@ export default function ModuleSidebar({
           isOpen ? "px-4" : "px-2 flex justify-center",
         )}
       >
-        <ModuleExitButton isOpen={isOpen} onExit={onExit} />
+        <ModuleExitButton isOpen={isOpen} onExit={onExit} courseId={courseId} />
       </div>
     </div>
   );

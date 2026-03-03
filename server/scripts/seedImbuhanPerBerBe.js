@@ -331,7 +331,7 @@ const seedImbuhanPerBerBe = async () => {
             },
             explanation:
               "Kata 'memerkaya' salah karena kata dasarnya adalah 'kaya' yang huruf awalnya (K) luluh saat diberi awalan me-N menjadi 'mengaya', namun karena diberi imbuhan per- menjadi memperkaya. Kata 'memroduksi' salah karena huruf 'P' pada pro- (gugus konsonan) tidak luluh, seharusnya 'memproduksi'.",
-            points: 5,
+            points: 6,
           },
           {
             id: 2,

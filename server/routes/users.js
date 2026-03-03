@@ -14,20 +14,7 @@ const {
 
 const router = express.Router();
 
-// 1. Create User (Registration)
-router.post("/", async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-    // In a real app, hash the password here using bcrypt!
-    const newUser = new User({ username, email, password });
-    await newUser.save();
-    res.status(201).json(newUser);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-// 2. Get User Profile (by Username)
+// 1. Get User Profile (by Username)
 router.get("/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username })
@@ -211,7 +198,11 @@ router.post("/:username/progress", async (req, res) => {
       .populate("title")
       .populate("achievements.achievementId");
 
-    res.json({ ...populatedUser.toObject(), newAchievements });
+    const rank =
+      (await User.countDocuments({ points: { $gt: populatedUser.points } })) +
+      1;
+
+    res.json({ ...populatedUser.toObject(), newAchievements, rank });
   } catch (err) {
     console.error("Progress Update Error:", err);
     res.status(500).json({ error: err.message });

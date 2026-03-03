@@ -15,12 +15,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/shared/ui/AlertDialog";
 
-export default function ModuleExitButton({ isOpen, onExit }) {
+export default function ModuleExitButton({ isOpen, onExit, courseId }) {
   const navigate = useNavigate();
 
   const handleExit = () => {
     if (onExit) onExit(); // Fire-and-forget, don't block navigation
-    navigate("/courses");
+    navigate(courseId ? `/courses?openCourse=${courseId}` : "/courses");
   };
 
   return (

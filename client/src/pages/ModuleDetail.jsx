@@ -353,12 +353,19 @@ export default function ModuleDetail() {
           totalPoints={totalPoints}
           correctCount={correctCount}
           totalQuestions={totalQuestions}
+          rank={moduleData?.rank}
           onReview={() => {
             setViewMode("review");
             scrollToTop();
           }}
           onRestart={handleRestart}
-          onFinish={() => navigate("/courses")}
+          onFinish={() =>
+            navigate(
+              moduleData.courseId
+                ? `/courses?openCourse=${moduleData.courseId}`
+                : "/courses",
+            )
+          }
         />
       );
     }
@@ -464,6 +471,7 @@ export default function ModuleDetail() {
           onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
           isModuleCompleted={isModuleCompleted}
           onExit={handleSave}
+          courseId={moduleData.courseId}
         />
       </div>
 

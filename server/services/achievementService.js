@@ -137,11 +137,9 @@ async function updateUserTitle(user) {
       }
     }
 
-    if (
-      !user.title ||
-      user.title._id?.toString() !== correctTitle._id.toString() ||
-      user.title.toString() !== correctTitle._id.toString()
-    ) {
+    const currentTitleId =
+      user.title?._id?.toString() || user.title?.toString();
+    if (currentTitleId !== correctTitle._id.toString()) {
       user.title = correctTitle._id;
       return true;
     }

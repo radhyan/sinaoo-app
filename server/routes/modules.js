@@ -1,5 +1,6 @@
 const express = require("express");
 const Module = require("../models/Module");
+const User = require("../models/User");
 
 const router = express.Router();
 
@@ -11,7 +12,18 @@ router.get("/:moduleId", async (req, res) => {
     if (!module) {
       return res.status(404).json({ error: "Module not found" });
     }
-    res.json(module);
+
+    let rank = null;
+    const { username } = req.query;
+    if (username) {
+      const user = await User.findOne({ username });
+      if (user) {
+        rank =
+          (await User.countDocuments({ points: { $gt: user.points } })) + 1;
+      }
+    }
+
+    res.json({ ...module.toObject(), rank });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

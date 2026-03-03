@@ -110,7 +110,7 @@ export default function Login() {
               className="rounded-sm border-Grayscale-400 bg-Grayscale-50 h-11 pr-10 transition-all ease-in-out w-full"
             />
             <Link
-              to="#"
+              to="/forgot-password"
               className="text-sm text-Primary-500 font-body-md font-bold hover:underline"
             >
               Lupa password?

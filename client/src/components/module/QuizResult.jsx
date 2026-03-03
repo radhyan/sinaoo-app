@@ -21,6 +21,7 @@ const QuizResult = ({
   totalPoints,
   correctCount,
   totalQuestions,
+  rank,
   onReview,
   onRestart,
   onFinish,
@@ -53,8 +54,8 @@ const QuizResult = ({
     },
     {
       label: "Peringkatmu",
-      value: "#10", // Mocked value
-      subValue: true,
+      value: rank ? `#${rank}` : "---",
+      subValue: rank ? true : false,
       icon: ChartBarIcon,
       variant: "lightBlue",
     },

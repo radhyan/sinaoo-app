@@ -10,6 +10,7 @@ const courseRoutes = require("../routes/courses");
 const moduleRoutes = require("../routes/modules");
 const gamificationRoutes = require("../routes/gamification");
 const adminRoutes = require("../routes/admin");
+const dailyQuizRoutes = require("../routes/dailyQuiz");
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use("/api/courses", courseRoutes); // /api/courses/*
 app.use("/api/modules", moduleRoutes); // /api/modules/*
 app.use("/api", gamificationRoutes); // /api/achievements, /api/titles, /api/leaderboard
 app.use("/api/admin", adminRoutes); // /api/admin/*
+app.use("/api/daily-quiz", dailyQuizRoutes); // /api/daily-quiz/*
 
 // --- DATABASE CONNECTION ---
 mongoose

@@ -17,7 +17,7 @@ export function useModuleProgress(moduleId, user, login) {
         setLoading(true);
         setError(null);
         const res = await fetch(
-          `http://localhost:3000/api/modules/${moduleId}`,
+          `http://localhost:3000/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`,
         );
         if (!res.ok) throw new Error("Failed to fetch module");
 
@@ -55,7 +55,7 @@ export function useModuleProgress(moduleId, user, login) {
           transformedData.steps[0].status = "active";
         }
 
-        setModuleData(transformedData);
+        setModuleData({ ...transformedData, rank: data.rank });
       } catch (err) {
         console.error("Error fetching module:", err);
         setError("Gagal memuat modul. Periksa koneksi internet Anda.");
@@ -102,6 +102,7 @@ export function useModuleProgress(moduleId, user, login) {
 
       if (res.ok) {
         const freshUser = await res.json();
+        setModuleData((prev) => ({ ...prev, rank: freshUser.rank }));
         login(freshUser);
         return freshUser;
       }

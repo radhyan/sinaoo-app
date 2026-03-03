@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { BookBookmarkIcon } from "@phosphor-icons/react";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
 import CourseCard, {
@@ -18,6 +19,7 @@ function CourseList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const fetchCourses = useCallback(async () => {
     try {
@@ -41,6 +43,20 @@ function CourseList() {
   useEffect(() => {
     fetchCourses();
   }, [fetchCourses]);
+
+  // Auto-select course from URL query param (e.g. /courses?openCourse=abc123)
+  useEffect(() => {
+    const openCourseId = searchParams.get("openCourse");
+    if (openCourseId && courses.length > 0 && !selectedCourse) {
+      const target = courses.find((c) => c._id === openCourseId);
+      if (target) {
+        setSelectedCourse(target);
+      }
+      // Clean up the URL param
+      searchParams.delete("openCourse");
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [courses, searchParams]);
 
   return (
     <div className="flex flex-col gap-6 w-full h-full overflow-hidden p-2 lg:px-6">
