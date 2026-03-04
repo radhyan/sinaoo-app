@@ -41,9 +41,14 @@ router.get("/:username", async (req, res) => {
     // Calculate course stats
     const courseStats = await calculateCourseStats(user);
 
+    // Calculate leaderboard rank
+    const rank =
+      (await User.countDocuments({ points: { $gt: user.points } })) + 1;
+
     res.json({
       ...user.toObject(),
       newAchievements,
+      rank,
       completedCourses: courseStats.completedCourses,
       totalCourses: courseStats.totalCourses,
     });
@@ -94,7 +99,7 @@ router.post("/:username/progress", async (req, res) => {
       `[Progress Update] User: ${username}, Module: ${moduleId}, %: ${completionPercentage}, Done: ${isCompleted}, Reset: ${reset}`,
     );
 
-    const user = await User.findOne({ username });
+    let user = await User.findOne({ username });
     if (!user) return res.status(404).json({ error: "User not found" });
 
     // Find existing progress for this module
@@ -190,8 +195,34 @@ router.post("/:username/progress", async (req, res) => {
 
     // Ensure Mixed types (quizAnswers, flaggedQuestions) are marked as modified
     user.markModified("progress");
-    await user.save();
-    console.log(`[Progress Update] Saved successfully for ${username}`);
+
+    // Retry save on VersionError (race condition with concurrent requests)
+    const MAX_RETRIES = 3;
+    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+      try {
+        await user.save();
+        console.log(`[Progress Update] Saved successfully for ${username}`);
+        break;
+      } catch (saveErr) {
+        if (saveErr.name === "VersionError" && attempt < MAX_RETRIES - 1) {
+          console.log(
+            `[Progress Update] VersionError for ${username}, retrying (${attempt + 1}/${MAX_RETRIES})...`,
+          );
+          // Re-fetch the latest version and re-apply the lastAccessed update
+          const freshUser = await User.findOne({ username });
+          const idx = freshUser.progress.findIndex(
+            (p) => p.moduleId.toString() === moduleId,
+          );
+          if (idx > -1) {
+            freshUser.progress[idx].lastAccessed = new Date();
+            freshUser.markModified("progress");
+          }
+          user = freshUser;
+        } else {
+          throw saveErr;
+        }
+      }
+    }
 
     // Re-populate for full detail (like points, title, etc)
     const populatedUser = await User.findById(user._id)

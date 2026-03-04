@@ -164,7 +164,7 @@ function Dashboard() {
             }
             completedAchievements={user.achievements?.length || 0}
             totalAchievements={totalAchievements}
-            leaderboardRank={3}
+            leaderboardRank={user.rank || "-"}
           />
         </div>
       </div>

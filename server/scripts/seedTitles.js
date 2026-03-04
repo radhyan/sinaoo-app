@@ -1,31 +1,30 @@
 const mongoose = require("mongoose");
-const Title = require("./models/Title");
 const path = require("path");
-const dotenv = require("dotenv");
-dotenv.config({ path: path.join(__dirname, ".env") });
+require("dotenv").config({ path: path.join(__dirname, "../.env") });
+const Title = require("../models/Title");
 
 const titlesList = [
   {
     title: "Maba Halu",
     min: 0,
-    max: 500,
+    max: 999,
     image: "/titles/Title 1.png",
   },
   {
     title: "Sobat Ambis",
-    min: 500,
-    max: 1000,
+    min: 1000,
+    max: 1999,
     image: "/titles/Title 2.png",
   },
   {
     title: "Suhu",
-    min: 1000,
-    max: 2000,
+    min: 2000,
+    max: 3999,
     image: "/titles/Title 3.png",
   },
   {
     title: "Valedictorian",
-    min: 2000,
+    min: 4000,
     max: Infinity,
     image: "/titles/Title 4.png",
   },
