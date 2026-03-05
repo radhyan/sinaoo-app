@@ -42,8 +42,10 @@ router.get("/:username", async (req, res) => {
     const courseStats = await calculateCourseStats(user);
 
     // Calculate leaderboard rank
-    const rank =
-      (await User.countDocuments({ points: { $gt: user.points } })) + 1;
+    const hasRankedPoints = (user.points || 0) > 0;
+    const rank = hasRankedPoints
+      ? (await User.countDocuments({ points: { $gt: user.points } })) + 1
+      : null;
 
     res.json({
       ...user.toObject(),
@@ -229,9 +231,11 @@ router.post("/:username/progress", async (req, res) => {
       .populate("title")
       .populate("achievements.achievementId");
 
-    const rank =
-      (await User.countDocuments({ points: { $gt: populatedUser.points } })) +
-      1;
+    const hasRankedPoints = (populatedUser.points || 0) > 0;
+    const rank = hasRankedPoints
+      ? (await User.countDocuments({ points: { $gt: populatedUser.points } })) +
+        1
+      : null;
 
     res.json({ ...populatedUser.toObject(), newAchievements, rank });
   } catch (err) {

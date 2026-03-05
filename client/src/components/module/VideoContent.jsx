@@ -4,6 +4,8 @@ const VideoContent = ({ step, onComplete }) => {
   const playerRef = useRef(null);
   const containerRef = useRef(null);
   const [isApiLoaded, setIsApiLoaded] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     // 1. Load the YouTube IFrame Player API code asynchronously.
@@ -22,6 +24,9 @@ const VideoContent = ({ step, onComplete }) => {
   }, []);
 
   useEffect(() => {
+    setIsVideoReady(false);
+    setVideoError(false);
+
     if (isApiLoaded && step.videoUrl) {
       let videoId = "";
       try {
@@ -35,7 +40,10 @@ const VideoContent = ({ step, onComplete }) => {
         console.error("Invalid Video URL", e);
       }
 
-      if (!videoId) return;
+      if (!videoId) {
+        setVideoError(true);
+        return;
+      }
 
       if (playerRef.current) {
         playerRef.current.destroy();
@@ -52,7 +60,9 @@ const VideoContent = ({ step, onComplete }) => {
           iv_load_policy: 3,
         },
         events: {
+          onReady: () => setIsVideoReady(true),
           onStateChange: onPlayerStateChange,
+          onError: () => setVideoError(true),
         },
       });
     }
@@ -88,6 +98,24 @@ const VideoContent = ({ step, onComplete }) => {
       </div>
 
       <div className="relative w-full pt-[56.25%] bg-black rounded-md overflow-hidden shadow-blue-glow mb-8">
+        {!isVideoReady && !videoError && (
+          <div className="absolute inset-0 z-10 bg-Grayscale-900/70 flex flex-col items-center justify-center gap-3 text-center p-4">
+            <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            <p className="text-body-md text-white font-semibold">
+              Memuat video...
+            </p>
+            <p className="text-body-sm text-white/80">
+              Video akan bisa diputar dalam beberapa detik
+            </p>
+          </div>
+        )}
+        {videoError && (
+          <div className="absolute inset-0 z-10 bg-Grayscale-900/80 flex items-center justify-center text-center p-4">
+            <p className="text-body-md text-white font-semibold">
+              Video gagal dimuat. Coba muat ulang halaman.
+            </p>
+          </div>
+        )}
         <div
           ref={containerRef}
           className="absolute top-0 left-0 w-full h-full"

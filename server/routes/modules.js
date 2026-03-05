@@ -18,8 +18,10 @@ router.get("/:moduleId", async (req, res) => {
     if (username) {
       const user = await User.findOne({ username });
       if (user) {
-        rank =
-          (await User.countDocuments({ points: { $gt: user.points } })) + 1;
+        if ((user.points || 0) > 0) {
+          rank =
+            (await User.countDocuments({ points: { $gt: user.points } })) + 1;
+        }
       }
     }
 

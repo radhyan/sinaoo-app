@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { useQuizState } from "@/hooks/useQuizState";
 import { RefreshButton } from "@/components/shared/ui/RefreshButton";
 import { SidebarOpenIcon } from "lucide-react";
+import FullScreenLoading from "@/components/shared/ui/FullScreenLoading";
 
 export default function ModuleDetail() {
   const { moduleId } = useParams();
@@ -80,8 +81,10 @@ export default function ModuleDetail() {
     totalQuestions,
   } = useQuizState(
     moduleData,
-    user?.progress?.find((p) => p.moduleId === moduleId)?.quizAnswers || {},
-    user?.progress?.find((p) => p.moduleId === moduleId)?.flaggedQuestions ||
+    user?.progress?.find((p) => String(p.moduleId) === String(moduleId))
+      ?.quizAnswers || {},
+    user?.progress?.find((p) => String(p.moduleId) === String(moduleId))
+      ?.flaggedQuestions ||
       {},
   );
 
@@ -121,7 +124,7 @@ export default function ModuleDetail() {
 
   const handleRefresh = () => {
     const existingProgress = user.progress?.find(
-      (p) => p.moduleId === moduleId,
+      (p) => String(p.moduleId) === String(moduleId),
     );
     fetchModule(existingProgress);
   };
@@ -417,8 +420,15 @@ export default function ModuleDetail() {
     }
   };
 
-  if (loading && !moduleData)
-    return <div className="p-10 flex justify-center">Loading module...</div>;
+  if (loading && !moduleData) {
+    return (
+      <FullScreenLoading
+        title="Memuat modul..."
+        subtitle="Materi dan progres belajarmu sedang disiapkan"
+        showMaterialBy
+      />
+    );
+  }
 
   if (error || !moduleData)
     return (

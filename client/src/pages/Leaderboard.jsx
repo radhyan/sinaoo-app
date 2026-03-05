@@ -135,12 +135,17 @@ export default function Leaderboard() {
                 Peringkatmu
               </h3>
             </div>
-            {data.userProfile ? (
+            {data.userProfile && data.userRank !== null ? (
               <RankCard
                 rank={data.userRank}
                 userProfile={data.userProfile}
                 variant="highlight"
               />
+            ) : data.userProfile ? (
+              <div className="p-4 md:p-6 bg-Grayscale-50 rounded-xl border border-dashed border-Grayscale-200 text-Grayscale-500 text-body-sm md:text-body-md">
+                Kamu belum punya peringkat. Dapatkan poin pertamamu untuk mulai
+                masuk leaderboard.
+              </div>
             ) : (
               <div className="p-4 md:p-6 bg-Grayscale-50 rounded-xl border border-dashed border-Grayscale-200 text-Grayscale-400 text-body-sm md:text-body-md">
                 Log in to see your rank

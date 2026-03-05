@@ -6,12 +6,14 @@ import { Label } from "@/components/shared/ui/Label";
 import { Link, useNavigate } from "react-router-dom";
 import { PasswordInput } from "@/components/shared/ui/PasswordInput";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
+import FullScreenLoading from "@/components/shared/ui/FullScreenLoading";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const [errorField, setErrorField] = useState(null); // 'email' or 'password'
   const navigate = useNavigate();
   const { login } = useUser();
@@ -45,6 +47,7 @@ export default function Login() {
       login(data);
 
       // Redirect to dashboard
+      setIsRedirecting(true);
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
@@ -52,6 +55,15 @@ export default function Login() {
       setLoading(false);
     }
   };
+
+  if (loading || isRedirecting) {
+    return (
+      <FullScreenLoading
+        title="Masuk ke akunmu..."
+        subtitle="Kami sedang menyiapkan dashboard belajarmu"
+      />
+    );
+  }
 
   return (
     <div className="flex min-h-screen items-left justify-left bg-Grayscale-50 p-6">

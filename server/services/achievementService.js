@@ -44,10 +44,14 @@ async function checkAndAwardAchievement(user, key) {
         break;
       case "TOP_CLASS":
         // Rank 5 besar
-        const higherPointsCount = await User.countDocuments({
-          points: { $gt: user.points },
-        });
-        metCondition = higherPointsCount + 1 <= 5;
+        if ((user.points || 0) > 0) {
+          const higherPointsCount = await User.countDocuments({
+            points: { $gt: user.points },
+          });
+          metCondition = higherPointsCount + 1 <= 5;
+        } else {
+          metCondition = false;
+        }
         break;
     }
 

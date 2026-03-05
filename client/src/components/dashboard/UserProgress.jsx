@@ -14,9 +14,14 @@ export default function UserProgress({
   completedModules = 0,
   completedAchievements = 0,
   totalAchievements = 9,
-  leaderboardRank = "-",
+  leaderboardRank = null,
   className,
 }) {
+  const rankDisplay =
+    leaderboardRank === null || leaderboardRank === undefined
+      ? "Belum Ranked"
+      : `#${leaderboardRank}`;
+
   return (
     <div
       className={cn("grid grid-cols-2 gap-3 min-w-[170px] w-full", className)}
@@ -39,7 +44,7 @@ export default function UserProgress({
         },
         {
           label: "Peringkat",
-          value: `#${leaderboardRank}`,
+          value: rankDisplay,
           icon: RankingIcon,
         },
       ].map((stat, index) => (

@@ -7,7 +7,9 @@ export function useModuleProgress(moduleId, user, login) {
 
   const isModuleCompleted = useMemo(() => {
     if (!user || !moduleData) return false;
-    const userProgress = user.progress?.find((p) => p.moduleId === moduleId);
+    const userProgress = user.progress?.find(
+      (p) => String(p.moduleId) === String(moduleId),
+    );
     return userProgress?.isCompleted || false;
   }, [user, moduleData, moduleId]);
 
@@ -16,9 +18,15 @@ export function useModuleProgress(moduleId, user, login) {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch(
-          `http://localhost:3000/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`,
+        const minLoadingDelay = new Promise((resolve) =>
+          setTimeout(resolve, 2000),
         );
+        const [res] = await Promise.all([
+          fetch(
+            `http://localhost:3000/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`,
+          ),
+          minLoadingDelay,
+        ]);
         if (!res.ok) throw new Error("Failed to fetch module");
 
         const data = await res.json();
@@ -63,7 +71,7 @@ export function useModuleProgress(moduleId, user, login) {
         setLoading(false);
       }
     },
-    [moduleId],
+    [moduleId, user?.username],
   );
 
   const updateProgress = async ({
@@ -100,21 +108,29 @@ export function useModuleProgress(moduleId, user, login) {
         },
       );
 
-      if (res.ok) {
-        const freshUser = await res.json();
-        setModuleData((prev) => ({ ...prev, rank: freshUser.rank }));
-        login(freshUser);
-        return freshUser;
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error(
+          "Failed to update progress:",
+          errorData.error || "Failed to update progress",
+        );
+        return null;
       }
+
+      const freshUser = await res.json();
+      setModuleData((prev) => ({ ...prev, rank: freshUser.rank }));
+      login(freshUser);
+      return freshUser;
     } catch (error) {
       console.error("Failed to update progress:", error);
+      return null;
     }
   };
 
   useEffect(() => {
     if (moduleId && user) {
       const existingProgress = user.progress?.find(
-        (p) => p.moduleId === moduleId,
+        (p) => String(p.moduleId) === String(moduleId),
       );
       // Fetch if not loaded, or if data is for different module,
       // or if we just completed it and want to sync step statuses

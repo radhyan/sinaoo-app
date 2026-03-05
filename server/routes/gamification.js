@@ -96,7 +96,7 @@ router.get("/leaderboard", async (req, res) => {
   try {
     const { username } = req.query;
 
-    const topUsers = await User.find()
+    const topUsers = await User.find({ points: { $gt: 0 } })
       .sort({ points: -1 })
       .limit(50)
       .populate("title")
@@ -129,9 +129,11 @@ router.get("/leaderboard", async (req, res) => {
           await userProfile.save();
           await userProfile.populate("title");
         }
-        userRank =
-          (await User.countDocuments({ points: { $gt: userProfile.points } })) +
-          1;
+        if ((userProfile.points || 0) > 0) {
+          userRank =
+            (await User.countDocuments({ points: { $gt: userProfile.points } })) +
+            1;
+        }
       }
     }
 

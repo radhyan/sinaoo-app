@@ -112,7 +112,7 @@ export default function ModuleList({ course, onBack }) {
           ) : (
             filteredModules.map((module, index) => {
               const userProgress = user?.progress?.find(
-                (p) => p.moduleId === module._id,
+                (p) => String(p.moduleId) === String(module._id),
               );
 
               const isCompleted = userProgress?.isCompleted || false;

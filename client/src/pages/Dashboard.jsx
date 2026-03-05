@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import profileHeaderImg from "@/assets/Profile Header/ProfileHeader.png";
+import SinaooLogo from "@/assets/SINAOO LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRightIcon,
@@ -138,7 +139,7 @@ function Dashboard() {
           alt="Profile Header"
           className="hidden md:block absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
-        <h2 className="md:text-Primary-50 text-Primary-800 font-heading text-body-xl md:text-h3 xl:text-h1 px-2 md:pr-20 md:pl-20 lg:pr-24 z-10 max-w-[80%] md:max-w-[70%] lg:max-w-[70%] text-left flex flex-col leading-tight">
+        <h2 className="md:text-Primary-50 text-Primary-800 font-heading text-body-xl md:text-h3 xl:text-h2 px-2 md:pr-20 md:pl-20 lg:pr-24 z-10 max-w-[80%] md:max-w-[60%] lg:max-w-[65%] text-left flex flex-col leading-tight">
           <span className="md:text-Primary-50/90 text-Primary-600 font-medium mb-1 drop-shadow-sm">
             Halo, {user.username}!
           </span>
@@ -164,7 +165,7 @@ function Dashboard() {
             }
             completedAchievements={user.achievements?.length || 0}
             totalAchievements={totalAchievements}
-            leaderboardRank={user.rank || "-"}
+            leaderboardRank={user.rank}
           />
         </div>
       </div>
@@ -208,6 +209,18 @@ function Dashboard() {
           </div>
         </div>
       </div>
+
+      <footer className="w-full border-t border-Primary-50 pt-4 mt-2">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-body-sm text-Grayscale-600">
+          <img src={SinaooLogo} alt="SINAOO Logo" className="h-6" />
+          <span>material by</span>
+          <img
+            src="/images/logo-letstudy.png"
+            alt="Letstudy Logo"
+            className="h-7 object-contain"
+          />
+        </div>
+      </footer>
     </div>
   );
 }
