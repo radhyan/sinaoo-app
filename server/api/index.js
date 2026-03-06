@@ -16,7 +16,32 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+function normalizeEnvValue(value) {
+  if (!value) return "";
+  return value
+    .trim()
+    .replace(/^['\"]|['\"]$/g, "")
+    .replace(/\\r\\n/g, "")
+    .replace(/\r\n/g, "")
+    .replace(/\n/g, "");
+}
+
+const rawCorsOrigins = normalizeEnvValue(process.env.CORS_ORIGIN) || "http://localhost:5173";
+const allowedOrigins = rawCorsOrigins
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+  })
+);
 app.use(express.json());
 
 // --- MOUNT ROUTES ---
@@ -32,13 +57,35 @@ app.use("/api", gamificationRoutes); // /api/achievements, /api/titles, /api/lea
 app.use("/api/admin", adminRoutes); // /api/admin/*
 app.use("/api/daily-quiz", dailyQuizRoutes); // /api/daily-quiz/*
 
-// --- DATABASE CONNECTION ---
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Could not connect to MongoDB:", err));
+// Cache MongoDB connection across serverless invocations.
+let cachedConnection = global._mongooseConnection;
+let cachedConnectionPromise = global._mongooseConnectionPromise;
+
+async function connectToDatabase() {
+  if (cachedConnection) return cachedConnection;
+
+  const mongoUri = normalizeEnvValue(process.env.MONGODB_URI);
+  if (!mongoUri) {
+    throw new Error("MONGODB_URI is not set");
+  }
+
+  if (!cachedConnectionPromise) {
+    cachedConnectionPromise = mongoose.connect(mongoUri);
+    global._mongooseConnectionPromise = cachedConnectionPromise;
+  }
+
+  cachedConnection = await cachedConnectionPromise;
+  global._mongooseConnection = cachedConnection;
+  return cachedConnection;
+}
+
+connectToDatabase().catch((err) => {
+  console.error("Could not connect to MongoDB:", err);
+});
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server ready on port ${PORT}`));
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => console.log(`Server ready on port ${PORT}`));
+}
 
 module.exports = app;

@@ -7,6 +7,7 @@ import ModuleCard, {
   ModuleCardSkeleton,
 } from "@/components/shared/cards/ModuleCard";
 import { BookBookmarkIcon, BookmarkIcon } from "@phosphor-icons/react";
+import { apiUrl } from "@/lib/api";
 
 export default function LastAccessedModule({ username, className }) {
   const [modules, setModules] = useState([]);
@@ -19,7 +20,7 @@ export default function LastAccessedModule({ username, className }) {
       setLoading(true);
       setError(null);
       const res = await fetch(
-        `http://localhost:3000/api/users/${username}/last-accessed`,
+        apiUrl(`/api/users/${username}/last-accessed`),
       );
       if (!res.ok) throw new Error("Failed to fetch last accessed modules");
       const data = await res.json();
@@ -130,3 +131,5 @@ export default function LastAccessedModule({ username, className }) {
     </div>
   );
 }
+
+

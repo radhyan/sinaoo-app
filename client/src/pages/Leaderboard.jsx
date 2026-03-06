@@ -13,6 +13,7 @@ import RankingList from "@/components/leaderboard/RankingList";
 import { useUser } from "@/context/UserContext";
 import LoadingBar from "@/components/shared/ui/LoadingBar";
 import { RefreshButton } from "@/components/shared/ui/RefreshButton";
+import { apiUrl } from "@/lib/api";
 
 export default function Leaderboard() {
   const { user, loading: userLoading } = useUser();
@@ -29,8 +30,8 @@ export default function Leaderboard() {
       setLoading(true);
       setError(null);
       const url = user
-        ? `http://localhost:3000/api/leaderboard?username=${user.username}`
-        : "http://localhost:3000/api/leaderboard";
+        ? apiUrl(`/api/leaderboard?username=${user.username}`)
+        : apiUrl("/api/leaderboard");
 
       const res = await fetch(url);
       if (res.ok) {
@@ -195,3 +196,5 @@ export default function Leaderboard() {
     </div>
   );
 }
+
+

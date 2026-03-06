@@ -24,6 +24,7 @@ import { useUser } from "@/context/UserContext";
 import { getUserAvatar } from "@/lib/avatar";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
 import { Button } from "@/components/shared/ui/Button";
+import { apiUrl } from "@/lib/api";
 
 const LeaderboardItem = ({ rank, avatar, name, points }) => (
   <div className="flex items-center gap-4 p-2 rounded-md hover:bg-Grayscale-50">
@@ -77,7 +78,7 @@ function Dashboard() {
     // Ideally this should be part of a global data context or cache
     const fetchAchievements = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/achievements");
+        const res = await fetch(apiUrl("/api/achievements"));
         if (res.ok) {
           const data = await res.json();
           setTotalAchievements(data.length);
@@ -226,3 +227,5 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+

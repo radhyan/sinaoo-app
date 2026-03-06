@@ -18,6 +18,7 @@ import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
 import Tag from "@/components/shared/ui/Tag";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
 import { useUser } from "@/context/UserContext";
+import { apiUrl } from "@/lib/api";
 
 const MissionItem = ({
   id,
@@ -193,7 +194,7 @@ export default function DailyMissionWidget({ className }) {
       setLoading(true);
       setError(null);
       const res = await fetch(
-        `http://localhost:3000/api/users/${username}/daily-missions`,
+        apiUrl(`/api/users/${username}/daily-missions`),
       );
       if (!res.ok) throw new Error("Failed to fetch missions");
       const data = await res.json();
@@ -216,7 +217,7 @@ export default function DailyMissionWidget({ className }) {
     try {
       setClaimingId(id);
       const res = await fetch(
-        `http://localhost:3000/api/users/${username}/claim-mission`,
+        apiUrl(`/api/users/${username}/claim-mission`),
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -285,3 +286,6 @@ export default function DailyMissionWidget({ className }) {
     </div>
   );
 }
+
+
+

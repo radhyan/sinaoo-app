@@ -7,6 +7,7 @@ import TitleDisplay from "@/components/profile/TitleDisplay";
 import ProfileAchievements from "@/components/profile/ProfileAchievements";
 import GradientIcon from "@/components/shared/ui/GradientIcon";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
+import { apiUrl } from "@/lib/api";
 
 function Profile() {
   const { user } = useUser();
@@ -16,7 +17,7 @@ function Profile() {
   useEffect(() => {
     const fetchAchievements = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/achievements");
+        const response = await fetch(apiUrl("/api/achievements"));
         if (response.ok) {
           const data = await response.json();
           setAllAchievements(data);
@@ -100,3 +101,5 @@ function Profile() {
 }
 
 export default Profile;
+
+

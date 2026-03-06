@@ -15,6 +15,7 @@ import { useUser } from "@/context/UserContext";
 import { getLevelInfo } from "@/lib/title";
 import AvatarSelectionDialog from "./AvatarSelectionDialog";
 import UsernameEditDialog from "./UsernameEditDialog";
+import { apiUrl } from "@/lib/api";
 import {
   Tooltip,
   TooltipContent,
@@ -140,7 +141,7 @@ export default function ProfileHeader({ user }) {
         onSelect={async (newId) => {
           try {
             const response = await fetch(
-              `http://localhost:3000/api/users/${user.username}`,
+              apiUrl(`/api/users/${user.username}`),
               {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -164,7 +165,7 @@ export default function ProfileHeader({ user }) {
         onSave={async (newName) => {
           try {
             const response = await fetch(
-              `http://localhost:3000/api/users/${user.username}`,
+              apiUrl(`/api/users/${user.username}`),
               {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -187,3 +188,5 @@ export default function ProfileHeader({ user }) {
     </div>
   );
 }
+
+

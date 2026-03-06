@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "@/lib/api";
 
 const UserContext = createContext();
 
@@ -13,7 +14,7 @@ export const UserProvider = ({ children }) => {
     // Fetch Titles
     const fetchTitles = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/titles");
+        const response = await fetch(apiUrl("/api/titles"));
         if (response.ok) {
           const data = await response.json();
           setTitles(data);
@@ -62,7 +63,7 @@ export const UserProvider = ({ children }) => {
     if (!username) return;
     try {
       const response = await fetch(
-        `http://localhost:3000/api/users/${username}`,
+        apiUrl(`/api/users/${username}`),
       );
       if (response.ok) {
         const freshData = await response.json();
@@ -109,3 +110,5 @@ export const useUser = () => {
   }
   return context;
 };
+
+

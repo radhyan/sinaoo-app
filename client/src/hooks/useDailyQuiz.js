@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@/context/UserContext";
 import { getMultiplier } from "@/components/dailyquiz/StreakIndicator";
+import { apiUrl } from "@/lib/api";
 
 // Game states
 export const STATES = {
@@ -53,7 +54,7 @@ export default function useDailyQuiz() {
       try {
         if (user?.username) {
           const statusRes = await fetch(
-            `http://localhost:3000/api/daily-quiz/status/${user.username}`,
+            apiUrl(`/api/daily-quiz/status/${user.username}`),
           );
           const statusData = await statusRes.json();
           if (statusData.completed) {
@@ -64,7 +65,7 @@ export default function useDailyQuiz() {
         }
 
         const res = await fetch(
-          "http://localhost:3000/api/daily-quiz/questions",
+          apiUrl("/api/daily-quiz/questions"),
         );
         if (!res.ok) {
           const data = await res.json();
@@ -178,7 +179,7 @@ export default function useDailyQuiz() {
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const res = await fetch("http://localhost:3000/api/daily-quiz/submit", {
+      const res = await fetch(apiUrl("/api/daily-quiz/submit"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -262,3 +263,5 @@ export default function useDailyQuiz() {
     navigate,
   };
 }
+
+

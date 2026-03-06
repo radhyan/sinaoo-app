@@ -4,6 +4,7 @@ import { Input } from "@/components/shared/ui/Input";
 import { Label } from "@/components/shared/ui/Label";
 import { Link } from "react-router-dom";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
+import { apiUrl } from "@/lib/api";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export default function ForgotPassword() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/forgot-password",
+        apiUrl("/api/forgot-password"),
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -120,3 +121,5 @@ export default function ForgotPassword() {
     </div>
   );
 }
+
+

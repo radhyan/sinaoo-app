@@ -8,6 +8,7 @@ import ModuleCard, {
 } from "@/components/shared/cards/ModuleCard";
 import { useUser } from "@/context/UserContext";
 import { useSubcategoryFilter } from "@/hooks/useSubcategoryFilter";
+import { apiUrl } from "@/lib/api";
 
 export default function ModuleList({ course, onBack }) {
   const [modules, setModules] = useState([]);
@@ -28,7 +29,7 @@ export default function ModuleList({ course, onBack }) {
       setLoading(true);
       setError(null);
       const res = await fetch(
-        `http://localhost:3000/api/courses/${course._id}/modules`,
+        apiUrl(`/api/courses/${course._id}/modules`),
       );
       if (res.ok) {
         const data = await res.json();
@@ -185,3 +186,5 @@ export default function ModuleList({ course, onBack }) {
     </div>
   );
 }
+
+

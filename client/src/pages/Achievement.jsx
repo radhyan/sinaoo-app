@@ -19,6 +19,7 @@ import LoadingBar from "@/components/shared/ui/LoadingBar";
 import { getUserAvatar } from "@/lib/avatar";
 
 import { getLevelInfo } from "@/lib/title";
+import { apiUrl } from "@/lib/api";
 
 export default function Achievement() {
   const [unlockedAchievements, setUnlockedAchievements] = useState([]);
@@ -34,7 +35,7 @@ export default function Achievement() {
     try {
       setLoading(true);
       setError(null);
-      const achRes = await fetch(`http://localhost:3000/api/achievements`);
+      const achRes = await fetch(apiUrl("/api/achievements"));
 
       if (achRes.ok) {
         const achData = await achRes.json();
@@ -275,3 +276,5 @@ export default function Achievement() {
     </div>
   );
 }
+
+

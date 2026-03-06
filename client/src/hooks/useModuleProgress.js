@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { apiUrl } from "@/lib/api";
 
 export function useModuleProgress(moduleId, user, login) {
   const [moduleData, setModuleData] = useState(null);
@@ -23,7 +24,7 @@ export function useModuleProgress(moduleId, user, login) {
         );
         const [res] = await Promise.all([
           fetch(
-            `http://localhost:3000/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`,
+            apiUrl(`/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`),
           ),
           minLoadingDelay,
         ]);
@@ -91,7 +92,7 @@ export function useModuleProgress(moduleId, user, login) {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/api/users/${user.username}/progress`,
+        apiUrl(`/api/users/${user.username}/progress`),
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -154,3 +155,5 @@ export function useModuleProgress(moduleId, user, login) {
     fetchModule,
   };
 }
+
+

@@ -12,6 +12,7 @@ import { useUser } from "@/context/UserContext";
 import LoadingBar from "@/components/shared/ui/LoadingBar";
 import { RefreshButton } from "@/components/shared/ui/RefreshButton";
 import { useCallback } from "react";
+import { apiUrl } from "@/lib/api";
 
 function CourseList() {
   const { user } = useUser();
@@ -25,7 +26,7 @@ function CourseList() {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch("http://localhost:3000/api/courses");
+      const res = await fetch(apiUrl("/api/courses"));
       if (res.ok) {
         const data = await res.json();
         setCourses(data);
@@ -181,3 +182,5 @@ function CourseList() {
 }
 
 export default CourseList;
+
+

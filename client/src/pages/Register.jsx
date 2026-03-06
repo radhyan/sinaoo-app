@@ -10,6 +10,7 @@ import {
   validateEmail,
   validatePassword,
 } from "@/lib/validation";
+import { apiUrl } from "@/lib/api";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ export default function Register() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/register", {
+      const res = await fetch(apiUrl("/api/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // Excluding confirmPassword from payload
