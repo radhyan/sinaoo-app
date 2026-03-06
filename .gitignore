@@ -34,3 +34,4 @@ server/dist/
 # OS
 .DS_Store
 Thumbs.db
+client/.env.example
