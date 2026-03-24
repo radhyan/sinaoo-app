@@ -46,10 +46,22 @@ const VideoContent = ({ step, onComplete }) => {
       }
 
       if (playerRef.current) {
-        playerRef.current.destroy();
+        try {
+          playerRef.current.destroy();
+        } catch (e) {
+          // ignore
+        }
+        playerRef.current = null;
       }
 
-      playerRef.current = new window.YT.Player(containerRef.current, {
+      // Create a fresh div for the YouTube player to avoid React DOM conflicts
+      const container = containerRef.current;
+      if (!container) return;
+      container.innerHTML = "";
+      const playerDiv = document.createElement("div");
+      container.appendChild(playerDiv);
+
+      playerRef.current = new window.YT.Player(playerDiv, {
         height: "100%",
         width: "100%",
         videoId: videoId,
@@ -70,10 +82,11 @@ const VideoContent = ({ step, onComplete }) => {
     return () => {
       if (playerRef.current) {
         try {
-          // playerRef.current.destroy();
+          playerRef.current.destroy();
         } catch (e) {
           // ignore
         }
+        playerRef.current = null;
       }
     };
   }, [isApiLoaded, step.videoUrl]);

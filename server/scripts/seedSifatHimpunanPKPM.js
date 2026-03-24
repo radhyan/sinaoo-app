@@ -77,14 +77,139 @@ const seedSifatHimpunanPKPM = async () => {
             </div>
           </section>
 
-          <section>
+          <section class="mb-12">
             <h3 class="text-h3 font-heading text-Primary-900 mb-6 border-l-4 border-Primary-500 pl-4 py-1">5. Sifat-Sifat Operasi Himpunan</h3>
-            <div class="space-y-4 text-body-l text-Grayscale-800">
-              <p><strong>Komutatif:</strong> A ∪ B = B ∪ A, A ∩ B = B ∩ A</p>
-              <p><strong>Asosiatif:</strong> (A ∪ B) ∪ C = A ∪ (B ∪ C), (A ∩ B) ∩ C = A ∩ (B ∩ C)</p>
-              <p><strong>Distributif:</strong> A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C), A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</p>
-              <p><strong>Idempoten:</strong> A ∪ A = A, A ∩ A = A</p>
-              <p><strong>Hukum De Morgan:</strong> (A ∪ B)^c = A^c ∩ B^c, (A ∩ B)^c = A^c ∪ B^c</p>
+            <p class="text-body-l text-Grayscale-900 leading-relaxed mb-6">
+              Operasi pada himpunan memiliki beberapa sifat dasar yang membantu kita memahami bagaimana elemen-elemen di dalam himpunan berinteraksi. Sifat-sifat ini adalah:
+            </p>
+
+            <!-- 5.1 Komutatif -->
+            <div class="mb-8 p-6 bg-Primary-50/30 rounded-xl border border-Primary-100">
+              <h4 class="text-h4 font-heading text-Primary-800 mb-3">5.1 Komutatif</h4>
+              <p class="text-body-l text-Grayscale-800 mb-3">
+                Operasi gabungan (∪) dan irisan (∩) bersifat komutatif, yang berarti urutan himpunan tidak memengaruhi hasil operasi.
+              </p>
+              <div class="text-center font-bold text-body-l text-Primary-900 mb-4">
+                <p>Rumus:</p>
+                <p>A ∪ B = B ∪ A</p>
+                <p>A ∩ B = B ∩ A</p>
+              </div>
+              <p class="text-body-l text-Grayscale-800 mb-1"><strong>Contoh:</strong></p>
+              <p class="text-body-l text-Grayscale-800 mb-1">Misalkan:</p>
+              <p class="text-body-l text-Grayscale-800 mb-1">A = {1, 2}, B = {2, 3}</p>
+              <ul class="list-disc pl-6 text-body-l text-Grayscale-800 mb-2">
+                <li>A ∪ B = {1, 2, 3}</li>
+                <li>B ∪ A = {1, 2, 3}</li>
+              </ul>
+              <p class="text-body-l text-Grayscale-800 mb-2">Hasilnya sama, sehingga sifat komutatif berlaku untuk gabungan.</p>
+              <ul class="list-disc pl-6 text-body-l text-Grayscale-800 mb-2">
+                <li>A ∩ B = {2}</li>
+                <li>B ∩ A = {2}</li>
+              </ul>
+              <p class="text-body-l text-Grayscale-800">Hasilnya juga sama untuk irisan.</p>
+            </div>
+
+            <!-- 5.2 Asosiatif -->
+            <div class="mb-8 p-6 bg-Primary-50/30 rounded-xl border border-Primary-100">
+              <h4 class="text-h4 font-heading text-Primary-800 mb-3">5.2 Asosiatif</h4>
+              <p class="text-body-l text-Grayscale-800 mb-3">
+                Operasi gabungan (∪) dan irisan (∩) juga bersifat asosiatif, yang berarti pengelompokan himpunan tidak memengaruhi hasil operasi.
+              </p>
+              <div class="text-center font-bold text-body-l text-Primary-900 mb-4">
+                <p>Rumus:</p>
+                <p>(A ∪ B) ∪ C = A ∪ (B ∪ C)</p>
+                <p>(A ∩ B) ∩ C = A ∩ (B ∩ C)</p>
+              </div>
+              <p class="text-body-l text-Grayscale-800 mb-1"><strong>Contoh:</strong></p>
+              <p class="text-body-l text-Grayscale-800 mb-1">Misalkan:</p>
+              <p class="text-body-l text-Grayscale-800 mb-2">A = {1, 2}, B = {2, 3}, C = {3, 4}</p>
+              <ul class="list-disc pl-6 text-body-l text-Grayscale-800 mb-2">
+                <li>Gabungan:</li>
+                <li>(A ∪ B) ∪ C = {1, 2, 3} ∪ {3, 4} = {1, 2, 3, 4}</li>
+                <li>A ∪ (B ∪ C) = {1, 2} ∪ {2, 3, 4} = {1, 2, 3, 4}</li>
+                <li>Irisan:</li>
+                <li>(A ∩ B) ∩ C = {2} ∩ {3} = ∅</li>
+                <li>A ∩ (B ∩ C) = {1, 2} ∩ ∅ = ∅</li>
+              </ul>
+              <p class="text-body-l text-Grayscale-800">Hasilnya sama, sehingga sifat asosiatif berlaku.</p>
+            </div>
+
+            <!-- 5.3 Distributif -->
+            <div class="mb-8 p-6 bg-Primary-50/30 rounded-xl border border-Primary-100">
+              <h4 class="text-h4 font-heading text-Primary-800 mb-3">5.3 Distributif</h4>
+              <p class="text-body-l text-Grayscale-800 mb-3">
+                Operasi gabungan (∪) dan irisan (∩) bersifat distributif satu terhadap yang lain.
+              </p>
+              <div class="text-center font-bold text-body-l text-Primary-900 mb-4">
+                <p>Rumus:</p>
+                <p>A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</p>
+                <p>A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</p>
+              </div>
+              <p class="text-body-l text-Grayscale-800 mb-1"><strong>Contoh:</strong></p>
+              <p class="text-body-l text-Grayscale-800 mb-1">Misalkan:</p>
+              <p class="text-body-l text-Grayscale-800 mb-2">A = {1, 2}, B = {2, 3}, C = {3, 4}</p>
+              <ul class="list-disc pl-6 text-body-l text-Grayscale-800 mb-2">
+                <li>Gabungan terhadap irisan:</li>
+                <li>A ∪ (B ∩ C) = {1, 2} ∪ {3} = {1, 2, 3}</li>
+                <li>(A ∪ B) ∩ (A ∪ C) = {1, 2, 3} ∩ {1, 2, 3, 4} = {1, 2, 3}</li>
+                <li>Irisan terhadap gabungan:</li>
+                <li>A ∩ (B ∪ C) = {1, 2} ∩ {2, 3, 4} = {2}</li>
+                <li>(A ∩ B) ∪ (A ∩ C) = {2} ∪ ∅ = {2}</li>
+              </ul>
+              <p class="text-body-l text-Grayscale-800">Hasilnya sama, sehingga sifat distribusi berlaku.</p>
+            </div>
+
+            <!-- 5.4 Idempoten -->
+            <div class="mb-8 p-6 bg-Primary-50/30 rounded-xl border border-Primary-100">
+              <h4 class="text-h4 font-heading text-Primary-800 mb-3">5.4 Idempoten</h4>
+              <p class="text-body-l text-Grayscale-800 mb-3">
+                Operasi gabungan (∪) dan irisan (∩) pada himpunan yang sama bersifat idempoten, yang berarti operasi terhadap himpunan itu sendiri menghasilkan himpunan yang sama.
+              </p>
+              <div class="text-center font-bold text-body-l text-Primary-900 mb-4">
+                <p>Rumus:</p>
+                <p>A ∪ A = A</p>
+                <p>A ∩ A = A</p>
+              </div>
+              <p class="text-body-l text-Grayscale-800 mb-1"><strong>Contoh:</strong></p>
+              <p class="text-body-l text-Grayscale-800 mb-1">Misalkan:</p>
+              <p class="text-body-l text-Grayscale-800 mb-2">A = {1, 2, 3}</p>
+              <ul class="list-disc pl-6 text-body-l text-Grayscale-800 mb-2">
+                <li>Gabungan: A ∪ A = {1, 2, 3}</li>
+                <li>Irisan: A ∩ A = {1, 2, 3}</li>
+              </ul>
+              <p class="text-body-l text-Grayscale-800">Sifat idempoten berlaku karena hasil operasi tetap A.</p>
+            </div>
+
+            <!-- 5.5 Hukum De Morgan -->
+            <div class="mb-8 p-6 bg-Primary-50/30 rounded-xl border border-Primary-100">
+              <h4 class="text-h4 font-heading text-Primary-800 mb-3">5.5 Hukum De Morgan</h4>
+              <p class="text-body-l text-Grayscale-800 mb-3">
+                Hukum ini menjelaskan hubungan antara operasi gabungan (∪), irisan (∩), dan komplemen.
+              </p>
+              <div class="text-center font-bold text-body-l text-Primary-900 mb-4">
+                <p>Rumus:</p>
+                <p>(A ∪ B)<sup>c</sup> = A<sup>c</sup> ∩ B<sup>c</sup></p>
+                <p>(A ∩ B)<sup>c</sup> = A<sup>c</sup> ∪ B<sup>c</sup></p>
+              </div>
+              <p class="text-body-l text-Grayscale-800 mb-1"><strong>Contoh:</strong></p>
+              <p class="text-body-l text-Grayscale-800 mb-1">Misalkan:</p>
+              <p class="text-body-l text-Grayscale-800 mb-1">Himpunan semesta (U) = {1, 2, 3, 4, 5}</p>
+              <p class="text-body-l text-Grayscale-800 mb-2">A = {1, 2}, B = {3, 4}</p>
+              <ul class="list-disc pl-6 text-body-l text-Grayscale-800 mb-2">
+                <li>(A ∪ B)<sup>c</sup> = (A<sup>c</sup> ∩ B<sup>c</sup>)
+                  <ul class="list-disc pl-6">
+                    <li>A ∪ B = {1, 2, 3, 4}, jadi (A ∪ B)<sup>c</sup> = {5}</li>
+                    <li>A<sup>c</sup> = {3, 4, 5}, B<sup>c</sup> = {1, 2, 5}, A<sup>c</sup> ∩ B<sup>c</sup> = {5}</li>
+                  </ul>
+                </li>
+                <li>(A ∩ B)<sup>c</sup> = (A<sup>c</sup> ∪ B<sup>c</sup>)
+                  <ul class="list-disc pl-6">
+                    <li>A ∩ B = ∅, jadi (A ∩ B)<sup>c</sup> = U = {1, 2, 3, 4, 5}</li>
+                    <li>A<sup>c</sup> ∪ B<sup>c</sup> = {3, 4, 5} ∪ {1, 2, 5} = {1, 2, 3, 4, 5}</li>
+                  </ul>
+                </li>
+              </ul>
+              <p class="text-body-l text-Grayscale-800">Hasilnya sama, sehingga Hukum De Morgan berlaku.</p>
             </div>
           </section>
         `,
@@ -111,8 +236,7 @@ const seedSifatHimpunanPKPM = async () => {
           {
             id: "q1",
             type: "multiple-choice",
-            question:
-              "Diberikan A={2,4,6,8} dan B={4,8,12,16}. Berapakah A∩B?",
+            question: "Diberikan A={2,4,6,8} dan B={4,8,12,16}. Berapakah A∩B?",
             options: [
               { id: "a", text: "{2,6}" },
               { id: "b", text: "{4,8}" },
@@ -121,7 +245,8 @@ const seedSifatHimpunanPKPM = async () => {
               { id: "e", text: "{2,4,8}" },
             ],
             correctAnswer: "b",
-            explanation: "Irisan adalah elemen yang sama di kedua himpunan: {4,8}.",
+            explanation:
+              "Irisan adalah elemen yang sama di kedua himpunan: {4,8}.",
             points: 10,
           },
           {
@@ -137,7 +262,8 @@ const seedSifatHimpunanPKPM = async () => {
               { id: "e", text: "5" },
             ],
             correctAnswer: "c",
-            explanation: "D={1,2,3}. Karena D subset dari C, maka C∩D=D, jumlahnya 3.",
+            explanation:
+              "D={1,2,3}. Karena D subset dari C, maka C∩D=D, jumlahnya 3.",
             points: 10,
           },
           {
@@ -177,8 +303,7 @@ const seedSifatHimpunanPKPM = async () => {
           {
             id: "q5",
             type: "multiple-choice",
-            question:
-              "X={y∈Z|y=2x+1, -4≤x≤3}. Pernyataan benar adalah ...",
+            question: "X={y∈Z|y=2x+1, -4≤x≤3}. Pernyataan benar adalah ...",
             options: [
               { id: "a", text: "1 dan 3 benar" },
               { id: "b", text: "1, 3, dan 4 benar" },
@@ -214,7 +339,8 @@ const seedSifatHimpunanPKPM = async () => {
               { id: "e", text: "Semua pernyataan benar" },
             ],
             correctAnswer: "e",
-            explanation: "Keempat pernyataan merupakan identitas himpunan yang benar.",
+            explanation:
+              "Keempat pernyataan merupakan identitas himpunan yang benar.",
             points: 10,
           },
           {

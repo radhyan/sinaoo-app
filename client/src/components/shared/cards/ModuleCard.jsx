@@ -62,7 +62,9 @@ export default function ModuleCard({
                 variant={isCompleted ? "module" : "module"}
                 shadow={isCompleted ? "orange" : "green"}
               >
-                {category}
+                {category === "Pengetahuan Kuantitatif dan Penalaran Matematika"
+                  ? "PKPM"
+                  : category}
               </Tag>
 
               {/* Sub-Category Tag */}
