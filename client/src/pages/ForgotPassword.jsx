@@ -4,6 +4,7 @@ import { Input } from "@/components/shared/ui/Input";
 import { Label } from "@/components/shared/ui/Label";
 import { Link } from "react-router-dom";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
+import BackgroundImage from "@/assets/Register and login background.png";
 import { apiUrl } from "@/lib/api";
 
 export default function ForgotPassword() {
@@ -27,14 +28,11 @@ export default function ForgotPassword() {
     }
 
     try {
-      const response = await fetch(
-        apiUrl("/api/forgot-password"),
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        },
-      );
+      const response = await fetch(apiUrl("/api/forgot-password"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
       const data = await response.json();
 
@@ -51,11 +49,14 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="flex min-h-screen items-left justify-left bg-Grayscale-50 p-6">
-      <div className="bg-w-lb rounded-lg px-20 py-20 shadow-blue-60 border border-Primary-50 w-[660px]">
+    <div
+      className="flex min-h-screen items-center justify-center p-4 sm:p-6 bg-cover bg-center"
+      style={{ backgroundImage: `url('${BackgroundImage}')` }}
+    >
+      <div className="bg-w-lb rounded-lg px-6 py-10 sm:px-20 sm:py-20 shadow-blue-60 border border-Primary-50 w-full max-w-[660px]">
         {/* Brand Logo */}
-        <div className="flex justify-center mb-24">
-          <img src={SinaooLogo} alt="Sinaoo Logo" className="h-12" />
+        <div className="flex justify-center mb-10 sm:mb-24">
+          <img src={SinaooLogo} alt="Sinaoo Logo" className="h-10 sm:h-12" />
         </div>
 
         {/* Title */}
@@ -121,5 +122,3 @@ export default function ForgotPassword() {
     </div>
   );
 }
-
-
