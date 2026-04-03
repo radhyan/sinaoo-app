@@ -74,7 +74,9 @@ export default function Register() {
         throw new Error(data.error || "Pendaftaran gagal.");
       }
 
-      alert("Pendaftaran berhasil! Silakan login.");
+      alert(
+        "Pendaftaran berhasil! Silakan cek email Anda untuk memverifikasi akun sebelum login.",
+      );
       navigate("/");
     } catch (err) {
       setError(err.message);

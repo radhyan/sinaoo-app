@@ -24,7 +24,9 @@ export function useModuleProgress(moduleId, user, login) {
         );
         const [res] = await Promise.all([
           fetch(
-            apiUrl(`/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`),
+            apiUrl(
+              `/api/modules/${moduleId}${user?.username ? `?username=${user.username}` : ""}`,
+            ),
           ),
           minLoadingDelay,
         ]);
@@ -91,23 +93,20 @@ export function useModuleProgress(moduleId, user, login) {
     );
 
     try {
-      const res = await fetch(
-        apiUrl(`/api/users/${user.username}/progress`),
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            moduleId,
-            courseId: moduleData.courseId,
-            completionPercentage,
-            isCompleted: isFinished,
-            reset: isReset,
-            score: isFinished ? score : undefined,
-            quizAnswers: isReset ? {} : quizAnswers,
-            flaggedQuestions: isReset ? {} : flaggedQuestions,
-          }),
-        },
-      );
+      const res = await fetch(apiUrl(`/api/users/${user.username}/progress`), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          moduleId,
+          courseId: moduleData.courseId,
+          completionPercentage,
+          isCompleted: isFinished,
+          reset: isReset,
+          score: isFinished ? score : undefined,
+          quizAnswers: isReset ? {} : quizAnswers,
+          flaggedQuestions: isReset ? {} : flaggedQuestions,
+        }),
+      });
 
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
@@ -133,17 +132,12 @@ export function useModuleProgress(moduleId, user, login) {
       const existingProgress = user.progress?.find(
         (p) => String(p.moduleId) === String(moduleId),
       );
-      // Fetch if not loaded, or if data is for different module,
-      // or if we just completed it and want to sync step statuses
-      if (
-        !moduleData ||
-        moduleData._id !== moduleId ||
-        (isModuleCompleted && moduleData.steps[0].status === "active")
-      ) {
+      // Fetch if not loaded, or if data is for different module
+      if (!moduleData || moduleData._id !== moduleId) {
         fetchModule(existingProgress);
       }
     }
-  }, [moduleId, user, moduleData?._id, isModuleCompleted, fetchModule]);
+  }, [moduleId, user?.username, moduleData?._id, fetchModule]);
 
   return {
     moduleData,
@@ -155,5 +149,3 @@ export function useModuleProgress(moduleId, user, login) {
     fetchModule,
   };
 }
-
-

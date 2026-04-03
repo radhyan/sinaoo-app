@@ -34,6 +34,8 @@ export default function ModuleDetail() {
   const [currentStepId, setCurrentStepId] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const scrollRef = useRef(null);
+  const isFinishing = useRef(false);
+  const autoSaveTimerRef = useRef(null);
 
   // Handle window resize to auto-close sidebar on small screens
   useEffect(() => {
@@ -84,8 +86,7 @@ export default function ModuleDetail() {
     user?.progress?.find((p) => String(p.moduleId) === String(moduleId))
       ?.quizAnswers || {},
     user?.progress?.find((p) => String(p.moduleId) === String(moduleId))
-      ?.flaggedQuestions ||
-      {},
+      ?.flaggedQuestions || {},
   );
 
   // Steps data
@@ -99,6 +100,7 @@ export default function ModuleDetail() {
 
   // Effects
   const handleRestart = async () => {
+    isFinishing.current = false; // Allow ping/auto-save again after reset
     await updateProgress({
       completedStepCount: 0,
       isFinished: false,
@@ -129,16 +131,24 @@ export default function ModuleDetail() {
     fetchModule(existingProgress);
   };
 
+  const prevModuleIdRef = useRef(moduleId);
   useEffect(() => {
     if (moduleId) {
-      setCurrentStepId(null);
-      setViewMode(
-        modeParam === "result"
-          ? "result"
-          : modeParam === "review"
-            ? "review"
-            : "content",
-      );
+      // Only reset step when navigating to a DIFFERENT module
+      if (prevModuleIdRef.current !== moduleId) {
+        setCurrentStepId(null);
+        prevModuleIdRef.current = moduleId;
+      }
+      // Always sync viewMode with URL mode param
+      if (modeParam !== "reset") {
+        setViewMode(
+          modeParam === "result"
+            ? "result"
+            : modeParam === "review"
+              ? "review"
+              : "content",
+        );
+      }
     }
   }, [moduleId, modeParam]);
 
@@ -168,7 +178,14 @@ export default function ModuleDetail() {
 
   // "Ping" the API to update lastAccessed when the module is opened
   useEffect(() => {
-    if (moduleData && user && viewMode === "content" && currentStepId) {
+    if (isFinishing.current) return; // Skip ping during module completion
+    if (
+      moduleData &&
+      user &&
+      viewMode === "content" &&
+      currentStepId &&
+      currentStepId !== "result"
+    ) {
       const pingProgress = async () => {
         // Find current progress index to avoid resetting anything
         const idx = steps.findIndex((s) => s.id === currentStepId);
@@ -185,7 +202,7 @@ export default function ModuleDetail() {
       };
       pingProgress();
     }
-  }, [moduleId, user?._id, currentStepId]); // Now includes currentStepId as dependency
+  }, [moduleId, user?._id, currentStepId]);
 
   // Manual save trigger
   const handleSave = async () => {
@@ -203,6 +220,7 @@ export default function ModuleDetail() {
 
   // Debounced effect to save quiz answers partially
   useEffect(() => {
+    if (isFinishing.current) return; // Skip auto-save during module completion
     if (viewMode !== "content" || !currentStep || currentStep.type !== "quiz") {
       return;
     }
@@ -215,6 +233,7 @@ export default function ModuleDetail() {
       return;
 
     const timer = setTimeout(() => {
+      if (isFinishing.current) return; // Double-check before firing
       updateProgress({
         completedStepCount: currentStepIndex, // Don't advance, just save current index
         isFinished: false,
@@ -226,8 +245,9 @@ export default function ModuleDetail() {
         quizAnswers,
         flaggedQuestions,
       });
-    }, 1000); // Reduced to 1s
+    }, 1000);
 
+    autoSaveTimerRef.current = timer;
     return () => clearTimeout(timer);
   }, [quizAnswers, flaggedQuestions, currentStep, viewMode, currentStepIndex]);
 
@@ -302,6 +322,13 @@ export default function ModuleDetail() {
       if (!isQuizComplete) {
         console.warn("[ModuleDetail] Quiz not complete, cannot finish.");
         return;
+      }
+
+      // Prevent ping/auto-save from racing with the completion request
+      isFinishing.current = true;
+      if (autoSaveTimerRef.current) {
+        clearTimeout(autoSaveTimerRef.current);
+        autoSaveTimerRef.current = null;
       }
 
       console.log(

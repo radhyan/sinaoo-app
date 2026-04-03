@@ -12,6 +12,8 @@ import Profile from "./pages/Profile";
 import ModuleDetail from "./pages/ModuleDetail";
 import DailyQuiz from "./pages/DailyQuiz";
 import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import VerifyEmail from "./pages/VerifyEmail";
 import Layout from "@/components/layout/Layout";
 
 import { UserProvider } from "@/context/UserContext";
@@ -31,6 +33,8 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path="/verify-email/:token" element={<VerifyEmail />} />
 
             {/* PROTECTED ROUTES (With Sidebar) */}
             <Route element={<Layout />}>

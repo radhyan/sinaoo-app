@@ -11,6 +11,7 @@ const moduleRoutes = require("../routes/modules");
 const gamificationRoutes = require("../routes/gamification");
 const adminRoutes = require("../routes/admin");
 const dailyQuizRoutes = require("../routes/dailyQuiz");
+const bugReportRoutes = require("../routes/bugReports");
 
 dotenv.config();
 
@@ -26,7 +27,8 @@ function normalizeEnvValue(value) {
     .replace(/\n/g, "");
 }
 
-const rawCorsOrigins = normalizeEnvValue(process.env.CORS_ORIGIN) || "http://localhost:5173";
+const rawCorsOrigins =
+  normalizeEnvValue(process.env.CORS_ORIGIN) || "http://localhost:5173";
 const allowedOrigins = rawCorsOrigins
   .split(",")
   .map((origin) => origin.trim())
@@ -40,7 +42,7 @@ app.use(
       }
       return callback(new Error("Not allowed by CORS"));
     },
-  })
+  }),
 );
 app.use(express.json());
 
@@ -56,6 +58,7 @@ app.use("/api/modules", moduleRoutes); // /api/modules/*
 app.use("/api", gamificationRoutes); // /api/achievements, /api/titles, /api/leaderboard
 app.use("/api/admin", adminRoutes); // /api/admin/*
 app.use("/api/daily-quiz", dailyQuizRoutes); // /api/daily-quiz/*
+app.use("/api/bug-reports", bugReportRoutes); // /api/bug-reports/*
 
 // Cache MongoDB connection across serverless invocations.
 let cachedConnection = global._mongooseConnection;

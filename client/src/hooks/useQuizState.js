@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 
 export function useQuizState(
   moduleData,
@@ -15,32 +15,24 @@ export function useQuizState(
     }));
   };
 
-  // Sync with initial data when it loads asynchronously
+  // Sync with initial data when module changes or when a reset clears answers
+  const prevInitialAnswersRef = useRef(initialAnswers);
   useEffect(() => {
-    console.log(
-      "[QuizState] Sync Attempt - InitialAnswers:",
-      Object.keys(initialAnswers).length,
-      "InitialFlags:",
-      Object.keys(initialFlags).length,
-    );
+    setQuizAnswers(initialAnswers || {});
+    setFlaggedQuestions(initialFlags || {});
+    prevInitialAnswersRef.current = initialAnswers;
+  }, [moduleData?._id]);
 
-    if (
-      initialAnswers &&
-      Object.keys(initialAnswers).length > 0 &&
-      Object.keys(quizAnswers).length === 0
-    ) {
-      console.log("[QuizState] Syncing Answers...");
-      setQuizAnswers(initialAnswers);
+  // Also sync when initial answers are cleared (reset scenario)
+  useEffect(() => {
+    const wasNonEmpty =
+      Object.keys(prevInitialAnswersRef.current || {}).length > 0;
+    const isNowEmpty = Object.keys(initialAnswers || {}).length === 0;
+    if (wasNonEmpty && isNowEmpty) {
+      setQuizAnswers({});
+      setFlaggedQuestions({});
     }
-
-    if (
-      initialFlags &&
-      Object.keys(initialFlags).length > 0 &&
-      Object.keys(flaggedQuestions).length === 0
-    ) {
-      console.log("[QuizState] Syncing Flags...");
-      setFlaggedQuestions(initialFlags);
-    }
+    prevInitialAnswersRef.current = initialAnswers;
   }, [initialAnswers, initialFlags]);
 
   // Validation Logic

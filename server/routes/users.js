@@ -112,10 +112,10 @@ router.post("/:username/progress", async (req, res) => {
     if (progressIndex > -1) {
       // Update existing
       if (reset) {
+        // Full reset: clear completion, answers, and flags
         user.progress[progressIndex].completionPercentage =
           completionPercentage;
         user.progress[progressIndex].isCompleted = false;
-        user.progress[progressIndex].score = 0;
         user.progress[progressIndex].quizAnswers = {};
         user.progress[progressIndex].flaggedQuestions = {};
       } else {
@@ -123,42 +123,42 @@ router.post("/:username/progress", async (req, res) => {
           user.progress[progressIndex].completionPercentage || 0,
           completionPercentage,
         );
+        if (isCompleted) {
+          user.progress[progressIndex].isCompleted = true;
+        }
+        if (courseId) {
+          user.progress[progressIndex].courseId = courseId;
+        }
+        if (req.body.score !== undefined) {
+          const oldScore = user.progress[progressIndex].score || 0;
+          const newScore = req.body.score;
+
+          // Award points based on improvement (delta)
+          if (newScore > oldScore) {
+            const delta = newScore - oldScore;
+            user.points = (user.points || 0) + delta;
+            user.progress[progressIndex].score = newScore;
+
+            // Log to Points History
+            const moduleDoc = await Module.findById(moduleId);
+            user.pointsHistory.push({
+              description: `Peningkatan skor: ${moduleDoc?.name || "Modul"}`,
+              points: delta,
+              date: new Date(),
+            });
+
+            console.log(
+              `[Points] Awarded ${delta} points to ${username} for score improvement. Total: ${user.points}`,
+            );
+          }
+        }
+        if (req.body.quizAnswers !== undefined)
+          user.progress[progressIndex].quizAnswers = req.body.quizAnswers;
+        if (req.body.flaggedQuestions !== undefined)
+          user.progress[progressIndex].flaggedQuestions =
+            req.body.flaggedQuestions;
       }
       user.progress[progressIndex].lastAccessed = new Date();
-      if (isCompleted) {
-        user.progress[progressIndex].isCompleted = true;
-      }
-      if (courseId) {
-        user.progress[progressIndex].courseId = courseId;
-      }
-      if (req.body.score !== undefined) {
-        const oldScore = user.progress[progressIndex].score || 0;
-        const newScore = req.body.score;
-
-        // Award points based on improvement (delta)
-        if (newScore > oldScore) {
-          const delta = newScore - oldScore;
-          user.points = (user.points || 0) + delta;
-          user.progress[progressIndex].score = newScore;
-
-          // Log to Points History
-          const moduleDoc = await Module.findById(moduleId);
-          user.pointsHistory.push({
-            description: `Peningkatan skor: ${moduleDoc?.name || "Modul"}`,
-            points: delta,
-            date: new Date(),
-          });
-
-          console.log(
-            `[Points] Awarded ${delta} points to ${username} for score improvement. Total: ${user.points}`,
-          );
-        }
-      }
-      if (req.body.quizAnswers !== undefined)
-        user.progress[progressIndex].quizAnswers = req.body.quizAnswers;
-      if (req.body.flaggedQuestions !== undefined)
-        user.progress[progressIndex].flaggedQuestions =
-          req.body.flaggedQuestions;
     } else {
       // Add new progress
       user.progress.push({
@@ -198,28 +198,62 @@ router.post("/:username/progress", async (req, res) => {
     // Ensure Mixed types (quizAnswers, flaggedQuestions) are marked as modified
     user.markModified("progress");
 
-    // Retry save on VersionError (race condition with concurrent requests)
+    // Retry-safe save: re-apply ALL changes on each attempt
     const MAX_RETRIES = 3;
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
       try {
+        if (attempt > 0) {
+          // Re-fetch the latest version and re-apply ALL changes
+          console.log(
+            `[Progress Update] Retrying for ${username} (attempt ${attempt + 1}/${MAX_RETRIES})...`,
+          );
+          user = await User.findOne({ username });
+          const retryIdx = user.progress.findIndex(
+            (p) => p.moduleId.toString() === moduleId,
+          );
+          if (retryIdx > -1) {
+            if (reset) {
+              user.progress[retryIdx].completionPercentage =
+                completionPercentage;
+              user.progress[retryIdx].isCompleted = false;
+              user.progress[retryIdx].quizAnswers = {};
+              user.progress[retryIdx].flaggedQuestions = {};
+            } else {
+              user.progress[retryIdx].completionPercentage = Math.max(
+                user.progress[retryIdx].completionPercentage || 0,
+                completionPercentage,
+              );
+              if (isCompleted) {
+                user.progress[retryIdx].isCompleted = true;
+              }
+              if (courseId) {
+                user.progress[retryIdx].courseId = courseId;
+              }
+              if (req.body.score !== undefined) {
+                const oldScore = user.progress[retryIdx].score || 0;
+                const newScore = req.body.score;
+                if (newScore > oldScore) {
+                  const delta = newScore - oldScore;
+                  user.points = (user.points || 0) + delta;
+                  user.progress[retryIdx].score = newScore;
+                }
+              }
+              if (req.body.quizAnswers !== undefined)
+                user.progress[retryIdx].quizAnswers = req.body.quizAnswers;
+              if (req.body.flaggedQuestions !== undefined)
+                user.progress[retryIdx].flaggedQuestions =
+                  req.body.flaggedQuestions;
+            }
+            user.progress[retryIdx].lastAccessed = new Date();
+            user.markModified("progress");
+          }
+        }
         await user.save();
         console.log(`[Progress Update] Saved successfully for ${username}`);
         break;
       } catch (saveErr) {
         if (saveErr.name === "VersionError" && attempt < MAX_RETRIES - 1) {
-          console.log(
-            `[Progress Update] VersionError for ${username}, retrying (${attempt + 1}/${MAX_RETRIES})...`,
-          );
-          // Re-fetch the latest version and re-apply the lastAccessed update
-          const freshUser = await User.findOne({ username });
-          const idx = freshUser.progress.findIndex(
-            (p) => p.moduleId.toString() === moduleId,
-          );
-          if (idx > -1) {
-            freshUser.progress[idx].lastAccessed = new Date();
-            freshUser.markModified("progress");
-          }
-          user = freshUser;
+          continue; // Will re-fetch and re-apply on next iteration
         } else {
           throw saveErr;
         }

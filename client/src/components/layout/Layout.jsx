@@ -18,6 +18,8 @@ import { useUser } from "@/context/UserContext";
 import { useState } from "react";
 import BottomNavigation from "./BottomNavigation";
 import LogoutAlertDialog from "./LogoutAlertDialog";
+import BugReportModal from "@/components/shared/BugReportModal";
+import { BugBeetleIcon } from "@phosphor-icons/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,6 +37,7 @@ export default function Layout() {
   const location = useLocation();
   const { logout } = useUser();
   const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
+  const [isBugReportOpen, setIsBugReportOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
@@ -50,13 +53,20 @@ export default function Layout() {
               shadow="blue"
               className="text-Primary-600 border-none active:scale-90 transition-transform duration-200"
             >
-              <ListIcon size={28} weight="bold" />
+              <ListIcon size={20} weight="bold" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-48 z-[100] bg-Primary-50 text-Error-400 rounded-md border-Primary-100 shadow-blue-60 p-2"
+            className="w-48 z-[100] bg-Primary-50 rounded-md border-Primary-100 shadow-blue-60 p-2 flex flex-col gap-1"
           >
+            <DropdownMenuItem
+              className="text-Grayscale-800 gap-2 cursor-pointer text-body-md lg:text-body-l focus:bg-Primary-100 focus:text-Primary-900 rounded-lg p-2 md:p-3"
+              onClick={() => setIsBugReportOpen(true)}
+            >
+              <BugBeetleIcon weight="bold" size={20} />
+              Laporkan Bug
+            </DropdownMenuItem>
             <DropdownMenuItem
               className="text-Error-400 gap-2 cursor-pointer text-body-md lg:text-body-l focus:bg-Error-50 focus:text-Error-500 rounded-lg p-2 md:p-3"
               onClick={() => setIsLogoutDialogOpen(true)}
@@ -147,10 +157,32 @@ export default function Layout() {
         </nav>
 
         <div
-          className={`w-full mt-auto pt-4 transition-all duration-300 ${
+          className={`flex flex-col gap-2 w-full mt-auto pt-4 transition-all duration-300 ${
             isSidebarCollapsed ? "px-2" : "px-5"
           }`}
         >
+          <Button
+            fullWidth={!isSidebarCollapsed}
+            variant="ghost"
+            shadow="none"
+            size={isSidebarCollapsed ? "icon" : "default"}
+            leftIcon={
+              <BugBeetleIcon
+                weight="bold"
+                size={isSidebarCollapsed ? 24 : 20}
+                className="text-Primary-600"
+              />
+            }
+            onClick={() => setIsBugReportOpen(true)}
+            className={
+              isSidebarCollapsed
+                ? "w-12 h-12 mx-auto rounded-sm border-Primary-200"
+                : "justify-start border-Primary-200 text-Primary-600"
+            }
+          >
+            {!isSidebarCollapsed && "Laporkan Bug"}
+          </Button>
+
           <Button
             fullWidth={!isSidebarCollapsed}
             variant="destructive"
@@ -178,6 +210,11 @@ export default function Layout() {
         open={isLogoutDialogOpen}
         onOpenChange={setIsLogoutDialogOpen}
         onConfirm={logout}
+      />
+
+      <BugReportModal
+        open={isBugReportOpen}
+        onOpenChange={setIsBugReportOpen}
       />
     </div>
   );
