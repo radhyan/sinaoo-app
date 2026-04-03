@@ -103,7 +103,7 @@ export default function Register() {
     >
       <div className="bg-w-lb rounded-lg px-6 py-10 sm:px-20 sm:py-20 shadow-blue-60 border border-Primary-50 w-full max-w-[660px]">
         {/* Brand Logo */}
-        <div className="flex justify-center mb-10 sm:mb-24">
+        <div className="flex justify-center mb-10 sm:mb-12">
           <img src={SinaooLogo} alt="Sinaoo Logo" className="h-10 sm:h-12" />
         </div>
 
