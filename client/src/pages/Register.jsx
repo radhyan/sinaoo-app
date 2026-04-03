@@ -5,7 +5,7 @@ import { Label } from "@/components/shared/ui/Label";
 import { Link, useNavigate } from "react-router-dom";
 import { PasswordInput } from "@/components/shared/ui/PasswordInput";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
-import BackgroundImage from "@/assets/Register and login background.png";
+import BackgroundImage from "@/assets/Register and login background.webp";
 import {
   AlertDialog,
   AlertDialogContent,

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import profileHeaderImg from "@/assets/Profile Header/ProfileHeader.png";
+import profileHeaderImg from "@/assets/Profile Header/ProfileHeader.webp";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -216,7 +216,7 @@ function Dashboard() {
           <img src={SinaooLogo} alt="SINAOO Logo" className="h-6" />
           <span>material by</span>
           <img
-            src="/images/logo-letstudy.png"
+            src="/images/logo-letstudy.webp"
             alt="Letstudy Logo"
             className="h-7 object-contain"
           />

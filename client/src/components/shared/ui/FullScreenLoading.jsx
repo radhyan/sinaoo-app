@@ -20,7 +20,7 @@ export default function FullScreenLoading({
           <div className="flex items-center justify-center gap-2 text-body-sm text-Grayscale-600 pt-1">
             <span>material by</span>
             <img
-              src="/images/logo-letstudy.png"
+              src="/images/logo-letstudy.webp"
               alt="Letstudy Logo"
               className="h-6 object-contain"
             />

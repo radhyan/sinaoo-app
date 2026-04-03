@@ -24,10 +24,10 @@ import { Button } from "@/components/shared/ui/Button";
 import { getLevelInfo } from "@/lib/title";
 
 // Import title images
-import title1 from "@/assets/Title/Title 1.png";
-import title2 from "@/assets/Title/Title 2.png";
-import title3 from "@/assets/Title/Title 3.png";
-import title4 from "@/assets/Title/Title 4.png";
+import title1 from "@/assets/Title/Title 1.webp";
+import title2 from "@/assets/Title/Title 2.webp";
+import title3 from "@/assets/Title/Title 3.webp";
+import title4 from "@/assets/Title/Title 4.webp";
 
 const titleImages = {
   "Maba Halu": title1,

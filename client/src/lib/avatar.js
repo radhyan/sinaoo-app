@@ -1,13 +1,13 @@
-import char1 from "@/assets/Avatar/char1.png";
-import char2 from "@/assets/Avatar/char2.png";
-import char3 from "@/assets/Avatar/char3.png";
-import char4 from "@/assets/Avatar/char4.png";
-import char5 from "@/assets/Avatar/char5.png";
-import char6 from "@/assets/Avatar/char6.png";
-import char7 from "@/assets/Avatar/char7.png";
-import char8 from "@/assets/Avatar/char8.png";
-import char9 from "@/assets/Avatar/char9.png";
-import char10 from "@/assets/Avatar/char10.png";
+import char1 from "@/assets/Avatar/char1.webp";
+import char2 from "@/assets/Avatar/char2.webp";
+import char3 from "@/assets/Avatar/char3.webp";
+import char4 from "@/assets/Avatar/char4.webp";
+import char5 from "@/assets/Avatar/char5.webp";
+import char6 from "@/assets/Avatar/char6.webp";
+import char7 from "@/assets/Avatar/char7.webp";
+import char8 from "@/assets/Avatar/char8.webp";
+import char9 from "@/assets/Avatar/char9.webp";
+import char10 from "@/assets/Avatar/char10.webp";
 
 // We use an array where index matches the ID.
 // We put 'null' at index 0 so that avatars[1] is char1.

@@ -46,6 +46,17 @@ app.use(
 );
 app.use(express.json());
 
+// Ensure every request waits for a ready DB connection in serverless runtime.
+app.use(async (req, res, next) => {
+  try {
+    await connectToDatabase();
+    next();
+  } catch (err) {
+    console.error("Request blocked: MongoDB connection failed:", err);
+    res.status(500).json({ error: "Database connection unavailable." });
+  }
+});
+
 // --- MOUNT ROUTES ---
 app.get("/", (req, res) => {
   res.json({ message: "Sinaoo Backend is Running!" });

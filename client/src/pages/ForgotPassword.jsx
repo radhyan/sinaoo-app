@@ -4,7 +4,7 @@ import { Input } from "@/components/shared/ui/Input";
 import { Label } from "@/components/shared/ui/Label";
 import { Link } from "react-router-dom";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
-import BackgroundImage from "@/assets/Register and login background.png";
+import BackgroundImage from "@/assets/Register and login background.webp";
 import { apiUrl } from "@/lib/api";
 
 export default function ForgotPassword() {

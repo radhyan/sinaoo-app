@@ -84,7 +84,7 @@ const QuizResult = ({
         {/* Hero Image */}
         <div className="mb-6 md:mb-8 h-48 md:h-96 w-full shrink-0">
           <img
-            src="/images/completion/module-complete.png"
+            src="/images/completion/module-complete.webp"
             alt="Celebration"
             className="w-full h-full object-contain"
           />

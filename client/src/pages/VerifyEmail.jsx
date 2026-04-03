@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/shared/ui/Button";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
-import BackgroundImage from "@/assets/Register and login background.png";
+import BackgroundImage from "@/assets/Register and login background.webp";
 import { apiUrl } from "@/lib/api";
 
 export default function VerifyEmail() {

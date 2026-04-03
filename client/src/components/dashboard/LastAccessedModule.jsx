@@ -19,12 +19,13 @@ export default function LastAccessedModule({ username, className }) {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch(
-        apiUrl(`/api/users/${username}/last-accessed`),
-      );
+      const res = await fetch(apiUrl(`/api/users/${username}/last-accessed`));
       if (!res.ok) throw new Error("Failed to fetch last accessed modules");
       const data = await res.json();
-      setModules(Array.isArray(data) ? data : [data]);
+      const allModules = Array.isArray(data) ? data : [data];
+      // Safety: filter out any completed modules on the frontend as well
+      const incompleteModules = allModules.filter((m) => !m.isCompleted);
+      setModules(incompleteModules);
     } catch (err) {
       console.error(err);
       setError("Gagal memuat modul terakhir.");
@@ -131,5 +132,3 @@ export default function LastAccessedModule({ username, className }) {
     </div>
   );
 }
-
-

@@ -5,12 +5,12 @@ import SegmentedProgressBar from "@/components/shared/ui/SegmentedProgressBar";
 import { Skeleton } from "@/components/shared/ui/Skeleton";
 import { cn } from "@/lib/utils";
 
-import imgPU from "../../../assets/CourseCover/PU.png";
-import imgPPU from "../../../assets/CourseCover/PPU.png";
-import imgPBM from "../../../assets/CourseCover/PBM.png";
-import imgIndo from "../../../assets/CourseCover/LBINDO.png";
-import imgIng from "../../../assets/CourseCover/LBING.png";
-import imgPKPM from "../../../assets/CourseCover/PKPM.png";
+import imgPU from "../../../assets/CourseCover/PU.webp";
+import imgPPU from "../../../assets/CourseCover/PPU.webp";
+import imgPBM from "../../../assets/CourseCover/PBM.webp";
+import imgIndo from "../../../assets/CourseCover/LBINDO.webp";
+import imgIng from "../../../assets/CourseCover/LBING.webp";
+import imgPKPM from "../../../assets/CourseCover/PKPM.webp";
 
 const COURSE_IMAGES = {
   "Penalaran Umum": imgPU,
