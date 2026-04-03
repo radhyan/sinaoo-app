@@ -12,6 +12,55 @@ const {
 
 const router = express.Router();
 
+function normalizeEnvValue(value) {
+  if (!value) return "";
+  return value
+    .trim()
+    .replace(/^['\"]|['\"]$/g, "")
+    .replace(/\\r\\n/g, "")
+    .replace(/\r\n/g, "")
+    .replace(/\n/g, "");
+}
+
+function getFrontendBaseUrl() {
+  const frontendUrl = normalizeEnvValue(process.env.FRONTEND_URL);
+  if (frontendUrl) return frontendUrl.replace(/\/+$/, "");
+
+  const corsOrigin = normalizeEnvValue(process.env.CORS_ORIGIN);
+  if (corsOrigin) {
+    const firstOrigin = corsOrigin
+      .split(",")
+      .map((origin) => origin.trim())
+      .filter(Boolean)[0];
+
+    if (firstOrigin) return firstOrigin.replace(/\/+$/, "");
+  }
+
+  return "http://localhost:5173";
+}
+
+function createMailTransporter() {
+  const emailUser = normalizeEnvValue(process.env.EMAIL_USER);
+  const emailPass = normalizeEnvValue(process.env.EMAIL_PASS).replace(
+    /\s+/g,
+    "",
+  );
+
+  if (!emailUser || !emailPass) {
+    throw new Error("EMAIL_USER or EMAIL_PASS is not configured");
+  }
+
+  return nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: emailUser,
+      pass: emailPass,
+    },
+  });
+}
+
 // Validation Rules
 const registerValidation = [
   body("username")
@@ -59,6 +108,7 @@ router.post("/login", async (req, res) => {
         message:
           "Harap verifikasi email Anda sebelum login. Silakan cek kotak masuk email Anda.",
         field: "general",
+        unverified: true,
       });
     }
 
@@ -112,18 +162,13 @@ router.post("/register", registerValidation, async (req, res) => {
 
     // Send Verification Email
     try {
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+      const transporter = createMailTransporter();
+      const emailUser = normalizeEnvValue(process.env.EMAIL_USER);
 
-      const verifyUrl = `${process.env.CORS_ORIGIN || "http://localhost:5173"}/verify-email/${verificationToken}`;
+      const verifyUrl = `${getFrontendBaseUrl()}/verify-email/${verificationToken}`;
 
       const mailOptions = {
-        from: process.env.EMAIL_USER,
+        from: emailUser,
         to: newUser.email,
         subject: "Sinaoo - Verifikasi Email",
         text:
@@ -135,16 +180,17 @@ router.post("/register", registerValidation, async (req, res) => {
 
       await transporter.sendMail(mailOptions);
     } catch (emailErr) {
+      await User.deleteOne({ _id: newUser._id });
       console.error("[Register] Email send error:", emailErr);
-      // We still return 201 because the user was created, but they might need a "resend" function later
+      return res.status(500).json({
+        error:
+          "Gagal mengirim email verifikasi. Silakan coba lagi dalam beberapa saat.",
+      });
     }
 
-    res
-      .status(201)
-      .json({
-        message:
-          "Registrasi berhasil! Silakan cek email Anda untuk verifikasi.",
-      });
+    res.status(201).json({
+      message: "Registrasi berhasil! Silakan cek email Anda untuk verifikasi.",
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -192,18 +238,13 @@ router.post("/forgot-password", async (req, res) => {
 
     // Send email using nodemailer
     try {
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+      const transporter = createMailTransporter();
+      const emailUser = normalizeEnvValue(process.env.EMAIL_USER);
 
-      const resetUrl = `${process.env.CORS_ORIGIN || "http://localhost:5173"}/reset-password/${resetToken}`;
+      const resetUrl = `${getFrontendBaseUrl()}/reset-password/${resetToken}`;
 
       const mailOptions = {
-        from: process.env.EMAIL_USER,
+        from: emailUser,
         to: user.email,
         subject: "Sinaoo - Reset Password",
         text:
@@ -261,6 +302,59 @@ router.post("/reset-password/:token", async (req, res) => {
     res.json({ message: "Password berhasil diubah!" });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+// 5. Resend Verification Email
+router.post("/resend-verification", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "Email tidak ditemukan." });
+    }
+
+    if (user.isVerified) {
+      return res
+        .status(400)
+        .json({ error: "Akun ini sudah diverifikasi. Silakan login." });
+    }
+
+    // Generate Verification Token
+    const verificationToken = crypto.randomBytes(20).toString("hex");
+    user.emailVerificationToken = verificationToken;
+    await user.save();
+
+    // Send Verification Email
+    const transporter = createMailTransporter();
+    const emailUser = normalizeEnvValue(process.env.EMAIL_USER);
+
+    const verifyUrl = `${getFrontendBaseUrl()}/verify-email/${verificationToken}`;
+
+    const mailOptions = {
+      from: emailUser,
+      to: user.email,
+      subject: "Sinaoo - Resend Verifikasi Email",
+      text:
+        `Kami menerima permintaan untuk mengirim ulang link verifikasi akun kamu.\n\n` +
+        `Silakan verifikasi email dengan mengklik link di bawah ini, atau copy-paste ke browser kamu:\n\n` +
+        `${verifyUrl}\n\n` +
+        `Jika kamu tidak meminta ini, abaikan email ini.\n`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.json({
+      message:
+        "Email verifikasi berhasil dikirim ulang. Silakan cek kotak masuk Anda.",
+    });
+  } catch (err) {
+    console.error("[Resend Verification Error]", err);
+    res
+      .status(500)
+      .json({
+        error: "Terjadi kesalahan saat mengirim ulang email verifikasi.",
+      });
   }
 });
 

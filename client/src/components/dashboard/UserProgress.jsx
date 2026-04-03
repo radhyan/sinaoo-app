@@ -19,7 +19,7 @@ export default function UserProgress({
 }) {
   const rankDisplay =
     leaderboardRank === null || leaderboardRank === undefined
-      ? "Belum Ranked"
+      ? "Unranked"
       : `#${leaderboardRank}`;
 
   return (

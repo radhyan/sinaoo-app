@@ -6,6 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { PasswordInput } from "@/components/shared/ui/PasswordInput";
 import SinaooLogo from "@/assets/SINAOO LOGO.svg";
 import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+} from "@/components/shared/ui/AlertDialog";
+import { CheckCircleIcon, XIcon } from "@phosphor-icons/react";
+import {
   validateUsername,
   validateEmail,
   validatePassword,
@@ -22,6 +30,7 @@ export default function Register() {
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -74,10 +83,7 @@ export default function Register() {
         throw new Error(data.error || "Pendaftaran gagal.");
       }
 
-      alert(
-        "Pendaftaran berhasil! Silakan cek email Anda untuk memverifikasi akun sebelum login.",
-      );
-      navigate("/");
+      setIsSuccessDialogOpen(true);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -219,6 +225,53 @@ export default function Register() {
           </div>
         </form>
       </div>
+
+      {/* Success Dialog */}
+      <AlertDialog
+        open={isSuccessDialogOpen}
+        onOpenChange={setIsSuccessDialogOpen}
+      >
+        <AlertDialogContent className="sm:max-w-md bg-white border-none shadow-blue-60 rounded-xl p-6">
+          <AlertDialogHeader className="mb-4">
+            <div className="flex items-center justify-between">
+              <AlertDialogTitle className="flex items-center gap-2 text-h5 font-heading text-Primary-900 border-none m-0">
+                <CheckCircleIcon
+                  weight="fill"
+                  className="text-Success-500"
+                  size={24}
+                />
+                Pendaftaran Berhasil!
+              </AlertDialogTitle>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-Grayscale-500 hover:text-Grayscale-900 shadow-none border-none hover:bg-Grayscale-100 shrink-0"
+                onClick={() => {
+                  setIsSuccessDialogOpen(false);
+                  navigate("/");
+                }}
+              >
+                <XIcon weight="bold" size={20} />
+              </Button>
+            </div>
+            <AlertDialogDescription className="text-body-md text-Grayscale-600 mt-2 text-left">
+              Silakan cek email Anda untuk memverifikasi akun sebelum login.
+              Jika email tidak masuk, periksa juga folder Spam Anda.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="mt-4 flex justify-end">
+            <Button
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold"
+              onClick={() => {
+                setIsSuccessDialogOpen(false);
+                navigate("/");
+              }}
+            >
+              Kembali ke Login
+            </Button>
+          </div>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

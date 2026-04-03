@@ -16,6 +16,9 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [errorField, setErrorField] = useState(null); // 'email' or 'password'
+  const [unverified, setUnverified] = useState(false);
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendMessage, setResendMessage] = useState(null);
   const navigate = useNavigate();
   const { login } = useUser();
 
@@ -24,6 +27,8 @@ export default function Login() {
     setLoading(true);
     setError(null);
     setErrorField(null);
+    setUnverified(false);
+    setResendMessage(null);
 
     // REAL LOGIN: Call backend authentication
     try {
@@ -38,6 +43,9 @@ export default function Login() {
       if (!response.ok) {
         if (data.field) {
           setErrorField(data.field);
+        }
+        if (data.unverified) {
+          setUnverified(true);
         }
         throw new Error(
           data.message || "Login gagal. Silakan cek email/password.",
@@ -54,6 +62,29 @@ export default function Login() {
       setError(err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleResendVerification = async () => {
+    setResendLoading(true);
+    setResendMessage(null);
+    setError(null);
+    try {
+      const response = await fetch(apiUrl("/api/resend-verification"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      if (!response.ok)
+        throw new Error(data.error || "Gagal mengirim ulang email.");
+      setResendMessage(
+        data.message || "Email verifikasi berhasil dikirim ulang.",
+      );
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setResendLoading(false);
     }
   };
 
@@ -84,8 +115,28 @@ export default function Login() {
           className="space-y-4 flex flex-col items-start w-full"
         >
           {error && (
-            <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md">
+            <div className="p-3 text-sm text-red-500 bg-red-50 rounded-md w-full">
               {error}
+              {unverified && (
+                <div className="mt-2 w-full">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 mt-1"
+                    onClick={handleResendVerification}
+                    disabled={resendLoading}
+                  >
+                    {resendLoading
+                      ? "Mengirim ulang..."
+                      : "Kirim Ulang Email Verifikasi"}
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+          {resendMessage && (
+            <div className="p-3 text-sm text-green-600 bg-green-50 rounded-md w-full">
+              {resendMessage}
             </div>
           )}
 
@@ -165,5 +216,3 @@ export default function Login() {
     </div>
   );
 }
-
-
